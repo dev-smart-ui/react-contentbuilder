@@ -1,11 +1,10 @@
 import React, { useEffect } from "react";
-import { Link } from 'react-router-dom';
+import {Link, useLocation} from 'react-router-dom';
 import axios from 'axios';
 import {addExternalScripts, addExternalStyles, renderHtml} from './util';
 import "./Home.css";
 
 export default function Home() {
-
     useEffect(() => {
         onLoad();
     }, []);

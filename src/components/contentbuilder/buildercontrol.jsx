@@ -225,9 +225,11 @@ class BuilderControl extends Component {
             const data = {
                 html: html
             };
+
+            console.log(data)
     
             axios.post('/save', data).then((response)=>{
-    
+
                 // Saved Successfully
                 if(callback) callback(html);
     

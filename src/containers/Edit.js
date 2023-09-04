@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import BuilderControl from "../components/contentbuilder/buildercontrol";
 
 export default class Edit extends Component {
+
     constructor(props) {
         super(props);
         this.onSave = this.onSave.bind(this);
@@ -9,6 +10,7 @@ export default class Edit extends Component {
     }
 
     onSave(html) { }
+
 
     onSaveAndFinish(html) {
         this.props.history.push('/');
@@ -20,6 +22,8 @@ export default class Edit extends Component {
 
         this.props.history.push('/');
     }
+
+
 
     render() {
         return <>
