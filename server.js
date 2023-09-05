@@ -65,53 +65,90 @@ app.post('/upload', (req, res) => {
 
 
 app.post('/save', async (req, res) => {
- /*   const newHtmlContent = new HtmlContent({
-        content: req.body.html
-    });
-*/
+    try {
+        const newPageValue = req.body.page;
+        const content = req.body.html;
 
-    req.session.html = req.body.html;
+        console.log(newPageValue)
+        console.log(content)
 
-    try{
-        const page=req.body.page
-        const content=req.body.html
-
-
-        if(!page || !content){
-            return  res.status(500).json({
+        if (!newPageValue || !content) {
+            return res.status(500).json({
                 success: false,
-                message: 'forgot to send page'
+                message: 'forgot to send page or content'
             });
         }
 
-        const data= {
+        const data = {
             content,
-            date:new Date(),
-            page
-        }
+            date: new Date(),
+            page: newPageValue
+        };
 
-      const result = await routeModel.findOneAndUpdate(
-            {page: page}, // Условие поиска по email
+        const result = await routeModel.findOneAndUpdate(
+            { page: newPageValue },
             data,
-
-            // Данные для обновления или создания
-            {upsert: true, new: true, lean: true} // Опции
+            { upsert: true, new: true, lean: true }
         );
 
         res.status(200).json({
             success: true,
             result
         });
-    } catch {
 
+    } catch {
         res.status(500).json({
             success: false,
             message: 'Failed to save content to the database.'
         });
     }
-
-
 });
+app.get('/load', async (req, res) => {
+    try {
+        const pageValue = req.query.page || '/';
+
+        const result = await routeModel.findOne({ page: pageValue });
+
+        if (!result) {
+            return res.status(200).json({
+                success: true,
+                message: 'HTML не найден'
+            });
+        }
+
+        res.status(200).json({
+            success: true,
+            html: result.content
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: 'Не удалось загрузить HTML из базы данных.'
+        });
+    }
+});
+
+
+
+// Load content from session (normally you will load the content from a database)
+/*
+app.get('/load', (req, res) => {
+    res.json({
+        html: req.session.html
+    });
+});
+*/
+
+
+
+
+
+app.listen(8081, function() {
+    console.log('App running on port 8081');
+});
+
+
+
 /*
 app.post('/save', (req, res) => {
 
@@ -122,14 +159,3 @@ app.post('/save', (req, res) => {
         // html: req.body.html
     });
 });*/
-
-// Load content from session (normally you will load the content from a database)
-app.get('/load', (req, res) => {
-    res.json({
-        html: req.session.html
-    });
-});
-
-app.listen(8081, function() {
-    console.log('App running on port 8081');
-});

@@ -1,44 +1,51 @@
-import React, { Component } from "react";
-import BuilderControl from "../components/contentbuilder/buildercontrol";
-
-export default class Edit extends Component {
-
-    constructor(props) {
-        super(props);
-        this.onSave = this.onSave.bind(this);
-        this.onSaveAndFinish = this.onSaveAndFinish.bind(this);
-    }
-
-    onSave(html) { }
+import React, { useRef} from 'react';
+import BuilderControl from '../components/contentbuilder/buildercontrol';
+import {useHistory, useLocation} from 'react-router-dom';
 
 
-    onSaveAndFinish(html) {
-        this.props.history.push('/');
-    }
-
-    closeBuilder = () => {
-        const answer = window.confirm('Do you really want to leave?')
-        if (!answer) return false
-
-        this.props.history.push('/');
-    }
+const Edit = ({queryPageParam}) => {
+    const history = useHistory();
+    const callSaveRef = useRef();
+    const callSaveAndFinishRef = useRef();
 
 
+    const onSave = (html) => {
 
-    render() {
-        return <>
-        <BuilderControl 
-            onSave={this.onSave}
-            onSaveAndFinish={this.onSaveAndFinish}
-            doSave={f => this.callSave = f} /* https://stackoverflow.com/questions/37949981/call-child-method-from-parent */
-            doSaveAndFinish={f => this.callSaveAndFinish = f} /> 
+    };
 
-        <div className="is-ui" style={{"position":"fixed", "right":"30px", "bottom":"30px", "display":"flex"}}>
-            <button type="button" onClick={() => this.callSave()} style={{"width":"85px"}}>Save</button>
-            <button type="button" onClick={() => this.callSaveAndFinish()} style={{"width":"120px"}}>Save & Finish</button>
-            <button type="button" onClick={() => this.closeBuilder()} style={{"width":"85px"}}>Close</button>
-        </div>
-    </>
+    const onSaveAndFinish = (html) => {
+        history.push('/');
+    };
 
-    }
-}
+    const closeBuilder = () => {
+        const answer = window.confirm('Do you really want to leave?');
+        if (!answer) return;
+        history.push('/');
+    };
+
+
+    return (
+        <>
+            <BuilderControl
+                queryPageParam={queryPageParam}
+                onSave={onSave}
+                onSaveAndFinish={onSaveAndFinish}
+                doSave={(f) => (callSaveRef.current = f)}
+                doSaveAndFinish={(f) => (callSaveAndFinishRef.current = f)}
+            />
+            <div className="is-ui" style={{position: 'fixed', right: '30px', bottom: '30px', display: 'flex'}}>
+                <button type="button" onClick={() => callSaveRef.current()} style={{width: '85px'}}>
+                    Save
+                </button>
+                <button type="button" onClick={() => callSaveAndFinishRef.current()} style={{width: '120px'}}>
+                    Save & Finish
+                </button>
+                <button type="button" onClick={closeBuilder} style={{width: '85px'}}>
+                    Close
+                </button>
+            </div>
+        </>
+    );
+};
+
+export default Edit;
