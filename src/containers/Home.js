@@ -20,15 +20,10 @@ export default function Home({queryPageParam}) {
                     page: queryPageParam
                 }
             }).then((response) => {
-
                 let html;
-
                 if (response.data.html && queryPageParam) {
-
                     html = response.data.html;
-
-                } else {  // Or load sample content on first start
-
+                } else {
                     html = `<div class="row clearfix">
                     <div class="column full">
                         <h2 class="size-32" style="text-align: center; font-weight: 400;">Home page</h2>
@@ -61,7 +56,7 @@ export default function Home({queryPageParam}) {
 
             });
         } catch (error) {
-            console.error("Произошла ошибка:", error);
+            console.error("error", error);
         }
 
     }

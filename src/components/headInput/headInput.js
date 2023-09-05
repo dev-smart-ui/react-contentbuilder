@@ -33,7 +33,7 @@ const HeadInput = () => {
                 onClick={handleButtonClick}
                 className="head-input-btn"
             >
-                Add URL-path
+                Add page name
             </button>
         </div>
     );

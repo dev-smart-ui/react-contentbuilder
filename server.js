@@ -29,39 +29,37 @@ const routeModel = mongoose.model('htmlContent');
 
 
 //Specify url path
-var $path =  __dirname + '/uploads'; // Physical path
+var $path = __dirname + '/uploads'; // Physical path
 var $urlpath = '/uploads'; // URL path
 
 app.use(cors());
 app.use(express.urlencoded({
     extended: true
 }));
-app.use(express.json({ limit: '50mb' }));
+app.use(express.json({limit: '50mb'}));
 app.use($urlpath, serveStatic($path));
 
 app.use(session({
     secret: 'Your_Secret_Key',
     resave: true,
     saveUninitialized: true,
-    rolling: true, 
+    rolling: true,
     cookie: {
         httpOnly: true,
-        maxAge: 1*60*60*1000
+        maxAge: 1 * 60 * 60 * 1000
     }
-}))
+}));
 
 app.post('/upload', (req, res) => {
     const base64Data = req.body.image;
     const filename = req.body.filename;
-    require('fs').writeFile($path + '/' + filename, base64Data, 'base64', ()=>{
+    require('fs').writeFile($path + '/' + filename, base64Data, 'base64', () => {
         res.status(200).json({
             success: true,
             url: `${$urlpath}/${filename}` // return saved file url
-        })
+        });
     });
 });
-
-// Save content into session (normally you will save the content into a database)
 
 
 app.post('/save', async (req, res) => {
@@ -69,8 +67,8 @@ app.post('/save', async (req, res) => {
         const newPageValue = req.body.page;
         const content = req.body.html;
 
-        console.log(newPageValue)
-        console.log(content)
+        console.log(newPageValue);
+        console.log(content);
 
         if (!newPageValue || !content) {
             return res.status(500).json({
@@ -86,9 +84,9 @@ app.post('/save', async (req, res) => {
         };
 
         const result = await routeModel.findOneAndUpdate(
-            { page: newPageValue },
+            {page: newPageValue},
             data,
-            { upsert: true, new: true, lean: true }
+            {upsert: true, new: true, lean: true}
         );
 
         res.status(200).json({
@@ -107,7 +105,7 @@ app.get('/load', async (req, res) => {
     try {
         const pageValue = req.query.page || '/';
 
-        const result = await routeModel.findOne({ page: pageValue });
+        const result = await routeModel.findOne({page: pageValue});
 
         if (!result) {
             return res.status(200).json({
@@ -123,11 +121,15 @@ app.get('/load', async (req, res) => {
     } catch (error) {
         res.status(500).json({
             success: false,
-            message: 'Не удалось загрузить HTML из базы данных.'
+            message: 'Failed to load HTML from database.'
         });
     }
 });
 
+
+app.listen(8081, function () {
+    console.log('App running on port 8081');
+});
 
 
 // Load content from session (normally you will load the content from a database)
@@ -138,15 +140,6 @@ app.get('/load', (req, res) => {
     });
 });
 */
-
-
-
-
-
-app.listen(8081, function() {
-    console.log('App running on port 8081');
-});
-
 
 
 /*

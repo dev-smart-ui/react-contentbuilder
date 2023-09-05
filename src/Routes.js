@@ -19,7 +19,7 @@ export default function Routes() {
             <HeadInput/>
             <Switch>
                 <Route exact path="/">
-                    <Home queryPageParam={queryPageParam} />
+                    <Home queryPageParam={queryPageParam}/>
                 </Route>
                 <Route path="/edit">
                     <Edit queryPageParam={queryPageParam} history={history}/>
