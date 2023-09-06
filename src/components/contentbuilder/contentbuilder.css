@@ -2,6 +2,12 @@ body {
   overflow-x: hidden !important;
 }
 
+button:disabled {
+  opacity: .4 !important;
+  cursor: none !important;
+}
+
+
 svg {
   overflow: hidden;
   vertical-align: middle;

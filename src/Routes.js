@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {Route, Switch, useHistory, useLocation} from "react-router-dom";
 import ListPages from "./containers/ListPages";
 import Edit from "./containers/Edit";
-import Head from "./components/headInput/head";
+import Head from "./components/head/head";
 
 export default function Routes() {
     const history = useHistory();
@@ -16,7 +16,7 @@ export default function Routes() {
 
     return (
         <>
-            <Head/>
+            <Head queryPageParam={queryPageParam}/>
             <Switch>
                 <Route exact path="/list-pages">
                     <ListPages queryPageParam={queryPageParam}/>

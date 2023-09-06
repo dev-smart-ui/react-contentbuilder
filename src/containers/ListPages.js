@@ -1,57 +1,55 @@
-import React, {useEffect, useState} from "react";
-import {Link} from 'react-router-dom';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import "./ListPages.css";
 
-export default function ListPages({queryPageParam}) {
+export default function ListPages({ queryPageParam }) {
     const [listPages, setListPages] = useState([]);
+    const [isLoaded, setIsLoaded] = useState(false); // Добавляем состояние для загрузки
+
     useEffect(() => {
         onLoad();
     }, []);
 
     async function onLoad() {
+        setIsLoaded(false); // Сбрасываем состояние загрузки
 
-        document.querySelector('.container').style.opacity = 0; // optional: hide area until content loaded
+        try {
+            const response = await axios.get("/loadAllPages");
+            const data = response.data;
 
-        axios.get('/loadAllPages')
-            .then(response => {
-                const data = response.data;
-                if (data.success) {
-                    const pages = data.pages;
-                    setListPages(pages);
-                } else {
-                    console.error(data.message);
-                }
-            })
-            .catch(error => {
-                console.error('Ошибка:', error);
-            });
+            if (data.success) {
+                setListPages(data.pages || []); // Если pages нет, устанавливаем пустой массив
+                setIsLoaded(true); // Устанавливаем состояние загрузки
+            } else {
+                console.error(data.message);
+            }
+        } catch (error) {
+            console.error("error:", error);
+        }
     }
 
     return (
-        <>
-            <ul>
-                {
-                    listPages.map((page, index) => {
-                        return (
-                            <li key={index}>
-                                <a href={`edit${page.page}`}>Edit {page.page}</a>
-                            </li>
-                        );
-                    })
-                }
-            </ul>
-
-            <div className="panel-home is-cms">
-                <section>
-                    <Link className="is-btn" to={'/edit'}>Edit</Link>
-                </section>
-            </div>
-
-
-            <div className="container">
-            </div>
-
-        </>
+        <div className="container-box">
+            {isLoaded ? (
+                listPages.length > 0 ? (
+                    <ul>
+                        {listPages.map((page, index) => {
+                            const url = `edit${page.page}`;
+                            const pageValue = url.split("page=")[1];
+                            return (
+                                <li key={index}>
+                                    <a href={url}>Edit {pageValue}</a>
+                                </li>
+                            );
+                        })}
+                    </ul>
+                ) : (
+                    <p className="px-5 py-3 "> You have no pages created yet</p>
+                )
+            ) : (
+                <></>
+            )}
+            <div className="container"></div>
+        </div>
     );
 }

@@ -110,7 +110,7 @@ app.get('/load', async (req, res) => {
         if (!result) {
             return res.status(200).json({
                 success: true,
-                message: 'HTML не найден'
+                message: 'HTML not found'
             });
         }
 
@@ -134,7 +134,7 @@ app.get('/loadAllPages', async (req, res) => {
         if (!results || results.length === 0) {
             return res.status(200).json({
                 success: true,
-                message: 'Страницы не найдены'
+                message: 'Pages not found'
             });
         }
 
@@ -151,35 +151,12 @@ app.get('/loadAllPages', async (req, res) => {
     } catch (error) {
         res.status(500).json({
             success: false,
-            message: 'Ошибка при загрузке страниц из базы данных.'
+            message: 'Error loading pages from database.'
         });
     }
 });
 
 
-
 app.listen(8081, function () {
     console.log('App running on port 8081');
 });
-
-
-// Load content from session (normally you will load the content from a database)
-/*
-app.get('/load', (req, res) => {
-    res.json({
-        html: req.session.html
-    });
-});
-*/
-
-
-/*
-app.post('/save', (req, res) => {
-
-    req.session.html = req.body.html;
-
-    res.status(200).json({
-        success: true,
-        // html: req.body.html
-    });
-});*/
