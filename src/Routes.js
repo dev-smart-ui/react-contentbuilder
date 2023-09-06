@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react";
 import {Route, Switch, useHistory, useLocation} from "react-router-dom";
-import Home from "./containers/Home";
+import ListPages from "./containers/ListPages";
 import Edit from "./containers/Edit";
-import HeadInput from "./components/headInput/headInput";
+import Head from "./components/headInput/head";
 
 export default function Routes() {
     const history = useHistory();
@@ -16,10 +16,10 @@ export default function Routes() {
 
     return (
         <>
-            <HeadInput/>
+            <Head/>
             <Switch>
-                <Route exact path="/">
-                    <Home queryPageParam={queryPageParam}/>
+                <Route exact path="/list-pages">
+                    <ListPages queryPageParam={queryPageParam}/>
                 </Route>
                 <Route path="/edit">
                     <Edit queryPageParam={queryPageParam} history={history}/>

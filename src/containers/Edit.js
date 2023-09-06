@@ -1,6 +1,6 @@
 import React, { useRef} from 'react';
 import BuilderControl from '../components/contentbuilder/buildercontrol';
-import {useHistory, useLocation} from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 
 
 const Edit = ({queryPageParam}) => {
@@ -14,13 +14,13 @@ const Edit = ({queryPageParam}) => {
     };
 
     const onSaveAndFinish = (html) => {
-        history.push('/');
+        history.push('/list-pages');
     };
 
     const closeBuilder = () => {
         const answer = window.confirm('Do you really want to leave?');
         if (!answer) return;
-        history.push('/');
+        history.push('/list-pages');
     };
 
 

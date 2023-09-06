@@ -754,7 +754,7 @@ var data_basic = {
 				'<div class="row">' +
 					'<div class="column full">' +
 						'<p style="color: rgb(136, 136, 136);">WORDS FROM ANDREW JONES</p>' +
-						'\n<h1 class="size-60">Home is wherever I\'m with you.</h1>' +
+						'\n<h1 class="size-60">ListPages is wherever I\'m with you.</h1>' +
 					'</div>' +
 				'</div>' +
 				'<div class="row">' +
@@ -11636,7 +11636,7 @@ var data_basic = {
 				'</div>' +
 				'<div class="row">' +
 					'<div class="column full center">' +
-						'<a href="#" role="button" class="transition-all inline-block cursor-pointer no-underline border-2 border-solid ml-1 mr-1 rounded text-black tracking-75 font-normal uppercase py-2 size-14 px-8 border-current hover:border-current">Back to Home</a>' +
+						'<a href="#" role="button" class="transition-all inline-block cursor-pointer no-underline border-2 border-solid ml-1 mr-1 rounded text-black tracking-75 font-normal uppercase py-2 size-14 px-8 border-current hover:border-current">Back to ListPages</a>' +
 					'</div>' +
 				'</div>'
 		},
@@ -11685,7 +11685,7 @@ var data_basic = {
 				'</div>' +
 				'<div class="row">' +
 					'<div class="column full">' +
-						'<a href="#" role="button" class="transition-all inline-block cursor-pointer no-underline border-2 border-solid ml-1 mr-1 text-black tracking-75 font-normal uppercase py-2 size-14 px-8 border-current hover:border-current rounded-full">Back to Home</a>' +
+						'<a href="#" role="button" class="transition-all inline-block cursor-pointer no-underline border-2 border-solid ml-1 mr-1 text-black tracking-75 font-normal uppercase py-2 size-14 px-8 border-current hover:border-current rounded-full">Back to ListPages</a>' +
 					'</div>' +
 				'</div>'
 		},
@@ -11703,7 +11703,7 @@ var data_basic = {
 				'<div class="row">' +
 					'<div class="column full center">' +
 						'<div style="margin: 25px 0">' +
-							_tabs(1) + '<a href="#" role="button" class="transition-all inline-block cursor-pointer no-underline border-2 border-solid ml-1 mr-1 rounded text-black tracking-75 font-normal uppercase py-2 size-14 px-8 border-current hover:border-current">Back to Home</a>' +
+							_tabs(1) + '<a href="#" role="button" class="transition-all inline-block cursor-pointer no-underline border-2 border-solid ml-1 mr-1 rounded text-black tracking-75 font-normal uppercase py-2 size-14 px-8 border-current hover:border-current">Back to ListPages</a>' +
 						'\n</div>' +
 					'</div>' +
 				'</div>'
@@ -11722,7 +11722,7 @@ var data_basic = {
 				'<div class="row">' +
 					'<div class="column full">' +
 						'<div style="margin: 10px 0">' +
-							_tabs(1) + '<a href="#" role="button" class="transition-all inline-block cursor-pointer no-underline border-2 border-solid ml-1 mr-1 rounded text-black tracking-75 font-normal uppercase py-2 size-14 px-8 border-current hover:border-current">Back to Home</a>' +
+							_tabs(1) + '<a href="#" role="button" class="transition-all inline-block cursor-pointer no-underline border-2 border-solid ml-1 mr-1 rounded text-black tracking-75 font-normal uppercase py-2 size-14 px-8 border-current hover:border-current">Back to ListPages</a>' +
 						'\n</div>' +
 					'</div>' +
 				'</div>'

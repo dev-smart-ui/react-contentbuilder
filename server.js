@@ -127,6 +127,37 @@ app.get('/load', async (req, res) => {
 });
 
 
+app.get('/loadAllPages', async (req, res) => {
+    try {
+        const results = await routeModel.find();
+
+        if (!results || results.length === 0) {
+            return res.status(200).json({
+                success: true,
+                message: 'Страницы не найдены'
+            });
+        }
+
+        const pages = results.map(result => ({
+            page: result.page,
+            content: result.content
+        }));
+
+        res.status(200).json({
+            success: true,
+            pages
+        });
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: 'Ошибка при загрузке страниц из базы данных.'
+        });
+    }
+});
+
+
+
 app.listen(8081, function () {
     console.log('App running on port 8081');
 });

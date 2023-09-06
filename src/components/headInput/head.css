@@ -1,0 +1,16 @@
+.head-wrap {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    z-index: 66;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.head-wrap a{
+    max-width: 200px;
+    width: 100%;
+}
