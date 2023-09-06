@@ -343,7 +343,7 @@ class BuilderControl extends Component {
             this.obj.loadSnippets('assets/minimalist-blocks/content.js'); // Load snippet file
             const {queryPageParam} = this.props;
 
-            axios.get('/load', {
+            axios.get(`/load`, {
                 params: {
                     page: queryPageParam
                 }

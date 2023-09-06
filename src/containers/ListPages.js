@@ -14,12 +14,12 @@ export default function ListPages({ queryPageParam }) {
         setIsLoaded(false); // Сбрасываем состояние загрузки
 
         try {
-            const response = await axios.get("/loadAllPages");
+            const response = await axios.get("/all");
             const data = response.data;
 
             if (data.success) {
-                setListPages(data.pages || []); // Если pages нет, устанавливаем пустой массив
-                setIsLoaded(true); // Устанавливаем состояние загрузки
+                setListPages(data.pages || []);
+                setIsLoaded(true);
             } else {
                 console.error(data.message);
             }

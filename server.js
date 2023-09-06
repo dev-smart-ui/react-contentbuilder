@@ -127,7 +127,7 @@ app.get('/load', async (req, res) => {
 });
 
 
-app.get('/loadAllPages', async (req, res) => {
+app.get('/all', async (req, res) => {
     try {
         const results = await routeModel.find();
 
