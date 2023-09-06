@@ -235,6 +235,7 @@ class BuilderControl extends Component {
 
                 container: '.container',
 
+
                 // OPTIONAL:
 
                 // If you need to change some paths:
@@ -350,19 +351,12 @@ class BuilderControl extends Component {
                 let html;
 
                 if (response.data.html) {
-
                     html = response.data.html;
-                } else {
-
-                    html = `<div class="row clearfix">
-                        <div class="column full">
-                            <h2 class="size-32" style="text-align: center; font-weight: 400;">Create new page</h2>
-                        </div>
-                    </div>`;
                 }
 
-                this.obj.loadHtml(html);
                 document.querySelector('.container').style.opacity = 1;
+                this.obj.loadHtml(html);
+
             }).catch((error) => {
                 console.error('error', error);
             });

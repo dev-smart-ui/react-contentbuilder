@@ -22,13 +22,14 @@ const Input = () => {
     };
 
     return (
-        <div className="head-input-wrap items-center flex-wrap flex w-1/2">
+        <div className="head-input-wrap justify-center items-center flex-wrap flex w-1/2">
             <input
+                placeholder="Page name"
                 type="text"
                 value={inputValue}
                 onChange={handleInputChange}
                 onKeyDown={handleKeyDown}
-                className="mb-2  px-2 py-3 text-base border rounded"
+                className=" mb-2  px-2 py-3 text-base border rounded"
             />
             <button
                 disabled={!Boolean(inputValue)}

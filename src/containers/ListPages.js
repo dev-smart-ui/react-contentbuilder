@@ -37,8 +37,8 @@ export default function ListPages({ queryPageParam }) {
                             const url = `edit${page.page}`;
                             const pageValue = url.split("page=")[1];
                             return (
-                                <li key={index}>
-                                    <a href={url}>Edit {pageValue}</a>
+                                <li className="mb-1"  key={index}>
+                                    <a className="hover:bg-indigo-50 p-1" href={url}>Edit {pageValue}</a>
                                 </li>
                             );
                         })}

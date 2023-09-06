@@ -12,3 +12,9 @@
 .head-wrap input:focus {
     outline: none;
 }
+
+.head-wrap input::placeholder {
+    font-size: 12px;
+    color: lightgrey;
+}
+

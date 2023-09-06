@@ -4,7 +4,7 @@ body {
 
 button:disabled {
   opacity: .4 !important;
-  cursor: none !important;
+  cursor: not-allowed  !important;
 }
 
 

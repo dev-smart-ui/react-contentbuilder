@@ -8,7 +8,7 @@ const Head = ({queryPageParam}) => {
 
     return (
         <div className="head-wrap p-2 flex-wrap flex w-full">
-            <div className="head-btn-box flex-wrap flex w-1/2 ">
+            <div className="head-btn-box justify-center flex-wrap flex w-1/2 ">
                 <a href="/list-pages"
                    className="text-center transition-all inline-block cursor-pointer no-underline border-2 border-solid border-transparent ml-1 mr-1 mb-2 hover:border-transparent bg-gray-200 hover:bg-gray-300 size-14 tracking-75 uppercase py-3  font-semibold text-gray-600 rounded-full"
                 >See all pages</a>
