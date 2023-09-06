@@ -45,5 +45,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://185.233.38.15:8081"
+  "proxy": "react-contentbuilder.vercel.app"
 }
