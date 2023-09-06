@@ -16,7 +16,7 @@ const HeadInput = () => {
         }
     };
     const handleButtonClick = () => {
-        history.push(`edit?=${inputValue}`);
+        history.push(`edit?page=${inputValue}`);
         window.location.reload();
     };
 
