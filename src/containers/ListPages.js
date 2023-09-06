@@ -4,14 +4,15 @@ import "./ListPages.css";
 
 export default function ListPages({ queryPageParam }) {
     const [listPages, setListPages] = useState([]);
-    const [isLoaded, setIsLoaded] = useState(false); // Добавляем состояние для загрузки
+    const [isLoaded, setIsLoaded] = useState(false);
+
 
     useEffect(() => {
         onLoad();
     }, []);
 
     async function onLoad() {
-        setIsLoaded(false); // Сбрасываем состояние загрузки
+        setIsLoaded(false);
 
         try {
             const response = await axios.get("/all");
