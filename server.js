@@ -4,6 +4,7 @@ const cors = require('cors');
 const serveStatic = require('serve-static');
 const session = require('express-session');
 const fs = require('fs').promises;
+const baseUrl="https://builder.smart-ui.pro/";
 
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/builder',
@@ -81,6 +82,29 @@ app.use(session({
     }
 });*/
 
+app.options('/upload', cors());
+app.post('/upload', (req, res) => {
+    const base64Data = req.body.image;
+    const filename = req.body.filename;
+
+    fs.writeFile(`${$path}/${filename}`, base64Data, 'base64', (err) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({
+                success: false,
+                message: `Failed to save file: ${err.message}`
+            });
+        }
+
+        res.status(200).json({
+            success: true,
+            url: `${baseUrl}${$urlpath}/${filename}`
+        });
+    });
+});
+
+
+/*
 app.post('/upload', (req, res) => {
     const base64Data = req.body.image;
     const filename = req.body.filename;
@@ -91,6 +115,7 @@ app.post('/upload', (req, res) => {
         });
     });
 });
+*/
 
 
 app.post('/save', async (req, res) => {
