@@ -83,25 +83,29 @@ app.use(session({
 });*/
 
 app.options('/upload', cors());
-app.post('/upload', (req, res) => {
+app.post('/upload', async (req, res) => {
     const base64Data = req.body.image;
     const filename = req.body.filename;
 
     console.log(base64Data)
+    console.log(`${$path}/${filename}`)
 
-    fs.writeFile(`${$path}/${filename}`, base64Data, 'base64', (err) => {
-        if (err) {
-            console.error(err);
-            return res.status(500).json({
-                success: false,
-                message: `Failed to save file: ${err.message}`
-            });
-        }
 
-        res.status(200).json({
-            success: true,
-            url: `${baseUrl}${$urlpath}/${filename}`
+    try {
+        await fs.writeFile(`${$path}/${filename}`, base64Data, 'base64')
+    } catch (err){
+
+
+        return res.status(500).json({
+            success: false,
+            message: `Failed to save file: ${err.message}`
         });
+
+    }
+
+    res.status(200).json({
+        success: true,
+        url: `${baseUrl}${$urlpath}/${filename}`
     });
 });
 
