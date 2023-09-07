@@ -61,7 +61,7 @@ app.post('/upload', async (req, res) => {
         if (!base64Data || !filename) {
             return res.status(500).json({
                 success: false,
-                message: 'Не переданы имя файла или данные'
+                message: 'No file name or data passed'
             });
         }
 
@@ -76,7 +76,7 @@ app.post('/upload', async (req, res) => {
         console.error(error);
         res.status(500).json({
             success: false,
-            message: 'Не удалось сохранить файл'
+            message: 'Failed to save file'
         });
     }
 });
