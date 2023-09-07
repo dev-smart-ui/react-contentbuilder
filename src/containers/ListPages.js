@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./ListPages.css";
+import {instanceAxios} from "../axiosConfig";
 
 export default function ListPages({ queryPageParam }) {
     const [listPages, setListPages] = useState([]);
@@ -15,7 +16,7 @@ export default function ListPages({ queryPageParam }) {
         setIsLoaded(false);
 
         try {
-            const response = await axios.get("/all");
+            const response = await instanceAxios.get("/all");
             const data = response.data;
 
             if (data.success) {

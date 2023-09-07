@@ -215,6 +215,7 @@ import React, {Component} from "react";
 import axios from 'axios';
 import ContentBuilder from '@innovastudio/contentbuilder';
 import "./contentbuilder.css";
+import {instanceAxios} from "../../axiosConfig";
 
 class BuilderControl extends Component {
     constructor(props) {
@@ -343,7 +344,7 @@ class BuilderControl extends Component {
             this.obj.loadSnippets('assets/minimalist-blocks/content.js'); // Load snippet file
             const {queryPageParam} = this.props;
 
-            axios.get(`/load`, {
+            instanceAxios.get(`/load`, {
                 params: {
                     page: queryPageParam
                 }
@@ -399,7 +400,7 @@ class BuilderControl extends Component {
             base64 = base64.replace(/ /g, '+');
 
             // Upload process
-            axios.post('/upload', {image: base64, filename: filename}).then((response) => {
+            instanceAxios.post('/upload', {image: base64, filename: filename}).then((response) => {
 
                 callback(response);
 
@@ -424,7 +425,7 @@ class BuilderControl extends Component {
                 page: queryPageParam
             };
 
-            axios.post('/save', data).then((response) => {
+            instanceAxios.post('/save', data).then((response) => {
                 // Saved Successfully
                 if (callback) callback(html);
 
@@ -435,7 +436,7 @@ class BuilderControl extends Component {
         }, (img, base64, filename) => {
 
             // Upload image process
-            axios.post('upload/', {image: base64, filename: filename}).then((response) => {
+            instanceAxios.post('upload/', {image: base64, filename: filename}).then((response) => {
 
                 const uploadedImageUrl = response.data.url; // get saved image url
 
