@@ -212,7 +212,6 @@ import "./contentbuilder.css";*/
 export default BuilderControl;*/
 
 import React, {Component} from "react";
-import axios from 'axios';
 import ContentBuilder from '@innovastudio/contentbuilder';
 import "./contentbuilder.css";
 import {instanceAxios} from "../../axiosConfig";
