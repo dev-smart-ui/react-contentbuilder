@@ -435,15 +435,13 @@ class BuilderControl extends Component {
         }, (img, base64, filename) => {
 
             // Upload image process
-            instanceAxios.post('upload/', {image: base64, filename: filename}).then((response) => {
-
+            try {
+                const response =  instanceAxios.post('upload/', { image: base64, filename: filename });
                 const uploadedImageUrl = response.data.url; // get saved image url
-
-                img.setAttribute('src', uploadedImageUrl); // set image src
-
-            }).catch((err) => {
+                img.setAttribute('src', uploadedImageUrl);  // set image src
+            } catch (err) {
                 console.log(err);
-            });
+            }
 
         });
     };

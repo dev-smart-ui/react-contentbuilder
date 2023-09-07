@@ -3,6 +3,7 @@ const app = express();
 const cors = require('cors');
 const serveStatic = require('serve-static');
 const session = require('express-session');
+const fs = require('fs').promises;
 
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/builder',
@@ -51,7 +52,36 @@ app.use(session({
     }
 }));
 
-app.post('/upload', (req, res) => {
+
+app.post('/upload', async (req, res) => {
+    try {
+        const base64Data = req.body.image;
+        const filename = req.body.filename;
+
+        if (!base64Data || !filename) {
+            return res.status(500).json({
+                success: false,
+                message: 'Не переданы имя файла или данные'
+            });
+        }
+
+        await fs.writeFile(`${$path}/${filename}`, base64Data, 'base64');
+
+        res.status(200).json({
+            success: true,
+            url: `${$urlpath}/${filename}` // return saved file url
+        });
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            success: false,
+            message: 'Не удалось сохранить файл'
+        });
+    }
+});
+
+/*app.post('/upload', (req, res) => {
     const base64Data = req.body.image;
     const filename = req.body.filename;
     require('fs').writeFile($path + '/' + filename, base64Data, 'base64', () => {
@@ -60,7 +90,7 @@ app.post('/upload', (req, res) => {
             url: `${$urlpath}/${filename}` // return saved file url
         });
     });
-});
+});*/
 
 
 app.post('/save', async (req, res) => {
