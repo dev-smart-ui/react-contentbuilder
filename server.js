@@ -53,7 +53,7 @@ app.use(session({
 }));
 
 
-app.post('/upload', async (req, res) => {
+/*app.post('/upload', async (req, res) => {
     try {
         const base64Data = req.body.image;
         const filename = req.body.filename;
@@ -79,9 +79,9 @@ app.post('/upload', async (req, res) => {
             message: 'Failed to save file'
         });
     }
-});
+});*/
 
-/*app.post('/upload', (req, res) => {
+app.post('/upload', (req, res) => {
     const base64Data = req.body.image;
     const filename = req.body.filename;
     require('fs').writeFile($path + '/' + filename, base64Data, 'base64', () => {
@@ -90,7 +90,7 @@ app.post('/upload', async (req, res) => {
             url: `${$urlpath}/${filename}` // return saved file url
         });
     });
-});*/
+});
 
 
 app.post('/save', async (req, res) => {
