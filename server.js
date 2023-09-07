@@ -32,8 +32,8 @@ const routeModel = mongoose.model('htmlContent');
 
 
 //Specify url path
-var $path = __dirname + '/uploads'; // Physical path
-var $urlpath = '/uploads'; // URL path
+var $path = 'uploads'; // Physical path
+var $urlpath = '/files'; // URL path
 
 app.use(cors());
 app.use(express.urlencoded({
@@ -213,6 +213,8 @@ app.get('/all', async (req, res) => {
         });
     }
 });
+
+
 
 
 app.listen(8081, function () {
