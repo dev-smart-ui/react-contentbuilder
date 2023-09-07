@@ -87,6 +87,8 @@ app.post('/upload', (req, res) => {
     const base64Data = req.body.image;
     const filename = req.body.filename;
 
+    console.log(base64Data)
+
     fs.writeFile(`${$path}/${filename}`, base64Data, 'base64', (err) => {
         if (err) {
             console.error(err);
