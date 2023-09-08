@@ -15,6 +15,7 @@ function App() {
         });
     }, []);
 
+
     return (
         <BrowserRouter>
                 <nav><Link className="text-center transition-all inline-block cursor-pointer no-underline border-2 border-solid  mb-2  size-14 uppercase py-3  border-current text-indigo-500 hover:bg-indigo-500 hover:text-white hover:border-transparent font-semibold rounded-full" to="/all-pages">AllPages</Link></nav>
