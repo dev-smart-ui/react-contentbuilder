@@ -166,13 +166,13 @@ app.post('/save', async (req, res) => {
 app.get('/load', async (req, res) => {
     try {
         const pageValue = req.query.page || '/';
-
+        console.log(pageValue)
         const result = await routeModel.findOne({page: pageValue});
 
         if (!result) {
             return res.status(200).json({
                 success: true,
-                message: 'HTML not found'
+                message: 'page not found'
             });
         }
 
@@ -184,6 +184,31 @@ app.get('/load', async (req, res) => {
         res.status(500).json({
             success: false,
             message: 'Failed to load HTML from database.'
+        });
+    }
+});
+const jsxTransform = require("html-to-jsx-transform")
+app.get('/source-code', async (req, res) => {
+    try {
+        const pageValue = req.query.page || '/';
+        console.log(pageValue)
+        const result = await routeModel.findOne({page: pageValue});
+
+        if (!result) {
+            return res.status(200).json({
+                success: true,
+                message:"err"
+            });
+        }
+
+        res.status(200).json({
+            success: true,
+            jsx: jsxTransform.htmlToJsx(result.content)
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: 'Failed to load jsx  from database.'
         });
     }
 });
