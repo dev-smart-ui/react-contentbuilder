@@ -33,7 +33,7 @@ const routeModel = mongoose.model('htmlContent');
 
 //Specify url path
 var $path = 'uploads'; // Physical path
-var $urlpath = '/files'; // URL path
+var $urlpath = 'files'; // URL path
 
 app.use(cors());
 app.use(express.urlencoded({
