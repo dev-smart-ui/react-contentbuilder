@@ -11,6 +11,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-session": "^1.17.2",
+    "html-to-jsx-transform": "^1.1.0",
     "mongoose": "^7.5.0",
     "node-dev": "^8.0.0",
     "react": "^17.0.2",
