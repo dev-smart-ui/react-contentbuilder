@@ -3,7 +3,7 @@ import {BrowserRouter, Route, Routes, Link} from "react-router-dom";
 import AllPages from "./pages/AllPages/AllPages";
 import PageExample from "./pages/PageExample/PageExample";
 import React, {useEffect, useState} from "react";
-import DynamicPage from "./pages/DynamicPage";
+
 import axios from "axios";
 import {SourceCode} from "./pages/source/sourceCode";
 

@@ -21,6 +21,24 @@ var data_basic = {
     'snippets': [
 
 		{
+		    'thumbnail': 'custom/currency.png ',
+		    'category': '120',
+		    'html':
+				'<div style="background:#cee7bd; padding:30px; " id="converter" data-custom="converter" class="  custom">' +
+					 `<div >
+<label>from EUR<input type="text" placeholder="eur" value="10"></label><br>to USD<input type="text" placeholder="usd" value="10.739"><br></div>`+
+				'</div>'
+		},
+		{
+		    'thumbnail': 'custom/request.png ',
+		    'category': '120',
+		    'html':
+				'<div style="background:#e5e7eb; " id="converter" data-custom="request" class="  custom">' +
+	 			` <label>number  of users from api <input style="padding:20px; background: #ffeeee" type="number" value="1"></label><br><button style="padding:20px"> request to server </button><pre><code>""</code></pre>`+
+
+				'</div>'
+		},
+		{
 		    'thumbnail': 'preview/basic-01.png',
 		    'category': '120',
 		    'html':
@@ -161,7 +179,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
         /* Circular Image */
 		{
 			'thumbnail': 'preview/basic-17.png',
@@ -212,9 +230,9 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
-		    'thumbnail': 'preview/basic-14.png', 
+		    'thumbnail': 'preview/basic-14.png',
 		    'category': '120',
 		    'html':
 				'<div class="row">' +
@@ -253,11 +271,11 @@ var data_basic = {
                 '<div class="is-rounded-button-medium" style="margin:1em 0">' +
                	    '<a href="https://twitter.com/" style="background-color: #00bfff;"><i class="icon ion-social-twitter"></i></a>' +
                	    '<a href="https://www.facebook.com/" style="background-color: #128BDB"><i class="icon ion-social-facebook"></i></a>' +
-               	    '<a href="mailto:you@example.com" style="background-color: #DF311F"><i class="icon ion-ios-email-outline"></i></a>' +     			
+               	    '<a href="mailto:you@example.com" style="background-color: #DF311F"><i class="icon ion-ios-email-outline"></i></a>' +
 		        '</div>&nbsp;'
 		},
 		*/
-        
+
 		/* Video */
 		{
 			'thumbnail': 'preview/element-html5video.png',
@@ -630,7 +648,7 @@ var data_basic = {
                     '</div>' +
                 '</div>'
         },
-            
+
         /* Custom Code */
 		{
 		'thumbnail': 'preview/element-code.png',
@@ -659,8 +677,8 @@ var data_basic = {
 				    '</div>' +
 			    '</div>'
         },
-		
-		
+
+
 		{
 		    'thumbnail': 'preview/article-02.png',
 		    'category': '118',
@@ -687,11 +705,11 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/article-04.png',
 		    'category': '118',
-		    'html':				
+		    'html':
 				'<div class="row">' +
 					'<div class="column full">' +
 						'<div class="display">' +
@@ -719,7 +737,7 @@ var data_basic = {
 		{
 		    'thumbnail': 'preview/article-07.png',
 		    'category': '118',
-		    'html':				
+		    'html':
 				'<div class="row">' +
 					'<div class="column full">' +
 						'<div class="display">' +
@@ -744,13 +762,13 @@ var data_basic = {
 					'<div class="column full">' +
 						'<p class="size-16" style="text-align: center;"><i style="color: rgb(204, 204, 204);">By Jennifer Anderson</i></p>' +
 					'</div>' +
-				'</div>'							
+				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/article-08.png',
 		    'category': '118',
-		    'html':				
+		    'html':
 				'<div class="row">' +
 					'<div class="column full">' +
 						'<p style="color: rgb(136, 136, 136);">WORDS FROM ANDREW JONES</p>' +
@@ -766,13 +784,13 @@ var data_basic = {
 					'<div class="column full">' +
 						'<p style="text-align: justify;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>' +
 					'</div>' +
-				'</div>'								
+				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/article-09.png',
 		    'category': '118',
-		    'html':				
+		    'html':
 				'<div class="row">' +
 					'<div class="column full center">' +
 						'<h1 class="size-32 is-title5-32 is-title-lite"><i>Simplify Things</i></h1>' +
@@ -788,13 +806,13 @@ var data_basic = {
 					'<div class="column full">' +
 						'<p style="text-align: justify;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Vivamus leo ante, consectetur sit amet.&nbsp;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&nbsp;</p>' +
 					'</div>' +
-				'</div>'							
+				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/article-10.png',
 		    'category': '118',
-		    'html':				
+		    'html':
 				'<div class="row">' +
 					'<div class="column full">' +
 						'<div class="display">' +
@@ -812,13 +830,13 @@ var data_basic = {
 					'<div class="column full">' +
 						'<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem Ipsum dolor sit amet, consectetur adipiscing elit.</p>' +
 					'</div>' +
-				'</div>'							
+				'</div>'
 		},
-				
+
 		{
 		    'thumbnail': 'preview/article-13.png',
 		    'category': '118',
-		    'html':				
+		    'html':
 				'<div class="row">' +
 					'<div class="column full">' +
 						'<div class="display">' +
@@ -837,13 +855,13 @@ var data_basic = {
 						'<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum dolor sit amet, consectetur adipiscing elit.</p>' +
 						'\n<p>Vivamus leo ante, consectetur sit amet vulputate vel, sit amet lectus.</p>' +
 					'</div>' +
-				'</div>'					
+				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/article-16.png',
 		    'category': '118',
-		    'html':				
+		    'html':
 				'<div class="row">' +
 					'<div class="column full">' +
 						'<div class="display">' +
@@ -864,7 +882,7 @@ var data_basic = {
 					'<div class="column half">' +
 						'<p style="text-align: justify;">Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>' +
 					'</div>' +
-				'</div>'							
+				'</div>'
 		},
 
 		{
@@ -891,7 +909,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-	
+
 		{
 		    'thumbnail': 'preview/article-25.png',
 		    'category': '118',
@@ -913,7 +931,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-	
+
 		{
 		    'thumbnail': 'preview/article-27.png',
 		    'category': '118',
@@ -942,7 +960,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-	
+
 		{
 		    'thumbnail': 'preview/article-30.png',
 		    'category': '118',
@@ -965,7 +983,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/article-31.png',
 		    'category': '118',
@@ -980,7 +998,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/article-33.png',
 		    'category': '118',
@@ -1004,7 +1022,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-	
+
 		{
 		    'thumbnail': 'preview/article-35.png',
 		    'category': '118',
@@ -1036,7 +1054,7 @@ var data_basic = {
 				'</div>'
 		},
 
-		
+
 		{
 		    'thumbnail': 'preview/article-39.png',
 		    'category': '118',
@@ -1057,7 +1075,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/article-40.png',
 		    'category': '118',
@@ -1135,7 +1153,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-	
+
 		{
 		    'thumbnail': 'preview/article-46.png',
 		    'category': '118',
@@ -1167,7 +1185,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-	
+
 		{
 		    'thumbnail': 'preview/article-49.png',
 		    'category': '118',
@@ -1192,7 +1210,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/article-50.png',
 		    'category': '118',
@@ -1278,7 +1296,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-	
+
 		{
 		    'thumbnail': 'preview/article-54.png',
 		    'category': '118',
@@ -1306,7 +1324,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/article-55.png',
 		    'category': '118',
@@ -1337,7 +1355,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/article-57.png',
 		    'category': '118',
@@ -1363,7 +1381,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/article-58.png',
 		    'category': '118',
@@ -1390,8 +1408,8 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
-        
+
+
 		{
 		    'thumbnail': 'preview/article-59.png',
 		    'category': '118',
@@ -1413,7 +1431,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/article-60.png',
 		    'category': '118',
@@ -1438,9 +1456,9 @@ var data_basic = {
 						'<p style="text-align: justify;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>' +
 					'</div>' +
 				'</div>'
-					
+
 		},
-		
+
 		{
 		    'thumbnail': 'preview/article-61.png',
 		    'category': '118',
@@ -1468,9 +1486,9 @@ var data_basic = {
 					'<div class="column third">' +
 						'<p style="text-align: justify;">Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>' +
 					'</div>' +
-				'</div>'	
+				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/article-62.png',
 		    'category': '118',
@@ -1498,12 +1516,12 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
-		
+
+
 
 
         /* HEADLINE */
-	
+
 		{
 		    'thumbnail': 'preview/header-02.png',
 		    'category': '101',
@@ -1514,7 +1532,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-	
+
 		{
 		    'thumbnail': 'preview/header-07.png',
 		    'category': '101',
@@ -1533,7 +1551,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/header-08.png',
 		    'category': '101',
@@ -1548,7 +1566,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/header-09.png',
 		    'category': '101',
@@ -1567,7 +1585,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-       
+
         {
 		    'thumbnail': 'preview/header-23.png',
 		    'category': '101',
@@ -1586,7 +1604,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-				
+
 		{
 		    'thumbnail': 'preview/header-25.png',
 		    'category': '101',
@@ -1605,7 +1623,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/header-26.png',
 		    'category': '101',
@@ -1621,7 +1639,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/header-27.png',
 		    'category': '101',
@@ -1640,7 +1658,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/header-28.png',
 		    'category': '101',
@@ -1664,7 +1682,7 @@ var data_basic = {
 		{
 		    'thumbnail': 'preview/header-32.png',
 		    'category': '101',
-		    'html':				
+		    'html':
 				'<div class="row">' +
 					'<div class="column full center">' +
 						'<div class="display">' +
@@ -1698,7 +1716,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-   
+
 		{
 		    'thumbnail': 'preview/header-38.png',
 		    'category': '101',
@@ -1715,7 +1733,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-     
+
 		{
 		    'thumbnail': 'preview/header-41.png',
 		    'category': '101',
@@ -1771,7 +1789,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-    
+
 		{
 		    'thumbnail': 'preview/header-46.png',
 		    'category': '101',
@@ -1790,7 +1808,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/header-47.png',
 		    'category': '101',
@@ -1801,7 +1819,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/header-48.png',
 		    'category': '101',
@@ -1822,7 +1840,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/header-49.png',
 		    'category': '101',
@@ -1841,7 +1859,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/header-50.png',
 		    'category': '101',
@@ -1865,7 +1883,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/header-51.png',
 		    'category': '101',
@@ -1877,7 +1895,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/header-52.png',
 		    'category': '101',
@@ -1896,7 +1914,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/header-53.png',
 		    'category': '101',
@@ -1908,7 +1926,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/header-54.png',
 		    'category': '101',
@@ -1927,7 +1945,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/header-55.png',
 		    'category': '101',
@@ -1950,7 +1968,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/header-56.png',
 		    'category': '101',
@@ -1962,7 +1980,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/header-57.png',
 		    'category': '101',
@@ -1984,7 +2002,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/header-58.png',
 		    'category': '101',
@@ -1998,7 +2016,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/header-59.png',
 		    'category': '101',
@@ -2010,7 +2028,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/header-60.png',
 		    'category': '101',
@@ -2025,7 +2043,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/header-61.png',
 		    'category': '101',
@@ -2038,7 +2056,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/header-63.png',
 		    'category': '101',
@@ -2059,7 +2077,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/header-104.png',
 		    'category': '101',
@@ -2094,7 +2112,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/header-105.png',
 		    'category': '101',
@@ -2116,7 +2134,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/header-106.png',
 		    'category': '101',
@@ -2148,7 +2166,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/header-107.png',
 		    'category': '101',
@@ -2174,7 +2192,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		/* PHOTOS */
 
 
@@ -2330,7 +2348,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-        
+
 		{
 		    'thumbnail': 'preview/photos-15.png',
 		    'category': '102',
@@ -2363,7 +2381,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-        
+
 		{
 		    'thumbnail': 'preview/photos-16.png',
 		    'category': '102',
@@ -2376,7 +2394,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-        
+
 		{
 		    'thumbnail': 'preview/photos-17.png',
 		    'category': '102',
@@ -2413,7 +2431,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-        
+
 		{
 		    'thumbnail': 'preview/photos-18.png',
 		    'category': '102',
@@ -2439,7 +2457,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-        
+
 		{
 		    'thumbnail': 'preview/photos-19.png',
 		    'category': '102',
@@ -2469,7 +2487,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-        
+
 		{
 		    'thumbnail': 'preview/photos-20.png',
 		    'category': '102',
@@ -2481,7 +2499,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-        
+
 		{
 		    'thumbnail': 'preview/photos-21.png',
 		    'category': '102',
@@ -2508,7 +2526,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-        
+
 		{
 		    'thumbnail': 'preview/photos-22.png',
 		    'category': '102',
@@ -2530,7 +2548,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-        
+
 		{
 		    'thumbnail': 'preview/photos-23.png',
 		    'category': '102',
@@ -2545,7 +2563,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-        
+
 		{
 		    'thumbnail': 'preview/photos-24.png',
 		    'category': '102',
@@ -2560,7 +2578,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-        
+
 		{
 		    'thumbnail': 'preview/photos-25.png',
 		    'category': '102',
@@ -2577,7 +2595,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-        
+
 		{
 		    'thumbnail': 'preview/photos-26.png',
 		    'category': '102',
@@ -2594,7 +2612,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-        
+
 		{
 		    'thumbnail': 'preview/photos-27.png',
 		    'category': '102',
@@ -2608,7 +2626,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-        
+
 		{
 		    'thumbnail': 'preview/photos-28.png',
 		    'category': '102',
@@ -2622,7 +2640,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-        
+
 		{
 		    'thumbnail': 'preview/photos-29.png',
 		    'category': '102',
@@ -2639,7 +2657,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-        
+
 		{
 		    'thumbnail': 'preview/photos-30.png',
 		    'category': '102',
@@ -2656,7 +2674,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-        
+
 		{
 		    'thumbnail': 'preview/photos-35.png',
 		    'category': '102',
@@ -2672,7 +2690,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-        
+
 		{
 		    'thumbnail': 'preview/photos-36.png',
 		    'category': '102',
@@ -2688,7 +2706,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-        
+
 		{
 		    'thumbnail': 'preview/photos-37.png',
 		    'category': '102',
@@ -2707,7 +2725,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-        
+
 		{
 		    'thumbnail': 'preview/photos-38.png',
 		    'category': '102',
@@ -2726,7 +2744,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-        
+
 		{
 		    'thumbnail': 'preview/photos-39.png',
 		    'category': '102',
@@ -2754,7 +2772,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-        
+
 		{
 		    'thumbnail': 'preview/photos-40.png',
 		    'category': '102',
@@ -2769,7 +2787,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-        
+
 		{
 		    'thumbnail': 'preview/photos-41.png',
 		    'category': '102',
@@ -2784,7 +2802,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/photos-69.png',
 		    'category': '102',
@@ -2800,7 +2818,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/photos-70.png',
 		    'category': '102',
@@ -2816,7 +2834,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/photos-71.png',
 		    'category': '102',
@@ -2840,7 +2858,7 @@ var data_basic = {
 					'</div>' +
 		    	'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/photos-72.png',
 		    'category': '102',
@@ -2873,7 +2891,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/photos-73.png',
 		    'category': '102',
@@ -2888,7 +2906,7 @@ var data_basic = {
 					'</div>' +
 		    	'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/photos-74.png',
 		    'category': '102',
@@ -2903,7 +2921,7 @@ var data_basic = {
 		    		'</div>' +
 		    	'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/photos-75.png',
 		    'category': '102',
@@ -2923,7 +2941,7 @@ var data_basic = {
 		    		'</div>' +
 		    	'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/photos-76.png',
 		    'category': '102',
@@ -2943,7 +2961,7 @@ var data_basic = {
 		    		'</div>' +
 		    	'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/photos-77.png',
 		    'category': '102',
@@ -2987,7 +3005,7 @@ var data_basic = {
 					'</div>' +
 		    	'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/photos-78.png',
 		    'category': '102',
@@ -3013,7 +3031,7 @@ var data_basic = {
 		    		'</div>' +
 		    	'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/photos-79.png',
 		    'category': '102',
@@ -3026,7 +3044,7 @@ var data_basic = {
 		    	'<div class="row">' +
 		    		'<div class="column full">' +
 		    			'<div class="spacer height-60"></div>' +
-		    		'</div>' +	
+		    		'</div>' +
 		    	'</div>' +
 		    	'<div class="row">' +
 		    		'<div class="column third">' +
@@ -3045,7 +3063,7 @@ var data_basic = {
 		    		'</div>' +
 		    	'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/photos-80.png',
 		    'category': '102',
@@ -3073,7 +3091,7 @@ var data_basic = {
 		    		'</div>' +
 		    	'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/photos-81.png',
 		    'category': '102',
@@ -3278,7 +3296,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-       
+
 		{
 		    'thumbnail': 'preview/profile-07.png',
 		    'category': '103',
@@ -3373,7 +3391,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-      
+
 		{
 		    'thumbnail': 'preview/profile-12.png',
 		    'category': '103',
@@ -3419,7 +3437,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-      
+
 		{
 		    'thumbnail': 'preview/profile-13.png',
 		    'category': '103',
@@ -3450,7 +3468,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-      
+
 		{
 		    'thumbnail': 'preview/profile-14.png',
 		    'category': '103',
@@ -3480,7 +3498,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-      
+
 		{
 		    'thumbnail': 'preview/profile-15.png',
 		    'category': '103',
@@ -3529,7 +3547,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-      
+
 		{
 		    'thumbnail': 'preview/profile-16.png',
 		    'category': '103',
@@ -3568,7 +3586,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-      
+
 		{
 		    'thumbnail': 'preview/profile-17.png',
 		    'category': '103',
@@ -3617,7 +3635,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-      
+
 		{
 		    'thumbnail': 'preview/profile-18.png',
 		    'category': '103',
@@ -3648,7 +3666,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-      
+
 		{
 		    'thumbnail': 'preview/profile-19.png',
 		    'category': '103',
@@ -3686,7 +3704,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-      
+
 		{
 		    'thumbnail': 'preview/profile-20.png',
 		    'category': '103',
@@ -3716,7 +3734,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/profile-21.png',
 		    'category': '103',
@@ -3738,7 +3756,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/profile-22.png',
 		    'category': '103',
@@ -3760,7 +3778,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/profile-23.png',
 		    'category': '103',
@@ -3783,7 +3801,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/profile-24.png',
 		    'category': '103',
@@ -3832,7 +3850,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/profile-27.png',
 		    'category': '103',
@@ -3858,7 +3876,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/profile-29.png',
 		    'category': '103',
@@ -3881,7 +3899,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/profile-30.png',
 		    'category': '103',
@@ -3944,7 +3962,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/profile-31.png',
 		    'category': '103',
@@ -3972,7 +3990,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/profile-32.png',
 		    'category': '103',
@@ -4389,7 +4407,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		/* PRODUCTS */
 
 		{
@@ -4884,7 +4902,7 @@ var data_basic = {
 						'\n<p>Lorem Ipsum is simply dummy text of the printing industry.</p>' +
 					'</div>' +
 				'</div>'
-        },		
+        },
 
 		{
 		    'thumbnail': 'preview/products-12.png',
@@ -5259,7 +5277,7 @@ var data_basic = {
 							_tabs(1) + '<div class="spacer height-20"></div>' +
 							_tabs(1) + '<p class="size-12">Categories: Shoes, Men</p>' +
 						'\n</div>' +
-					'</div>' +	
+					'</div>' +
 					'<div class="column half">' +
 						'<img src="assets/minimalist-blocks/images/irene-kredenets-8j4diaobamo-unsplash-(1)-7VV9f2.jpg" alt="">' +
 					'</div>' +
@@ -5299,7 +5317,7 @@ var data_basic = {
 						'\n<p style="font-weight: bold" class="size-28">$87</p>' +
 						'\n<p class="size-14">In stock: 48 items</p>' +
 						'\n<div><a href="#" role="button" class="is-btn" style="margin: 3px 0px; display: inline-block; text-decoration: none; transition: all 0.16s ease 0s; border-style: solid; cursor: pointer; background-color: rgb(220, 220, 220); color: rgb(0, 0, 0); border-color: rgb(220, 220, 220); border-width: 2px; border-radius: 0px; padding: 10px 22px; line-height: 1.5; text-transform: uppercase; font-weight: 400; font-size: 12px; letter-spacing: 3px;" title="">Add to Cart</a> &nbsp; <a href="#" class="is-btn is-btn-ghost1 is-upper is-btn-small" style="padding: 10px 22px; font-size: 12px; line-height: 1.5;">Buy Now</a></div>' +
-					'</div>' +	
+					'</div>' +
 					'<div class="column half">' +
 						'<img src="assets/minimalist-blocks/images/wooden-chair-qTO5r1.jpg" alt="">' +
 					'</div>' +
@@ -6346,7 +6364,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/features-19.png',
 		    'category': '105',
@@ -6374,7 +6392,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/features-27.png',
 		    'category': '105',
@@ -6429,7 +6447,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/features-28.png',
 		    'category': '105',
@@ -6462,7 +6480,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/features-29.png',
 		    'category': '105',
@@ -6501,7 +6519,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/features-30.png',
 		    'category': '105',
@@ -6656,7 +6674,7 @@ var data_basic = {
 				'<div class="row">' +
 					'<div class="column full">' +
 						'<div class="spacer height-80"></div>' +
-					'</div>' +	
+					'</div>' +
 				'</div>' +
 				'<div class="row">' +
 					'<div class="column third">' +
@@ -6679,7 +6697,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-        
+
 		{
 		    'thumbnail': 'preview/steps-01.png',
 		    'category': '106',
@@ -7138,7 +7156,7 @@ var data_basic = {
 						'\n<p class="size-16" style="color: rgb(136, 136, 136);">Lorem Ipsum is simply dummy text of the printing industry.</p>' +
 					'</div>' +
 				'</div>'
-		},		
+		},
 
 		{
 		    'thumbnail': 'preview/steps-13.png',
@@ -7169,7 +7187,7 @@ var data_basic = {
 						'\n<p>Lorem Ipsum is simply dummy text of the printing industry. Vivamus leo ante, dolor sit amet vel.</p>' +
 					'</div>' +
 				'</div>'
-		},	
+		},
 
 		{
 		    'thumbnail': 'preview/steps-14.png',
@@ -7203,7 +7221,7 @@ var data_basic = {
 						'\n<p>Lorem Ipsum is simply dummy text of the printing industry.</p>' +
 					'</div>' +
 				'</div>'
-		},	
+		},
 
 		{
 		    'thumbnail': 'preview/steps-15.png',
@@ -7233,7 +7251,7 @@ var data_basic = {
 						'\n<p>Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s.</p>' +
 					'</div>' +
 				'</div>'
-		},	
+		},
 
 		{
 		    'thumbnail': 'preview/steps-16.png',
@@ -7372,7 +7390,7 @@ var data_basic = {
 						'\n<p style="text-align: justify;"><b>3. Planning & design.</b> Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>' +
 						'\n<p><b>4. Implementing & maintenance.</b> Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>' +
 					'</div>' +
-				'</div>'	
+				'</div>'
 		},
 
 		{
@@ -8077,7 +8095,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/pricing-15.png',
 		    'category': '107',
@@ -8111,7 +8129,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/pricing-16.png',
 		    'category': '107',
@@ -8153,7 +8171,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/pricing-17.png',
 		    'category': '107',
@@ -8210,7 +8228,7 @@ var data_basic = {
 				</div>		
 			`
 		},
-		
+
 		{
 		    'thumbnail': 'preview/pricing-18.png',
 		    'category': '107',
@@ -8265,7 +8283,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/pricing-19.png',
 		    'category': '107',
@@ -8316,7 +8334,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/pricing-20.png',
 		    'category': '107',
@@ -8340,7 +8358,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-        
+
 		{
 		    'thumbnail': 'preview/skills-01.png',
 		    'category': '108',
@@ -8698,7 +8716,7 @@ var data_basic = {
 				</div>
 			</div>
 			`
-				
+
 		},
 
 		{
@@ -9424,7 +9442,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/achievements-10.png',
 		    'category': '109',
@@ -9457,7 +9475,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/achievements-11.png',
 		    'category': '109',
@@ -9491,7 +9509,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/achievements-12.png',
 		    'category': '109',
@@ -9525,7 +9543,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/achievements-13.png',
 		    'category': '109',
@@ -9548,7 +9566,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/achievements-14.png',
 		    'category': '109',
@@ -9582,7 +9600,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/achievements-15.png',
 		    'category': '109',
@@ -9630,7 +9648,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/achievements-16.png',
 		    'category': '109',
@@ -9669,7 +9687,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/achievements-17.png',
 		    'category': '109',
@@ -9708,7 +9726,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
+
 		{
 		    'thumbnail': 'preview/achievements-18.png',
 		    'category': '109',
@@ -10854,10 +10872,10 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-		
-		
 
-		/* PARTNERS */   
+
+
+		/* PARTNERS */
 
 		{
 			'thumbnail': 'preview/partners-03.png',
@@ -10889,7 +10907,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-      
+
 		{
 		    'thumbnail': 'preview/partners-05.png',
 		    'category': '111',
@@ -11447,7 +11465,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-       
+
 		{
 		    'thumbnail': 'preview/asfeaturedon-05.png',
 		    'category': '112',
@@ -12308,7 +12326,7 @@ var data_basic = {
 				'<div class="row">' +
 					'<div class="column full">' +
 						'<div class="spacer height-60"></div>' +
-					'</div>' +	
+					'</div>' +
 				'</div>' +
 				'<div class="row">' +
 					'<div class="column half">' +
@@ -12596,7 +12614,7 @@ var data_basic = {
 					'</div>' +
 				'</div>'
 		},
-     
+
 		{
 		    'thumbnail': 'preview/contact-04.png',
 		    'category': '116',
@@ -13122,7 +13140,7 @@ var data_basic = {
 		    'html':
 				`<div><a href="#" role="button" class="transition-all inline-block cursor-pointer no-underline border-2 border-solid ml-1 mr-1 uppercase py-2 size-14 px-8 border-current hover:text-white hover:border-transparent font-semibold text-indigo-500 hover:bg-indigo-500 tracking-75 rounded-full">Buy Now</a></div>`
 		},
-        
+
         /*
         // Custom Module example (with just simple initial content) => Experimental
         {
@@ -13191,7 +13209,7 @@ var data_basic = {
                                 // https://happycoding.io/tutorials/javascript/ajax
                                 'var xmlhttp = new XMLHttpRequest();' +
                                 'xmlhttp.onreadystatechange = function() {' +
-                                    'if (xmlhttp.readyState == XMLHttpRequest.DONE) {' + 
+                                    'if (xmlhttp.readyState == XMLHttpRequest.DONE) {' +
                                         'if (xmlhttp.status == 200) {' +
                                             'var jsonObj = JSON.parse(xmlhttp.responseText);' +
                                             'var randomMessagesArray = jsonObj.randomMessages;' +
@@ -13219,7 +13237,7 @@ var data_basic = {
 
 		            '</div>' +
 			    '</div>'
-        },        
+        },
         */
 
 		// CONTACT FORM
@@ -13228,7 +13246,7 @@ var data_basic = {
 		    'category': '116',
 			'html':
 				'<div class="row">' +
-					'<div class="column full" data-noedit data-html="' + 
+					'<div class="column full" data-noedit data-html="' +
 						encodeURIComponent(`
 							<form class="formk{id} mt-6 space-y-6 px-1" method="POST" action="">
 							<div>
@@ -13257,7 +13275,7 @@ var data_basic = {
 		    'category': '116',
 			'html':
 				'<div class="row">' +
-					'<div class="column full" data-noedit data-html="' + 
+					'<div class="column full" data-noedit data-html="' +
 						encodeURIComponent(`
 							<form class="formk{id} mt-6 space-y-6 px-1" method="POST" action="">
 							<div>
@@ -13292,7 +13310,7 @@ var data_basic = {
 		    'category': '116',
 			'html':
 				'<div class="row">' +
-					'<div class="column full" data-noedit data-html="' + 
+					'<div class="column full" data-noedit data-html="' +
 						encodeURIComponent(`
 							<form class="form{id} mt-6 space-y-6 px-1" method="POST" action="">
 								<div class="flex space-x-3">
@@ -13331,7 +13349,7 @@ var data_basic = {
 		    'category': '116',
 			'html':
 				'<div class="row">' +
-					'<div class="column full" data-noedit data-html="' + 
+					'<div class="column full" data-noedit data-html="' +
 						// Default HTML
 						encodeURIComponent(
 							`
@@ -13422,11 +13440,11 @@ var data_basic = {
 									});
 
 									frm.onsubmit = function() {
-							
+
 										var token = grecaptcha.getResponse(captchaWidget{id});
-								
+
 										if(!token) return false;
-								
+
 										var inpEmail = frm.querySelector('#email{id}');
 										var inpMessage = frm.querySelector('#message{id}');
 										const reqBody = { email: inpEmail.value, message: inpMessage.value, token: token };
@@ -13441,28 +13459,28 @@ var data_basic = {
 										.then(data=>{
 											var success = document.querySelector('.success{id}');
 											if(!data.error) {
-											
+
 											frm.classList.toggle('collapsed');
 											setTimeout(function(){
 												success.classList.toggle('collapsed');
 											},300);
-								
+
 											} else {
-								
+
 											frm.classList.toggle('collapsed');
 											setTimeout(function(){
 												success.innerHTML = data.error;
 												success.classList.toggle('collapsed');
 											},300);
-								
+
 											}
 										});
-								
+
 										return false;
 									}
 
 								});
-							
+
 								</script>
 							`
 						) +
@@ -13476,7 +13494,7 @@ var data_basic = {
 			'category': '116',
 			'html':
 				'<div class="row">' +
-					'<div class="column full" data-noedit data-html="' + 
+					'<div class="column full" data-noedit data-html="' +
 						// Default HTML
 						encodeURIComponent(
 							`
@@ -13573,11 +13591,11 @@ var data_basic = {
 									});
 
 									frm.onsubmit = function() {
-							
+
 										var token = grecaptcha.getResponse(captchaWidget{id});
-								
+
 										if(!token) return false;
-								
+
 										var inpName = frm.querySelector('#name{id}');
 										var inpEmail = frm.querySelector('#email{id}');
 										var inpMessage = frm.querySelector('#message{id}');
@@ -13593,28 +13611,28 @@ var data_basic = {
 										.then(data=>{
 											var success = document.querySelector('.success{id}');
 											if(!data.error) {
-											
+
 											frm.classList.toggle('collapsed');
 											setTimeout(function(){
 												success.classList.toggle('collapsed');
 											},300);
-								
+
 											} else {
-								
+
 											frm.classList.toggle('collapsed');
 											setTimeout(function(){
 												success.innerHTML = data.error;
 												success.classList.toggle('collapsed');
 											},300);
-								
+
 											}
 										});
-								
+
 										return false;
 									}
 
 								});
-							
+
 								</script>
 							`
 						) +
@@ -13628,7 +13646,7 @@ var data_basic = {
 				'category': '116',
 				'html':
 					'<div class="row">' +
-						'<div class="column full" data-noedit data-html="' + 
+						'<div class="column full" data-noedit data-html="' +
 							// Default HTML
 							encodeURIComponent(
 								`
@@ -13725,13 +13743,13 @@ var data_basic = {
 											},300);
 
 										});
-	
+
 										frm.onsubmit = function() {
-								
+
 											var token = grecaptcha.getResponse(captchaWidget{id});
-									
+
 											if(!token) return false;
-									
+
 											var inpName = frm.querySelector('#name{id}');
 											var inpEmail = frm.querySelector('#email{id}');
 											var inpMessage = frm.querySelector('#message{id}');
@@ -13747,28 +13765,28 @@ var data_basic = {
 											.then(data=>{
 												var success = document.querySelector('.success{id}');
 												if(!data.error) {
-												
+
 												frm.classList.toggle('collapsed');
 												setTimeout(function(){
 													success.classList.toggle('collapsed');
 												},300);
-									
+
 												} else {
-									
+
 												frm.classList.toggle('collapsed');
 												setTimeout(function(){
 													success.innerHTML = data.error;
 													success.classList.toggle('collapsed');
 												},300);
-									
+
 												}
 											});
-									
+
 											return false;
 										}
 
 									});
-								
+
 									</script>
 								`
 							) +
@@ -13777,7 +13795,7 @@ var data_basic = {
 					'</div>'
 			},
 			*/
-		
+
 	]
 
 };

@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 import parse, { domToReact } from 'html-react-parser';
+import {Converter} from "../../customBlocks/converter/converter";
+
+import {Request} from "../../customBlocks/request/request";
+
 const PageExample = () => {
     const [dataFromCms, setDataFromCms] = useState('');
     const location = useLocation();
@@ -19,22 +23,15 @@ const PageExample = () => {
             if (!attribs) {
                 return;
             }
-
             if (attribs["data-custom"] === 'converter') {
-                return <h1 style={{ fontSize: 42 }}>{domToReact(children, options)}</h1>;
+                return  <Converter data={children} attribs={attribs}/>;
             }
-
-            if (attribs.class === 'prettify') {
-                return (
-                    <span style={{ color: 'hotpink' }}>
-          {domToReact(children, options)}
-        </span>
-                );
+            if (attribs["data-custom"] === 'request') {
+                return  <Request data={children} attribs={attribs}/>;
             }
         }
     };
     const jsx =parse(dataFromCms , options)
-    console.log(jsx)
     return (
         <div className="container">
             <h1>test</h1>
