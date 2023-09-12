@@ -17,11 +17,11 @@ const AllPages = ({allPagesData}) => {
                 </thead>
                 <tbody>
                 {allPagesData.map((page, index) => {
-                        const url = `/page-example/${page.page}`;
+
                         const pageValue = page.page.split("page=")[1];
                         return (
                             <React.Fragment key={index}>
-                                <TableCell link={url} namePage={pageValue}/>
+                                <TableCell link={page.page} namePage={pageValue}/>
                             </React.Fragment>
                         );
                     }
