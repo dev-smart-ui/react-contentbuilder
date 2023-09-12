@@ -7,6 +7,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.5.0",
+    "html-react-parser": "^4.2.2",
     "html-to-jsx-transform": "^1.1.0",
     "prismjs": "^1.29.0",
     "react": "^18.2.0",
