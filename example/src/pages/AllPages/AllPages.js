@@ -16,9 +16,9 @@ const AllPages = ({allPagesData}) => {
                 </tr>
                 </thead>
                 <tbody>
-                {allPagesData.map((page, index) => {
+                {allPagesData?.map((page, index) => {
 
-                        const pageValue = page.page.split("page=")[1];
+                        const pageValue = page.page;
                         return (
                             <React.Fragment key={index}>
                                 <TableCell link={page.page} namePage={pageValue}/>

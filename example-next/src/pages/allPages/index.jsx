@@ -18,10 +18,10 @@ const AllPages = ({ allPagesData }) => {
 				</thead>
 				<tbody>
 				{allPagesData?.map((page, index) => {
-					const pageValue = page.page.split('page=')[1];
+					const pageValue = page.page;
 					return (
 						<React.Fragment key={index}>
-							<TableCell link={page.page} namePage={pageValue} />
+							<TableCell link={`?page=${page.page}`} namePage={pageValue} />
 						</React.Fragment>
 					);
 				})}
@@ -41,7 +41,7 @@ export async function getServerSideProps() {
 
 		return {
 			props: {
-				allPagesData: data.pages,
+				allPagesData: data.pages || [],
 			},
 		};
 	} catch (error) {

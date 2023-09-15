@@ -356,7 +356,7 @@ class BuilderControl extends Component {
             this.obj.loadSnippets('assets/minimalist-blocks/content.js'); // Load snippet file
             const {queryPageParam} = this.props;
 
-            instanceAxios.get(`/load?page=${queryPageParam}`).then((response) => {
+            instanceAxios.get(queryPageParam !== '' ? `/load?page=${queryPageParam}` : '/load').then((response) => {
                 let html;
 
                 if (response.data.html) {
@@ -430,7 +430,7 @@ class BuilderControl extends Component {
             let html = this.obj.html();
             const data = {
                 html: html,
-                page: `?page=${queryPageParam}`
+                page: queryPageParam
             };
 
             instanceAxios.post('/save', data).then((response) => {

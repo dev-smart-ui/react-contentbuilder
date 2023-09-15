@@ -10,7 +10,7 @@ export const SourceCode = () => {
     const id = queryParams.get('page');
 
     useEffect(() => {
-        axios.get(`https://builder.smart-ui.pro/source-code?page=?page=${id}`).then(({ data }) => {
+        axios.get(`https://builder.smart-ui.pro/source-code?page=${id}`).then(({ data }) => {
             setDataFromCms(data.jsx);
         });
     }, [id]);

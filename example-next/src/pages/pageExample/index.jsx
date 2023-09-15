@@ -5,8 +5,6 @@ import { Request } from '../../../components/customBlocks/request/request';
 import appConfig from "../../../config/app.config";
 
 const PageExample = ({ dataFromCms }) => {
-
-	console.log(dataFromCms)
 	const options = {
 		replace: ({ attribs, children }) => {
 			if (!attribs) {

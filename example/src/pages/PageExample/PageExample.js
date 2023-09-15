@@ -13,7 +13,7 @@ const PageExample = () => {
     const id = queryParams.get('page');
 
     useEffect(() => {
-        axios.get(`https://builder.smart-ui.pro/load?page=?page=${id}`).then(({ data }) => {
+        axios.get(`https://builder.smart-ui.pro/load?page=${id}`).then(({ data }) => {
             setDataFromCms(data.html);
         });
     }, [id]);

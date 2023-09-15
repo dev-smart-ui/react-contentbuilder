@@ -14,7 +14,9 @@ export default function Routes() {
         const searchParams = new URLSearchParams(queryString);
         const parsedQuery = searchParams.get('page')
 
-        setQueryPageParam(parsedQuery);
+        console.log(parsedQuery ?? '')
+
+        setQueryPageParam(parsedQuery ?? '');
     }, [location]);
 
     return (
