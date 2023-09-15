@@ -7,7 +7,7 @@ const fs = require('fs').promises;
 const baseUrl="https://builder.smart-ui.pro/";
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/builder',
+mongoose.connect('mongodb://localhost:27017/nextBuilder',
     {useNewUrlParser: true, useUnifiedTopology: true})
     .then(() => console.log('MongoDB Connected'))
     .catch(err => console.log(err));
@@ -166,7 +166,7 @@ app.post('/save', async (req, res) => {
 app.get('/load', async (req, res) => {
     try {
         const pageValue = req.query.page || '/';
-        console.log(pageValue)
+        console.log('pageValue ', pageValue)
         const result = await routeModel.findOne({page: pageValue});
 
         if (!result) {

@@ -10,7 +10,10 @@ export default function Routes() {
     const [queryPageParam, setQueryPageParam] = useState(null);
 
     useEffect(() => {
-        const parsedQuery = location.search;
+        const queryString = location.search
+        const searchParams = new URLSearchParams(queryString);
+        const parsedQuery = searchParams.get('page')
+
         setQueryPageParam(parsedQuery);
     }, [location]);
 

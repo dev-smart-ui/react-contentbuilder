@@ -35,11 +35,10 @@ export default function ListPages({ queryPageParam }) {
                 listPages.length > 0 ? (
                     <ul>
                         {listPages.map((page, index) => {
-                            const url = `edit${page.page}`;
-                            const pageValue = url.split("page=")[1];
+                            const url = `edit?page=${page.page}`;
                             return (
                                 <li className="mb-1"  key={index}>
-                                    <a className="hover:bg-indigo-50 p-1" href={url}>Edit {pageValue}</a>
+                                    <a className="hover:bg-indigo-50 p-1" href={url}>Edit {page.page}</a>
                                 </li>
                             );
                         })}

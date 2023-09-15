@@ -225,6 +225,19 @@ class BuilderControl extends Component {
     }
 
     componentDidMount() {
+//         window.data_basic = {
+//             'snippets': [
+//
+//                 {
+//                     'thumbnail': 'custom/currency.png ',
+//                     'category': '120',
+//                     'html':
+//                       '<div style="background:#bdc3e7; padding:30px; " id="converter" data-custom="converter" class="  custom">' +
+//                       `<div >
+// <label>from EUR<input type="text" placeholder="eur" value="10"></label><br>to USD<input type="text" placeholder="usd" value="10.739"><br></div>`+
+//                       '</div>'
+//                 }]
+//         }
         document.querySelector('.container').style.opacity = 0; // optional: hide editable area until content loaded
 
         // Load language file first
@@ -343,11 +356,7 @@ class BuilderControl extends Component {
             this.obj.loadSnippets('assets/minimalist-blocks/content.js'); // Load snippet file
             const {queryPageParam} = this.props;
 
-            instanceAxios.get(`/load`, {
-                params: {
-                    page: queryPageParam
-                }
-            }).then((response) => {
+            instanceAxios.get(`/load?page=${queryPageParam}`).then((response) => {
                 let html;
 
                 if (response.data.html) {
@@ -421,7 +430,7 @@ class BuilderControl extends Component {
             let html = this.obj.html();
             const data = {
                 html: html,
-                page: queryPageParam
+                page: `?page=${queryPageParam}`
             };
 
             instanceAxios.post('/save', data).then((response) => {
