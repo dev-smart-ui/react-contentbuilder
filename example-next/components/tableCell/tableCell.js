@@ -1,9 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
 
-export const TableCell = ({ link, namePage }) => {
-	const url = `/pageExample/${link}`;
-	const urlSource = `/source/${link}`;
+export const TableCell = ({ namePage }) => {
+	const url = `/pageExample/${namePage}`;
+	const urlSource = `/source/${namePage}`;
 
 	return (
 		<tr>

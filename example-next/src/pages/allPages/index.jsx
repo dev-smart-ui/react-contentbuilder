@@ -1,10 +1,9 @@
 import React from 'react';
-import { TableCell } from '../../../components/tableCell/tableCell';
+import { TableCell } from 'components/tableCell/tableCell';
 import styles from './allPages.module.scss';
 
 const AllPages = ({ allPagesData }) => {
 
-	console.log(allPagesData)
 
 	return (
 		<div className={styles.wrapper}>
@@ -21,7 +20,7 @@ const AllPages = ({ allPagesData }) => {
 					const pageValue = page.page;
 					return (
 						<React.Fragment key={index}>
-							<TableCell link={`?page=${page.page}`} namePage={pageValue} />
+							<TableCell namePage={pageValue} />
 						</React.Fragment>
 					);
 				})}
