@@ -8,6 +8,7 @@ export default function Routes() {
     const history = useHistory();
     const location = useLocation();
     const [queryPageParam, setQueryPageParam] = useState(null);
+    const [rangeValue, setRangeValue] = useState(360)
 
     useEffect(() => {
         const queryString = location.search
@@ -21,13 +22,13 @@ export default function Routes() {
 
     return (
         <>
-            <Head queryPageParam={queryPageParam}/>
+            <Head queryPageParam={queryPageParam} setRangeValue={setRangeValue} rangeValue={rangeValue} />
             <Switch>
                 <Route exact path="/list-pages">
                     <ListPages queryPageParam={queryPageParam}/>
                 </Route>
                 <Route path="/edit">
-                    <Edit queryPageParam={queryPageParam} history={history}/>
+                    <Edit queryPageParam={queryPageParam} history={history} rangeValue={rangeValue}/>
                 </Route>
             </Switch>
         </>

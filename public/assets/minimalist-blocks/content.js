@@ -19,7 +19,7 @@ var _snippets_path = _path();
 
 var data_basic = {
     'snippets': [
-
+	    ...window.data_custom.snippets,
 		{
 		    'thumbnail': 'custom/currency.png ',
 		    'category': '120',

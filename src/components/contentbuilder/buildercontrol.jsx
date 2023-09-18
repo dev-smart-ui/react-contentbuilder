@@ -12,19 +12,7 @@ class BuilderControl extends Component {
 	}
 
 	componentDidMount() {
-//         window.data_basic = {
-//             'snippets': [
-//
-//                 {
-//                     'thumbnail': 'custom/currency.png ',
-//                     'category': '120',
-//                     'html':
-//                       '<div style="background:#bdc3e7; padding:30px; " id="converter" data-custom="converter" class="  custom">' +
-//                       `<div >
-// <label>from EUR<input type="text" placeholder="eur" value="10"></label><br>to USD<input type="text" placeholder="usd" value="10.739"><br></div>`+
-//                       '</div>'
-//                 }]
-//         }
+
 		document.querySelector('.container').style.opacity = 0; // optional: hide editable area until content loaded
 
 		// Load language file first
@@ -267,7 +255,7 @@ class BuilderControl extends Component {
 
 	render() {
 		return (
-			<div className="container"></div>
+			<div className="container" style={{width:`${this.props.rangeValue}px`}}></div>
 		);
 	}
 }
