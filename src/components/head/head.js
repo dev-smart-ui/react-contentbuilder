@@ -11,7 +11,8 @@ const Head = ({queryPageParam, rangeValue, setRangeValue}) => {
 		setRangeValue(+value)
 	}
 
-	// https://api.vercel.com/v1/integrations/deploy/prj_0J4WNktYGKCN83jihHGkfWHAmi6S/MZu3i898X8
+	// https://api.vercel.com/v1/integrations/deploy/prj_iO70jfFHbTC1Ay9TtL0eYF8AsA4x/b13vLES6LQ
+
 
 	return (
     <div>
