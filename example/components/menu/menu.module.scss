@@ -1,5 +1,35 @@
+@import "styles/var";
+
 
 .menu {
+	position: relative;
+}
 
+.navBox {
+	position: absolute;
+	top: 20px;
+	right: 0;
+	background: $black;
+	padding: 8px 0;
+	border-radius: 8px;
+	opacity: 0;
+	transition: .3s ease;
+	box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+	z-index: 1050;
 
+	a {
+		display: inline-block;
+		width: 100%;
+		padding: 0 10px;
+		color: $white;
+
+		&:hover, &:active, &:focus {
+			background: rgba(255,255,255,.5);
+		}
+	}
+}
+
+.open {
+	opacity: 1;
+	transition: .3s ease;
 }

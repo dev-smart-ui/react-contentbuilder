@@ -2,24 +2,38 @@ import styles from './menu.module.scss'
 import {Burger} from "components/burger/burger";
 import {useOpen} from "../../hooks/useOpen";
 import appConfig from "config/app.config";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
+import Link from "next/link";
+import classNames from "classnames";
 
-const navLinks = [
-	'link1',
-	'link2',
-	'link3',
-	'link4'
-]
-
-export const Menu = () => {
-	const { onToggle: burgerToggle, isOpen: burgerIsOpen, onClose: burgerClose } = useOpen();
+export const Menu = ({burgerIsOpen, burgerClose, burgerToggle}) => {
 	const [allPages, setAllPages] = useState([])
+	const [touchStart, setTouchStart] = useState(0);
+	const [hasSwiped, setHasSwiped] = useState(false);
+
+	const handleTouchStart = (e) => {
+		setTouchStart(e.targetTouches[0].clientX);
+		setHasSwiped(false)
+	}
+
+	const handleTouchMove = (e) => {
+		if (touchStart - e.targetTouches[0].clientX < 40) {
+			setHasSwiped(true)
+		}
+	}
+
+	const handleTouchEnd = () => {
+		if (hasSwiped) {
+			burgerClose()
+		}
+	}
 
 	const getAllPages = async () => {
 		try {
-			const response = await fetch(`${appConfig.baseUrl}pages`);
+			const response = await fetch(`${appConfig.baseUrl}all`);
 			const data = await response.json();
-			console.log('data?.pages ', data.pages);
+			const pages = data.pages.map(item => item.page);
+			setAllPages(pages)
 
 		} catch (error) {
 			console.error('Error fetching data:', error);
@@ -30,24 +44,34 @@ export const Menu = () => {
 		getAllPages().then()
 	}, []);
 
+	useEffect(() => {
+		if (burgerIsOpen) {
+			document.body.style.overflow = "hidden";
+		} else {
+			document.body.style.overflow = "";
+		}
+	}, [burgerIsOpen]);
 
 
 	return (
 		<nav className={styles.menu}>
-			<Burger onBurgerToggle={burgerToggle} isBurgerOpen={burgerIsOpen} />
-
-
-			<ul>
-				{
-					navLinks?.map((link, i) => {
-						return (
-							<li key={i}>
-								<a href={link}>{link}</a>
-							</li>
-						)
-					})
-				}
-			</ul>
+			{burgerIsOpen &&
+				<ul
+					onTouchStart={handleTouchStart}
+					onTouchMove={handleTouchMove}
+					onTouchEnd={handleTouchEnd}
+					className={classNames(styles.navBox, {
+						[styles.open]: burgerIsOpen,
+					})}
+				>
+				{allPages?.map((link, i) => {
+					return (
+						<li key={`${link}_${i}`}>
+							<Link href={`/pageExample/${link}`} onClick={burgerToggle}>{link}</Link>
+						</li>
+					)
+				})}
+			</ul>}
 		</nav>
 	)
 }
