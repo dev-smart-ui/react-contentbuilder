@@ -117,9 +117,10 @@ a {
 /* Simple Grid (if css framework not used) */
 .container {
     margin: 0 auto;
-    max-width: 576px;
+    max-width: 480px;
     padding: 0 15px;
     height: 100%;
+    width: 100%;
 }
 
 .container.is-builder {

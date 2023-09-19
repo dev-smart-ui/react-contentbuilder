@@ -243,6 +243,36 @@ app.get('/all', async (req, res) => {
     }
 });
 
+app.get('/pages', async (req, res) => {
+    try {
+        const results = await routeModel.find({}, 'page');
+
+        if (!results || results.length === 0) {
+            return res.status(200).json({
+                success: true,
+                message: 'Pages not found'
+            });
+        }
+
+        const pages = results.map(result => ({
+            page: result.page
+        }));
+
+        res.status(200).json({
+            success: true,
+            pages
+        });
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: 'Error loading pages from database.'
+        });
+    }
+});
+
+
+
 
 
 

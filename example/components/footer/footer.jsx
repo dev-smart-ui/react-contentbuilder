@@ -2,8 +2,10 @@
 
 export const Footer = () => {
 	return (
-		<>
-			footer
-		</>
+		<footer>
+			<div className="container">
+				footer
+			</div>
+		</footer>
 	)
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { TableCell } from 'components/tableCell/tableCell';
 import styles from './allPages.module.scss';
+import appConfig from "config/app.config";
 
 const AllPages = ({ allPagesData }) => {
 
@@ -35,7 +36,7 @@ export default AllPages;
 
 export async function getServerSideProps() {
 	try {
-		const response = await fetch('https://builder.smart-ui.pro/all');
+		const response = await fetch(`${appConfig.baseUrl}all`);
 		const data = await response.json();
 
 		return {

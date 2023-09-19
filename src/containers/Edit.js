@@ -28,7 +28,7 @@ const Edit = ({queryPageParam, rangeValue}) => {
 
 	const fetchData = async () => {
 		try {
-			const {data} = await axios('http://localhost:3001/api/custom-builder')
+			const {data} = await axios(process.env.REACT_APP_GET_CUSTOM_BLOCK)
 
 			window.data_custom = {
 				'snippets': data
