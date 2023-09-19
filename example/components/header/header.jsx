@@ -16,7 +16,7 @@ export const Header = () => {
 				<BackButton />
 				<div>header</div>
 				<Burger onBurgerToggle={burgerToggle} isBurgerOpen={burgerIsOpen} />
-				<Menu burgerIsOpen={burgerIsOpen} burgerClose={burgerClose} burgerToggle={burgerToggle}/>
+				{burgerIsOpen && <Menu burgerIsOpen={burgerIsOpen} burgerClose={burgerClose} burgerToggle={burgerToggle}/>}
 			</div>
 		</header>
 	)

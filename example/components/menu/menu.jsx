@@ -54,24 +54,22 @@ export const Menu = ({burgerIsOpen, burgerClose, burgerToggle}) => {
 
 
 	return (
-		<nav className={styles.menu}>
-			{burgerIsOpen &&
-				<ul
-					onTouchStart={handleTouchStart}
-					onTouchMove={handleTouchMove}
-					onTouchEnd={handleTouchEnd}
-					className={classNames(styles.navBox, {
-						[styles.open]: burgerIsOpen,
-					})}
-				>
-				{allPages?.map((link, i) => {
-					return (
-						<li key={`${link}_${i}`}>
-							<Link href={`/pageExample/${link}`} onClick={burgerToggle}>{link}</Link>
-						</li>
-					)
-				})}
-			</ul>}
+		<nav
+			onTouchStart={handleTouchStart}
+			onTouchMove={handleTouchMove}
+			onTouchEnd={handleTouchEnd}
+			className={classNames(styles.menu, {
+				[styles.open]: burgerIsOpen,
+			})}>
+			<ul>
+			{allPages?.map((link, i) => {
+				return (
+					<li key={`${link}_${i}`}>
+						<Link href={`/pageExample/${link}`} onClick={burgerToggle}>{link}</Link>
+					</li>
+				)
+			})}
+		</ul>
 		</nav>
 	)
 }
