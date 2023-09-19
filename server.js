@@ -254,9 +254,7 @@ app.get('/pages', async (req, res) => {
             });
         }
 
-        const pages = results.map(result => ({
-            page: result.page
-        }));
+        const pages = results.map(result => result.page);
 
         res.status(200).json({
             success: true,
@@ -264,6 +262,7 @@ app.get('/pages', async (req, res) => {
         });
 
     } catch (error) {
+        console.error('Error:', error);
         res.status(500).json({
             success: false,
             message: 'Error loading pages from database.'

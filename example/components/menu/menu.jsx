@@ -17,18 +17,12 @@ export const Menu = () => {
 
 	const getAllPages = async () => {
 		try {
-			const response = await fetch(`${appConfig.baseUrl}all`);
+			const response = await fetch(`${appConfig.baseUrl}pages`);
 			const data = await response.json();
-			console.log(data?.pages)
-			// setAllPages()
+			console.log('data?.pages ', data.pages);
 
 		} catch (error) {
 			console.error('Error fetching data:', error);
-			return {
-				props: {
-					allPagesData: [],
-				},
-			};
 		}
 	}
 
