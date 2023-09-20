@@ -13,7 +13,7 @@ export const builderBunkCards = {
 	'category': '120',
 	'html':
 		`
-			<div>
+			<div data-custom="bunkCards">
 				BunkCards
 			</div>
 	`

@@ -14,7 +14,7 @@ export const builderWatchList = {
 	'category': '120',
 	'html':
 		`
-			<div>
+			<div data-custom="watchList">
 				WatchList
 			</div>
 	`

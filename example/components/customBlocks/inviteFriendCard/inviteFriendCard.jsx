@@ -14,7 +14,7 @@ export const builderInviteFriend = {
 	'category': '120',
 	'html':
 		`
-			<div>
+			<div data-custom="inviteFriend">
 				InviteFriendCard
 			</div>
 	`

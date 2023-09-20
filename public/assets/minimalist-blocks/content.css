@@ -268,8 +268,8 @@ a {
 .center {text-align:center}
 .right {text-align:right}
 .left {text-align:left}
-.img-circular {display:inline-block; width: 200px; height: 200px; position: relative; overflow: hidden; border-radius: 50%;}
-.img-circular img {display: inline;margin:0 auto; height: 100%; width: auto; max-width: none; min-width: 100%; min-height: 100%;}
+/*.img-circular {display:inline-block; width: 200px; height: 200px; position: relative; overflow: hidden; border-radius: 50%;}*/
+/*.img-circular img {display: inline;margin:0 auto; height: 100%; width: auto; max-width: none; min-width: 100%; min-height: 100%;}*/
 
 .padding-0 {padding:0px !important;box-sizing: border-box;}
 .padding-10 {padding:10px !important;box-sizing: border-box;}

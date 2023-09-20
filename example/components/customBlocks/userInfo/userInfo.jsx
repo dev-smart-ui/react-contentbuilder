@@ -19,7 +19,7 @@ export const builderUserInfo = {
 	'category': '120',
 	'html':
 		`
-			<div class="flex items-center p-4 rounded-lg">
+			<div class="flex items-center p-4 rounded-lg" data-custom="userInfo">
 			<div class="flex-shrink-0 rounded-full border w-48px border-sky-500">
 <!--			<img class="w-12 h-12 rounded-full" src='' alt='' />-->
 			</div>
