@@ -41,12 +41,12 @@ const PageExample = ({ dataFromCms }) => {
 
 			switch (name) {
 				case 'img' : {
-					const imgStyles = formatStyles(attribs.style);
-					const width = +imgStyles?.width.match(/\d+/)
-					const height = +imgStyles?.height.match(/\d+/)
+					const imgStyles = attribs.style ? formatStyles(attribs.style) : ''
+					const width = imgStyles ? +imgStyles?.width.match(/\d+/) : 100
+					const height = imgStyles ?  +imgStyles?.height.match(/\d+/) : 100
 					const path = attribs.src.split('/')[0]
 
-					return <Image width={width ?? 100} height={height ?? 100} src={`${path === 'assets' ? appConfig.imgUrl : ''}${attribs.src}`} alt=''/>
+					return <Image width={width} height={height} src={`${path === 'assets' ? appConfig.imgUrl : ''}${attribs.src}`} alt=''/>
 				}
 			}
 		}
