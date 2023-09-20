@@ -14,7 +14,7 @@ async function getExchangeRate() {
 	}
 }
 
-export const Converter = ({data, attribs}) => {
+export const Converter = () => {
 	const [state, setState] = useState("10");
 
 	return (

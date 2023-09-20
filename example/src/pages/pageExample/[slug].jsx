@@ -5,26 +5,52 @@ import { Request } from 'components/customBlocks/request/request';
 import appConfig from 'config/app.config';
 import Image from "next/image";
 import styles from './card.module.scss'
+import {UserInfo} from "components/customBlocks/userInfo/userInfo";
+import {InviteFriend} from "components/customBlocks/inviteFriendCard/inviteFriendCard";
+import {BunkCards} from "components/customBlocks/bunkCards/bunkCards";
+import {WatchList} from "components/customBlocks/watchList/watchList";
+
+const formatStyles = (styles) => {
+	if (!styles) return
+
+	const stylesArr = styles.split(';')
+	const styleObject = {}
+
+	stylesArr.forEach(style => {
+		const [propertyName, propertyValue] = style.split(':')
+		if (propertyName && propertyValue) styleObject[propertyName.trim()] = propertyValue.trim()
+	})
+
+	return styleObject
+}
 
 const PageExample = ({ dataFromCms }) => {
 
 	const options = {
 		replace: ({ attribs, children, name }) => {
-			if (!attribs) {
-				return;
+			if (!attribs) return
+
+			switch (attribs['data-custom']) {
+				case 'converter' : return <Converter />
+				case 'request' : return <Request />
+				case 'userInfo' : return <UserInfo />
+				case 'inviteFriend' : return <InviteFriend />
+				case 'bunkCards' : return <BunkCards />
+				case 'watchList' : return <WatchList />
 			}
-			if (attribs['data-custom'] === 'Converter') {
-				return <Converter data={children} attribs={attribs} />;
+
+			switch (name) {
+				case 'img' : {
+					const imgStyles = attribs.style ? formatStyles(attribs.style) : ''
+					const width = imgStyles ? +imgStyles?.width.match(/\d+/) : 100
+					const height = imgStyles ?  +imgStyles?.height.match(/\d+/) : 100
+					const path = attribs.src.split('/')[0]
+
+					return <Image width={width} height={height} src={`${path === 'assets' ? appConfig.imgUrl : ''}${attribs.src}`} alt=''/>
+				}
 			}
-			if (attribs['data-custom'] === 'request') {
-				return <Request data={children} attribs={attribs} />;
-			}
-			if (name === 'img') {
-				const path = attribs.src.split('/')[0]
-				return <Image width={100} height={100} src={`${path === 'assets' ? appConfig.imgUrl : ''}${attribs.src}`} alt=''/>;
-			}
-		},
-	};
+		}
+	}
 
 	const jsx = parse(dataFromCms, options);
 
