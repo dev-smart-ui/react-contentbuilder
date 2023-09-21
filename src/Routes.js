@@ -24,6 +24,9 @@ export default function Routes() {
 				<Route path="/edit">
 					<Edit queryPageParam={queryPageParam} history={history} rangeValue={rangeValue}/>
 				</Route>
+				<Route path="/">
+					<ListPages />
+				</Route>
 			</Switch>
 		</>
 	);
