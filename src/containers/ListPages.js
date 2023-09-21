@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useRef, useState} from "react";
 import "./ListPages.css";
 import {instanceAxios} from "../axiosConfig";
+import axios from "axios";
 
 export default function ListPages({ queryPageParam }) {
     const [listPages, setListPages] = useState([]);
@@ -49,7 +50,34 @@ export default function ListPages({ queryPageParam }) {
             ) : (
                 <></>
             )}
-            <div className="container"></div>
+            <div className="container">
+
+<DeletePage/>
+            </div>
         </div>
     );
+}
+
+
+const DeletePage = ()=>{
+     const ref = useRef();
+    const handleDelete = (e)=>{
+        // e.preventDefault();
+        try{
+            instanceAxios("/delete?page="+ref.current.value)
+        }catch ( e){
+            alert(e)
+        }
+
+        console.log(ref.current.value)
+    }
+    return <div>
+        <h2> delete pages</h2>
+        <form onSubmit={handleDelete} action="">
+            <label > page tame <input ref={ref}  type="text"/></label>
+            <button> delete</button>
+        </form>
+
+
+    </div>
 }
