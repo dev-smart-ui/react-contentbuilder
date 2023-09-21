@@ -9,8 +9,11 @@ export const Layout = ({children}) => {
 	return (
 		<div className={styles.wrapper + " container"}>
 			<Header />
-			{children}
-			{/*<Footer />*/}
+			<main>
+				{children}
+			</main>
+
+			<Footer />
 		</div>
 	)
 }
