@@ -13,7 +13,7 @@ export const BackButton = () => {
 
 	return (
 		<button onClick={goBack} className={styles.btn}>
-			<Image className={styles.backImage} width={24} height={24} src="/assets/minimalist-blocks/images/back-button.png"/>
+			<Image className={styles.backImage} width={24} height={24} src="/assets/minimalist-blocks/images/back-button.png" alt="buttonBack"/>
 		</button>
 	)
 }
