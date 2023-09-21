@@ -4,7 +4,7 @@ export const BunkCards = () => {
 	return (
 		<div className="flex flex-row py-2 px-6 justify-between bg-gray-900 space-x-2" data-custom="bunkCards">
 			<div style={{ width: '160px', height: '180px', position: 'relative', overflow: 'hidden' }} className="flex flex-col pl-4 pr-3 pt-4 pb-6 items-start rounded-lg">
-				<img src="assets/minimalist-blocks/images/Rectangle-bank-card-1.png"
+				<img src="/assets/minimalist-blocks/images/Rectangle-bank-card-1.png"
 					style={{
 						position: 'absolute',
 						top: '0',
@@ -17,7 +17,7 @@ export const BunkCards = () => {
 
 				<img style={{ width: '40px', height: '40px', zIndex: '2' }}
 					className="w-10 h-10 rounded-full mb-2"
-					src="assets/minimalist-blocks/images/image-thumbnail-1.png"
+					src="/assets/minimalist-blocks/images/image-thumbnail-1.png"
 					alt="" />
 				<div style={{ fontSize: '18px', zIndex: '2' }}
 					className="text-white text-lg font-bold leading-tight mb-1">HDFC Fund</div>

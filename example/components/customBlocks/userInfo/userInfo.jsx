@@ -42,7 +42,7 @@ export const builderUserInfo = {
 				<div style="font-size: 12px;"
 				 class="text-gray-400 text-xs font-normal leading-none">Welcome back,</div>
 				<div style="font-size: 20px;"
-				 class="text-white text-xl font-bold leading-relaxed">Joi Doo</div>
+				 class="text-white text-xl font-bold leading-relaxed"> {name}</div>
 			</div>
 		</div>
 
