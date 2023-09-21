@@ -1,7 +1,39 @@
+import {useEffect, useState} from "react";
 
+export const  generateRandomNumber=(min, max, decimalPlaces = 2)=> {
+	const randomNumber = Math.random() * (max - min) + min;
+	return parseFloat(randomNumber.toFixed(decimalPlaces));
+}
+export const WatchList = ( ) => {
+	const [randomData, setRandomDataWatchList] = useState({
+		amountCardOne: 0,
+		amountCardTwo: 0,
+		percentageOne: 0,
+		percentageTwo: 0,
+		percentageTree: 0,
+		percentageFour: 0
+	});
 
-export const WatchList = ({randomData}) => {
+	const intervalGetData = () => {
+		setInterval(() => {
+			setRandomDataWatchList({
+				amountCardOne: generateRandomNumber(14000, 15000),
+				amountCardTwo: generateRandomNumber(14000, 15000),
+				percentageOne: generateRandomNumber(0, 5),
+				percentageTwo: generateRandomNumber(0, 5),
+				percentageTree: generateRandomNumber(0, 5),
+				percentageFour: generateRandomNumber(0, 5)
+			})
+		}, 2000)
+	}
 
+	useEffect(() => {
+		intervalGetData()
+
+		return () => {
+			clearInterval(intervalGetData)
+		};
+	}, []);
 	return (
 		<div className=" bg-gray-900 flex flex-col pt-5 px-5 pb-12 ">
 

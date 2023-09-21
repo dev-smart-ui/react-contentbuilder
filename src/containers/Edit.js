@@ -43,7 +43,7 @@ const Edit = ({queryPageParam, rangeValue}) => {
 
 	useEffect(() => {
 		fetchData().then()
-		console.log(window.data_custom)
+
 	}, []);
 
 

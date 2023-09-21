@@ -1,7 +1,15 @@
+import Link from "next/link";
+import {textFromBuilder} from "components/customBlocks/helper";
 import Image from "next/image"
 
 
-export const InviteFriend = () => {
+const mainTextName = "main-text"
+const linkTextName = "link-text"
+
+export const InviteFriend = ({data}) => {
+	const mainTextFromBuilder = textFromBuilder({data , textName:mainTextName});
+	const linkTextFromBuilder = textFromBuilder({data , textName:linkTextName});
+
 	return (
 		<div className="px-6 py-2 bg-gray-900 relative" data-custom="inviteFriend">
 			<div
@@ -17,16 +25,16 @@ export const InviteFriend = () => {
 			>
 				<div className="flex flex-col justify-between">
 					<div className="text-white text-base font-bold leading-tight">
-						Invite your friends to Finology and get Up to $100 benefits.
+						{mainTextFromBuilder}
 					</div>
-					<a href="#" className="flex space-x-2 text-cyan-500 no-underline">
+					<Link href="/" className="flex space-x-2 text-cyan-500 no-underline">
 						<div style={{ fontSize: '12px' }} className="text-xs font-bold leading-tight">
-							See How
+							{linkTextFromBuilder}
 						</div>
 						<div style={{ fontSize: '12px' }} className="text-xs font-bold leading-tight">
 							&rarr;
 						</div>
-					</a>
+					</Link>
 				</div>
 				<Image
 					width={162}
@@ -59,11 +67,11 @@ export const builderInviteFriend = {
 					class="flex py-6 pl-6 bg-cover bg-center w-full relative rounded-xl">
 					<div class=" flex flex-col justify-between ">
 
-						<div class=" text-white text-base font-bold leading-tight ">
+						<div data-type="${mainTextName}" class=" text-white text-base font-bold leading-tight ">
 							Invite your friends to Finology and get Up to $100 benefits.
 						</div>
 						<a href="#" class=" flex space-x-2  text-cyan-500  no-underline ">
-							<div style="font-size: 12px;" class=" text-xs font-bold leading-tight ">See How</div>
+							<div data-type="${linkTextName}" style="font-size: 12px;" class=" text-xs font-bold leading-tight ">See How</div>
 							<div style="font-size: 12px;" class=" text-xs font-bold leading-tight ">&rarr;</div>
 						</a>
 
