@@ -5,15 +5,15 @@ import {textFromBuilder} from "components/customBlocks/helper";
 const mainTextName = "main-text"
 const linkTextName = "link-text"
 
-export const InviteFriend = ({data , rest}) => {
+export const InviteFriend = ({data}) => {
 	const mainTextFromBuilder = textFromBuilder({data , textName:mainTextName});
 	const linkTextFromBuilder = textFromBuilder({data , textName:linkTextName});
 
 	return (
-		<div className="px-6 py-2 bg-gray-900 relative">
+		<div className="px-6 py-2 bg-gray-900 relative" data-custom="inviteFriend">
 			<div
 				style={{
-					backgroundImage: "url('')",
+					background: "linear-gradient(104deg, #2885D4 9.91%, #063087 90.37%)",
 					backgroundSize: '100% 100%',
 					height: '162px',
 					backgroundRepeat: 'no-repeat',
@@ -44,7 +44,7 @@ export const InviteFriend = ({data , rest}) => {
 						right: '-36px',
 						mixBlendMode: 'luminosity',
 					}}
-					src=""
+					src="assets/minimalist-blocks/images/pngegg-box.png"
 					alt=""
 				/>
 			</div>
@@ -60,8 +60,8 @@ export const builderInviteFriend = {
 	'html':
 		`
 			<div class="px-6 py-2 bg-gray-900 relative" data-custom="inviteFriend">
-				<div style="background-image: url('assets/minimalist-blocks/images/Rectangle-bg.png');background-size: 100% 100%; height: 162px; background-repeat: no-repeat; overflow: hidden; padding-right: 100px;"
-					class=" flex py-6 pl-6 bg-cover bg-center w-full relative rounded-xl ">
+				<div style="background: linear-gradient(104deg, #2885D4 9.91%, #063087 90.37%); height: 162px; overflow: hidden; padding-right: 100px;"
+					class="flex py-6 pl-6 bg-cover bg-center w-full relative rounded-xl">
 					<div class=" flex flex-col justify-between ">
 
 						<div data-type="${mainTextName}" class=" text-white text-base font-bold leading-tight ">

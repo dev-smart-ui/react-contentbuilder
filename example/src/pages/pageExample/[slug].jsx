@@ -1,10 +1,9 @@
-import React from 'react';
+import React  from 'react';
 import parse from 'html-react-parser';
-import { Converter } from 'components/customBlocks/converter/converter';
-import { Request } from 'components/customBlocks/request/request';
+import {Converter} from 'components/customBlocks/converter/converter';
+import {Request} from 'components/customBlocks/request/request';
 import appConfig from 'config/app.config';
 import Image from "next/image";
-
 import {UserInfo} from "components/customBlocks/userInfo/userInfo";
 import {InviteFriend} from "components/customBlocks/inviteFriendCard/inviteFriendCard";
 import {BunkCards} from "components/customBlocks/bunkCards/bunkCards";
@@ -24,20 +23,23 @@ const formatStyles = (styles) => {
 	return styleObject
 }
 
-const PageExample = ({ dataFromCms }) => {
+
+
+const PageExample = ({dataFromCms}) => {
+
+
 
 	const options = {
-		replace: ({ attribs, children, name , ...rest}) => {
-
+		replace: ({ attribs, children, name }) => {
 			if (!attribs) return
 
 			switch (attribs['data-custom']) {
 				case 'converter' : return <Converter />
 				case 'request' : return <Request />
 				case 'userInfo' : return <UserInfo />
-				case 'inviteFriend' : return <InviteFriend rest={rest} data={children}/>
+				case 'inviteFriend' : return <InviteFriend   data={children}/>
 				case 'bunkCards' : return <BunkCards />
-				case 'watchList' : return <WatchList />
+				case 'watchList' :   return <WatchList  />
 			}
 
 			switch (name) {
@@ -57,11 +59,9 @@ const PageExample = ({ dataFromCms }) => {
 
 
 	return (
-			<div >
-				{jsx}
-			</div>
-	);
-};
+		<>{jsx}</>
+	)
+}
 
 export async function getServerSideProps({ query }) {
 	const { slug } = query;
