@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 
-function generateRandomNumber(min, max, decimalPlaces = 2) {
+export const  generateRandomNumber=(min, max, decimalPlaces = 2)=> {
 	const randomNumber = Math.random() * (max - min) + min;
 	return parseFloat(randomNumber.toFixed(decimalPlaces));
 }
