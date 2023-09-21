@@ -34,6 +34,8 @@ export const WatchList = ( ) => {
 			clearInterval(intervalGetData)
 		};
 	}, []);
+
+
 	return (
 		<div className=" bg-gray-900 flex flex-col pt-5 px-5 pb-12 ">
 
