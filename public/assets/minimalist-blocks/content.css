@@ -1144,6 +1144,8 @@ a.is-btn-ghost2 { color: #000; border: 2px solid #dcdcdc; background-color: #dcd
 .leading-29 { line-height: 2.9 !important }
 .leading-30 { line-height: 3 !important }
 
+.gap-5 {gap: 5px}
+
 /* Opacity */
 
 .opacity-0 { opacity: 0 !important }

@@ -1,4 +1,5 @@
 import {useEffect, useState} from "react";
+import { ThreeDots } from "react-loader-spinner";
 
 export const  generateRandomNumber=(min, max, decimalPlaces = 2)=> {
 	const randomNumber = Math.random() * (max - min) + min;
@@ -50,8 +51,40 @@ export const WatchList = ( ) => {
 						className=" text-gray-400 text-xs font-normal leading-tight ">Listed in BSE</div>
 				</div>
 				<div className=" flex flex-col ">
-					<div className=" text-white text-base font-bold leading-tight text-right ">${randomData?.amountCardOne}</div>
-					<div className=" text-teal-400 text-base font-bold leading-tight">+{randomData?.percentageOne} ({randomData?.percentageTree}%)</div>
+					<div className=" text-white text-base font-bold leading-tight text-right ">
+						{randomData?.amountCardOne === 0 ?
+							<ThreeDots
+								height="14"
+								width="20"
+								radius="5"
+								color="green"
+								ariaLabel="three-dots-loading"
+							/> :
+							`$${randomData?.amountCardOne}`
+						}
+					</div>
+					<div className=" text-teal-400 text-base font-bold leading-tight  flex gap-5">
+						{randomData?.percentageOne === 0 ?
+							<ThreeDots
+								height="14"
+								width="20"
+								radius="5"
+								color="green"
+								ariaLabel="three-dots-loading"
+							/> :
+							`+${randomData?.percentageOne}`
+						}
+						{randomData?.percentageTree === 0 ?
+							<ThreeDots
+								height="14"
+								width="20"
+								radius="5"
+								color="green"
+								ariaLabel="three-dots-loading"
+							/> :
+							`(${randomData?.percentageTree}%)`
+						}
+					</div>
 				</div>
 			</div>
 
@@ -63,8 +96,40 @@ export const WatchList = ( ) => {
 						className=" text-gray-400 text-xs font-normal leading-tight ">Listed in BSE</div>
 				</div>
 				<div className=" flex flex-col ">
-					<div className=" text-white text-base font-bold leading-tight text-right ">${randomData?.amountCardTwo}</div>
-					<div className=" text-red-500 text-base font-bold leading-tight">-{randomData?.percentageTwo} ({randomData?.percentageFour}%)</div>
+					<div className=" text-white text-base font-bold leading-tight text-right ">
+						{randomData?.amountCardTwo === 0 ?
+							<ThreeDots
+								height="14"
+								width="20"
+								radius="5"
+								color="green"
+								ariaLabel="three-dots-loading"
+							/> :
+							`$${randomData?.amountCardTwo}`
+						}
+					</div>
+					<div className=" text-red-500 text-base font-bold leading-tight flex gap-5">
+						{randomData?.percentageTwo === 0 ?
+							<ThreeDots
+								height="14"
+								width="20"
+								radius="5"
+								color="green"
+								ariaLabel="three-dots-loading"
+							/> :
+							`-${randomData?.percentageTwo}`
+						}
+						{randomData?.percentageFour === 0 ?
+							<ThreeDots
+								height="14"
+								width="20"
+								radius="5"
+								color="green"
+								ariaLabel="three-dots-loading"
+							/> :
+							`(${randomData?.percentageFour}%)`
+						}
+					</div>
 				</div>
 			</div>
 

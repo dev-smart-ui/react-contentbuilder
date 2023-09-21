@@ -1,5 +1,6 @@
 import Image from "next/image"
 import {useEffect, useState} from "react";
+import { ThreeDots } from "react-loader-spinner";
 
 export const  generateRandomNumber=(min, max, decimalPlaces = 2)=> {
 	const randomNumber = Math.random() * (max - min) + min;
@@ -63,9 +64,41 @@ export const BunkCards = () => {
 				<div style={{ fontSize: '12px', zIndex: '2' }}
 					className="text-gray-400 text-xs font-normal leading-tight mb-3">NSE</div>
 				<div style={{ fontSize: '14px', zIndex: '2' }}
-					className="text-white text-sm font-bold leading-none mb-1">{randomData.amountCardOne}</div>
-				<div style={{ fontSize: '12px', zIndex: '2' }}
-					className="text-teal-400 text-xs font-bold leading-tight">+{randomData.percentageOne} ({randomData.percentageTwo}%)</div>
+				     className="text-white text-sm font-bold leading-none mb-1">
+					{randomData.amountCardOne === 0 ?
+						<ThreeDots
+							height="14"
+							width="20"
+							radius="5"
+							color="green"
+							ariaLabel="three-dots-loading"
+						/> :
+						randomData.amountCardOne
+					}
+				</div>
+				<div style={{fontSize: '12px', zIndex: '2'}}
+				     className="text-teal-400 text-xs font-bold leading-tight flex gap-5">
+					{randomData.percentageOne === 0 ?
+						<ThreeDots
+							height="14"
+							width="20"
+							radius="5"
+							color="green"
+							ariaLabel="three-dots-loading"
+						/> :
+						`+${randomData.percentageOne}`
+					}
+					{randomData.percentageTwo === 0 ?
+						<ThreeDots
+							height="14"
+							width="20"
+							radius="5"
+							color="green"
+							ariaLabel="three-dots-loading"
+						/> :
+						`(${randomData.percentageTwo}%)`
+					}
+				</div>
 			</div>
 
 			<div style={{ width: '160px', height: '180px', position: 'relative', overflow: 'hidden' }} className="flex flex-col pl-4 pr-3 pt-4 pb-6 items-start rounded-lg">
@@ -90,9 +123,41 @@ export const BunkCards = () => {
 				<div style={{ fontSize: '12px', zIndex: '2' }}
 					className="text-gray-400 text-xs font-normal leading-tight mb-3">BSE</div>
 				<div style={{ fontSize: '14px', zIndex: '2' }}
-					className="text-white text-sm font-bold leading-none mb-1">{randomData.amountCardTwo}</div>
+					className="text-white text-sm font-bold leading-none mb-1">
+					{randomData.amountCardTwo === 0 ?
+						<ThreeDots
+							height="14"
+							width="20"
+							radius="5"
+							color="green"
+							ariaLabel="three-dots-loading"
+						/> :
+						randomData.amountCardTwo
+					}
+				</div>
 				<div style={{ fontSize: '12px', zIndex: '2' }}
-					className="text-teal-400 text-xs font-bold leading-tight">+{randomData.percentageTree} ({randomData.percentageFour}%)</div>
+					className="text-teal-400 text-xs font-bold leading-tight flex gap-5">
+					{randomData.percentageTree === 0 ?
+					<ThreeDots
+						height="14"
+						width="20"
+						radius="5"
+						color="green"
+						display="inline-block"
+						ariaLabel="three-dots-loading"
+					/> :
+					`+${randomData.percentageTree}`
+				}
+					{randomData.percentageFour === 0 ?
+					<ThreeDots
+						height="14"
+						width="20"
+						radius="5"
+						color="green"
+						ariaLabel="three-dots-loading"
+					/> :
+						`(${randomData.percentageFour}%)`
+				}</div>
 			</div>
 		</div>
 	)
