@@ -16,28 +16,11 @@ function _path() {
     return currentScript.replace(currentScriptFile, '');
 }
 var _snippets_path = _path();
-
+console.log(window?.data_custom?.snippets)
 var data_basic = {
     'snippets': [
-	    ...window.data_custom.snippets,
-		{
-		    'thumbnail': 'custom/currency.png ',
-		    'category': '120',
-		    'html':
-				'<div style="background:#cee7bd; padding:30px; " id="converter" data-custom="converter" class="  custom">' +
-					 `<div >
-<label>from EUR<input type="text" placeholder="eur" value="10"></label><br>to USD<input type="text" placeholder="usd" value="10.739"><br></div>`+
-				'</div>'
-		},
-		{
-		    'thumbnail': 'custom/request.png ',
-		    'category': '120',
-		    'html':
-				'<div style="background:#e5e7eb; " id="converter" data-custom="request" class="  custom">' +
-	 			` <label>number  of users from api <input style="padding:20px; background: #ffeeee" type="number" value="1"></label><br><button style="padding:20px"> request to server </button><pre><code>""</code></pre>`+
+	    ...(window?.data_custom?.snippets||[]),
 
-				'</div>'
-		},
 		{
 		    'thumbnail': 'preview/basic-01.png',
 		    'category': '120',
