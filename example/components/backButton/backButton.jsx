@@ -1,7 +1,6 @@
 import {useRouter} from "next/router";
 import styles from './backButton.module.scss'
 import Image from "next/image";
-import e from "cors";
 
 export const BackButton = () => {
 	const router = useRouter()

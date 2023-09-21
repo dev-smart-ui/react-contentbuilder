@@ -4,8 +4,7 @@
 .menu {
 	position: absolute;
 	right: 0;
-	left: 0;
-	width: 100%;
+	width: 0;
 	top: 100%;
 	background: #131313;
 	padding: 8px 0;
@@ -13,10 +12,11 @@
 	transition: .3s ease;
 	z-index: 1999;
 	padding-bottom: 40px;
+	transition: width 0.3s ease, opacity 0.3s ease;
+	overflow-x: hidden;
 
 	li {
 		width: 100%;
-		padding: 10px 20px 10px 40px;
 
 		color: $white;
 		font-size: 16px;
@@ -27,6 +27,9 @@
 		&:active,
 		&:focus {
 			background: rgb(0, 0, 0);
+		}
+		& a{
+			padding: 10px 20px 10px 40px;
 		}
 	}
 }
@@ -51,6 +54,8 @@
 }
 
 .open {
+	width: 100%;
+	height: calc(100vh - 60px);
 	opacity: 1;
-	transition: .3s ease;
+	transition: width 0.3s ease, opacity 0.3s ease;
 }

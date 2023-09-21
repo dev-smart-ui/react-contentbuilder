@@ -9,7 +9,23 @@ export const Menu = ({ burgerIsOpen, burgerClose, burgerToggle }) => {
 	const [allPages, setAllPages] = useState([])
 	const [touchStart, setTouchStart] = useState(0);
 	const [hasSwiped, setHasSwiped] = useState(false);
+	const [isOpen, setIsOpen] = useState(false);
 
+	useEffect(() => {
+		getAllPages().then()
+	}, []);
+
+	useEffect(() => {
+		if (burgerIsOpen) {
+			const timeoutId = setTimeout(openMenu, 50);
+			return () => clearTimeout(timeoutId);
+		} else {
+			const timeoutId = setTimeout(closeMenu, 50);
+			return () => clearTimeout(timeoutId);
+		}
+	  }, [burgerIsOpen]);
+
+	
 	const handleTouchStart = (e) => {
 		setTouchStart(e.targetTouches[0].clientX);
 		setHasSwiped(false)
@@ -27,6 +43,14 @@ export const Menu = ({ burgerIsOpen, burgerClose, burgerToggle }) => {
 		}
 	}
 
+	const openMenu = () => {
+		setIsOpen(true);
+	  }
+
+	  const closeMenu = () => {
+		setIsOpen(false);
+	}
+
 	const getAllPages = async () => {
 		try {
 			const response = await fetch(`${appConfig.baseUrl}all`);
@@ -39,18 +63,13 @@ export const Menu = ({ burgerIsOpen, burgerClose, burgerToggle }) => {
 		}
 	}
 
-	useEffect(() => {
-		getAllPages().then()
-	}, []);
-
-
 	return (
 		<nav
 			onTouchStart={handleTouchStart}
 			onTouchMove={handleTouchMove}
 			onTouchEnd={handleTouchEnd}
 			className={classNames(styles.menu, {
-				[styles.open]: burgerIsOpen,
+				[styles.open]: isOpen,
 			})}>
 			<div className={styles.burgerHeader}>Pages</div>
 			<ul>
