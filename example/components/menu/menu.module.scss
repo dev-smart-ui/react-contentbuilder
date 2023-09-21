@@ -3,26 +3,51 @@
 
 .menu {
 	position: absolute;
+	right: 0;
+	left: 0;
+	width: 100%;
 	top: 100%;
-	right: 15px;
-	background: $black;
+	background: #131313;
 	padding: 8px 0;
-	border-radius: 8px;
 	opacity: 0;
 	transition: .3s ease;
-	box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-	z-index: 1050;
+	z-index: 1999;
+	padding-bottom: 40px;
 
-	a {
-		display: inline-block;
+	li {
 		width: 100%;
-		padding: 0 10px;
-		color: $white;
+		padding: 10px 20px 10px 40px;
 
-		&:hover, &:active, &:focus {
-			background: rgba(255,255,255,.5);
+		color: $white;
+		font-size: 16px;
+		font-style: normal;
+		font-weight: 700;
+
+		&:hover,
+		&:active,
+		&:focus {
+			background: rgb(0, 0, 0);
 		}
 	}
+}
+
+.burgerHeader {
+	font-family: Roboto;
+	font-size: 32px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+	color: $white;
+
+	padding: 6px 25px 13px;
+	margin-bottom: 20px;
+
+}
+
+.burgerLink {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
 }
 
 .open {

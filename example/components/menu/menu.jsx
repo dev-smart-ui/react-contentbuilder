@@ -1,12 +1,11 @@
 import styles from './menu.module.scss'
-import {Burger} from "components/burger/burger";
-import {useOpen} from "../../hooks/useOpen";
 import appConfig from "config/app.config";
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import classNames from "classnames";
+import { BackButton } from 'components/backButton';
 
-export const Menu = ({burgerIsOpen, burgerClose, burgerToggle}) => {
+export const Menu = ({ burgerIsOpen, burgerClose, burgerToggle }) => {
 	const [allPages, setAllPages] = useState([])
 	const [touchStart, setTouchStart] = useState(0);
 	const [hasSwiped, setHasSwiped] = useState(false);
@@ -45,8 +44,6 @@ export const Menu = ({burgerIsOpen, burgerClose, burgerToggle}) => {
 	}, []);
 
 
-
-
 	return (
 		<nav
 			onTouchStart={handleTouchStart}
@@ -55,15 +52,20 @@ export const Menu = ({burgerIsOpen, burgerClose, burgerToggle}) => {
 			className={classNames(styles.menu, {
 				[styles.open]: burgerIsOpen,
 			})}>
+			<div className={styles.burgerHeader}>Pages</div>
 			<ul>
-			{allPages?.map((link, i) => {
-				return (
-					<li key={`${link}_${i}`}>
-						<Link href={`/pageExample/${link}`} onClick={burgerToggle}>{link}</Link>
-					</li>
-				)
-			})}
-		</ul>
+				{allPages?.map((link, i) => {
+					return (
+						<li key={`${link}_${i}`}>
+							<Link className={styles.burgerLink} href={`/pageExample/${link}`} onClick={burgerToggle}>
+								{link}
+								<BackButton />
+							</Link>
+							
+						</li>
+					)
+				})}
+			</ul>
 		</nav>
 	)
 }
