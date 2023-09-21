@@ -1,5 +1,6 @@
 import Link from "next/link";
 import {textFromBuilder} from "components/customBlocks/helper";
+import Image from "next/image"
 
 
 const mainTextName = "main-text"
@@ -35,16 +36,18 @@ export const InviteFriend = ({data}) => {
 						</div>
 					</Link>
 				</div>
-				<img
+				<Image
+					width={162}
+					height={166}
 					style={{
-						width: '162px',
-						height: '166px',
 						position: 'absolute',
 						bottom: '-36px',
 						right: '-36px',
+						width: '162px',
+						height: '166px',
 						mixBlendMode: 'luminosity',
 					}}
-					src="assets/minimalist-blocks/images/pngegg-box.png"
+					src="/assets/minimalist-blocks/images/pngegg-box.png"
 					alt=""
 				/>
 			</div>

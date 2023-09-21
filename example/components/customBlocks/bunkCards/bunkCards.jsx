@@ -3,8 +3,9 @@
 export const BunkCards = () => {
 	return (
 		<div className="flex flex-row py-2 px-6 justify-between bg-gray-900 space-x-2" data-custom="bunkCards">
-			<div style={{ width: '160px', height: '180px', position: 'relative', overflow: 'hidden' }} className="flex flex-col pl-4 pr-3 pt-4 pb-6 items-start rounded-lg">
-				<img src="/assets/minimalist-blocks/images/Rectangle-bank-card-1.png"
+			<div style={{ width: '160px', height: '180px', position: 'relative', overflow: 'hidden' }}
+				className="flex flex-col pl-4 pr-3 pt-4 pb-6 items-start rounded-lg">
+				<Image width={160} height={180} src="/assets/minimalist-blocks/images/Rectangle-bank-card-1.png"
 					style={{
 						position: 'absolute',
 						top: '0',
@@ -15,7 +16,7 @@ export const BunkCards = () => {
 						objectPosition: 'center'
 					}} alt="" />
 
-				<img style={{ width: '40px', height: '40px', zIndex: '2' }}
+				<Image width={40} height={40}  style={{ width: '40px', height: '40px', zIndex: '2' }}
 					className="w-10 h-10 rounded-full mb-2"
 					src="/assets/minimalist-blocks/images/image-thumbnail-1.png"
 					alt="" />
@@ -31,7 +32,7 @@ export const BunkCards = () => {
 
 			<div style={{ width: '160px', height: '180px', position: 'relative', overflow: 'hidden' }} className="flex flex-col pl-4 pr-3 pt-4 pb-6 items-start rounded-lg">
 
-				<img src="assets/minimalist-blocks/images/Rectangle-bank-card-2.png"
+				<Image width={160} height={180} src="/assets/minimalist-blocks/images/Rectangle-bank-card-2.png"
 					style={{
 						position: 'absolute',
 						top: '0',
@@ -42,9 +43,9 @@ export const BunkCards = () => {
 						objectPosition: 'center'
 					}} alt="" />
 
-				<img style={{ width: '40px', height: '40px', zIndex: '2' }}
+				<Image width={40} height={40} style={{ width: '40px', height: '40px', zIndex: '2' }}
 					className="w-10 h-10 rounded-full mb-2"
-					src="assets/minimalist-blocks/images/image-thumbnail-2.png"
+					src="/assets/minimalist-blocks/images/image-thumbnail-2.png"
 					alt="" />
 				<div style={{ fontSize: '18px', zIndex: '2' }}
 					className="text-white text-lg font-bold leading-tight mb-1">Axis Bank</div>
