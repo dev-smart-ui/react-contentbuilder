@@ -49,7 +49,7 @@ const Edit = ({queryPageParam, rangeValue}) => {
 
 	return (
 		<>
-			{finishRender &&
+			{finishRender &&queryPageParam&&
 				<BuilderControl
 					rangeValue={rangeValue}
 					queryPageParam={queryPageParam}

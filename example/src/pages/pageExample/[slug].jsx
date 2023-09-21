@@ -34,12 +34,12 @@ const PageExample = ({dataFromCms}) => {
 			if (!attribs) return
 
 			switch (attribs['data-custom']) {
-				case 'converter' : return <Converter />
-				case 'request' : return <Request />
-				case 'userInfo' : return <UserInfo />
+				case 'converter' : return <Converter data={children}/>
+				case 'request' : return <Request data={children}/>
+				case 'userInfo' : return <UserInfo data={children}/>
 				case 'inviteFriend' : return <InviteFriend   data={children}/>
-				case 'bunkCards' : return <BunkCards />
-				case 'watchList' :   return <WatchList  />
+				case 'bunkCards' : return <BunkCards data={children}/>
+				case 'watchList' :   return <WatchList data={children} />
 			}
 
 			switch (name) {
