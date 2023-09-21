@@ -7,10 +7,10 @@ export const Layout = ({children}) => {
 
 
 	return (
-		<div className={styles.wrapper}>
+		<div className={styles.wrapper + " container"}>
 			<Header />
 			{children}
-			<Footer />
+			{/*<Footer />*/}
 		</div>
 	)
 }

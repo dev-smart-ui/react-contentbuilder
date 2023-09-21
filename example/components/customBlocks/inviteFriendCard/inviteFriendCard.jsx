@@ -16,7 +16,7 @@ export const InviteFriend = () => {
 			>
 				<div className="flex flex-col justify-between">
 					<div className="text-white text-base font-bold leading-tight">
-						Invite your friends to Finology and get Up to $100 benefits.
+						Invite 1232 your friends to Finology and get Up to $100 benefits.
 					</div>
 					<a href="#" className="flex space-x-2 text-cyan-500 no-underline">
 						<div style={{ fontSize: '12px' }} className="text-xs font-bold leading-tight">

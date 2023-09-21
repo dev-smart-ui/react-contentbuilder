@@ -6,7 +6,7 @@ export const UserInfo = () => {
 			<img className="w-12 h-12 rounded-full fill-current" src="" alt="" />
 			<div>
 				<div style={{fontSize: '12px' }}
-				 className="text-xs text-gray-400 font-normal leading-none ">Welcome back,</div>
+				 className="text-xs text-gray-400 font-normal leading-none ">Welcome back23434234,</div>
 				<div style={{fontSize: '20px' }}
 				className="text-white text-xl font-bold leading-relaxed">Joi Doo</div>
 			</div>

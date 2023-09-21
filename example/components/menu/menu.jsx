@@ -44,13 +44,7 @@ export const Menu = ({burgerIsOpen, burgerClose, burgerToggle}) => {
 		getAllPages().then()
 	}, []);
 
-	useEffect(() => {
-		if (burgerIsOpen) {
-			document.body.style.overflow = "hidden";
-		} else {
-			document.body.style.overflow = "";
-		}
-	}, [burgerIsOpen]);
+
 
 
 	return (

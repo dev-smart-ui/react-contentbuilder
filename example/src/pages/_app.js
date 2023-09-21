@@ -1,4 +1,4 @@
-import '@/styles/globals.css'
+import '@/styles/globals.scss'
 import '../../../public/assets/minimalist-blocks/content.css'
 import '../../../public/assets/ionicons/css/ionicons.min.css'
 

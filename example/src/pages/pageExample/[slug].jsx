@@ -56,13 +56,12 @@ const PageExample = ({ dataFromCms }) => {
 
 
 	return (
-		<div className="container">
-			<h1>test</h1>
 
-			<div className={styles.card}>
+
+			<div >
 				{jsx}
 			</div>
-		</div>
+
 	);
 };
 
