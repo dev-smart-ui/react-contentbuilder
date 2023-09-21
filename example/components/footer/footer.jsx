@@ -3,8 +3,8 @@
 export const Footer = () => {
 	return (
 		<footer>
-			<div className="container">
-				footer
+			<div  className="container">
+
 			</div>
 		</footer>
 	)
