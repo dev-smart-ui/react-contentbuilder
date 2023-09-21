@@ -51,7 +51,7 @@ export const builderInviteFriend = {
 	'category': '120',
 	'html':
 		`
-			<div class="px-6 py-2 bg-gray-900 relative data-custom="inviteFriend">
+			<div class="px-6 py-2 bg-gray-900 relative" data-custom="inviteFriend">
 				<div style="background-image: url('assets/minimalist-blocks/images/Rectangle-bg.png');background-size: 100% 100%; height: 162px; background-repeat: no-repeat; overflow: hidden; padding-right: 100px;"
 					class=" flex py-6 pl-6 bg-cover bg-center w-full relative rounded-xl ">
 					<div class=" flex flex-col justify-between ">
