@@ -3,16 +3,16 @@ import Image from "next/image"
 
 export const BunkCards = () => {
 	return (
-		<div className="flex flex-row py-2 px-6 justify-between bg-gray-900 space-x-2" data-custom="bunkCards">
+		<div className="flex flex-row py-2 px-6 justify-around bg-gray-900 space-x-2" data-custom="bunkCards">
 			<div style={{ width: '160px', height: '180px', position: 'relative', overflow: 'hidden' }}
-				className="flex flex-col pl-4 pr-3 pt-4 pb-6 items-start rounded-lg">
+				className="flex flex-col px-3 py-4 items-start rounded-lg">
 				<Image width={160} height={180} src="/assets/minimalist-blocks/images/Rectangle-bank-card-1.png"
 					style={{
 						position: 'absolute',
 						top: '0',
 						left: '0',
-						width: '160px',
-						height: '180px',
+						width: '100%',
+						height: '100%',
 						objectFit: 'cover',
 						objectPosition: 'center'
 					}} alt="" />
@@ -38,8 +38,8 @@ export const BunkCards = () => {
 						position: 'absolute',
 						top: '0',
 						left: '0',
-						width: '160px',
-						height: '180px',
+						width: '100%',
+						height: '100%',
 						objectFit: 'cover',
 						objectPosition: 'center'
 					}} alt="" />
@@ -66,15 +66,15 @@ export const builderBunkCards = {
 	'category': '120',
 	'html':
 		`
-		<div class=" flex flex-row py-2 px-6 justify-between bg-gray-900 space-x-2 " data-custom="bunkCards">
+		<div class=" flex flex-row py-2 px-6 justify-around bg-gray-900 space-x-2 " data-custom="bunkCards">
 
 			<div style=" width: 160px; height: 180px; position: relative; overflow: hidden;"
-				class=" flex flex-col pl-4 pr-3 pt-4 pb-6 items-start rounded-lg">
+				class=" flex flex-col px-3 py-4 items-start rounded-lg">
 				<img src="assets/minimalist-blocks/images/Rectangle-bank-card-1.png"
 				 style="
 					position: absolute;
 					top: 0; left: 0; 
-					width: 160px; height: 180px;
+					width: 100%; height: 100%;
 					object-fit: cover; object-position: center; "/>
 
 				<img style="width: 40px; height: 40px; z-index:2"
@@ -91,13 +91,13 @@ export const builderBunkCards = {
 
 			
 			<div style=" width: 160px; height: 180px; position: relative; overflow: hidden;"
-				class=" flex flex-col pl-4 pr-3 pt-4 pb-6 items-start rounded-lg">
+				class=" flex flex-col px-3 py-4 items-start rounded-lg">
 
 				<img src="assets/minimalist-blocks/images/Rectangle-bank-card-2.png"
 				style="
 					position: absolute;
 					top: 0; left: 0; 
-					width: 160px; height: 180px;
+					width: 100%; height: 100%;
 					object-fit: cover; object-position: center; "/>
 
 				<img style="width: 40px; height: 40px; z-index:2"
