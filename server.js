@@ -213,6 +213,31 @@ app.get('/source-code', async (req, res) => {
     }
 });
 
+app.get('/delete', async (req, res) => {
+    try {
+        const pageValue = req.query.page ;
+
+      const result =   await routeModel.deleteOne({ page: pageValue });
+
+        if (!result) {
+            return res.status(200).json({
+                success: true,
+                message:"err"
+            });
+        }
+
+        res.status(200).json({
+            success: true,
+
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            error
+        });
+    }
+});
+
 
 app.get('/all', async (req, res) => {
     try {
