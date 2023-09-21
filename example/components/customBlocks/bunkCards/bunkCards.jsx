@@ -42,8 +42,8 @@ export const BunkCards = () => {
 
 	return (
 		<div className="flex flex-row py-2 px-6 justify-around bg-gray-900 space-x-2" data-custom="bunkCards">
-			<div style={{ width: '160px', height: '180px', position: 'relative', overflow: 'hidden' }}
-				className="flex flex-col px-3 py-4 items-start rounded-lg">
+			<div style={{ position: 'relative', overflow: 'hidden' }}
+				className="flex flex-col px-3 py-4 items-start rounded-lg w-1/2">
 				<Image width={160} height={180} src="/assets/minimalist-blocks/images/Rectangle-bank-card-1.png"
 					style={{
 						position: 'absolute',
@@ -101,7 +101,7 @@ export const BunkCards = () => {
 				</div>
 			</div>
 
-			<div style={{ width: '160px', height: '180px', position: 'relative', overflow: 'hidden' }} className="flex flex-col pl-4 pr-3 pt-4 pb-6 items-start rounded-lg">
+			<div style={{ position: 'relative', overflow: 'hidden' }} className="flex flex-col pl-4 pr-3 pt-4 pb-6 items-start rounded-lg w-1/2">
 
 				<Image width={160} height={180} src="/assets/minimalist-blocks/images/Rectangle-bank-card-2.png"
 					style={{
