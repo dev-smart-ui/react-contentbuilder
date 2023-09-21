@@ -4,7 +4,7 @@ import { Converter } from 'components/customBlocks/converter/converter';
 import { Request } from 'components/customBlocks/request/request';
 import appConfig from 'config/app.config';
 import Image from "next/image";
-import styles from './card.module.scss'
+
 import {UserInfo} from "components/customBlocks/userInfo/userInfo";
 import {InviteFriend} from "components/customBlocks/inviteFriendCard/inviteFriendCard";
 import {BunkCards} from "components/customBlocks/bunkCards/bunkCards";
@@ -27,14 +27,15 @@ const formatStyles = (styles) => {
 const PageExample = ({ dataFromCms }) => {
 
 	const options = {
-		replace: ({ attribs, children, name }) => {
+		replace: ({ attribs, children, name , ...rest}) => {
+
 			if (!attribs) return
 
 			switch (attribs['data-custom']) {
 				case 'converter' : return <Converter />
 				case 'request' : return <Request />
 				case 'userInfo' : return <UserInfo />
-				case 'inviteFriend' : return <InviteFriend />
+				case 'inviteFriend' : return <InviteFriend rest={rest} data={children}/>
 				case 'bunkCards' : return <BunkCards />
 				case 'watchList' : return <WatchList />
 			}
@@ -56,12 +57,9 @@ const PageExample = ({ dataFromCms }) => {
 
 
 	return (
-
-
 			<div >
 				{jsx}
 			</div>
-
 	);
 };
 
