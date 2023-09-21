@@ -1,4 +1,5 @@
 import { BunkCards } from 'components/customBlocks/bunkCards/bunkCards'
+import { InviteFriend } from 'components/customBlocks/inviteFriendCard/inviteFriendCard'
 import { UserInfo } from 'components/customBlocks/userInfo/userInfo'
 import { WatchList } from 'components/customBlocks/watchList/watchList'
 import { Inter } from 'next/font/google'
@@ -11,6 +12,7 @@ export default function Test() {
             <UserInfo />
             <WatchList />
             <BunkCards />
+            <InviteFriend/>
         </div>
     )
 }
