@@ -4,7 +4,7 @@ import Image from "next/image"
 export const UserInfo = () => {
 	return (
 		<div className="w-100 h-16 flex justify-start px-5 py-4 bg-gray-900 space-x-3 ">
-			<Image width={48} height={48} className="w-12 h-12 rounded-full fill-current" src="" alt="" />
+			<Image width={48} height={48} className="w-12 h-12 rounded-full fill-current" src="/assets/minimalist-blocks/images/image-thumbnail.png" alt="" />
 			<div>
 				<div style={{fontSize: '12px' }}
 				 className="text-xs text-gray-400 font-normal leading-none ">Welcome back,</div>
