@@ -7,8 +7,10 @@ REACT_APP_GET_CUSTOM_BLOCK=http://localhost:3001/api/custom-builder
 
 
 
-mpm run dev  - builder 
+npm run dev  - builder 
 npm run e    - example
 
 
 
+http://localhost:3001 next js example
+http://localhost:3000/ react - builder
