@@ -22,7 +22,7 @@ export const Header = () => {
 			<div className={classNames('container', styles.container)}>
 				<Link href={"/"} > Logo</Link>
 				<Burger onBurgerToggle={burgerToggle} isBurgerOpen={burgerIsOpen} />
-				{burgerIsOpen && <Menu burgerIsOpen={burgerIsOpen} burgerClose={burgerClose} burgerToggle={burgerToggle}/>}
+				<Menu burgerIsOpen={burgerIsOpen} burgerClose={burgerClose} burgerToggle={burgerToggle}/>
 			</div>
 		</header>
 	)
