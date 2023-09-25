@@ -3,19 +3,21 @@
 
 .menu {
 	position: absolute;
-	right: 0;
-	width: 0;
-	height: calc(100vh - 60px);
 	top: 100%;
+	right: 0;
+	width: 100%;
+	height: calc(100vh - 60px);
+
+	padding: 8px 0 40px;
 	background: #131313;
-	padding: 8px 0;
-	opacity: 0;
-	transition: .3s ease;
+
 	z-index: 1999;
-	padding-bottom: 40px;
-	transition: width 0.3s ease, opacity 0.3s ease;
 	overflow-x: hidden;
-	overflow-y: scroll;
+	overflow-y: auto;
+
+	transform: translateX(calc(100% + 30px));
+	transition: transform 0.3s ease;
+	
 
 	li {
 		width: 100%;
@@ -34,6 +36,14 @@
 			padding: 10px 20px 10px 40px;
 		}
 	}
+}
+
+.open {
+	width: 100%;
+	height: calc(100vh - 60px);
+
+	transform: translateX(0);
+	transition: transform 0.3s ease;
 }
 
 .burgerHeader {
@@ -55,9 +65,3 @@
 	justify-content: space-between;
 }
 
-.open {
-	width: 100%;
-	height: calc(100vh - 60px);
-	opacity: 1;
-	transition: width 0.3s ease, opacity 0.3s ease;
-}
