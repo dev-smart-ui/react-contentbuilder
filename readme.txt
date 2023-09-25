@@ -16,3 +16,6 @@ http://localhost:3001 next js example
 http://localhost:3000/ react - builder
 
 builder is using custom blocks from next js , that is why you need env with next js examle url 
+
+custom locks folder is here 
+https://github.com/dev-smart-ui/react-contentbuilder/tree/master/example/components/customBlocks
