@@ -5,12 +5,11 @@ import { instanceAxios } from "../../axiosConfig";
 
 const BuilderControl = (props) => {
 	const [obj, setObj] = useState(null);
-	const [containerOpacity, setContainerOpacity] = useState(0);
 
 	useEffect(() => {
 		const containerElement = document.querySelector('.container');
 		if (containerElement) {
-			containerElement.style.opacity = containerOpacity; // optional: hide editable area until content loaded
+			document.querySelector('.container').style.opacity = 0; // optional: hide editable area until content loaded
 		} 
 
 		// Load language file first
@@ -133,7 +132,7 @@ const BuilderControl = (props) => {
 					html = response.data.html;
 				}
 				
-				setContainerOpacity(1);
+				document.querySelector('.container').style.opacity = 1;
 				contentBuilder.loadHtml(html);
 				setObj(contentBuilder);
 			}).catch((error) => {
@@ -148,7 +147,7 @@ const BuilderControl = (props) => {
 		return () => {
 			obj?.destroy();
 		};
-	}, [containerOpacity]);
+	}, []);
 
 
 	const loadLanguageFile = (languageFile, callback) => {
@@ -198,7 +197,7 @@ const BuilderControl = (props) => {
 		const { queryPageParam } = props;
 		// Save all embedded base64 images first
 		obj.saveImages('', () => {
-
+			
 			// Then save the content
 
 			let html = obj.html();
