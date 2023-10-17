@@ -1,23 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, {Component} from "react";
 import ContentBuilder from '@innovastudio/contentbuilder';
 import "./contentbuilder.css";
-import { instanceAxios } from "../../axiosConfig";
+import {instanceAxios} from "../../axiosConfig";
 
-const BuilderControl = (props) => {
-	const [obj, setObj] = useState(null);
-	const [containerOpacity, setContainerOpacity] = useState(0);
+class BuilderControl extends Component {
+	constructor(props) {
+		super(props);
 
-	useEffect(() => {
-		const containerElement = document.querySelector('.container');
-		if (containerElement) {
-			containerElement.style.opacity = containerOpacity; // optional: hide editable area until content loaded
-		} 
+		this.saveContent = this.saveContent.bind(this);
+		this.saveContentAndFinish = this.saveContentAndFinish.bind(this);
+	}
+
+	componentDidMount() {
+
+		document.querySelector('.container').style.opacity = 0; // optional: hide editable area until content loaded
 
 		// Load language file first
-		loadLanguageFile('contentbuilder/lang/en.js', () => {
+		this.loadLanguageFile('contentbuilder/lang/en.js', () => {
 
 			// Then init the ContentBuilder
-			const contentBuilder = new ContentBuilder({
+			this.obj = new ContentBuilder({
 				container: '.container',
 
 				// OPTIONAL:
@@ -30,10 +32,10 @@ const BuilderControl = (props) => {
 
 				// Load plugins (without using config.js file)
 				plugins: [
-					{ name: 'preview', showInMainToolbar: true, showInElementToolbar: true },
-					{ name: 'wordcount', showInMainToolbar: true, showInElementToolbar: true },
-					{ name: 'symbols', showInMainToolbar: true, showInElementToolbar: false },
-					{ name: 'buttoneditor', showInMainToolbar: false, showInElementToolbar: false },
+					{name: 'preview', showInMainToolbar: true, showInElementToolbar: true},
+					{name: 'wordcount', showInMainToolbar: true, showInElementToolbar: true},
+					{name: 'symbols', showInMainToolbar: true, showInElementToolbar: false},
+					{name: 'buttoneditor', showInMainToolbar: false, showInElementToolbar: false},
 				],
 				pluginPath: 'contentbuilder/', // Location of the plugin scripts
 
@@ -43,15 +45,15 @@ const BuilderControl = (props) => {
 				videoSelect: 'assets.html',
 
 				onMediaUpload: (e) => {
-					uploadFile(e, (response) => {
+					this.uploadFile(e, (response) => {
 						const uploadedImageUrl = response.data.url; // get saved file url
-						contentBuilder.returnUrl(uploadedImageUrl);
+						this.obj.returnUrl(uploadedImageUrl);
 					});
 				},
 				onVideoUpload: (e) => {
-					uploadFile(e, (response) => {
+					this.uploadFile(e, (response) => {
 						const uploadedFileUrl = response.data.url; // get saved file url
-						contentBuilder.returnUrl(uploadedFileUrl);
+						this.obj.returnUrl(uploadedFileUrl);
 					});
 				},
 
@@ -123,8 +125,8 @@ const BuilderControl = (props) => {
 				],
 			});
 
-			contentBuilder.loadSnippets('assets/minimalist-blocks/content.js'); // Load snippet file
-			const { queryPageParam } = props;
+			this.obj.loadSnippets('assets/minimalist-blocks/content.js'); // Load snippet file
+			const {queryPageParam} = this.props;
 
 			instanceAxios.get(queryPageParam !== '' ? `/load?page=${queryPageParam}` : '/load').then((response) => {
 				let html;
@@ -132,27 +134,23 @@ const BuilderControl = (props) => {
 				if (response.data.html) {
 					html = response.data.html;
 				}
-				
-				setContainerOpacity(1);
-				contentBuilder.loadHtml(html);
-				setObj(contentBuilder);
+
+				document.querySelector('.container').style.opacity = 1;
+				this.obj.loadHtml(html);
+
 			}).catch((error) => {
 				console.error('error', error);
 			});
 
-			// https://stackoverflow.com/questions/37949981/call-child-method-from-parent
-			if (props.doSave) props.doSave(saveContent);  // Make it available to be called using doSave
-			if (props.doSaveAndFinish) props.doSaveAndFinish(saveContentAndFinish);
-		})
+		});
 
-		return () => {
-			obj?.destroy();
-		};
-	}, [containerOpacity]);
+		// https://stackoverflow.com/questions/37949981/call-child-method-from-parent
+		if (this.props.doSave) this.props.doSave(this.saveContent);  // Make it available to be called using doSave
+		if (this.props.doSaveAndFinish) this.props.doSaveAndFinish(this.saveContentAndFinish);
+	}
 
-
-	const loadLanguageFile = (languageFile, callback) => {
-		if (!isScriptAlreadyIncluded(languageFile)) {
+	loadLanguageFile = (languageFile, callback) => {
+		if (!this.isScriptAlreadyIncluded(languageFile)) {
 			const script = document.createElement("script");
 			script.src = languageFile;
 			script.async = true;
@@ -165,14 +163,14 @@ const BuilderControl = (props) => {
 		}
 	};
 
-	const isScriptAlreadyIncluded = (src) => {
+	isScriptAlreadyIncluded = (src) => {
 		const scripts = document.getElementsByTagName("script");
 		for (let i = 0; i < scripts.length; i++)
 			if (scripts[i].getAttribute('src') === src) return true;
 		return false;
 	};
 
-	const uploadFile = (e, callback) => {
+	uploadFile = (e, callback) => {
 		const selectedFile = e.target.files[0];
 		const filename = selectedFile.name;
 		const reader = new FileReader();
@@ -182,7 +180,7 @@ const BuilderControl = (props) => {
 			base64 = base64.replace(/ /g, '+');
 
 			// Upload process
-			instanceAxios.post('/upload', { image: base64, filename: filename }).then((response) => {
+			instanceAxios.post('/upload', {image: base64, filename: filename}).then((response) => {
 
 				callback(response);
 
@@ -193,15 +191,15 @@ const BuilderControl = (props) => {
 		reader.readAsDataURL(selectedFile);
 	};
 
-	const save = (callback) => {
+	save = (callback) => {
 
-		const { queryPageParam } = props;
+		const {queryPageParam} = this.props;
 		// Save all embedded base64 images first
-		obj.saveImages('', () => {
+		this.obj.saveImages('', () => {
 
 			// Then save the content
 
-			let html = obj.html();
+			let html = this.obj.html();
 			const data = {
 				html: html,
 				page: queryPageParam
@@ -218,7 +216,7 @@ const BuilderControl = (props) => {
 		}, (img, base64, filename) => {
 
 			// Upload image process
-			instanceAxios.post('upload/', { image: base64, filename: filename }).then((response) => {
+			instanceAxios.post('upload/', {image: base64, filename: filename}).then((response) => {
 
 				const uploadedImageUrl = response.data.url; // get saved image url
 
@@ -239,23 +237,29 @@ const BuilderControl = (props) => {
 		});
 	};
 
-	const saveContent = () => {
-		save((html, serverHtml) => {
-			props.onSave(html, serverHtml);
+	saveContent = () => {
+		this.save((html, serverHtml) => {
+			this.props.onSave(html, serverHtml);
 		});
 	};
 
-	const saveContentAndFinish = () => {
-		save((html, serverHtml) => {
-			props.onSaveAndFinish(html, serverHtml);
+	saveContentAndFinish = () => {
+		this.save((html, serverHtml) => {
+			this.props.onSaveAndFinish(html, serverHtml);
 		});
 	};
 
+	componentWillUnmount() {
+		this.obj.destroy();
+	}
 
-	return (
-		<div className="container" style={{ width: `${props.rangeValue}px` }}></div>
-	);
+	render() {
+		return (
+			<div className="container" style={{width:`${this.props.rangeValue}px`}}></div>
+		);
+	}
 }
 
+BuilderControl.defaultProps = {};
 
 export default BuilderControl;
