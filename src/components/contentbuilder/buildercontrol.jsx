@@ -3,7 +3,7 @@ import ContentBuilder from '@innovastudio/contentbuilder';
 import "./contentbuilder.css";
 import { instanceAxios } from "../../axiosConfig";
 
-const BuilderControl = (props) => {
+const BuilderControl = ({rangeValue, queryPageParam, onSave, onSaveAndFinish, doSave, doSaveAndFinish}) => {
 	const [obj, setObj] = useState(null);
 
 	useEffect(() => {
@@ -123,7 +123,7 @@ const BuilderControl = (props) => {
 			});
 
 			contentBuilder.loadSnippets('assets/minimalist-blocks/content.js'); // Load snippet file
-			const { queryPageParam } = props;
+
 
 			instanceAxios.get(queryPageParam !== '' ? `/load?page=${queryPageParam}` : '/load').then((response) => {
 				let html;
@@ -140,8 +140,8 @@ const BuilderControl = (props) => {
 			});
 
 			// https://stackoverflow.com/questions/37949981/call-child-method-from-parent
-			if (props.doSave) props.doSave(saveContent);  // Make it available to be called using doSave
-			if (props.doSaveAndFinish) props.doSaveAndFinish(saveContentAndFinish);
+			if (doSave) doSave(() => saveContent(contentBuilder));  // Make it available to be called using doSave
+			if (doSaveAndFinish) doSaveAndFinish(() => saveContentAndFinish(contentBuilder));
 		})
 
 		return () => {
@@ -192,15 +192,13 @@ const BuilderControl = (props) => {
 		reader.readAsDataURL(selectedFile);
 	};
 
-	const save = (callback) => {
-
-		const { queryPageParam } = props;
+	const save = (contentBuilder , callback) => {
 		// Save all embedded base64 images first
-		obj.saveImages('', () => {
+		contentBuilder.saveImages('', () => {
 			
 			// Then save the content
 
-			let html = obj.html();
+			let html = contentBuilder.html();
 			const data = {
 				html: html,
 				page: queryPageParam
@@ -238,21 +236,21 @@ const BuilderControl = (props) => {
 		});
 	};
 
-	const saveContent = () => {
-		save((html, serverHtml) => {
-			props.onSave(html, serverHtml);
+	const saveContent = (contentBuilder) => {
+		save(contentBuilder,(html, serverHtml) => {
+			onSave(html, serverHtml);
 		});
 	};
 
-	const saveContentAndFinish = () => {
-		save((html, serverHtml) => {
-			props.onSaveAndFinish(html, serverHtml);
+	const saveContentAndFinish = (contentBuilder) => {
+		save(contentBuilder, (html, serverHtml) => {
+			onSaveAndFinish(html, serverHtml);
 		});
 	};
 
 
 	return (
-		<div className="container" style={{ width: `${props.rangeValue}px` }}></div>
+		<div className="container" style={{ width: `${rangeValue}px` }}></div>
 	);
 }
 
