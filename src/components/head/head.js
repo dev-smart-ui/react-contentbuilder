@@ -66,6 +66,8 @@ const Head = ({queryPageParam, rangeValue, setRangeValue}) => {
         </div>
       }
     </div>
-	);
-};
+	)
+}
+
+
 export default Head;
