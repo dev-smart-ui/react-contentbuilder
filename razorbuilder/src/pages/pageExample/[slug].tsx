@@ -27,8 +27,6 @@ const formatStyles = (styles: string | undefined): { [key: string]: string } => 
 };
 
 
-
-
 const PageExample = ({dataFromCms}: any) => {
 
 	const options = {
