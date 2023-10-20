@@ -23,14 +23,28 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+<<<<<<< HEAD
+
+# local env files
+.env
+.env.development.local
+.env.local
+.env.production.local
+=======
 .pnpm-debug.log*
 
 # .env
 .env
+>>>>>>> e6b87025c11f820b9d979909a9f5c30aaf30e70d
 
 # vercel
 .vercel
 
+<<<<<<< HEAD
+# PWA
+workbox-*.js
+sw.js
+=======
 # typescript
 *.tsbuildinfo
 next-env.d.ts
@@ -40,3 +54,4 @@ next-env.d.ts
 
 
 /uploads
+>>>>>>> e6b87025c11f820b9d979909a9f5c30aaf30e70d
