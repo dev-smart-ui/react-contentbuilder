@@ -24,7 +24,7 @@ const formatStyles = (styles: string | undefined): { [key: string]: string } => 
 	});
 
 	return styleObject;
-};
+}
 
 
 const PageExample = ({dataFromCms}: any) => {
