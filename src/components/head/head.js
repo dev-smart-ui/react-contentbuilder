@@ -69,5 +69,4 @@ const Head = ({queryPageParam, rangeValue, setRangeValue}) => {
 	)
 }
 
-
 export default Head;
