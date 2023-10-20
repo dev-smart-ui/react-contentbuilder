@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "razor",
   "version": "1.6.0",
   "private": true,
@@ -77,5 +78,57 @@
     "tailwindcss": "^3.0.12",
     "tailwindcss-rtl": "^0.9.0",
     "typescript": "^4.4.4"
+=======
+  "name": "npm-test2",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@innovastudio/contentbuilder": "^1.0.83",
+    "@testing-library/jest-dom": "^5.11.5",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "axios": "^0.21.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "html-to-jsx-transform": "^1.1.0",
+    "mongoose": "^7.5.0",
+    "node-dev": "^8.0.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "^5.0.1",
+    "tailwindcss": "^3.3.3",
+    "web-vitals": "^0.2.4",
+    "webpack": "^5.88.2"
+  },
+  "scripts": {
+    "start": "PORT=3007 react-scripts start",
+    "dev": " react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "e": "cd example && npm run dev",
+    "start-server": "node-dev server.js"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+>>>>>>> e6b87025c11f820b9d979909a9f5c30aaf30e70d
   }
 }
