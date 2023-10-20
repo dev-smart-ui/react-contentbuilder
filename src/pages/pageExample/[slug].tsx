@@ -93,7 +93,7 @@ export async function getServerSideProps({ query, locale }) {
 			props: {
 				dataFromCms: '',
 			},
-		};
+		}
 	}
 }
 
