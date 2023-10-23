@@ -27,6 +27,10 @@ const Edit = ({queryPageParam, rangeValue}) => {
 
 
 	const fetchData = async () => {
+		if(!process.env.REACT_APP_GET_CUSTOM_BLOCK){
+			alert("empty env!!")
+		}
+		console.log(process.env.REACT_APP_GET_CUSTOM_BLOCK)
 		try {
 			const {data} = await axios(process.env.REACT_APP_GET_CUSTOM_BLOCK)
 
@@ -42,6 +46,7 @@ const Edit = ({queryPageParam, rangeValue}) => {
 	}
 
 	useEffect(() => {
+		console.log(123)
 		fetchData().then()
 
 	}, []);
