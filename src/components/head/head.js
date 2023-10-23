@@ -36,7 +36,6 @@ const Head = ({queryPageParam, rangeValue, setRangeValue}) => {
 	}, []);
 
 
-
 	return (
     <div>
       <div className="head-wrap p-2 flex-wrap flex w-full">
@@ -68,4 +67,5 @@ const Head = ({queryPageParam, rangeValue, setRangeValue}) => {
     </div>
 	)
 }
-export default Head;
+
+export default Head
