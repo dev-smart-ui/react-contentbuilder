@@ -23,10 +23,19 @@ const BannerCard: React.FC<BannerProps> = ({
   classNameInner,
 }) => {
   const { width } = useWindowSize();
-  const { slug, title, image } = banner;
-  const selectedImage = getImage(width!, image);
+  const { slug, title, image } = banner||{
+    slug:"slug",
+    title:"title",
+    image:undefined
+  };
+  let selectedImage= {}
+  if(image){
+    selectedImage = getImage(width!, image);
+  }
+
   return (
     <div className={cn('mx-auto', className)}>
+      card
       <Link
         href={slug}
         className={cn(
@@ -34,7 +43,7 @@ const BannerCard: React.FC<BannerProps> = ({
           classNameInner
         )}
       >
-        <Image
+        {image&&<Image
           src={selectedImage.url}
           width={selectedImage.width}
           height={selectedImage.height}
@@ -43,7 +52,7 @@ const BannerCard: React.FC<BannerProps> = ({
           className={cn('bg-skin-thumbnail object-cover w-full', {
             'rounded-md': variant === 'rounded',
           })}
-        />
+        />}
         {effectActive && (
           <div className="absolute top-0 -start-full h-full w-1/2 z-5 block transform -skew-x-12 bg-gradient-to-r from-transparent to-white opacity-30 group-hover:animate-shine" />
         )}

@@ -20,7 +20,7 @@ const Logo: React.FC<React.AnchorHTMLAttributes<{}>> = ({
         alt={siteSettings.logo.alt}
         height={siteSettings.logo.height}
         width={siteSettings.logo.width}
-        layout="fixed"
+
         loading="eager"
       />
     </Link>

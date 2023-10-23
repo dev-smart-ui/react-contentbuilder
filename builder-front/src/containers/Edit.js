@@ -2,6 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import BuilderControl from '../components/contentbuilder/buildercontrol';
 import {useHistory} from 'react-router-dom';
 import axios from "axios";
+import {CONFIG} from "../config";
 
 
 const Edit = ({queryPageParam, rangeValue}) => {
@@ -27,12 +28,9 @@ const Edit = ({queryPageParam, rangeValue}) => {
 
 
 	const fetchData = async () => {
-		if(!process.env.REACT_APP_GET_CUSTOM_BLOCK){
-			alert("empty env!!")
-		}
-		console.log(process.env.REACT_APP_GET_CUSTOM_BLOCK)
+
 		try {
-			const {data} = await axios(process.env.REACT_APP_GET_CUSTOM_BLOCK)
+			const {data} = await axios(CONFIG.getBlockUrl)
 
 			window.data_custom = {
 				'snippets': data
