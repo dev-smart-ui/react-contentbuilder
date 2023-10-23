@@ -61,8 +61,8 @@ const AccountLayout: React.FunctionComponent<{}> = ({ children }) => {
     <div className="border-t border-b border-skin-base">
       <Container>
         <div className="pt-10 2xl:pt-12 pb-12 lg:pb-14 xl:pb-16 2xl:pb-20 mx-auto">
-          <div className="flex flex-col lg:flex-row w-full">
-            <div className="lg:hidden">
+          <div className="flex flex-col sm:flex-row w-full">
+            <div className="sm:hidden">
               <AccountNavMobile options={accountMenu} />
             </div>
             <div className="hidden lg:block flex-shrink-0 w-72 me-7 xl:me-8">

@@ -107,7 +107,7 @@ const Header: React.FC = () => {
                     <div className="border-b border-white/20">
                         <Container>
                             <div  className="flex items-center justify-between  py-2 md:py-4">
-                                <div className="relative flex-shrink-0 lg:hidden">
+                                <div className="relative flex-shrink-0 sm:hidden">
                                     <button
                                         className="border border-skin-base/40 rounded-md focus:outline-none flex-shrink-0 text-sm  text-skin-inverted px-2.5 md:px-3 lg:px-[18px] py-2 md:py-2.5 lg:py-3 flex items-center transition-all hover:border-skin-four"
                                         onClick={handleMobileAllCategories}
@@ -134,13 +134,13 @@ const Header: React.FC = () => {
 
                                 <Search
                                     searchId="top-bar-search"
-                                    className="hidden lg:flex lg:max-w-[450px] xl:max-w-[650px] 2xl:max-w-[900px] lg:mx-10"
+                                    className="hidden sm:flex lg:max-w-[450px] xl:max-w-[650px] 2xl:max-w-[900px] lg:mx-10"
                                     variant="fill"
                                 />
                                 {/* End of search */}
 
                                 <div className="flex space-s-5 xl:space-s-10 lg:max-w-[33%]">
-                                    <div className="hidden lg:flex items-center flex-shrink-0 ">
+                                    <div className="hidden sm:flex items-center flex-shrink-0 ">
                                         <div className="cart-button">
                                             <UserIcon className="text-white"/>
                                         </div>
@@ -156,7 +156,7 @@ const Header: React.FC = () => {
                                             {t('text-account')}
                                         </AuthMenu>
                                     </div>
-                                    <CartButton className="hidden lg:flex" iconClassName={"text-white"}/>
+                                    <CartButton className="hidden sm:flex" iconClassName={"text-white"}/>
 
                                 </div>
                                 {/* End of auth & lang */}

@@ -44,7 +44,7 @@ const ContactInformation: FC = () => {
           {data?.map((item: any) => (
             <div
               key={`contact--key${item.id}`}
-              className="flex flex-col lg:flex-row max-w-xs lg:max-w-sm xl:pe-7"
+              className="flex flex-col sm:flex-row max-w-xs lg:max-w-sm xl:pe-7"
             >
               <div className="flex-shrink-0 w-14  h-14 border-2 p-3 rounded-md">{item.icon}</div>
               <div className="lg:ps-3 2xl:ps-4 mt-4 lg:mt-0">
