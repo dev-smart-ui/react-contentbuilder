@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "push": "git add . && git commit -m autopush && git push",
-    "dev": "cd builder-front && npm run dev"
+    "dev": "cd builder-front && npm run dev",
+    "e": "cd example && npm run dev",
+    "server": "cd backend && npm start"
   }
-
 }
