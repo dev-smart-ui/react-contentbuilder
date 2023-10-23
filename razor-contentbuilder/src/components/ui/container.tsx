@@ -13,7 +13,7 @@ const Container: React.FC<Props> = ({
   clean,
 }) => {
   const rootClassName = cn(className, {
-    'mx-auto max-w-[1870px] px-4 md:px-6 lg:px-8 2xl:px-20': !clean,
+    'mx-auto max-w-[480px] px-4 md:px-6 lg:px-8 2xl:px-20': !clean,
   });
 
   let Component: React.ComponentType<React.HTMLAttributes<HTMLDivElement>> =

@@ -144,7 +144,7 @@ export default function ProductPopup() {
       <CloseButton onClick={closeModal} />
       <div className="overflow-hidden">
         <div className="px-2 md:px-5 mb-2 lg:mb-2 pt-4 md:pt-7 ">
-          <div className="lg:flex items-start justify-between gap-8">
+          <div className="sm:flex items-start justify-between gap-8">
             <div className="xl:flex items-center justify-center overflow-hidden">
               {!!gallery?.length ? (
                 <ThumbnailCarousel gallery={gallery} />

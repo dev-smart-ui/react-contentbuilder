@@ -87,7 +87,7 @@ const HeroBannerCard: FC<BannerProps> = ({
                         )}
 
                         {banner.searchBox && (
-                            <div className="hidden lg:flex max-w-[620px] mx-auto md:pt-1 lg:pt-3">
+                            <div className="hidden sm:flex max-w-[620px] mx-auto md:pt-1 lg:pt-3">
                                 <HeroSearchBox/>
                             </div>
                         )}

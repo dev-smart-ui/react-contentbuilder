@@ -16,7 +16,7 @@ const Layout: React.FC = ({ children }) => {
   );
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen max-w-[480px] overflow-hidden mx-auto">
       {highlightedBar !== 'true' && (
         <HighlightedBar onClose={() => setHighlightedBar('true')} variant="highlightedTwo" className="text-white">
           <div className="flex items-center">

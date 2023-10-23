@@ -7,7 +7,7 @@ const ErrorInformation: React.FC = () => {
   const errorThumbnail = '/assets/images/404.png'
   return (
     <div className="py-20 mx-auto max-w-[1320px] px-4 md:px-6 lg:px-8 2xl:px-20">
-      <div className="flex flex-col lg:flex-row w-full items-center">
+      <div className="flex flex-col sm:flex-row w-full items-center">
         <div className="basis-full md:basis-1/2">
           <Image
             src={errorThumbnail}
