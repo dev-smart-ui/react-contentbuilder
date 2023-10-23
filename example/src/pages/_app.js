@@ -1,6 +1,6 @@
 import '@/styles/globals.scss'
-import '../../../public/assets/minimalist-blocks/content.css'
-import '../../../public/assets/ionicons/css/ionicons.min.css'
+import '../../../builder-front/public/assets/minimalist-blocks/content.css'
+import '../../../builder-front/public/assets/ionicons/css/ionicons.min.css'
 
 
 import {Layout} from "components/layout/layout";

@@ -1,0 +1,10 @@
+{
+  "name": "react-contentbuilder",
+  "version": "1.0.0",
+  "scripts": {
+    "push": "git add . && git commit -m autopush && git push"
+  },
+  "dependencies": {
+
+  }
+}
