@@ -2,7 +2,7 @@
   "name": "backend",
   "version": "1.0.0",
   "scripts": {
-    "start": "node-dev start.js"
+    "start": "node-dev server.js"
   },
   "dependencies": {
     "axios": "^0.21.1",
