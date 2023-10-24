@@ -3,10 +3,11 @@ import AddressGrid from '@components/address/address-grid';
 import { useModalAction } from '@components/common/modal/modal.context';
 import CloseButton from '@components/ui/close-button';
 import Heading from '@components/ui/heading';
-import { useTranslation } from 'next-i18next';
+
+import {useText} from "src/hooks/useText";
 
 const DeliveryAddresses: React.FC = () => {
-  const { t } = useTranslation('common');
+  const { t } = useText('common');
   let { data, isLoading } = useAddressQuery();
   const { closeModal } = useModalAction();
   if (isLoading) {

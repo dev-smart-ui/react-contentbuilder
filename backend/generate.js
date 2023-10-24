@@ -1,14 +1,14 @@
 
 const fs = require("fs");
 const path = require("path");
-
+const projectFolder = templateFolder
 
 const toCamelCase= (name)=>{
     return name.charAt(0).toUpperCase() + name.slice(1)
 }
  async function handler(req, res) {
     try {
-        const templateFolder = "../example/auto/autoimports/"
+        const templateFolder = "../razor-contentbuilder"
         const folderPath = path.join(process.cwd(), templateFolder);
         const fileNames = fs.readdirSync(folderPath);
 
@@ -18,6 +18,12 @@ const toCamelCase= (name)=>{
             const componentExportName = toCamelCase(fileName).replace(".js", "")
             importsTemplate.push(` import ${componentExportName} from "./autoimports/${fileName}"` )
             namesList.push(componentExportName)
+            const svgData = `
+                  <svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+                    <text x="10" y="40">Привет, мир!</text>
+                  </svg>
+            `;
+            fs.writeFileSync('example.svg', svgData);
             // const filePath = path.join(templateFolder, fileName);
             // const sourceCode  = fs.readFileSync(filePath, 'utf-8');
 

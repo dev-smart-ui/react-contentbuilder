@@ -6,9 +6,10 @@ import { useModalAction } from '@components/common/modal/modal.context';
 import { formatAddress } from '@utils/format-address';
 import Button from '@components/ui/button';
 import { useTranslation } from 'next-i18next';
+import {useText} from "src/hooks/useText";
 
 const AddressGrid: React.FC<{ address?: any }> = ({ address }) => {
-  const { t } = useTranslation('common');
+  const { t } = useText('common');
   const { openModal } = useModalAction();
 
   function handlePopupView(item: any) {
