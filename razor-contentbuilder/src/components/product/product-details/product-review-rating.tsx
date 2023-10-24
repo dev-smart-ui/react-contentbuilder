@@ -33,7 +33,7 @@ const data = [
 const ProductReviewRating: FC = () => {
   const { t } = useTranslation('common');
   return (
-    <div className="sm:flex">
+    <div className="lg:flex">
       <div className="pt-2">
         {data?.map((item) => (
           <ReviewCard item={item} key={`review-key-${item.id}`} />

@@ -44,7 +44,7 @@ const CheckoutForm: React.FC = () => {
         noValidate
       >
         <div className="flex flex-col space-y-4 lg:space-y-5">
-          <div className="flex flex-col sm:flex-row space-y-4 lg:space-y-0">
+          <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0">
             <Input
               label={t('forms:label-first-name')}
               {...register('firstName', {
@@ -72,7 +72,7 @@ const CheckoutForm: React.FC = () => {
             error={errors.address?.message}
             variant="solid"
           />
-          <div className="flex flex-col sm:flex-row space-y-4 lg:space-y-0">
+          <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0">
             <Input
               type="tel"
               label={t('forms:label-phone')}
@@ -100,7 +100,7 @@ const CheckoutForm: React.FC = () => {
               className="w-full lg:w-1/2 lg:ms-3 mt-2 md:mt-0"
             />
           </div>
-          <div className="flex flex-col sm:flex-row space-y-4 lg:space-y-0">
+          <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0">
             <Input
               label={t('forms:label-city')}
               {...register('city')}

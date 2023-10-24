@@ -108,7 +108,7 @@ const Header: React.FC = () => {
                     <div className="border-b border-white/10">
                         <Container className={"sm:max-w-[1730px]"}>
                             <div className="flex items-center justify-between  py-2 md:py-5">
-                                <div className="relative flex-shrink-0 sm:hidden">
+                                <div className="relative flex-shrink-0 lg:hidden">
                                     <button
                                         className="border border-skin-base/40 rounded-md focus:outline-none flex-shrink-0 text-sm  text-skin-inverted px-2.5 md:px-3 lg:px-[18px] py-2 md:py-2.5 lg:py-3 flex items-center transition-all hover:border-skin-four"
                                         onClick={handleMobileAllCategories}
@@ -134,7 +134,7 @@ const Header: React.FC = () => {
                                 {/* End of logo */}
 
                                 <div
-                                    className={`text-14px flex gap-2 hidden sm:flex`}>
+                                    className={`text-14px flex gap-2 hidden lg:flex`}>
                                     <div className="image_hotline bg-iconPhone2"></div>
                                     <div className={``}>
                                         <div className="text-white ">{t('text-hotline')}</div>
@@ -148,13 +148,13 @@ const Header: React.FC = () => {
 
                                 <Search
                                     searchId="top-bar-search"
-                                    className="hidden sm:flex lg:max-w-[450px] xl:max-w-[500px] 2xl:max-w-[800px] lg:mx-10"
+                                    className="hidden lg:flex lg:max-w-[450px] xl:max-w-[500px] 2xl:max-w-[800px] lg:mx-10"
                                     variant="fill"
                                 />
                                 {/* End of search */}
 
                                 <div className="flex space-s-5 xl:space-s-10 lg:max-w-[33%]">
-                                    <div className="hidden sm:flex items-center flex-shrink-0 accountButton">
+                                    <div className="hidden lg:flex items-center flex-shrink-0 accountButton">
                                         <AuthMenu
                                             isAuthorized={isAuthorized}
                                             href={ROUTES.ACCOUNT}
@@ -166,7 +166,7 @@ const Header: React.FC = () => {
                                             {t('text-account')}
                                         </AuthMenu>
                                     </div>
-                                    <CartButton className="hidden sm:flex" iconClassName={"text-white"}/>
+                                    <CartButton className="hidden lg:flex" iconClassName={"text-white"}/>
                                 </div>
                                 {/* End of auth & lang */}
                             </div>

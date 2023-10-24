@@ -16,7 +16,7 @@ const SearchTopBar = () => {
   return (
     <div className="flex justify-between items-center ">
       <button
-        className="mb-5 sm:hidden text-skin-base text-sm px-4 py-2 font-semibold border border-skin-base rounded-md flex items-center transition duration-200 ease-in-out focus:outline-none hover:border-skin-primary hover:text-skin-primary"
+        className="mb-5 lg:hidden text-skin-base text-sm px-4 py-2 font-semibold border border-skin-base rounded-md flex items-center transition duration-200 ease-in-out focus:outline-none hover:border-skin-primary hover:text-skin-primary"
         onClick={openFilter}
       >
         <FilterIcon />

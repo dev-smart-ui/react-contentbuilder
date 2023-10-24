@@ -25,7 +25,7 @@ const SearchTopBar : React.FC<Props> = ({onNavClick, viewAs}) => {
   return (
     <div className="flex flex-col sm:flex-row justify-between items-start mb-6 filters-panel">
       <button
-        className="inline-block sm:hidden text-skin-base text-sm px-4 py-2 font-semibold border border-skin-base rounded flex items-center mb-5"
+        className="inline-block lg:hidden text-skin-base text-sm px-4 py-2 font-semibold border border-skin-base rounded flex items-center mb-5"
         onClick={openFilter}
       >
         <FilterIcon />

@@ -43,7 +43,7 @@ const BottomNavigation: React.FC = () => {
 
   return (
     <>
-      <div className="sm:hidden fixed z-30 -bottom-0.5 flex items-center justify-between shadow-bottomNavigation body-font bg-skin-fill w-full h-14 px-4 md:px-6 lg:px-8 text-skin-muted pb-0.5">
+      <div className="lg:hidden fixed z-30 -bottom-0.5 flex items-center justify-between shadow-bottomNavigation body-font bg-skin-fill w-full h-14 px-4 md:px-6 lg:px-8 text-skin-muted pb-0.5">
         <button
           aria-label="Menu"
           className="flex flex-col items-center justify-center flex-shrink-0 outline-none focus:outline-none"
