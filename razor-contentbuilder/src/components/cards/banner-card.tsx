@@ -1,58 +1,48 @@
 import Link from '@components/ui/link';
-import Image from 'next/image';
-import useWindowSize from '@utils/use-window-size';
+
 import cn from 'classnames';
+import {BuilderImage} from "src/builderComponents/builderImage";
 
 interface BannerProps {
-  banner: any;
+  img: any;
+  link:string;
   variant?: 'rounded' | 'default';
   effectActive?: boolean;
   className?: string;
   classNameInner?: string;
 }
 
-function getImage(deviceWidth: number, imgObj: any) {
-  return deviceWidth < 480 ? imgObj.mobile : imgObj.desktop;
-}
+
 
 const BannerCard: React.FC<BannerProps> = ({
-  banner,
+  img ,
+  link,
   className,
   variant = 'default',
   effectActive = true,
   classNameInner,
 }) => {
-  const { width } = useWindowSize();
-  const { slug, title, image } = banner||{
-    slug:"slug",
-    title:"title",
-    image:undefined
-  };
-  let selectedImage= {}
-  if(image){
-    selectedImage = getImage(width!, image);
-  }
 
   return (
-    <div className={cn('mx-auto', className)}>
+    <div data-custom={"BannerCard"} className={cn('mx-auto', className)}>
       card
       <Link
-        href={slug}
+        href={link||"/"}
         className={cn(
           'rounded-sm h-full group flex justify-center relative overflow-hidden hover:opacity-90',
           classNameInner
         )}
       >
-        {image&&<Image
-          src={selectedImage.url}
-          width={selectedImage.width}
-          height={selectedImage.height}
-          alt={title}
+        <BuilderImage
+          src={img }
+          width={480}
+          height={200}
+          alt={""}
           quality={100}
           className={cn('bg-skin-thumbnail object-cover w-full', {
             'rounded-md': variant === 'rounded',
           })}
-        />}
+        />
         {effectActive && (
           <div className="absolute top-0 -start-full h-full w-1/2 z-5 block transform -skew-x-12 bg-gradient-to-r from-transparent to-white opacity-30 group-hover:animate-shine" />
         )}

@@ -4,7 +4,7 @@ export  const textFromBuilder = ({data , textName}) => {
 	if (Array.isArray(data)) {
 		for (const child of data) {
 			if(child?.attribs?.['data-type']){
-				console.log(child?.attribs?.['data-type'])
+
 			} else {
 
 			}

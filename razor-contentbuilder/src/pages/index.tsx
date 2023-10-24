@@ -10,7 +10,7 @@ import {fetchCategories} from '@framework/category/get-all-categories';
 import {fetchPopularProducts} from '@framework/product/get-all-popular-products';
 import {LIMITS} from '@framework/utils/limits';
 import {fetchBestSellerProducts} from "@framework/product/get-all-best-seller-products";
-import AllPages from "./allPages";
+import AllPages from "../components/allPages";
 
 export default function Home() {
 

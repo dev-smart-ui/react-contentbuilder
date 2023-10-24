@@ -2,7 +2,7 @@ import Cors from 'cors';
 import React from 'react';
 
 import {renderToString} from "react-dom/server";
-import {List} from "../../components/list";
+import {List_Of_Components} from "@components/list";
 
 
 
@@ -44,14 +44,15 @@ export default async function handler(req, res) {
     await runMiddleware(req, res, cors);
     try {
         let renderedComponents = [];
-
-        Object.entries(List).forEach((item)=>{
+      process.env.IN_API_CONTEXT = 'true';
+        Object.entries(List_Of_Components).forEach((item)=>{
 
                 const componentHTML = renderToString(React.createElement(item[1]));
-                console.log(componentHTML)
+
                 renderedComponents.push({ fileName:[item[0]], html: componentHTML });
             }
         )
+      delete process.env.IN_API_CONTEXT;
         const response = renderedComponents.map( item =>{
             return {
                 'thumbnail': 'custom/userInfo.png ',

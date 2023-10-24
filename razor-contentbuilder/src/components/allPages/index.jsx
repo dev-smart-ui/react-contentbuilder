@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import { TableCell } from '@components/tableCell/tableCell';
+
 import styles from './allPages.module.scss';
-import {getAllPagesBuilder} from "@utils/getAllPagesBuilder";
+import {TableCell} from "../tableCell/tableCell";
+import {getAllPagesBuilder} from "../../utils/getAllPagesBuilder";
 
 
 const AllPages = () => {

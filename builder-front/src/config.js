@@ -1,3 +1,3 @@
 export const CONFIG = {
-    getBlockUrl: "http://localhost:3003/api/custom-builder"
+    getBlockUrl: "http://localhost:3004/api/custom-builder"
 }

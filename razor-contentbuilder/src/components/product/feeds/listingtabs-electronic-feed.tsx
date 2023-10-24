@@ -5,8 +5,8 @@ import {useElectronicProductsQuery} from "@framework/product/get-all-electronic-
 import { useElectronicCategoryQuery } from '@framework/product/get-electronic-category';
 
 type BoxProps = {
-    colSiderbar: boolean;
-    category: any; // 👈️ added type for children
+    colSiderbar?: boolean;
+    category?: any; // 👈️ added type for children
 };
 
 export default function ListingTabsElectronicFeed(props: BoxProps) {

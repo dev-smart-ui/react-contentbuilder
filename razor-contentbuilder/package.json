@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "clean": "rimraf \"{.next,dist,build,out,node_modules}\"",
-    "dev": "set PORT=3003 &&   next dev",
+    "dev": "set PORT=3004 &&   next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
