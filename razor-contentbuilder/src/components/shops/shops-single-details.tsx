@@ -30,7 +30,7 @@ const ShopsSingleDetails: React.FC = () => {
   return (
     <>
 
-      <div className="flex sm:hidden items-center px-4 md:px-6 py-4 border-b border-skin-base mb-7">
+      <div className="flex lg:hidden items-center px-4 md:px-6 py-4 border-b border-skin-base mb-7">
         <div className="flex flex-shrink-0">
           <Image
             src={data?.logo?.original!}
@@ -55,7 +55,7 @@ const ShopsSingleDetails: React.FC = () => {
       <Container>
         <Element
           name="grid"
-          className="flex flex-col sm:flex-row lg:pt-8 pb-16 lg:pb-20"
+          className="flex flex-col lg:flex-row lg:pt-8 pb-16 lg:pb-20"
         >
           <div className="flex-shrink-0 hidden lg:block lg:w-80 xl:w-[350px] 2xl:w-96 lg:sticky lg:top-16 category-mobile-sidebar">
             <div className="border border-[#EFF2F4] shadow-vendorSidebar rounded-lg">

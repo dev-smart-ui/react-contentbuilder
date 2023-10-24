@@ -36,7 +36,7 @@ export default function ProductDetailsTab() {
                     ))}
                 </Tab.List>
                 <Tab.Panels className="mt-6 lg:mt-9">
-                    <Tab.Panel className="sm:flex">
+                    <Tab.Panel className="lg:flex">
                         <div
                             className="text-sm sm:text-15px text-skin-muted leading-[2em] space-y-4 lg:space-y-5 xl:space-y-7">
                             <p>
