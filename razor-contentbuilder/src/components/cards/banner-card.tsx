@@ -2,6 +2,7 @@ import Link from '@components/ui/link';
 
 import cn from 'classnames';
 import {BuilderImage} from "src/builderComponents/builderImage";
+import {textFromBuilder} from "@components/customBlocks/helper";
 
 interface BannerProps {
   img: any;
@@ -14,36 +15,31 @@ interface BannerProps {
 
 
 
-const BannerCard: React.FC<BannerProps> = ({
-  img ,
-  link,
-  className,
-  variant = 'default',
-  effectActive = true,
-  classNameInner,
-}) => {
+const BannerCard: React.FC<BannerProps> = ( props) => {
+
 
   return (
-    <div data-custom={"BannerCard"} className={cn('mx-auto', className)}>
-      card
+    <div data-custom={"BannerCard"} className={cn('mx-auto', props?.className)}>
+
+      <span data-text={"main"}>card</span>
       <Link
-        href={link||"/"}
+        href={props?.link||"/"}
         className={cn(
           'rounded-sm h-full group flex justify-center relative overflow-hidden hover:opacity-90',
-          classNameInner
+          props. classNameInner
         )}
       >
         <BuilderImage
-          src={img }
+          src={props?.img }
           width={480}
           height={200}
           alt={""}
           quality={100}
           className={cn('bg-skin-thumbnail object-cover w-full', {
-            'rounded-md': variant === 'rounded',
+            'rounded-md': props?.variant === 'rounded',
           })}
         />
-        {effectActive && (
+        {props?.effectActive && (
           <div className="absolute top-0 -start-full h-full w-1/2 z-5 block transform -skew-x-12 bg-gradient-to-r from-transparent to-white opacity-30 group-hover:animate-shine" />
         )}
       </Link>

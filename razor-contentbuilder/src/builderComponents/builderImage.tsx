@@ -21,7 +21,7 @@ export const imageAdopter = (src?: string | StaticRequire | StaticImageData)=>{
     }
 
         if (srcString.startsWith("http://") || srcString.startsWith("https://") || srcString.startsWith("/")) {
-            return src;
+            return srcString;
         }
 
 
@@ -31,7 +31,7 @@ export const imageAdopter = (src?: string | StaticRequire | StaticImageData)=>{
 
 export const BuilderImage:FC<ImageProps> = ({src ,  ...rest}) => {
         if(process.env.IN_API_CONTEXT){
-            return  <div> her</div>
+            return <img src={imageAdopter(src)} alt=""/>
         }
     return         <Image
       src={imageAdopter(src)}

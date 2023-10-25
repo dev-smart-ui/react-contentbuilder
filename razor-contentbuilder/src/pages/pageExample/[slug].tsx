@@ -1,11 +1,6 @@
 import React  from 'react';
-import parse from 'html-react-parser';
-import {Converter} from '@components/customBlocks/converter/converter';
-import {Request} from '@components/customBlocks/request/request';
-import {UserInfo} from "@components/customBlocks/userInfo/userInfo";
-import {InviteFriend} from "@components/customBlocks/inviteFriendCard/inviteFriendCard";
-import {BunkCards} from "@components/customBlocks/bunkCards/bunkCards";
-import {WatchList} from "@components/customBlocks/watchList/watchList";
+import parse  from 'html-react-parser';
+
 import {appConfig} from "../../../config";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import Layout from "@components/layout/layout";
@@ -15,7 +10,7 @@ import {List_Of_Components} from "@components/list";
 
 const formatStyles = (styles: string | undefined): { [key: string]: string } => {
 	if (!styles) return {};
-	console.log('styles ', styles);
+
 
 	const stylesArr = styles.split(';');
 	const styleObject: { [key: string]: string } = {};
@@ -37,30 +32,18 @@ const PageExample = ({dataFromCms}: any) => {
 		replace: ({ attribs, children, name }: any) => {
 			if (!attribs) return
 
-			switch (attribs['data-custom']) {
-				case 'converter' : return <Converter data={children}/>
-				case 'request' : return <Request data={children}/>
-				case 'userInfo' : return <UserInfo data={children}/>
-				case 'inviteFriend' : return <InviteFriend data={children}/>
-				case 'bunkCards' : return <BunkCards data={children}/>
-				case 'watchList' :   return <WatchList data={children} />
-			 }
-			if(attribs['data-custom']){
-				console.log(attribs['data-custom'])
-			}
  				for (const key in List_Of_Components){
 					const Component = List_Of_Components[key]
 
-					if(attribs['data-custom']===key){
-
+					if(attribs['data-component']===key){
 						return <Component {...children}/>
 					}
 				}
 			switch (name) {
 				case 'img': {
 					const imgStyles = attribs.style ? formatStyles(attribs.style) : '';
-					const width = imgStyles ? +parseInt(imgStyles.width) : 100;
-					const height = imgStyles ? +parseInt(imgStyles.height) : 100;
+					const width = imgStyles ? +parseInt(imgStyles.width) : 480;
+					const height = imgStyles ? +parseInt(imgStyles.height) : 600;
 					const path = attribs.src.split('/')[0];
 
 					return <BuilderImage width={width} height={height} src={`${path === 'assets' ? appConfig.imgUrl : ''}${attribs.src}`} alt=''/>

@@ -1,13 +1,32 @@
 import React from 'react';
-import {CONFIG_RAZOR} from "./config";
+import {CONFIG_RAZOR, onlyForBuilder} from "./config";
 
 
+  const Test = (props) => {
 
-  const Test = () => {
+    return <div  data-component={"Test"} >
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <span data-textpropsname={"mainText"}>
+            {props.mainText}
+        </span>
 
-    return <div  >
- hello
-        <img src={CONFIG_RAZOR.imgPlaceholder} alt=""/>
+        <img data-srcpropsname={"mainImage"} src={CONFIG_RAZOR.imgPlaceholder} alt=""/>
+        {onlyForBuilder()&& <span> this text only in builder</span>}
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
     </div>
 };
 
