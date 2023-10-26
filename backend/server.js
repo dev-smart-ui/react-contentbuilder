@@ -5,6 +5,8 @@ const cors = require('cors');
 const serveStatic = require('serve-static');
 const session = require('express-session');
 const fs = require('fs').promises;
+const baseUrl="https://builder.smart-ui.pro/";
+const getProps= require("./getProps");
 const jsxTransform = require("html-to-jsx-transform")
 const {JSDOM} = require("jsdom");
 const {CONFIG} = require("./config");
@@ -19,22 +21,25 @@ const isLocalhost = (hostname) => {
 }
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/nextBuilder',
-	{useNewUrlParser: true, useUnifiedTopology: true})
-	.then(() => console.log('MongoDB Connected'))
-	.catch(err => console.log(err));
+mongoose.connect('mongodb://127.0.0.1:27017/nextBuilder',
+    {useNewUrlParser: true, useUnifiedTopology: true})
+    .then(() => console.log('MongoDB Connected'))
+    .catch(err => console.log(err));
 
 const HtmlContentSchema = new mongoose.Schema({
-	content: String,
-	page: {
-		type: String,
-		required: true,
-		unique: true
-	},
-	date: {
-		type: Date,
-		default: Date.now
-	}
+    content: String,
+    page: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    date: {
+        type: Date,
+        default: Date.now
+    },
+    props:{
+        type: String,
+    }
 });
 
 mongoose.model('htmlContent', HtmlContentSchema);
@@ -91,32 +96,39 @@ app.post('/save', async (req, res) => {
 		const newPageValue = req.body.page;
 		const content = req.body.html;
 
-		console.log(newPageValue);
-		console.log(content);
 
-		if (!newPageValue || !content) {
-			return res.status(500).json({
-				success: false,
-				message: 'forgot to send page or content'
-			});
-		}
+        if (!newPageValue || !content) {
+            return res.status(500).json({
+                success: false,
+                message: 'forgot to send page or content'
+            });
+        }
+        let props = {}
 
-		const data = {
-			content,
-			date: new Date(),
-			page: newPageValue
-		};
+        try{
+            props = getProps(req.body.html)
+        }catch (e){
+            console.log(e)
+        }
 
-		const result = await routeModel.findOneAndUpdate(
-			{page: newPageValue},
-			data,
-			{upsert: true, new: true, lean: true}
-		);
 
-		res.status(200).json({
-			success: true,
-			result
-		});
+        const data = {
+            content,
+            props,
+            date: new Date(),
+            page: newPageValue
+        };
+
+
+        const result = await routeModel.findOneAndUpdate(
+            {page: newPageValue},
+            data,
+            {upsert: true, new: true, lean: true}
+        );
+        res.status(200).json({
+            success: true,
+            result, data
+        });
 
 	} catch {
 		res.status(500).json({
@@ -127,10 +139,9 @@ app.post('/save', async (req, res) => {
 });
 
 app.get('/load', async (req, res) => {
-	try {
-		const pageValue = req.query.page || '/';
-		console.log('pageValue ', pageValue)
-		const result = await routeModel.findOne({page: pageValue});
+    try {
+        const pageValue = req.query.page || '/';
+        const result = await routeModel.findOne({page: pageValue});
 
 		if (!result) {
 			return res.status(200).json({
@@ -139,16 +150,17 @@ app.get('/load', async (req, res) => {
 			});
 		}
 
-		res.status(200).json({
-			success: true,
-			html: result.content
-		});
-	} catch (error) {
-		res.status(500).json({
-			success: false,
-			message: 'Failed to load HTML from database.'
-		});
-	}
+        res.status(200).json({
+            success: true,
+            html: result?.content,
+            props:result?.props
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: 'Failed to load HTML from database.'
+        });
+    }
 });
 
 app.get('/source-code', async (req, res) => {
@@ -189,16 +201,15 @@ app.get('/delete', async (req, res) => {
 			});
 		}
 
-		res.status(200).json({
-			success: true,
-
-		});
-	} catch (error) {
-		res.status(500).json({
-			success: false,
-			error
-		});
-	}
+        res.status(200).json({
+            success: true,
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            error
+        });
+    }
 });
 
 app.get('/all', async (req, res) => {

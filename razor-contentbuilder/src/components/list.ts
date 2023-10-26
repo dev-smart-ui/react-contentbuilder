@@ -1,8 +1,4 @@
-
-import Test from "./test";
-import BannerCard from "./cards/banner-card";
-
-
+import Test from "@components/test";
 
 export const List_Of_Components = {
     Test,

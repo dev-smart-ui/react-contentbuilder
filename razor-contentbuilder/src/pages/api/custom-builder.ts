@@ -39,9 +39,8 @@ export default async function handler(req, res) {
                 'thumbnail': `${CONFIG_RAZOR.baseRazorUrl}/files/preview/${item.fileName}.svg`,
                 'category': '120',
                 'html':item.html
+             }
             }
-            }
-
         )
         res.status(200).json(response);
 
