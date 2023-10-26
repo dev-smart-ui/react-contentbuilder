@@ -1,6 +1,6 @@
 const { JSDOM } = require('jsdom');
 
-const getProps = async  (html)=>{
+const getProps =    (html)=>{
     const dom = new JSDOM(html);
     const document = dom.window.document;
     const elements = document.querySelectorAll('[data-component]');
@@ -27,8 +27,7 @@ const getProps = async  (html)=>{
             // }
         })
     });
-    console.log(customProps)
-    return customProps
+    return JSON.stringify(customProps)
 }
 
 

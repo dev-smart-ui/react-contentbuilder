@@ -139,10 +139,10 @@ app.post('/save', async (req, res) => {
                 message: 'forgot to send page or content'
             });
         }
-let propsList = {}
+        let props = {}
 
         try{
-              propsList = getProps(req.body.html)
+            props = getProps(req.body.html)
         }catch (e){
             console.log(e)
         }
@@ -150,20 +150,20 @@ let propsList = {}
 
         const data = {
             content,
-            propsList,
+            props,
             date: new Date(),
             page: newPageValue
         };
+
 
         const result = await routeModel.findOneAndUpdate(
             {page: newPageValue},
             data,
             {upsert: true, new: true, lean: true}
         );
-
         res.status(200).json({
             success: true,
-            result
+            result, data
         });
 
     } catch {
@@ -176,7 +176,6 @@ let propsList = {}
 app.get('/load', async (req, res) => {
     try {
         const pageValue = req.query.page || '/';
-        console.log('pageValue ', pageValue)
         const result = await routeModel.findOne({page: pageValue});
 
         if (!result) {
