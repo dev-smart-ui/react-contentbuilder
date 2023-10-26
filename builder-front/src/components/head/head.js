@@ -2,6 +2,8 @@ import "./head.css";
 import Input from "./input";
 import {useLocation} from "react-router-dom";
 import {useEffect, useState} from "react";
+import axios from "axios";
+import {CONFIG} from "../../config"
 
 const Head = ({queryPageParam, rangeValue, setRangeValue}) => {
 	const location = useLocation();
@@ -35,6 +37,17 @@ const Head = ({queryPageParam, rangeValue, setRangeValue}) => {
 		}
 	}, []);
 
+	const onHandlerCreatePreviews = async () => {
+		try {
+			const response = await axios.get(`${CONFIG.baseBuilderUrl}generate-preview`)
+			// const response = await axios.get(`http://localhost:8081/generate-preview`)
+			const data = response.data
+
+			console.log(data.message)
+		} catch (error) {
+			console.error("error:", error)
+		}
+	}
 
 
 	return (
@@ -51,6 +64,10 @@ const Head = ({queryPageParam, rangeValue, setRangeValue}) => {
 
 	        <button disabled={lock} onClick={onHandlerRebuild} className="text-center transition-all inline-block cursor-pointer ml-1 mb-2 bg-red-500 hover:bg-red-700 text-white size-14 py-3 px-4 uppercase font-semibold rounded-full">
 		        Rebuild
+	        </button>
+
+	        <button disabled={lock} onClick={onHandlerCreatePreviews} className="text-center transition-all inline-block cursor-pointer ml-1 mb-2 bg-red-500 hover:bg-red-700 text-white size-14 py-3 px-4 uppercase font-semibold rounded-full">
+		        generate preview
 	        </button>
         </div>
 
