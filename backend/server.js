@@ -22,6 +22,9 @@ const HtmlContentSchema = new mongoose.Schema({
     date: {
         type: Date,
         default: Date.now
+    },
+    props:{
+        type: String,
     }
 });
 
@@ -185,7 +188,8 @@ app.get('/load', async (req, res) => {
 
         res.status(200).json({
             success: true,
-            html: result.content
+            html: result?.content,
+            props:result?.props
         });
     } catch (error) {
         res.status(500).json({
