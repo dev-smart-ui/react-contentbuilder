@@ -27,6 +27,7 @@ const getProps = async  (html)=>{
             // }
         })
     });
+    console.log(customProps)
     return customProps
 }
 
