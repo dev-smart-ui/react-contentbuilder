@@ -7,7 +7,7 @@ const fs = require('fs').promises;
 const baseUrl="https://builder.smart-ui.pro/";
 const getProps= require("./getProps");
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/nextBuilder',
+mongoose.connect('mongodb://127.0.0.1:27017/nextBuilder',
     {useNewUrlParser: true, useUnifiedTopology: true})
     .then(() => console.log('MongoDB Connected'))
     .catch(err => console.log(err));
