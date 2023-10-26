@@ -3,6 +3,7 @@ import React from 'react';
 
 import {renderToString} from "react-dom/server";
 import {List_Of_Components} from "@components/list";
+import {CONFIG_RAZOR} from "@components/config";
 
 
 
@@ -35,7 +36,7 @@ export default async function handler(req, res) {
       delete process.env.IN_API_CONTEXT;
         const response = renderedComponents.map( item =>{
             return {
-                'thumbnail': 'custom/userInfo.png ',
+                'thumbnail': `${CONFIG_RAZOR.baseRazorUrl}/files/preview/${item.fileName}.svg`,
                 'category': '120',
                 'html':item.html
             }
