@@ -34,13 +34,12 @@ export default async function handler(req, res) {
         )
       delete process.env.IN_API_CONTEXT;
         const response = renderedComponents.map( item =>{
-            return {
+             return {
                 'thumbnail': 'custom/userInfo.png ',
                 'category': '120',
                 'html':item.html
+             }
             }
-            }
-
         )
         res.status(200).json(response);
 

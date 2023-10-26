@@ -2,8 +2,13 @@ import React from 'react';
 import {CONFIG_RAZOR, onlyForBuilder} from "./config";
 import Link from "next/link";
 
-const IsEditable = ()=>{
-    
+type TCustomProps={
+    [key: string]: "src"|"textContent"|"href";
+}
+
+
+const IsEditable = (params :TCustomProps )=>{
+     return {"data-propsname":JSON.stringify(params)}
 }
 
   const Test = ({mainText="default text"}) => {
@@ -17,13 +22,13 @@ const IsEditable = ()=>{
         <br/>
         <br/>
         <br/>
-        <span data-propsname={"{text:textContent}"}>
+        <span {...IsEditable({text: "textContent"})} >
             {mainText}
         </span>
 
-        <img   data-propsname={"{src:img}"} src={CONFIG_RAZOR.imgPlaceholder} alt=""/>
+        <img   {...IsEditable({image: "src"})} src={CONFIG_RAZOR.imgPlaceholder} alt=""/>
         {onlyForBuilder()&& <div>  hidden 0</div>}
-        <Link   data-propsname={"{href:href, linkText:textContent}"}  href={"/pageExample/user"}>link  </Link>
+        <Link   {...IsEditable({href: "href", linkText: "textContent"})} href={"/pageExample/user"}>1123  </Link>
         <br/>
         <br/>
         <br/>

@@ -5,7 +5,7 @@ const serveStatic = require('serve-static');
 const session = require('express-session');
 const fs = require('fs').promises;
 const baseUrl="https://builder.smart-ui.pro/";
-
+const getProps= require("./getProps");
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/nextBuilder',
     {useNewUrlParser: true, useUnifiedTopology: true})
@@ -129,8 +129,6 @@ app.post('/save', async (req, res) => {
         const newPageValue = req.body.page;
         const content = req.body.html;
 
-        console.log(newPageValue);
-        console.log(content);
 
         if (!newPageValue || !content) {
             return res.status(500).json({
@@ -139,8 +137,11 @@ app.post('/save', async (req, res) => {
             });
         }
 
+        const propsList = getProps(req.body.html)
+
         const data = {
             content,
+            propsList,
             date: new Date(),
             page: newPageValue
         };

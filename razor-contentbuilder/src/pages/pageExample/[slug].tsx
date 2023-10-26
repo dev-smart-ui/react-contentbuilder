@@ -27,7 +27,7 @@ const formatStyles = (styles: string | undefined): { [key: string]: string } => 
 
 
 const PageExample = ({dataFromCms}: any) => {
-
+const counter ={ }
 	const options = {
 		replace: ({ attribs, children, name }: any) => {
 			if (!attribs) return
@@ -36,6 +36,12 @@ const PageExample = ({dataFromCms}: any) => {
 					const Component = List_Of_Components[key]
 
 					if(attribs['data-component']===key){
+						if(counter[key]){
+							counter[key]=counter[key]+1
+						}else{
+							counter[key]=0
+						}
+						console.log(counter)
 						return <Component {...children}/>
 					}
 				}
