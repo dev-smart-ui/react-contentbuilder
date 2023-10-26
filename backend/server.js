@@ -136,8 +136,14 @@ app.post('/save', async (req, res) => {
                 message: 'forgot to send page or content'
             });
         }
+let propsList = {}
 
-        const propsList = getProps(req.body.html)
+        try{
+              propsList = getProps(req.body.html)
+        }catch (e){
+            console.log(e)
+        }
+
 
         const data = {
             content,
