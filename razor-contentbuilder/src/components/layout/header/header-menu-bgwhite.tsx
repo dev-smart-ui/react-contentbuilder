@@ -1,4 +1,4 @@
-import Link from '@components/ui/link';
+import Link from "next/link";
 import {BsChevronDown} from 'react-icons/bs';
 import ListMenu from '@components/ui/list-menu';
 import SubMega from '@components/ui/mega/sub-mega';

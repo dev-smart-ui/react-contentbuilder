@@ -14,12 +14,8 @@ const variantBasedClasses = {
   highlightedTwo: 'bg-gradient-to-r from-[#2930b4] to-[#2a9eb0]',
 };
 
-const HighlightedBar: React.FunctionComponent<HighlightedBarProps> = ({
-  variant = 'dark',
-  onClose,
-  children,
-  className,
-}) => {
+// @ts-ignore
+const HighlightedBar: React.FunctionComponent<HighlightedBarProps> = ({variant = 'dark', onClose, children, className,}) => {
   return (
     <div
       className={cn(

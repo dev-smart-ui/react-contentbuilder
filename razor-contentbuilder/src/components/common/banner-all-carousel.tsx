@@ -44,23 +44,26 @@ const BannerAllCarousel: React.FC<BannerProps> = ({
   const classCarousel =  layout == "home4" ? "rounded border border-black/10  py-5  md:py-5 bg-white " : "border-t border-black/10  py-5  md:py-10 ";
   return (
     <div className={className}>
-      <Carousel
-        autoplay={false}
-        breakpoints={breakpoints}
-        buttonSize={buttonSize}
-        prevActivateId="all-banner-carousel-button-prev"
-        nextActivateId="all-banner-carousel-button-next"
-        className={classCarousel}
-      >
-        {data?.map((banner: any) => (
-          <SwiperSlide key={`all-banner--key${banner.id}`}>
-            {
-              // @ts-ignore
-              <BannerCard banner={banner} effectActive={true} />
-            }
-          </SwiperSlide>
-        ))}
-      </Carousel>
+      {
+        // @ts-ignore
+        <Carousel
+          autoplay={false}
+          breakpoints={breakpoints}
+          buttonSize={buttonSize}
+          prevActivateId="all-banner-carousel-button-prev"
+          nextActivateId="all-banner-carousel-button-next"
+          className={classCarousel}
+        >
+          {data?.map((banner: any) => (
+            <SwiperSlide key={`all-banner--key${banner.id}`}>
+              {
+                // @ts-ignore
+                <BannerCard banner={banner} effectActive={true}/>
+              }
+            </SwiperSlide>
+          ))}
+        </Carousel>
+      }
     </div>
   );
 };

@@ -32,8 +32,8 @@ type CarouselPropsType = {
   grid?: {} | any;
 };
 
-const Carousel: React.FunctionComponent<CarouselPropsType> = ({
-  children,
+// @ts-ignore
+const Carousel: React.FunctionComponent<CarouselPropsType> = ({children,
   className = '',
   buttonGroupClassName = '',
   prevActivateId = '',

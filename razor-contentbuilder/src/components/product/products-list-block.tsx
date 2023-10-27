@@ -59,38 +59,39 @@ const ProductsListBlock: React.FC<ProductsProps> = ({
                 </div>
             ) : (
                 <div className="heightFull relative extraslider--sidebar">
-                    <Carousel
-                        breakpoints={breakpoints}
-                        grid={{rows: 3, fill: 'row'}}
-                        className=" "
-                        buttonGroupClassName="xs:-top-11 sm:-top-11"
-                        prevButtonClassName="end-8 -translate-y-2 "
-                        nextButtonClassName="end-0 -translate-y-2"
+                    {// @ts-ignore
+                        <Carousel
+                          breakpoints={breakpoints}
+                          grid={{rows: 3, fill: 'row'}}
+                          className=" "
+                          buttonGroupClassName="xs:-top-11 sm:-top-11"
+                          prevButtonClassName="end-8 -translate-y-2 "
+                          nextButtonClassName="end-0 -translate-y-2"
 
-                    >
-                        {loading && !products?.length ? (
-                            Array.from({length: limit!}).map((_, idx) => (
+                        >
+                            {loading && !products?.length ? (
+                              Array.from({length: limit!}).map((_, idx) => (
                                 <SwiperSlide
-                                    key={`${uniqueKey}-${idx}`}
-                                    className="py-1.5 md:py-2 xl:py-2.5"
+                                  key={`${uniqueKey}-${idx}`}
+                                  className="py-1.5 md:py-2 xl:py-2.5"
                                 >
                                     <ProductCardLoader uniqueKey={`${uniqueKey}-${idx}`}/>
                                 </SwiperSlide>
-                            ))
-                        ) : (
-                            <>
-                                {products?.slice(0, limit).map((product: any, idx) => (
+                              ))
+                            ) : (
+                              <>
+                                  {products?.slice(0, limit).map((product: any, idx) => (
                                     <SwiperSlide
-                                        key={`${uniqueKey}-${idx}`}
-                                        className="py-1.5 "
+                                      key={`${uniqueKey}-${idx}`}
+                                      className="py-1.5 "
                                     >
                                         <ProductList product={product}/>
                                     </SwiperSlide>
-                                ))}
+                                  ))}
 
-                            </>
-                        )}
-                    </Carousel>
+                              </>
+                            )}
+                        </Carousel>}
                 </div>
             )}
 

@@ -40,30 +40,34 @@ const Latestblog: React.FC<Props> = ({
         <div className={className}>
 
             <SectionHeader sectionHeading="text-latestblog" className="mb-5 md:mb-6 block-title"/>
+
+          {
+            // @ts-ignore
             <Carousel
-                breakpoints={breakpoints}
-                autoplay={false}
-                navigation={false}
-                pagination={{
-                    clickable: true,
-                }}
-                className="-mx-1.5 md:-mx-2 xl:-mx-2.5 -my-4"
-                prevActivateId="collection-carousel-button-prev"
-                nextActivateId="collection-carousel-button-next"
-            >
-                {dataBlog?.slice(0, 3)?.map((item) => (
-                    <SwiperSlide
-                        key={`collection-key-${item.id}`}
-                        className="px-1.5 md:px-2 xl:px-2.5 py-4"
-                    >
-                        <LatestblogCard
-                            key={item.id}
-                            collection={item}
-                            href={`${ROUTES.BUNDLE}/${item.slug}`}
-                        />
-                    </SwiperSlide>
-                ))}
-            </Carousel>
+            breakpoints={breakpoints}
+            autoplay={false}
+            navigation={false}
+            pagination={{
+              clickable: true,
+            }}
+            className="-mx-1.5 md:-mx-2 xl:-mx-2.5 -my-4"
+            prevActivateId="collection-carousel-button-prev"
+            nextActivateId="collection-carousel-button-next"
+          >
+            {dataBlog?.slice(0, 3)?.map((item) => (
+              <SwiperSlide
+                key={`collection-key-${item.id}`}
+                className="px-1.5 md:px-2 xl:px-2.5 py-4"
+              >
+                <LatestblogCard
+                  key={item.id}
+                  collection={item}
+                  href={`${ROUTES.BUNDLE}/${item.slug}`}
+                />
+              </SwiperSlide>
+            ))}
+          </Carousel>
+          }
 
         </div>
     );

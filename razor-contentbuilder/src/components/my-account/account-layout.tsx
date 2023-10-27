@@ -56,6 +56,7 @@ const accountMenu = [
   },
 ];
 
+// @ts-ignore
 const AccountLayout: React.FunctionComponent<{}> = ({ children }) => {
   return (
     <div className="border-t border-b border-skin-base">

@@ -1,6 +1,6 @@
 import Heading from '@components/ui/heading';
 import Image from '@components/ui/image';
-import Link from '@components/ui/link';
+import Link from "next/link";
 import { LinkProps } from 'next/link';
 import { useTranslation } from 'next-i18next';
 import cn from 'classnames';

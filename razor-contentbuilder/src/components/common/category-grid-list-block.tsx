@@ -51,13 +51,14 @@ const CategoryGridListBlock: React.FC<CategoriesProps> = ({
             <Alert message={error?.message} />
           ) : (
             <>
-              <Carousel
-                breakpoints={breakpoints}
-                grid={{ rows: 1, fill: 'row' }}
-                className=""
-              >
-                {isLoading && !data
-                  ? Array.from({ length: 6 }).map((_, idx) => {
+              {// @ts-ignore
+                <Carousel
+                  breakpoints={breakpoints}
+                  grid={{rows: 1, fill: 'row'}}
+                  className=""
+                >
+                  {isLoading && !data
+                    ? Array.from({length: 6}).map((_, idx) => {
                       return (
                         <SwiperSlide
                           className="p-1.5 md:p-2"
@@ -69,7 +70,7 @@ const CategoryGridListBlock: React.FC<CategoriesProps> = ({
                         </SwiperSlide>
                       );
                     })
-                  : data?.categories?.data?.slice(0, CATEGORIES_LIMITS).map((category) => (
+                    : data?.categories?.data?.slice(0, CATEGORIES_LIMITS).map((category) => (
                       <SwiperSlide
                         key={`category--key-${category.id}`}
                         className=""
@@ -78,13 +79,13 @@ const CategoryGridListBlock: React.FC<CategoriesProps> = ({
                           category={category}
                           href={{
                             pathname: ROUTES.SEARCH,
-                            query: { category: category.slug },
+                            query: {category: category.slug},
                           }}
                           className=""
                         />
                       </SwiperSlide>
                     ))}
-              </Carousel>
+                </Carousel>}
             </>
           ) }
         </div>

@@ -145,16 +145,17 @@ const Header: React.FC = () => {
                                             <UserIcon className="text-white"/>
                                         </div>
 
-                                        <AuthMenu
-                                            isAuthorized={isAuthorized}
-                                            href={ROUTES.ACCOUNT}
-                                            btnProps={{
-                                                children: t('text-sign-in'),
-                                                onClick: handleLogin,
-                                            }}
-                                        >
-                                            {t('text-account')}
-                                        </AuthMenu>
+                                        {// @ts-ignore
+                                            <AuthMenu
+                                              isAuthorized={isAuthorized}
+                                              href={ROUTES.ACCOUNT}
+                                              btnProps={{
+                                                  children: t('text-sign-in'),
+                                                  onClick: handleLogin,
+                                              }}
+                                            >
+                                                {t('text-account')}
+                                            </AuthMenu>}
                                     </div>
                                     <CartButton className="hidden lg:flex" iconClassName={"text-white"}/>
 
@@ -222,16 +223,17 @@ const Header: React.FC = () => {
                                                 <UserIcon className="text-white"/>
                                             </div>
 
-                                            <AuthMenu
-                                                isAuthorized={isAuthorized}
-                                                href={ROUTES.ACCOUNT}
-                                                btnProps={{
-                                                    children: t('text-sign-in'),
-                                                    onClick: handleLogin,
-                                                }}
-                                            >
-                                                {t('text-account')}
-                                            </AuthMenu>
+                                            {// @ts-ignore
+                                                <AuthMenu
+                                                  isAuthorized={isAuthorized}
+                                                  href={ROUTES.ACCOUNT}
+                                                  btnProps={{
+                                                      children: t('text-sign-in'),
+                                                      onClick: handleLogin,
+                                                  }}
+                                                >
+                                                    {t('text-account')}
+                                                </AuthMenu>}
                                         </div>
                                         {/* End of auth */}
 

@@ -8,6 +8,7 @@ import MobileNavigation from '@components/layout/mobile-navigation/mobile-naviga
 import { useTranslation } from 'next-i18next';
 import BackToTopButton from "@components/ui/back-to-top";
 
+// @ts-ignore
 const Layout: React.FC = ({ children }) => {
   const { t } = useTranslation('common');
   const [highlightedBar, setHighlightedBar] = useSessionStorage(
@@ -18,6 +19,7 @@ const Layout: React.FC = ({ children }) => {
   return (
     <div className="flex flex-col min-h-screen">
       {highlightedBar !== 'true' && (
+        // @ts-ignore
         <HighlightedBar onClose={() => setHighlightedBar('true')} variant="highlightedTwo" className="text-white">
           <div className="flex items-center">
             <p

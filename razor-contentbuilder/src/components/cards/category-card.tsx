@@ -1,4 +1,4 @@
-import Link from '@components/ui/link';
+import Link from "next/link";
 import Image from '@components/ui/image';
 import {LinkProps} from 'next/link';
 import {useTranslation} from 'next-i18next';

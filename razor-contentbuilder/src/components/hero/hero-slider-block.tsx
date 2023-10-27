@@ -17,27 +17,28 @@ const HeroTwoSliderBlock: React.FC<Props> = ({
      }) => {
     return (
         <div className={`${className}`}>
+          {// @ts-ignore
             <Carousel
-                pagination={{
-                    clickable: true,
-                }}
-                navigation={true}
-                autoplay={true}
-                prevActivateId={`prevActivateId`}
-                nextActivateId={`nextActivateId`}
-                className ={'overflow-hidden'}
+              pagination={{
+                clickable: true,
+              }}
+              navigation={true}
+              autoplay={true}
+              prevActivateId={`prevActivateId`}
+              nextActivateId={`nextActivateId`}
+              className={'overflow-hidden'}
             >
-                {heroBanner?.map((banner: any) => (
-                    <SwiperSlide key={`banner--key${banner.id}`}>
-                        <HeroBannerCard
-                            banner={banner}
-                            variant="slider"
-                            heroContentCard={heroContent}
-                            className={contentClassName}
-                        />
-                    </SwiperSlide>
-                ))}
-            </Carousel>
+              {heroBanner?.map((banner: any) => (
+                <SwiperSlide key={`banner--key${banner.id}`}>
+                  <HeroBannerCard
+                    banner={banner}
+                    variant="slider"
+                    heroContentCard={heroContent}
+                    className={contentClassName}
+                  />
+                </SwiperSlide>
+              ))}
+            </Carousel>}
         </div>
     );
 };

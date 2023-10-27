@@ -17,13 +17,14 @@ export default function OrdersTablePage() {
         description="Fastest E-commerce template built with React, NextJS, TypeScript, React-Query and Tailwind CSS."
         path="my-account/orders"
       />
-      <AccountLayout>
-        {!isLoading ? (
-          <OrderTable orders={data?.data} />
-        ) : (
-          <div>Loading...</div>
-        )}
-      </AccountLayout>
+      {// @ts-ignore
+        <AccountLayout>
+          {!isLoading ? (
+            <OrderTable orders={data?.data}/>
+          ) : (
+            <div>Loading...</div>
+          )}
+        </AccountLayout>}
     </>
   );
 }

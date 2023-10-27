@@ -15,13 +15,14 @@ export default function AccountDetailsPage() {
         description="Fastest E-commerce template built with React, NextJS, TypeScript, React-Query and Tailwind CSS."
         path="my-account/address"
       />
-      <AccountLayout>
-        {!isLoading ? (
-          <AddressGrid address={data?.data} />
-        ) : (
-          <div>Loading...</div>
-        )}
-      </AccountLayout>
+      {// @ts-ignore
+        <AccountLayout>
+          {!isLoading ? (
+            <AddressGrid address={data?.data}/>
+          ) : (
+            <div>Loading...</div>
+          )}
+        </AccountLayout>}
     </>
   );
 }

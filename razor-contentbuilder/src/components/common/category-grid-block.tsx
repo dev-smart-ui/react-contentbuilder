@@ -62,6 +62,7 @@ const CategoryGridBlock: React.FC<CategoriesProps> = ({
                 {error ? (
                     <Alert message={error?.message} className="mb-14 3xl:mx-3.5"/>
                 ) : (
+                  // @ts-ignore
                     <Carousel
                         grid={{rows: 2, fill: 'row'}}
                         breakpoints={breakpoints}

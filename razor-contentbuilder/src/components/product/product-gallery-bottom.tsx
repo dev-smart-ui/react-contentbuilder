@@ -178,11 +178,13 @@ const ProductSingleDetails: React.FC = () => {
 
           <dl className="productView-info  text-14px leading-8 pb-5 mb-5 border-b border-black/8">
             <dt className={`productView-info-name w-40 ${dir == 'rtl' ? 'float-right': 'float-left'}`}>{t('text-brand')}:</dt>
-            <dd className="productView-info-value" >{data?.brand}</dd>
+            {// @ts-ignore
+              <dd className="productView-info-value">{data?.brand}</dd>}
             <dt className={`productView-info-name w-40 ${dir == 'rtl' ? 'float-right': 'float-left'}`}>{t('text-sku')}:</dt>
             <dd className="productView-info-value" >200101</dd>
             <dt className={`productView-info-name w-40 ${dir == 'rtl' ? 'float-right': 'float-left'}`}>{t('text-weight')}:</dt>
-            <dd className="productView-info-value" data-product-weight="">{data?.weight} KGS</dd>
+            {// @ts-ignore
+              <dd className="productView-info-value" data-product-weight="">{data?.weight} KGS</dd>}
             <dt className={`productView-info-name w-40 ${dir == 'rtl' ? 'float-right': 'float-left'}`}>{t('text-shipping')}:</dt>
             <dd className="productView-info-value">{t(`text-calculated-checkout`)}</dd>
           </dl>

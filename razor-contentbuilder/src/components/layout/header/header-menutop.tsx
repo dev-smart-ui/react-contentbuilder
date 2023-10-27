@@ -1,4 +1,4 @@
-import Link from '@components/ui/link';
+import Link from "next/link";
 import { FaChevronDown } from 'react-icons/fa';
 import { useTranslation } from 'next-i18next';
 import cn from 'classnames';

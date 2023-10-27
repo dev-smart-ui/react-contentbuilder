@@ -36,6 +36,7 @@ const BundleGrid: React.FC<Props> = ({ className = 'mb-12 pb-0.5', data }) => {
   return (
     <div className={cn(className)}>
       {width! < 1536 ? (
+        // @ts-ignore
         <Carousel
           breakpoints={breakpoints}
           prevActivateId="bundle-carousel-button-prev"

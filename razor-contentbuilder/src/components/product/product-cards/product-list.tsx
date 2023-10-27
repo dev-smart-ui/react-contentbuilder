@@ -1,6 +1,6 @@
 import cn from 'classnames';
 import Image from '@components/ui/image';
-import Link from '@components/ui/link';
+import Link from "next/link";
 import usePrice from '@framework/product/use-price';
 import { Product } from '@framework/types';
 import { useModalAction } from '@components/common/modal/modal.context';

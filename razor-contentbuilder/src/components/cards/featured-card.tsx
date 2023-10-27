@@ -1,5 +1,5 @@
 import Heading from '@components/ui/heading';
-import Link from '@components/ui/link';
+import Link from "next/link";
 import cn from 'classnames';
 import { LinkProps } from 'next/link';
 import { useTranslation } from 'next-i18next';

@@ -18,6 +18,7 @@ const BannerHeroGrid: React.FC<BannerProps> = ({
   return (
     <div className={`heightFull ${className}`}>
       {width! < 768 ? (
+        // @ts-ignore
         <Carousel
           prevActivateId="banner-carousel-button-prev"
           nextActivateId="banner-carousel-button-next"

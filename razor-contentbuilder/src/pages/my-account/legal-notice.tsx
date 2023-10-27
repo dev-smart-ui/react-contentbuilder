@@ -13,9 +13,10 @@ export default function LegalNotice() {
         description="Fastest E-commerce template built with React, NextJS, TypeScript, React-Query and Tailwind CSS."
         path="legal-notice"
       />
-      <AccountLayout>
-        <Legal />
-      </AccountLayout>
+      {// @ts-ignore
+        <AccountLayout>
+          <Legal/>
+        </AccountLayout>}
     </>
   );
 }

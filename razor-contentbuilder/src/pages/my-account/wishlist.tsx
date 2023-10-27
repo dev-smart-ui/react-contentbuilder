@@ -15,12 +15,13 @@ export default function LegalNotice() {
         description="Fastest E-commerce template built with React, NextJS, TypeScript, React-Query and Tailwind CSS."
         path="my-account/wishlist"
       />
-      <AccountLayout>
-        <h2 className="text-base md:text-lg xl:text-[20px] font-medium text-skin-base  lg:pt-0">
-          {t('common:text-account-wishlist')}
-        </h2>
-        <Wishlist />
-      </AccountLayout>
+      {// @ts-ignore
+        <AccountLayout>
+          <h2 className="text-base md:text-lg xl:text-[20px] font-medium text-skin-base  lg:pt-0">
+            {t('common:text-account-wishlist')}
+          </h2>
+          <Wishlist/>
+        </AccountLayout>}
     </>
   );
 }

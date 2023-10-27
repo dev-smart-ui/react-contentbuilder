@@ -1,4 +1,4 @@
-import Link from '@components/ui/link';
+import Link from "next/link";
 import SearchIcon from '@components/icons/search-icon';
 import UserIcon from '@components/icons/user-icon';
 import MenuIcon from '@components/icons/menu-icon';
@@ -63,17 +63,18 @@ const BottomNavigation: React.FC = () => {
           <HomeIcon />
         </Link>
         <CartButton hideLabel={true} iconClassName="text-opacity-100" />
-        <AuthMenu
-          isAuthorized={isAuthorized}
-          href={ROUTES.ACCOUNT}
-          btnProps={{
-            className: 'flex-shrink-0 focus:outline-none',
-            children: <UserIcon />,
-            onClick: handleLogin,
-          }}
-        >
-          <UserIcon />
-        </AuthMenu>
+        {// @ts-ignore
+          <AuthMenu
+            isAuthorized={isAuthorized}
+            href={ROUTES.ACCOUNT}
+            btnProps={{
+              className: 'flex-shrink-0 focus:outline-none',
+              children: <UserIcon/>,
+              onClick: handleLogin,
+            }}
+          >
+            <UserIcon/>
+          </AuthMenu>}
       </div>
       <Drawer
         placement={dir === 'rtl' ? 'right' : 'left'}

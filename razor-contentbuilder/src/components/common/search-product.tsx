@@ -1,5 +1,5 @@
 import Image from '@components/ui/image';
-import Link from '@components/ui/link';
+import Link from "next/link";
 import { ROUTES } from '@utils/routes';
 import { searchProductPlaceholder } from '@assets/placeholders';
 import usePrice from "@framework/product/use-price";

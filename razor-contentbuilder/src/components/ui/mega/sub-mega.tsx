@@ -5,7 +5,7 @@ import ListMenu from '@components/ui/mega/mega-menu';
 import Container from '@components/ui/container';
 import Image from "@components/ui/image";
 import {productPlaceholder} from "@assets/placeholders";
-import Link from "@components/ui/link";
+import Link from "next/link";
 
 const SubMega = ({item}: any) => {
     const {
