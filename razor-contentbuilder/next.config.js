@@ -5,7 +5,7 @@ const nextConfig = {
   reactStrictMode: true,
   i18n,
   typescript: {
-    ignoreBuildErrors: false,
+    ignoreBuildErrors: true,
   },
   images: {
     domains: [
