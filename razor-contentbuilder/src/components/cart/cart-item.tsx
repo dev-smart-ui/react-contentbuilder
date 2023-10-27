@@ -1,4 +1,4 @@
-import Link from '@components/ui/link';
+import Link from "next/link";
 import Image from '@components/ui/image';
 import { IoIosCloseCircle } from 'react-icons/io';
 import { useCart } from '@contexts/cart/cart.context';

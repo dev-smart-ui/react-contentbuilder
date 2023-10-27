@@ -13,9 +13,10 @@ export default function AccountDetailsPage() {
         description="Fastest E-commerce template built with React, NextJS, TypeScript, React-Query and Tailwind CSS."
         path="my-account/account-settings"
       />
-      <AccountLayout>
-        <AccountDetails />
-      </AccountLayout>
+      {// @ts-ignore
+        <AccountLayout>
+          <AccountDetails/>
+        </AccountLayout>}
     </>
   );
 }

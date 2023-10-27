@@ -30,6 +30,7 @@ const CategoryDropdownMenu: React.FC<CategoryDropdownProps> = ({
           <div className="2xl:pe-10">
             <Alert message={error.message} />
           </div>
+          // @ts-ignore
         ) : loading && !data?.categories?.data?.length ? (
           <div className={"w-full bg-skin-fill border-t-0 border-2 border-skin-primary rounded-b-md category-dropdown-menu"}>
             {Array.from({ length: 6 }).map((_, idx) => (

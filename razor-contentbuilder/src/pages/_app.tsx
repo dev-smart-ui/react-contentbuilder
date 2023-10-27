@@ -22,6 +22,7 @@ import '@styles/tailwind.css';
 import '@styles/themes.scss';
 import { getDirection } from '@utils/get-direction';
 
+// @ts-ignore
 const Noop: React.FC = ({ children }) => <>{children}</>;
 
 const CustomApp = ({ Component, pageProps }: AppProps) => {
@@ -39,17 +40,18 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
   return (
     <QueryClientProvider client={queryClientRef.current}>
       <Hydrate state={pageProps.dehydratedState}>
-        <ManagedUIContext>
-          <>
-            <DefaultSeo />
-            <Layout pageProps={pageProps}>
-              <Component {...pageProps} key={router.route} />
-            </Layout>
-            <ToastContainer />
-            <ManagedModal />
-            <ManagedDrawer />
-          </>
-        </ManagedUIContext>
+        {// @ts-ignore
+          <ManagedUIContext>
+            <>
+              <DefaultSeo/>
+              <Layout pageProps={pageProps}>
+                <Component {...pageProps} key={router.route}/>
+              </Layout>
+              <ToastContainer/>
+              <ManagedModal/>
+              <ManagedDrawer/>
+            </>
+          </ManagedUIContext>}
       </Hydrate>
       {/* <ReactQueryDevtools /> */}
     </QueryClientProvider>

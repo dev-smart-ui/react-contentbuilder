@@ -87,39 +87,40 @@ const ProductsCarousel: React.FC<ProductsCarouselProps> = ({
         </div>
       ) : (
         <div className="heightFull xl:-me-40 2xl:-me-28 4xl:me-0 relative after-item-opacity">
-          <Carousel
-            breakpoints={carouselBreakpoint ? carouselBreakpoint : breakpoints}
-            className=" "
-            prevButtonClassName="start-3  -top-12 3xl:top-auto 3xl:-translate-y-2 4xl:-translate-y-10"
-            nextButtonClassName={`end-3 -top-12 3xl:top-auto transform 2xl:translate-x-0 3xl:-translate-y-2 ${
-              dir === 'rtl' ? 'xl:-translate-x-2.5' : 'xl:translate-x-2.5'
-            }`}
-          >
-            {loading && !products?.length ? (
-              Array.from({ length: limit! }).map((_, idx) => (
-                <SwiperSlide
-                  key={`${uniqueKey}-${idx}`}
-                  className="px-1.5 md:px-2 xl:px-2.5"
-                >
-                  <ProductCardLoader uniqueKey={`${uniqueKey}-${idx}`} />
-                </SwiperSlide>
-              ))
-            ) : (
-              <>
-                {products?.slice(0, limit).map((product: any, idx) => (
+          {// @ts-ignore
+            <Carousel
+              breakpoints={carouselBreakpoint ? carouselBreakpoint : breakpoints}
+              className=" "
+              prevButtonClassName="start-3  -top-12 3xl:top-auto 3xl:-translate-y-2 4xl:-translate-y-10"
+              nextButtonClassName={`end-3 -top-12 3xl:top-auto transform 2xl:translate-x-0 3xl:-translate-y-2 ${
+                dir === 'rtl' ? 'xl:-translate-x-2.5' : 'xl:translate-x-2.5'
+              }`}
+            >
+              {loading && !products?.length ? (
+                Array.from({length: limit!}).map((_, idx) => (
                   <SwiperSlide
                     key={`${uniqueKey}-${idx}`}
-                    className=""
+                    className="px-1.5 md:px-2 xl:px-2.5"
                   >
-                    <ProductCard product={product} />
+                    <ProductCardLoader uniqueKey={`${uniqueKey}-${idx}`}/>
                   </SwiperSlide>
-                ))}
-                <SwiperSlide className="p-2.5 flex items-center justify-center">
-                  <SeeAll href={categorySlug} />
-                </SwiperSlide>
-              </>
-            )}
-          </Carousel>
+                ))
+              ) : (
+                <>
+                  {products?.slice(0, limit).map((product: any, idx) => (
+                    <SwiperSlide
+                      key={`${uniqueKey}-${idx}`}
+                      className=""
+                    >
+                      <ProductCard product={product}/>
+                    </SwiperSlide>
+                  ))}
+                  <SwiperSlide className="p-2.5 flex items-center justify-center">
+                    <SeeAll href={categorySlug}/>
+                  </SwiperSlide>
+                </>
+              )}
+            </Carousel>}
         </div>
       )}
     </div>

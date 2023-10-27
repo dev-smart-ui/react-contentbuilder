@@ -1,6 +1,6 @@
 import Heading from '@components/ui/heading';
 import Image from '@components/ui/image';
-import Link from '@components/ui/link';
+import Link from "next/link";
 import { LinkProps } from 'next/link';
 import Text from '@components/ui/text';
 import { useTranslation } from 'next-i18next';
@@ -39,8 +39,8 @@ const TestimonialCard: React.FC<Props> = ({
         <Image
             src={image ?? collectionPlaceholder}
             alt={t(author_name) || t('text-card-thumbnail')}
-            width={imgWidth}
-            height={imgHeight}
+            width={+imgWidth}
+            height={+imgHeight}
             className="bg-skin-thumbnail object-cover transform transition duration-300 ease-in-out rounded-full "
         />
       </div>

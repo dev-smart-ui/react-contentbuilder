@@ -36,6 +36,7 @@ const BundleGrid: React.FC<Props> = ({ className = 'mb-12 pb-0.5', data }) => {
   return (
     <div className={cn('heightFull', className)}>
       {width! < 1536 ? (
+        // @ts-ignore
         <Carousel breakpoints={breakpoints}>
           {data?.map((item: any) => (
             <SwiperSlide key={`bundle-key-${item.id}`}>

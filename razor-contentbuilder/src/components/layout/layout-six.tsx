@@ -4,6 +4,7 @@ import { useTranslation } from 'next-i18next';
 import MobileNavigation from '@components/layout/mobile-navigation/mobile-navigation';
 import BackToTopButton from "@components/ui/back-to-top";
 
+// @ts-ignore
 const Layout: React.FC = ({ children }) => {
   const { t } = useTranslation('common');
 

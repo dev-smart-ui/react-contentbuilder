@@ -1,5 +1,5 @@
 import {useTranslation} from 'next-i18next';
-import Link from '@components/ui/link';
+import Link from "next/link";
 import {useRouter} from "next/router";
 import {getDirection} from "@utils/get-direction";
 import Image from "@components/ui/image";

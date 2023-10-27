@@ -5,7 +5,8 @@ import Button from '@components/ui/button';
 import { useForm } from 'react-hook-form';
 import Logo from '@components/ui/logo';
 import { useSignUpMutation, SignUpInputType } from '@framework/auth/use-signup';
-import Link from '@components/ui/link';
+// import Link from "next/link";
+import Link from "next/link";
 import { useTranslation } from 'next-i18next';
 import Image from '@components/ui/image';
 import { useModalAction } from '@components/common/modal/modal.context';
@@ -133,10 +134,8 @@ const SignUpForm: React.FC<SignUpFormProps> = ({
                   </label>
                 </div>
                 <div className="flex ms-auto mt-[2px]" onClick={closeModal}>
-                  <Link
-                    href={ROUTES.PRIVACY}
-                    className="text-end text-sm text-heading ps-3 hover:no-underline hover:text-skin-base focus:outline-none focus:text-skin-base"
-                  >
+
+                  <Link href={ROUTES.PRIVACY} className="text-end text-sm text-heading ps-3 hover:no-underline hover:text-skin-base focus:outline-none focus:text-skin-base">
                     {t('common:text-privacy-and-policy')}
                   </Link>
                 </div>

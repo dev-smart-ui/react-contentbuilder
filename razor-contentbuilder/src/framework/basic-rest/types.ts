@@ -150,6 +150,7 @@ export type Blog = {
   subTitle: string;
   shortDescription: string;
   authorName: string;
+  slug: string;
   date: {
     month: string;
     date: number;
@@ -169,7 +170,10 @@ export type Blog = {
   };
   postList?: object;
   discount?: object;
-  tags: {};
+  tags?: Array<{
+    name: string;
+    id: string | number;
+  }>;
   comments?: object;
   [key: string]: unknown;
 };

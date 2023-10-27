@@ -46,30 +46,31 @@ const Testimonial: React.FC<Props> = ({
 }) => {
   return (
     <div className={className}>
-      <Carousel
+      {// @ts-ignore
+        <Carousel
           breakpoints={breakpoints}
           autoplay={false}
           className="carouselTestimonial  border border-[#ebebeb] rounded"
-          navigation = {false}
-          pagination = {{
+          navigation={false}
+          pagination={{
             clickable: true,
           }}
           prevActivateId="collection-carousel-button-prev"
           nextActivateId="collection-carousel-button-next"
-      >
-        {data?.map((item) => (
+        >
+          {data?.map((item) => (
             <SwiperSlide
-                key={`collection-key-${item.id}`}
-                className=""
+              key={`collection-key-${item.id}`}
+              className=""
             >
               <TestimonialCard
-                  key={item.id}
-                  collection={item}
-                  href={`${ROUTES.BUNDLE}/${item.slug}`}
+                key={item.id}
+                collection={item}
+                href={`${ROUTES.BUNDLE}/${item.slug}`}
               />
             </SwiperSlide>
-        ))}
-      </Carousel>
+          ))}
+        </Carousel>}
 
     </div>
   );

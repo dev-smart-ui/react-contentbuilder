@@ -1,5 +1,5 @@
 import ArrowIcon from '@components/icons/arrow-icon';
-import Link from '@components/ui/link';
+import Link from "next/link";
 import { LinkProps } from 'next/link';
 import { useTranslation } from 'next-i18next';
 import {useRouter} from "next/router";

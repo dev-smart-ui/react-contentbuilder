@@ -48,37 +48,41 @@ const ProductWithBestDeals: React.FC<ProductFeedProps> = ({
                 <Alert message={error?.message} className="col-span-full"/>
             ) : (
                 <div className="heightFull relative">
-                    <Carousel
-                        breakpoints={breakpoints}
-                        className=""
-                        prevButtonClassName="start-3  -top-12 3xl:top-auto 3xl:-translate-y-2 4xl:-translate-y-10"
-                        nextButtonClassName={`end-3  -top-12 3xl:top-auto transform 2xl:translate-x-0 3xl:-translate-y-2 ${
+                    {// @ts-ignore
+                        <Carousel
+                          breakpoints={breakpoints}
+                          className=""
+                          prevButtonClassName="start-3  -top-12 3xl:top-auto 3xl:-translate-y-2 4xl:-translate-y-10"
+                          nextButtonClassName={`end-3  -top-12 3xl:top-auto transform 2xl:translate-x-0 3xl:-translate-y-2 ${
                             dir === 'rtl' ? 'xl:-translate-x-2.5' : 'xl:translate-x-2.5'
-                        }`}
+                          }`}
 
-                    >
-                        {isLoading && !data?.length ? (
-                            Array.from({length: limit!}).map((_, idx) => (
-                                <ProductCardLoader
-                                    key={`popular-product-${idx}`}
-                                    uniqueKey={`popular-product-${idx}`}
-                                />
-                            ))
-                        ) : (
-                            <>
-                                {data?.slice(0, limit).map((product: any, idx) => (
-                                    <SwiperSlide
-                                        key={`${uniqueKey}-${idx}`}
-                                        className="py-1.5 "
-                                    >
-                                        <ProductFlashSellCard key={`popular-product-${product.id}`} product={product}
-                                                              date={Date.now() + 4000000 * 60}/>
-                                    </SwiperSlide>
-                                ))}
+                        >
+                            {
+                                // @ts-ignore
+                                isLoading && !data?.length ? (
+                                  Array.from({length: limit!}).map((_, idx) => (
+                                    <ProductCardLoader
+                                      key={`popular-product-${idx}`}
+                                      uniqueKey={`popular-product-${idx}`}
+                                    />
+                                  ))
+                                ) : (
+                                  <>
+                                      {data?.slice(0, limit).map((product: any, idx) => (
+                                        <SwiperSlide
+                                          key={`${uniqueKey}-${idx}`}
+                                          className="py-1.5 "
+                                        >
+                                            <ProductFlashSellCard key={`popular-product-${product.id}`}
+                                                                  product={product}
+                                                                  date={Date.now() + 4000000 * 60}/>
+                                        </SwiperSlide>
+                                      ))}
 
-                            </>
-                        )}
-                    </Carousel>
+                                  </>
+                                )}
+                        </Carousel>}
                 </div>
             )}
 
