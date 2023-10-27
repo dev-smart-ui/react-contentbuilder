@@ -26,10 +26,11 @@ const formatStyles = (styles: string | undefined): { [key: string]: string } => 
 
 
 
-const PageExample = ({dataFromCms}: any) => {
+const PageExample = ({dataFromCms ,builderProps}: any) => {
+
 const counter ={ }
 	const options = {
-		replace: ({ attribs, children, name }: any) => {
+		replace: ({ attribs,  name }: any) => {
 			if (!attribs) return
 
  				for (const key in List_Of_Components){
@@ -39,10 +40,16 @@ const counter ={ }
 						if(counter[key]){
 							counter[key]=counter[key]+1
 						}else{
-							counter[key]=0
+							counter[key]=1
 						}
-						console.log(counter)
-						return <Component {...children}/>
+						let componentProps={}
+						const correctedCounter = counter[key]-1
+						console.log(builderProps[key+""+correctedCounter])
+						if(builderProps[key+""+correctedCounter]){
+							componentProps=builderProps[key+""+correctedCounter]
+						}
+
+						return <Component   {...componentProps}/>
 					}
 				}
 			switch (name) {
@@ -77,11 +84,19 @@ export async function getServerSideProps({ query, locale }) {
 		const response = await fetch(`${appConfig.baseUrl}load?page=${slug}`)
 		const data = await response.json()
 		const html = data.html
+		let  builderProps ={}
+		if(data?.props){
+			try{
+				builderProps=	JSON.parse(data?.props)
+			}catch (e){
+				console.log(e)
+			}
+		}
 
 
 		return {
 			props: {
-				dataFromCms: html,
+				dataFromCms: html,builderProps,
 				...(await serverSideTranslations(locale!, [
 					'common',
 					'forms',

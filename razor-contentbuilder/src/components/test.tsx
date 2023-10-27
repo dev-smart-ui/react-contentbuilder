@@ -1,42 +1,29 @@
 import React from 'react';
-import {CONFIG_RAZOR, onlyForBuilder} from "./config";
+import {CONFIG_RAZOR, onlyForBuilder, IsEditable} from "./config";
 import Link from "next/link";
-
-type TCustomProps={
-    [key: string]: "src"|"textContent"|"href";
-}
+import {BuilderImage} from "src/builderComponents/builderImage";
 
 
-const IsEditable = (params :TCustomProps )=>{
-     return {"data-propsname":JSON.stringify(params)}
-}
 
-  const Test = ({mainText="default text"}) => {
 
+  const Test = ({
+                    text="default text",
+                    href="/",
+                    linkText="linkText",
+                    image=undefined, ...rest
+
+  }) => {
+    console.log(rest, image)
     return <div  data-component={"Test"} >
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
+
         <span {...IsEditable({text: "textContent"})} >
-            {mainText}
+            {text}
         </span>
 
-        <img   {...IsEditable({image: "src"})} src={CONFIG_RAZOR.imgPlaceholder} alt=""/>
+        <BuilderImage   {...IsEditable({image: "src"})} width={480} height={200} src={image} alt=""/>
         {onlyForBuilder()&& <div>  hidden 0</div>}
-        <Link   {...IsEditable({href: "href", linkText: "textContent"})} href={"/pageExample/user"}>1123  </Link>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
+        <Link   {...IsEditable({href: "href", linkText: "textContent"})} href={href}>{linkText}  </Link>
+
     </div>
 };
 
