@@ -13,3 +13,13 @@ export const CONFIG_RAZOR= {
 export const onlyForBuilder = ()=>{
     return  !!process.env.IN_API_CONTEXT
 }
+
+
+type TCustomProps={
+    [key: string]: "src"|"textContent"|"href";
+}
+
+
+export const IsEditable = (params :TCustomProps )=>{
+    return {"data-propsname":JSON.stringify(params)}
+}
