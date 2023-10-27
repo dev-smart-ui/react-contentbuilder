@@ -50,6 +50,7 @@ const ProductFlashSellCard: React.FC<ProductProps> = ({
                                                           className,
                                                           date,
                                                       }) => {
+  // @ts-ignore
     const {name, image, quantity, sold, product_type} = product ?? {};
     const {openModal} = useModalAction();
     const {t} = useTranslation('common');

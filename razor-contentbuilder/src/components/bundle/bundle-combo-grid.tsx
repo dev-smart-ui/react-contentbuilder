@@ -37,6 +37,7 @@ const BundleComboGrid: React.FC<Props> = ({
           headingPosition="center"
         />
         {width! < 1280 ? (
+          // @ts-ignore
           <Carousel
             breakpoints={breakpoints}
             grid={{ rows: 3, fill: 'row' }}

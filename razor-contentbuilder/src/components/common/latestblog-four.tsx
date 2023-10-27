@@ -47,27 +47,30 @@ const LatestblogCarousel: React.FC<Props> = ({
         <div className={className}>
 
             <SectionHeader sectionHeading="text-latestblog" className="mb-3"/>
-            <Carousel
-                breakpoints={breakpoints}
-                autoplay={false}
-                navigation={true}
-                className="rounded border border-black/10 bg-white px-2 lg:px-3"
-                prevActivateId="latestblog-carousel-button-prev"
-                nextActivateId="latestblog-carousel-button-next"
-            >
-                {dataBlog?.map((item) => (
-                    <SwiperSlide
+            {
+                // @ts-ignore
+                <Carousel
+                  breakpoints={breakpoints}
+                  autoplay={false}
+                  navigation={true}
+                  className="rounded border border-black/10 bg-white px-2 lg:px-3"
+                  prevActivateId="latestblog-carousel-button-prev"
+                  nextActivateId="latestblog-carousel-button-next"
+                >
+                    {dataBlog?.map((item) => (
+                      <SwiperSlide
                         key={`collection-key-${item.id}`}
                         className="px-1.5 md:px-2 xl:px-3 py-5"
-                    >
-                        <LatestblogCard
+                      >
+                          <LatestblogCard
                             key={item.id}
                             collection={item}
                             href={`${ROUTES.BUNDLE}/${item.slug}`}
-                        />
-                    </SwiperSlide>
-                ))}
-            </Carousel>
+                          />
+                      </SwiperSlide>
+                    ))}
+                </Carousel>
+            }
 
         </div>
     );

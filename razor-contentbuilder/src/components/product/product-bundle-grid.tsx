@@ -23,7 +23,9 @@ const ProductBundleGrid: FC<ProductFeedProps> = ({
         <Alert message={error?.message} />
       ) : (
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 3xl:grid-cols-7 gap-3 md:gap-4 2xl:gap-5">
-          {isLoading && !data?.pages?.length ? (
+          {
+            // @ts-ignore
+            isLoading && !data?.pages?.length ? (
             Array.from({ length: 30 }).map((_, idx) => (
               <ProductCardLoader
                 key={`product--key-${idx}`}

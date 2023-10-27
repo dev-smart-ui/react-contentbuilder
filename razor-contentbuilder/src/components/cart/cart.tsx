@@ -5,7 +5,7 @@ import usePrice from '@framework/product/use-price';
 import { IoClose } from 'react-icons/io5';
 import CartItem from './cart-item';
 import EmptyCart from './empty-cart';
-import Link from '@components/ui/link';
+import Link from "next/link";
 import { ROUTES } from '@utils/routes';
 import cn from 'classnames';
 import { useTranslation } from 'next-i18next';

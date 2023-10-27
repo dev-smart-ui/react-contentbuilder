@@ -18,13 +18,17 @@ const BannerHeroGrid: React.FC<BannerProps> = ({
   return (
     <div className={`heightFull ${className}`}>
       {width! < 768 ? (
+        // @ts-ignore
         <Carousel
           prevActivateId="banner-carousel-button-prev"
           nextActivateId="banner-carousel-button-next"
         >
           {data?.map((banner: any) => (
             <SwiperSlide key={`banner-key-${banner.id}`}>
-              <BannerCard banner={banner} effectActive={true} />
+              {
+                // @ts-ignore
+                <BannerCard banner={banner} effectActive={true} />
+              }
             </SwiperSlide>
           ))}
         </Carousel>
@@ -33,10 +37,8 @@ const BannerHeroGrid: React.FC<BannerProps> = ({
           className={`grid gap-4 2xl:gap-5 3xl:gap-7 grid-cols-1 sm:grid-cols-12 ${girdClassName}`}
         >
           {data?.map((banner: any) => (
-            <BannerCard
-              key={`banner--key${banner.id}`}
-              banner={banner}
-              effectActive={true}
+            // @ts-ignore
+            <BannerCard key={`banner--key${banner.id}`} banner={banner} effectActive={true}
               className={`${
                 banner.type === 'small' ? 'col-span-5' : 'col-span-7'
               }`}

@@ -100,22 +100,23 @@ const breakpoints = {
 const FeatureCarousel: React.FC<Props> = ({ className = 'mb-7 md:mb-10 ',classNameCarousel }) => {
     return (
         <div className={`mb-7 md:mb-10 ${className}`}>
-            <Carousel
-                autoplay={false}
-                breakpoints={breakpoints}
-                prevActivateId="featured-carousel-button-prev"
-                nextActivateId="featured-carousel-button-next"
-                prevButtonClassName="start-3  3xl:top-auto 3xl:-translate-y-2 4xl:-translate-y-10"
-                nextButtonClassName={`end-3  3xl:top-auto transform 2xl:translate-x-0 3xl:-translate-y-2 `}
-                className={`rounded border border-black/10 py-6  ${classNameCarousel}`}
-            >
-                {data?.map((item) => (
-                    <SwiperSlide key={`featured-key-${item.id}`}>
-                        <FeaturedCard item={item} layout={"home4"} />
-                    </SwiperSlide>
-                ))}
+            {// @ts-ignore
+                <Carousel
+                  autoplay={false}
+                  breakpoints={breakpoints}
+                  prevActivateId="featured-carousel-button-prev"
+                  nextActivateId="featured-carousel-button-next"
+                  prevButtonClassName="start-3  3xl:top-auto 3xl:-translate-y-2 4xl:-translate-y-10"
+                  nextButtonClassName={`end-3  3xl:top-auto transform 2xl:translate-x-0 3xl:-translate-y-2 `}
+                  className={`rounded border border-black/10 py-6  ${classNameCarousel}`}
+                >
+                    {data?.map((item) => (
+                      <SwiperSlide key={`featured-key-${item.id}`}>
+                          <FeaturedCard item={item} layout={"home4"}/>
+                      </SwiperSlide>
+                    ))}
 
-            </Carousel>
+                </Carousel>}
         </div>
     );
 };

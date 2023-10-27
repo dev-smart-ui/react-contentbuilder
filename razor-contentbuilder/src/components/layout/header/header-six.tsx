@@ -155,16 +155,17 @@ const Header: React.FC = () => {
 
                                 <div className="flex space-s-5 xl:space-s-10 lg:max-w-[33%]">
                                     <div className="hidden lg:flex items-center flex-shrink-0 accountButton">
-                                        <AuthMenu
-                                            isAuthorized={isAuthorized}
-                                            href={ROUTES.ACCOUNT}
-                                            btnProps={{
-                                                children: <AiOutlineUser className="text-white text-xl lg:text-2xl"/>,
-                                                onClick: handleLogin,
-                                            }}
-                                        >
-                                            {t('text-account')}
-                                        </AuthMenu>
+                                        {// @ts-ignore
+                                            <AuthMenu
+                                              isAuthorized={isAuthorized}
+                                              href={ROUTES.ACCOUNT}
+                                              btnProps={{
+                                                  children: <AiOutlineUser className="text-white text-xl lg:text-2xl"/>,
+                                                  onClick: handleLogin,
+                                              }}
+                                            >
+                                                {t('text-account')}
+                                            </AuthMenu>}
                                     </div>
                                     <CartButton className="hidden lg:flex" iconClassName={"text-white"}/>
                                 </div>
@@ -226,16 +227,18 @@ const Header: React.FC = () => {
                                         {/* End of search handler btn */}
 
                                         <div className="flex-shrink-0 flex items-center">
-                                            <AuthMenu
-                                                isAuthorized={isAuthorized}
-                                                href={ROUTES.ACCOUNT}
-                                                btnProps={{
-                                                    children: <AiOutlineUser className="text-white text-xl lg:text-3xl"/>,
-                                                    onClick: handleLogin,
-                                                }}
-                                            >
-                                                {t('text-account')}
-                                            </AuthMenu>
+                                            {// @ts-ignore
+                                                <AuthMenu
+                                                  isAuthorized={isAuthorized}
+                                                  href={ROUTES.ACCOUNT}
+                                                  btnProps={{
+                                                      children: <AiOutlineUser
+                                                        className="text-white text-xl lg:text-3xl"/>,
+                                                      onClick: handleLogin,
+                                                  }}
+                                                >
+                                                    {t('text-account')}
+                                                </AuthMenu>}
                                         </div>
                                         {/* End of auth */}
 

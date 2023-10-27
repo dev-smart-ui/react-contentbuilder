@@ -29,7 +29,9 @@ const CategoryDropdownSidebar: React.FC<CategorySidebarProps> = ({
           </div>
         ) : (
           <Scrollbar className="category-scrollbar w-full h-full">
-            {loading && !data?.categories?.data?.length ? (
+            {
+              // @ts-ignore
+              loading && !data?.categories?.data?.length ? (
               Array.from({ length: 15 }).map((_, idx) => (
                 <CategoryListCardLoader
                   key={`category-list-${idx}`}

@@ -5,7 +5,7 @@ import ListMenu from '@components/ui/mega/mega-menu';
 import Container from '@components/ui/container';
 import Image from "@components/ui/image";
 import {productPlaceholder} from "@assets/placeholders";
-import Link from "@components/ui/link";
+import Link from "next/link";
 import cn from "classnames";
 import {ROUTES} from "@utils/routes";
 import {IoIosArrowBack, IoIosArrowForward} from "react-icons/io";

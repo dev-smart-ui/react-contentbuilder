@@ -13,9 +13,10 @@ export default function HelpCenter() {
         description="Fastest E-commerce template built with React, NextJS, TypeScript, React-Query and Tailwind CSS."
         path="my-account/help-center"
       />
-      <AccountLayout>
-        <Help />
-      </AccountLayout>
+      { // @ts-ignore
+        <AccountLayout>
+          <Help/>
+        </AccountLayout>}
     </>
   );
 }

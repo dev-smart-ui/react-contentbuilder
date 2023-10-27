@@ -6,6 +6,7 @@ import { GetServerSideProps } from 'next';
 
 export default function OrderPage() {
   return (
+    // @ts-ignore
     <AccountLayout>
       <OrderDetails className="p-0" />
     </AccountLayout>

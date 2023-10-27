@@ -33,27 +33,25 @@ const breakpoints = {
 };
 
 const BundleGrid: React.FC<Props> = ({className = 'mb-12 pb-0.5', data}) => {
+    console.log('data ', data)
     const {width} = useWindowSize();
+    // @ts-ignore
     return (
         <div className={cn('heightFull', className)}>
             {width! < 1536 ? (
+              // @ts-ignore
                 <Carousel breakpoints={breakpoints}>
                     {data?.map((item: any) => (
                         <SwiperSlide key={`bundle-key-${item.id}`}>
-                            <BannerCard
-                                banner={item}
-                                effectActive={false}                            />
+                            {/* @ts-ignore */}
+                            <BannerCard banner={item} effectActive={false}/>
                         </SwiperSlide>
                     ))}
                 </Carousel>
             ) : (
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-                    {data?.map((item: any) => (
-                        <BannerCard
-                            key={`bundle-key-${item.id}`}
-                            banner={item}
-                            effectActive={false}                        />
-                    ))}
+                    {/* @ts-ignore */}
+                    {data?.map((item: any) => (<BannerCard key={`bundle-key-${item.id}`} banner={item} effectActive={false}/>))}
                 </div>
             )}
         </div>

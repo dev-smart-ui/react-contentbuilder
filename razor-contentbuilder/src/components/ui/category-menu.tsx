@@ -1,6 +1,6 @@
 import cn from 'classnames';
 import {useTranslation} from 'next-i18next';
-import Link from '@components/ui/link';
+import Link from "next/link";
 import {IoIosArrowForward, IoIosAddCircleOutline, IoIosRemoveCircleOutline, IoIosArrowBack} from 'react-icons/io';
 import Image from '@components/ui/image';
 import {ROUTES} from '@utils/routes';

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Link from '@components/ui/link';
+import Link from "next/link";
 import { siteSettings } from '@settings/site-settings';
 import Scrollbar from '@components/ui/scrollbar';
 import { IoIosArrowDown } from 'react-icons/io';

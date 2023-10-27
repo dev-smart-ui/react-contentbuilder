@@ -77,20 +77,21 @@ const FeatureGrid: React.FC<Props> = ({
   const { width } = useWindowSize();
   return (
     <div className={`${className}`}>
-      <Carousel
+      {// @ts-ignore
+        <Carousel
           autoplay={false}
           breakpoints={breakpoints}
           prevActivateId="featured-carousel-button-prev"
           nextActivateId="featured-carousel-button-next"
           className={'rounded-md border border-black/10 py-5'}
-      >
-        {data?.map((item) => (
+        >
+          {data?.map((item) => (
             <SwiperSlide key={`featured-key-${item.id}`}>
-              <FeaturedCard item={item} />
+              <FeaturedCard item={item}/>
             </SwiperSlide>
-        ))}
+          ))}
 
-      </Carousel>
+        </Carousel>}
     </div>
   );
 };

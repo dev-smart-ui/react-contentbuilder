@@ -1,6 +1,6 @@
 import cn from 'classnames';
 import Image from '@components/ui/image';
-import Link from '@components/ui/link';
+import Link from "next/link";
 import {Blog} from '@framework/types';
 import {useModalAction} from '@components/common/modal/modal.context';
 import useWindowSize from '@utils/use-window-size';
