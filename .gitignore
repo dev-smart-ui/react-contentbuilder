@@ -42,5 +42,5 @@ next-env.d.ts
 # Jet Brains
 .idea/
 
-
+/uploads
 /backend/uploads
