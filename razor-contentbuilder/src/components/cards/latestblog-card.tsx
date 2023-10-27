@@ -31,8 +31,8 @@ const LatestblogCard: React.FC<Props> = ({
       <Image
         src={image ?? collectionPlaceholder}
         alt={t(title) || t('text-card-thumbnail')}
-        width={imgWidth}
-        height={imgHeight}
+        width={+imgWidth}
+        height={+imgHeight}
         className="overflow-hidden  bg-skin-thumbnail object-cover transform transition duration-300 ease-in-out group-hover:opacity-90 "
       />
       <div className="flex flex-col mt-4 mb-6 ">

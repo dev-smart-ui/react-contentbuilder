@@ -57,7 +57,9 @@ const ProductWithBestDeals: React.FC<ProductFeedProps> = ({
                         }`}
 
                     >
-                        {isLoading && !data?.length ? (
+                        {
+                            // @ts-ignore
+                            isLoading && !data?.length ? (
                             Array.from({length: limit!}).map((_, idx) => (
                                 <ProductCardLoader
                                     key={`popular-product-${idx}`}

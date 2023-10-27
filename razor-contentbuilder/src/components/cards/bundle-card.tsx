@@ -39,8 +39,8 @@ const BundleCard: React.FC<Props> = ({
           <Image
             src={image ?? '/assets/placeholder/collection.svg'}
             alt={t(title) || t('text-card-thumbnail')}
-            width={imgWidth}
-            height={imgHeight}
+            width={+imgWidth}
+            height={+imgHeight}
             className="bg-sink-thumbnail object-cover transition duration-200 ease-in-out transform group-hover:scale-105"
           />
         </div>

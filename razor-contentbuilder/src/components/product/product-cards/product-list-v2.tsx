@@ -18,6 +18,7 @@ interface ProductProps {
 }
 function RenderPopupOrAddToCart({ data }: { data: Product }) {
   const { t } = useTranslation('common');
+  // @ts-ignore
   const { id, quantity, product_type } = data ?? {};
   const { width } = useWindowSize();
   const { openModal } = useModalAction();
@@ -47,6 +48,7 @@ function RenderPopupOrAddToCart({ data }: { data: Product }) {
   return <AddToCart data={data} />;
 }
 const ProductList: React.FC<ProductProps> = ({ product, className }) => {
+  // @ts-ignore
   const { name, image, unit, slug, product_type } = product ?? {};
   const { openModal } = useModalAction();
   const { t } = useTranslation('common');

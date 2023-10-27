@@ -56,7 +56,10 @@ export default function Home() {
                     className="mb-8 lg:mb-12"
                     girdClassName="xl:gap-5 "
                 />
-                <ListingTabsElectronicFeed colSiderbar={false} borderCarousel={true}/>
+                {
+                    // @ts-ignore
+                    <ListingTabsElectronicFeed colSiderbar={false} borderCarousel={true}/>
+                }
                 <BannerGridTwo
                     data={bannerTwo2}
                     className="mb-8 lg:mb-12"

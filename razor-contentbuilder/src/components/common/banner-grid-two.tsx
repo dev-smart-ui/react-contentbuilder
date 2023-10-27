@@ -21,10 +21,8 @@ const BannerGridTwo: React.FC<BannerProps> = ({
           className={`${girdClassName} grid gap-4 grid-cols-1 lg:grid-cols-2 `}
         >
           {data?.map((banner: any) => (
-            <BannerCard
-              key={`banner--key${banner.id}`}
-              banner={banner}
-              effectActive={true}
+            // @ts-ignore
+            <BannerCard key={`banner--key${banner.id}`} banner={banner} effectActive={true}
             />
           ))}
         </div>

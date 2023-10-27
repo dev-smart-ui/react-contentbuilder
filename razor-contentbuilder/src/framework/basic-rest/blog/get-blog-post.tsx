@@ -12,7 +12,7 @@ const fetchBlogPost = async ({ queryKey }: any) => {
 };
 
 const useBlogPostQuery = (options: QueryOptionsType) => {
-  return useQuery<Blog[], Error>(
+  return useQuery<Blog, Error>(
       [API_ENDPOINTS.BLOGDETAILS, options],
       fetchBlogPost
   );

@@ -2,7 +2,6 @@ import cn from 'classnames';
 import Image from '@components/ui/image';
 import Link from '@components/ui/link';
 import {Blog} from '@framework/types';
-import useWindowSize from '@utils/use-window-size';
 
 import {useTranslation} from 'next-i18next';
 import {productPlaceholder} from '@assets/placeholders';

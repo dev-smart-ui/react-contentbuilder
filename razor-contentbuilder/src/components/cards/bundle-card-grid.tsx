@@ -37,8 +37,8 @@ const BundleCardGrid: React.FC<Props> = ({
           <Image
             src={image ?? '/assets/placeholder/collection.svg'}
             alt={t(title) || t('text-card-thumbnail')}
-            width={imgWidth}
-            height={imgHeight}
+            width={+imgWidth}
+            height={+imgHeight}
             className="bg-sink-thumbnail object-cover"
           />
         </div>

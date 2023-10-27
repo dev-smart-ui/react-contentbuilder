@@ -15,31 +15,31 @@ interface BannerProps {
 
 
 
-const BannerCard: React.FC<BannerProps> = ( props) => {
+const BannerCard: React.FC<BannerProps> = ( {img, className, classNameInner, variant, link, effectActive}) => {
 
 
   return (
-    <div data-custom={"BannerCard"} className={cn('mx-auto', props?.className)}>
+    <div data-custom={"BannerCard"} className={cn('mx-auto', className)}>
 
       <span data-text={"main"}>card</span>
       <Link
-        href={props?.link||"/"}
+        href={link||"/"}
         className={cn(
           'rounded-sm h-full group flex justify-center relative overflow-hidden hover:opacity-90',
-          props. classNameInner
+          classNameInner
         )}
       >
         <BuilderImage
-          src={props?.img }
+          src={img }
           width={480}
           height={200}
           alt={""}
           quality={100}
           className={cn('bg-skin-thumbnail object-cover w-full', {
-            'rounded-md': props?.variant === 'rounded',
+            'rounded-md': variant === 'rounded',
           })}
         />
-        {props?.effectActive && (
+        {effectActive && (
           <div className="absolute top-0 -start-full h-full w-1/2 z-5 block transform -skew-x-12 bg-gradient-to-r from-transparent to-white opacity-30 group-hover:animate-shine" />
         )}
       </Link>
