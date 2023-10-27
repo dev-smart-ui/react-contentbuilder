@@ -13,6 +13,9 @@
     "check-format": "prettier --check .",
     "test-all": "yarn check-format && yarn lint && yarn check-types && yarn build"
   },
+  "engines": {
+    "node": "16.x"
+  },
   "dependencies": {
     "@headlessui/react": "^1.7.13",
     "@react-google-maps/api": "^2.5.0",
