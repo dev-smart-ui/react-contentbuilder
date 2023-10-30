@@ -18,9 +18,10 @@ const HeaderMenu: React.FC<MenuProps> = ({data, className, bgPrimary}) => {
 	const [allPagesBuilder, setAllPagesBuilder] = useState([]);
 
 	useEffect(() => {
+		const hostName = window.location.hostname
 		async function fetchData() {
 			try {
-				const data = await getAllPagesBuilder();
+				const data = await getAllPagesBuilder(hostName);
 				setAllPagesBuilder(data);
 			} catch (error) {
 				console.error('Error fetching data:', error);

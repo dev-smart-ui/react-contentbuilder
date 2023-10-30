@@ -1,4 +1,4 @@
-import Link from '@components/ui/link';
+import Link from "next/link";
 
 import cn from 'classnames';
 import {BuilderImage} from "src/builderComponents/builderImage";
@@ -25,7 +25,7 @@ const BannerCard: React.FC<BannerProps> = ( props) => {
         href={props?.link||"/"}
         className={cn(
           'rounded-sm h-full group flex justify-center relative overflow-hidden hover:opacity-90',
-          props. classNameInner
+          props.classNameInner
         )}
       >
         <BuilderImage

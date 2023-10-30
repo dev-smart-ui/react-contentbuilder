@@ -1,5 +1,5 @@
 import React from 'react';
-import {CONFIG_RAZOR, onlyForBuilder, IsEditable} from "./config";
+import {onlyForBuilder, IsEditable} from "./config";
 import Link from "next/link";
 import {BuilderImage} from "src/builderComponents/builderImage";
 

@@ -1,8 +1,11 @@
-import { appConfig } from "@config/index";
+import {isLocalhost} from "../../services/helpers";
+import {CONFIG_RAZOR} from "@components/config";
 
-export async function getAllPagesBuilder() {
+export async function getAllPagesBuilder(hostName: string) {
 	try {
-		const response = await fetch(`${appConfig.baseUrl}all`, {
+		// оставил пока брать информацию только с прода (разные базы данных)
+		const baseUrl = isLocalhost(hostName) ? `${CONFIG_RAZOR.serverUrlProd}` : `${CONFIG_RAZOR.serverUrlProd}`
+		const response = await fetch(`${baseUrl}all`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',

@@ -5,7 +5,6 @@ const cors = require('cors');
 const serveStatic = require('serve-static');
 const session = require('express-session');
 const fs = require('fs').promises;
-const baseUrl = "https://builder.smart-ui.pro/";
 const getProps = require("./getProps");
 const jsxTransform = require("html-to-jsx-transform")
 const {JSDOM} = require("jsdom");
@@ -16,8 +15,7 @@ const $path = 'uploads'; // Physical path
 const $urlpath = 'files'; // URL path
 
 const isLocalhost = (hostname) => {
-	if (hostname === 'localhost') return CONFIG.baseRazorUrl
-	else return CONFIG.baseRazorUrlProd
+	if (hostname === 'localhost') return true
 }
 
 const mongoose = require('mongoose');
@@ -46,6 +44,8 @@ mongoose.model('htmlContent', HtmlContentSchema);
 
 const routeModel = mongoose.model('htmlContent');
 
+app.use('/uploads', express.static('uploads'))
+
 app.use(cors());
 app.use(express.urlencoded({
 	extended: true
@@ -69,7 +69,6 @@ app.options('/upload', cors());
 app.post('/upload', async (req, res) => {
 	const base64Data = req.body.image;
 	const filename = req.body.filename;
-	const hostname = req.hostname;
 
 	console.log(base64Data)
 	console.log(`${$path}/${filename}`)
@@ -86,7 +85,7 @@ app.post('/upload', async (req, res) => {
 
 	res.status(200).json({
 		success: true,
-		url: `${isLocalhost(hostname)}${$urlpath}/${filename}`
+		url: `${CONFIG.serverUrlProd}${$urlpath}/${filename}`
 	});
 });
 
@@ -244,7 +243,10 @@ app.get('/generate-preview', async (req, res) => {
 	try {
 		const hostname = req.hostname;
 
-		const response = await fetch(`${isLocalhost(hostname)}/api/custom-builder`)
+		const response = await fetch(
+			`${isLocalhost(hostname) ? CONFIG.baseRazorUrl : CONFIG.baseRazorUrlProd}/api/custom-builder`
+		)
+		console.log(isLocalhost(hostname))
 		const data = await response.json()
 
 		data?.forEach((component) => {
@@ -262,7 +264,9 @@ app.get('/generate-preview', async (req, res) => {
         </svg>
       `
 
-			fs.writeFile(`${$path}/preview/${componentName}.svg`, svgData)
+			const pathWriteFile = `${isLocalhost(hostname) ? '' : CONFIG.baseRazorUrlProd}`
+
+			fs.writeFile(`${pathWriteFile}${$path}/preview/${componentName}.svg`, svgData)
 		})
 
 		res.status(200).json({success: true, message: 'Preview generated successfully'})

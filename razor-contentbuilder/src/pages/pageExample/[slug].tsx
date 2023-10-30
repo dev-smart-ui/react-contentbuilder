@@ -6,6 +6,8 @@ import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import Layout from "@components/layout/layout";
 import {BuilderImage} from "src/builderComponents/builderImage";
 import {List_Of_Components} from "@components/list";
+import {isLocalhost} from "../../../services/helpers";
+import {CONFIG_RAZOR} from "@components/config";
 
 
 const formatStyles = (styles: string | undefined): { [key: string]: string } => {
@@ -44,7 +46,7 @@ const counter ={ }
 						}
 						let componentProps={}
 						const correctedCounter = counter[key]-1
-						console.log(builderProps[key+""+correctedCounter])
+						console.log('builderProps', builderProps[key+""+correctedCounter])
 						if(builderProps[key+""+correctedCounter]){
 							componentProps=builderProps[key+""+correctedCounter]
 						}
@@ -58,8 +60,9 @@ const counter ={ }
 					const width = imgStyles ? +parseInt(imgStyles.width) : 480;
 					const height = imgStyles ? +parseInt(imgStyles.height) : 600;
 					const path = attribs.src.split('/')[0];
+					const hostName = window.location.host
 
-					return <BuilderImage width={width} height={height} src={`${path === 'assets' ? appConfig.imgUrl : ''}${attribs.src}`} alt=''/>
+					return <BuilderImage width={width} height={height} src={`${isLocalhost(hostName) ? CONFIG_RAZOR.serverUrl : CONFIG_RAZOR.serverUrlProd}${attribs.src}`} alt=''/>
 				}
 			}
 		}

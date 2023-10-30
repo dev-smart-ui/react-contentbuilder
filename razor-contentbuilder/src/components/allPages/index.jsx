@@ -11,8 +11,9 @@ const AllPages = () => {
 
 	useEffect(() => {
 		async function fetchData() {
+			const hostName = window.location.hostname
 			try {
-				const data = await getAllPagesBuilder();
+				const data = await getAllPagesBuilder(hostName);
 				setAllPagesBuilder(data);
 			} catch (error) {
 				console.error('Error fetching data:', error);

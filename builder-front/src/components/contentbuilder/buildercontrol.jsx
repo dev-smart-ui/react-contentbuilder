@@ -1,16 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import ContentBuilder from '@innovastudio/contentbuilder';
 import "./contentbuilder.css";
-import { instanceAxios } from "../../axiosConfig";
+import {instanceAxios} from "../../axiosConfig";
+import {isLocalhost} from "../../helpers";
+import {CONFIG} from "../../config";
+import axios from "axios";
 
 const BuilderControl = ({rangeValue, queryPageParam, onSave, onSaveAndFinish, doSave, doSaveAndFinish}) => {
 	const [obj, setObj] = useState(null);
 
 	useEffect(() => {
+		const hostName = window.location.hostname
 		const containerElement = document.querySelector('.container');
 		if (containerElement) {
 			document.querySelector('.container').style.opacity = 0; // optional: hide editable area until content loaded
-		} 
+		}
 
 		// Load language file first
 		loadLanguageFile('contentbuilder/lang/en.js', () => {
@@ -18,6 +22,7 @@ const BuilderControl = ({rangeValue, queryPageParam, onSave, onSaveAndFinish, do
 			// Then init the ContentBuilder
 			const contentBuilder = new ContentBuilder({
 				container: '.container',
+				snippetPath: `${isLocalhost(hostName) ? `${CONFIG.serverUrl}uploads/` : `${CONFIG.serverUrlProd}files/`}`,  // Location of snippets' assets
 
 				// OPTIONAL:
 				// If you need to change some paths:
@@ -29,10 +34,10 @@ const BuilderControl = ({rangeValue, queryPageParam, onSave, onSaveAndFinish, do
 
 				// Load plugins (without using config.js file)
 				plugins: [
-					{ name: 'preview', showInMainToolbar: true, showInElementToolbar: true },
-					{ name: 'wordcount', showInMainToolbar: true, showInElementToolbar: true },
-					{ name: 'symbols', showInMainToolbar: true, showInElementToolbar: false },
-					{ name: 'buttoneditor', showInMainToolbar: false, showInElementToolbar: false },
+					{name: 'preview', showInMainToolbar: true, showInElementToolbar: true},
+					{name: 'wordcount', showInMainToolbar: true, showInElementToolbar: true},
+					{name: 'symbols', showInMainToolbar: true, showInElementToolbar: false},
+					{name: 'buttoneditor', showInMainToolbar: false, showInElementToolbar: false},
 				],
 				pluginPath: 'contentbuilder/', // Location of the plugin scripts
 
@@ -124,20 +129,37 @@ const BuilderControl = ({rangeValue, queryPageParam, onSave, onSaveAndFinish, do
 
 			contentBuilder.loadSnippets('assets/minimalist-blocks/content.js'); // Load snippet file
 
+			const currentHost = `${isLocalhost(hostName) ? CONFIG.serverUrl : CONFIG.serverUrlProd}`
 
-			instanceAxios.get(queryPageParam !== '' ? `/load?page=${queryPageParam}` : '/load').then((response) => {
+			axios.get(
+				`${currentHost}${queryPageParam !== '' ? `load?page=${queryPageParam}` : 'load'}`,
+			).then((response) => {
 				let html;
 
 				if (response.data.html) {
 					html = response.data.html;
 				}
-				
+
 				document.querySelector('.container').style.opacity = 1;
 				contentBuilder.loadHtml(html);
 				setObj(contentBuilder);
 			}).catch((error) => {
 				console.error('error', error);
 			});
+
+			// instanceAxios.get(queryPageParam !== '' ? `/load?page=${queryPageParam}` : '/load').then((response) => {
+			// 	let html;
+			//
+			// 	if (response.data.html) {
+			// 		html = response.data.html;
+			// 	}
+			//
+			// 	document.querySelector('.container').style.opacity = 1;
+			// 	contentBuilder.loadHtml(html);
+			// 	setObj(contentBuilder);
+			// }).catch((error) => {
+			// 	console.error('error', error);
+			// });
 
 			// https://stackoverflow.com/questions/37949981/call-child-method-from-parent
 			if (doSave) doSave(() => saveContent(contentBuilder));  // Make it available to be called using doSave
@@ -179,24 +201,37 @@ const BuilderControl = ({rangeValue, queryPageParam, onSave, onSaveAndFinish, do
 			let base64 = e.target.result;
 			base64 = base64.replace(/^data:(.*?);base64,/, "");
 			base64 = base64.replace(/ /g, '+');
+			const hostName = window.location.hostname
 
-			// Upload process
-			instanceAxios.post('/upload', { image: base64, filename: filename }).then((response) => {
+			axios.post(
+				`${isLocalhost(hostName) ? CONFIG.serverUrl : CONFIG.serverUrlProd}upload`,
+				{image: base64, filename: filename}
+			).then((response) => {
 
 				callback(response);
 
 			}).catch((err) => {
 				console.log(err);
 			});
+
+			// Upload process
+			// instanceAxios.post('/upload', {image: base64, filename: filename}).then((response) => {
+			//
+			// 	callback(response);
+			//
+			// }).catch((err) => {
+			// 	console.log(err);
+			// });
 		};
 		reader.readAsDataURL(selectedFile);
 	};
 
-	const save = (contentBuilder , callback) => {
+	const save = (contentBuilder, callback) => {
 		// Save all embedded base64 images first
 		contentBuilder.saveImages('', () => {
-			
+
 			// Then save the content
+			const hostName = window.location.hostname
 
 			let html = contentBuilder.html();
 			const data = {
@@ -204,7 +239,7 @@ const BuilderControl = ({rangeValue, queryPageParam, onSave, onSaveAndFinish, do
 				page: queryPageParam
 			};
 
-			instanceAxios.post('/save', data).then((response) => {
+			axios.post(`${isLocalhost(hostName) ? CONFIG.serverUrl : CONFIG.serverUrlProd}save`, data).then((response) => {
 				// Saved Successfully
 				if (callback) callback(html);
 
@@ -212,10 +247,25 @@ const BuilderControl = ({rangeValue, queryPageParam, onSave, onSaveAndFinish, do
 				console.log(err);
 			});
 
+			// instanceAxios.post('/save', data).then((response) => {
+			// 	// Saved Successfully
+			// 	if (callback) callback(html);
+			//
+			// }).catch((err) => {
+			// 	console.log(err);
+			// });
+
 		}, (img, base64, filename) => {
+			const hostName = window.location.hostname
+
+			console.log('img, base64, filename ', hostName)
+			console.log('url ', `${isLocalhost(hostName) ? CONFIG.serverUrl : CONFIG.serverUrlProd}upload`)
 
 			// Upload image process
-			instanceAxios.post('upload/', { image: base64, filename: filename }).then((response) => {
+			axios.post(
+				`${isLocalhost(hostName) ? CONFIG.serverUrl : CONFIG.serverUrlProd}upload`,
+				{image: base64, filename: filename}
+			).then((response) => {
 
 				const uploadedImageUrl = response.data.url; // get saved image url
 
@@ -225,19 +275,21 @@ const BuilderControl = ({rangeValue, queryPageParam, onSave, onSaveAndFinish, do
 				console.log(err);
 			});
 
-			/*  try {
-						const response =  instanceAxios.post('upload/', { image: base64, filename: filename });
-						const uploadedImageUrl = response.data.url; // get saved image url
-						img.setAttribute('src', uploadedImageUrl);  // set image src
-				} catch (err) {
-						console.log(err);
-				}*/
+			// instanceAxios.post('upload/', {image: base64, filename: filename}).then((response) => {
+			//
+			// 	const uploadedImageUrl = response.data.url; // get saved image url
+			//
+			// 	img.setAttribute('src', uploadedImageUrl); // set image src
+			//
+			// }).catch((err) => {
+			// 	console.log(err);
+			// });
 
 		});
 	};
 
 	const saveContent = (contentBuilder) => {
-		save(contentBuilder,(html, serverHtml) => {
+		save(contentBuilder, (html, serverHtml) => {
 			onSave(html, serverHtml);
 		});
 	};
@@ -250,7 +302,7 @@ const BuilderControl = ({rangeValue, queryPageParam, onSave, onSaveAndFinish, do
 
 
 	return (
-		<div className="container" style={{ width: `${rangeValue}px` }}></div>
+		<div className="container" style={{width: `${rangeValue}px`}}></div>
 	);
 }
 

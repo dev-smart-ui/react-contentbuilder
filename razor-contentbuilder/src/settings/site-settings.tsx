@@ -1,6 +1,5 @@
 import { SAFlag } from '@components/icons/language/SAFlag';
 import { USFlag } from '@components/icons/language/USFlag';
-import {getAllPagesBuilder} from "@utils/getAllPagesBuilder";
 
 export const siteSettings = {
   name: 'Razor',

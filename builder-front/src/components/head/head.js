@@ -4,6 +4,7 @@ import {useLocation} from "react-router-dom";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import {CONFIG} from "../../config"
+import {isLocalhost} from "../../helpers";
 
 const Head = ({queryPageParam, rangeValue, setRangeValue}) => {
 	const location = useLocation();
@@ -39,8 +40,10 @@ const Head = ({queryPageParam, rangeValue, setRangeValue}) => {
 
 	const onHandlerCreatePreviews = async () => {
 		try {
-			const response = await axios.get(`${CONFIG.baseBuilderUrl}generate-preview`)
-			// const response = await axios.get(`http://localhost:8081/generate-preview`)
+			const hostName = window.location.hostname
+			const response = await axios.get(
+				`${isLocalhost(hostName) ? CONFIG.serverUrl : CONFIG.serverUrlProd}generate-preview`
+			)
 			const data = response.data
 
 			console.log(data.message)

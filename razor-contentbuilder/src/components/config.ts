@@ -1,12 +1,20 @@
-// const baseRazorUrl = "http://localhost:3004/"
-const baseRazorUrl = "https://razor-contentbuilder.vercel.app/" // prod
-// const baseBuilderUrl = "http://localhost:3003/"
-const baseBuilderUrl = "https://react-contentbuilder-phi.vercel.app/" // prod
+const baseBuilderUrl = "http://localhost:3003/"
+const baseRazorUrl = "http://localhost:3004/"
+const serverUrl = 'http://localhost:8081/'
+
+const baseBuilderUrlProd = "https://react-contentbuilder-phi.vercel.app/" // prod
+const baseRazorUrlProd = "https://razor-contentbuilder.vercel.app/" // prod
+const serverUrlProd = 'https://builder.smart-ui.pro/'
 
 export const CONFIG_RAZOR= {
     imgPlaceholder :baseRazorUrl+ "placeholder.png",
     baseBuilderUrl,
     baseRazorUrl,
+    serverUrl,
+
+    baseBuilderUrlProd,
+    baseRazorUrlProd,
+    serverUrlProd,
 }
 
 
