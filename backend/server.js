@@ -262,7 +262,7 @@ app.get('/generate-preview', async (req, res) => {
         </svg>
       `
 
-			fs.writeFile(`${$path}/preview/${componentName}.svg`, svgData)
+			fs.writeFile(`${CONFIG.baseRazorUrlProd}${$path}/preview/${componentName}.svg`, svgData)
 		})
 
 		res.status(200).json({success: true, message: 'Preview generated successfully'})
