@@ -241,12 +241,10 @@ app.get('/all', async (req, res) => {
 
 app.get('/generate-preview', async (req, res) => {
 	try {
-		const hostname = req.hostname;
 
 		const response = await fetch(
-			`${isLocalhost(hostname) ? CONFIG.baseRazorUrl : CONFIG.baseRazorUrlProd}/api/custom-builder`
+			`${CONFIG.baseRazorUrlProd}/api/custom-builder`
 		)
-		console.log(isLocalhost(hostname))
 		const data = await response.json()
 
 		data?.forEach((component) => {
@@ -264,9 +262,7 @@ app.get('/generate-preview', async (req, res) => {
         </svg>
       `
 
-			const pathWriteFile = `${isLocalhost(hostname) ? '' : CONFIG.baseRazorUrlProd}`
-
-			fs.writeFile(`${pathWriteFile}${$path}/preview/${componentName}.svg`, svgData)
+			fs.writeFile(`${$path}/preview/${componentName}.svg`, svgData)
 		})
 
 		res.status(200).json({success: true, message: 'Preview generated successfully'})

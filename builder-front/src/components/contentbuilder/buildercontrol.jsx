@@ -10,7 +10,6 @@ const BuilderControl = ({rangeValue, queryPageParam, onSave, onSaveAndFinish, do
 	const [obj, setObj] = useState(null);
 
 	useEffect(() => {
-		const hostName = window.location.hostname
 		const containerElement = document.querySelector('.container');
 		if (containerElement) {
 			document.querySelector('.container').style.opacity = 0; // optional: hide editable area until content loaded
@@ -22,7 +21,7 @@ const BuilderControl = ({rangeValue, queryPageParam, onSave, onSaveAndFinish, do
 			// Then init the ContentBuilder
 			const contentBuilder = new ContentBuilder({
 				container: '.container',
-				snippetPath: `${isLocalhost(hostName) ? `${CONFIG.serverUrl}uploads/` : `${CONFIG.serverUrlProd}files/`}`,  // Location of snippets' assets
+				snippetPath: `${CONFIG.serverUrlProd}files/`,  // Location of snippets' assets
 
 				// OPTIONAL:
 				// If you need to change some paths:
@@ -129,11 +128,7 @@ const BuilderControl = ({rangeValue, queryPageParam, onSave, onSaveAndFinish, do
 
 			contentBuilder.loadSnippets('assets/minimalist-blocks/content.js'); // Load snippet file
 
-			const currentHost = `${isLocalhost(hostName) ? CONFIG.serverUrl : CONFIG.serverUrlProd}`
-
-			axios.get(
-				`${currentHost}${queryPageParam !== '' ? `load?page=${queryPageParam}` : 'load'}`,
-			).then((response) => {
+			instanceAxios.get(queryPageParam !== '' ? `/load?page=${queryPageParam}` : '/load').then((response) => {
 				let html;
 
 				if (response.data.html) {
@@ -146,20 +141,6 @@ const BuilderControl = ({rangeValue, queryPageParam, onSave, onSaveAndFinish, do
 			}).catch((error) => {
 				console.error('error', error);
 			});
-
-			// instanceAxios.get(queryPageParam !== '' ? `/load?page=${queryPageParam}` : '/load').then((response) => {
-			// 	let html;
-			//
-			// 	if (response.data.html) {
-			// 		html = response.data.html;
-			// 	}
-			//
-			// 	document.querySelector('.container').style.opacity = 1;
-			// 	contentBuilder.loadHtml(html);
-			// 	setObj(contentBuilder);
-			// }).catch((error) => {
-			// 	console.error('error', error);
-			// });
 
 			// https://stackoverflow.com/questions/37949981/call-child-method-from-parent
 			if (doSave) doSave(() => saveContent(contentBuilder));  // Make it available to be called using doSave
@@ -201,27 +182,15 @@ const BuilderControl = ({rangeValue, queryPageParam, onSave, onSaveAndFinish, do
 			let base64 = e.target.result;
 			base64 = base64.replace(/^data:(.*?);base64,/, "");
 			base64 = base64.replace(/ /g, '+');
-			const hostName = window.location.hostname
 
-			axios.post(
-				`${isLocalhost(hostName) ? CONFIG.serverUrl : CONFIG.serverUrlProd}upload`,
-				{image: base64, filename: filename}
-			).then((response) => {
+			// Upload process
+			instanceAxios.post('/upload', {image: base64, filename: filename}).then((response) => {
 
 				callback(response);
 
 			}).catch((err) => {
 				console.log(err);
 			});
-
-			// Upload process
-			// instanceAxios.post('/upload', {image: base64, filename: filename}).then((response) => {
-			//
-			// 	callback(response);
-			//
-			// }).catch((err) => {
-			// 	console.log(err);
-			// });
 		};
 		reader.readAsDataURL(selectedFile);
 	};
@@ -231,29 +200,19 @@ const BuilderControl = ({rangeValue, queryPageParam, onSave, onSaveAndFinish, do
 		contentBuilder.saveImages('', () => {
 
 			// Then save the content
-			const hostName = window.location.hostname
-
 			let html = contentBuilder.html();
 			const data = {
 				html: html,
 				page: queryPageParam
 			};
 
-			axios.post(`${isLocalhost(hostName) ? CONFIG.serverUrl : CONFIG.serverUrlProd}save`, data).then((response) => {
+			instanceAxios.post('/save', data).then((response) => {
 				// Saved Successfully
 				if (callback) callback(html);
 
 			}).catch((err) => {
 				console.log(err);
 			});
-
-			// instanceAxios.post('/save', data).then((response) => {
-			// 	// Saved Successfully
-			// 	if (callback) callback(html);
-			//
-			// }).catch((err) => {
-			// 	console.log(err);
-			// });
 
 		}, (img, base64, filename) => {
 			const hostName = window.location.hostname
@@ -262,10 +221,7 @@ const BuilderControl = ({rangeValue, queryPageParam, onSave, onSaveAndFinish, do
 			console.log('url ', `${isLocalhost(hostName) ? CONFIG.serverUrl : CONFIG.serverUrlProd}upload`)
 
 			// Upload image process
-			axios.post(
-				`${isLocalhost(hostName) ? CONFIG.serverUrl : CONFIG.serverUrlProd}upload`,
-				{image: base64, filename: filename}
-			).then((response) => {
+			instanceAxios.post('upload/', {image: base64, filename: filename}).then((response) => {
 
 				const uploadedImageUrl = response.data.url; // get saved image url
 
@@ -274,16 +230,6 @@ const BuilderControl = ({rangeValue, queryPageParam, onSave, onSaveAndFinish, do
 			}).catch((err) => {
 				console.log(err);
 			});
-
-			// instanceAxios.post('upload/', {image: base64, filename: filename}).then((response) => {
-			//
-			// 	const uploadedImageUrl = response.data.url; // get saved image url
-			//
-			// 	img.setAttribute('src', uploadedImageUrl); // set image src
-			//
-			// }).catch((err) => {
-			// 	console.log(err);
-			// });
 
 		});
 	};

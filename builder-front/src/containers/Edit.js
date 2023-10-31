@@ -28,10 +28,10 @@ const Edit = ({queryPageParam, rangeValue}) => {
 	};
 
 
-	const fetchData = async (hostName) => {
+	const fetchData = async () => {
 
 		try {
-			const {data} = await axios(`${isLocalhost(hostName) ? CONFIG.baseRazorUrl : CONFIG.baseRazorUrlProd}api/custom-builder`)
+			const {data} = await axios(`${CONFIG.baseRazorUrlProd}api/custom-builder`)
 
 			window.data_custom = {
 				'snippets': data
@@ -45,10 +45,7 @@ const Edit = ({queryPageParam, rangeValue}) => {
 	}
 
 	useEffect(() => {
-		const hostName = window.location.hostname
-		console.log('fetchData ', hostName)
-		fetchData(hostName).then()
-
+		fetchData().then()
 	}, []);
 
 

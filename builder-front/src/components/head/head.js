@@ -40,9 +40,8 @@ const Head = ({queryPageParam, rangeValue, setRangeValue}) => {
 
 	const onHandlerCreatePreviews = async () => {
 		try {
-			const hostName = window.location.hostname
 			const response = await axios.get(
-				`${isLocalhost(hostName) ? CONFIG.serverUrl : CONFIG.serverUrlProd}generate-preview`
+				`${CONFIG.serverUrlProd}generate-preview`
 			)
 			const data = response.data
 

@@ -10,10 +10,11 @@ const serverUrlProd = 'https://builder.smart-ui.pro/'
 
 export const CONFIG = {
     getBlockUrl: `${baseRazorUrl}api/custom-builder`,
+    serverUrl,
     baseRazorUrl,
     baseBuilderUrl,
+
+    serverUrlProd,
     baseRazorUrlProd,
-    baseBuilderUrlProd,
-    serverUrl,
-    serverUrlProd
+    baseBuilderUrlProd
 }
