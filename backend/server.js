@@ -243,7 +243,7 @@ app.get('/generate-preview', async (req, res) => {
 	try {
 
 		const response = await fetch(
-			`${CONFIG.baseRazorUrlProd}/api/custom-builder`
+			`${CONFIG.baseRazorUrlProd}api/custom-builder`
 		)
 		const data = await response.json()
 
@@ -253,6 +253,7 @@ app.get('/generate-preview', async (req, res) => {
 			const document = dom.window.document
 			const element = document.querySelector('[data-component]')
 
+			if (!element) return
 			const componentName = element.getAttribute('data-component')
 			const textSVG = `${componentName} component`
 
@@ -262,7 +263,7 @@ app.get('/generate-preview', async (req, res) => {
         </svg>
       `
 
-			fs.writeFile(`${CONFIG.baseRazorUrlProd}${$path}/preview/${componentName}.svg`, svgData)
+			fs.writeFile(`${$path}/preview/${componentName}.svg`, svgData)
 		})
 
 		res.status(200).json({success: true, message: 'Preview generated successfully'})
