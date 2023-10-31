@@ -1,12 +1,13 @@
 import Routes from "./Routes";
-import ListPages from "./containers/ListPages";
+import React from "react";
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
-    return (
-        <>
-            <Routes />
-        </>
-    );
+	return (
+		<>
+			<Routes/>
+		</>
+	);
 }
 
 export default App;

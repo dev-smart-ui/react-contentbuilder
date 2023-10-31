@@ -3,7 +3,7 @@ body {
 }
 
 button:disabled {
-  opacity: .4 !important;
+  opacity: .8 !important;
   cursor: not-allowed  !important;
 }
 

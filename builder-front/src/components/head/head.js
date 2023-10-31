@@ -1,14 +1,18 @@
+import React from 'react';
 import "./head.css";
 import Input from "./input";
 import {useLocation} from "react-router-dom";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import {CONFIG} from "../../config"
-import {isLocalhost} from "../../helpers";
+import {toast} from "react-toastify";
+import {ThreeCircles} from "react-loader-spinner";
 
 const Head = ({queryPageParam, rangeValue, setRangeValue}) => {
-	const location = useLocation();
+	const location = useLocation()
+
 	const [lock, setLock] = useState(false)
+	const [isLoading, setIsLoading] = useState(false)
 
 	const onHandlerRange = (e) => {
 		let value = e.target.value
@@ -21,9 +25,11 @@ const Head = ({queryPageParam, rangeValue, setRangeValue}) => {
 			const currentTime = new Date().getTime()
 			localStorage.setItem('clickRebuildTime', currentTime.toString())
 			await fetch('https://api.vercel.com/v1/integrations/deploy/prj_Q3Am2SsoSQDBXLZVEgD4IVnophCS/CM4rH0Qt6I')
+			toast.success('rebuild started')
 		} catch (e) {
 			console.log(e)
 			setLock(false)
+			toast.error('rebuild error')
 		}
 	}
 
@@ -40,14 +46,16 @@ const Head = ({queryPageParam, rangeValue, setRangeValue}) => {
 
 	const onHandlerCreatePreviews = async () => {
 		try {
-			const response = await axios.get(
-				`${CONFIG.serverUrlProd}generate-preview`
-			)
-			const data = response.data
+			setIsLoading(true)
+			const response = await axios.get(`${CONFIG.serverUrlProd}generate-preview`)
 
-			console.log(data.message)
+			const data = response.data
+			toast.success(data.message)
 		} catch (error) {
+			toast.error(error.message || 'error')
 			console.error("error:", error)
+		} finally {
+			setIsLoading(false)
 		}
 	}
 
@@ -64,12 +72,39 @@ const Head = ({queryPageParam, rangeValue, setRangeValue}) => {
 	          + Add new page
           </a>
 
-	        <button disabled={lock} onClick={onHandlerRebuild} className="text-center transition-all inline-block cursor-pointer ml-1 mb-2 bg-red-500 hover:bg-red-700 text-white size-14 py-3 px-4 uppercase font-semibold rounded-full">
-		        Rebuild
+	        <button disabled={lock} onClick={onHandlerRebuild} className="text-center transition-all inline-block cursor-pointer ml-1 mb-2 bg-red-500 hover:bg-red-700 text-white size-14 py-3 px-4 uppercase font-semibold rounded-full relative">
+		        Rebuil
+		        {
+			        lock && <ThreeCircles
+				        height="30"
+				        width="30"
+				        color="#4fa94d"
+				        wrapperStyle={{}}
+				        wrapperClass="three-circles-rotating"
+				        visible={true}
+				        ariaLabel="circles-border"
+				        outerCircleColor="#000"
+				        innerCircleColor="#fff"
+				        middleCircleColor="#000"
+			        />
+		        }
 	        </button>
 
-	        <button disabled={lock} onClick={onHandlerCreatePreviews} className="text-center transition-all inline-block cursor-pointer ml-1 mb-2 bg-red-500 hover:bg-red-700 text-white size-14 py-3 px-4 uppercase font-semibold rounded-full">
+	        <button disabled={isLoading} onClick={onHandlerCreatePreviews} className="text-center transition-all inline-block cursor-pointer ml-1 mb-2 bg-red-500 hover:bg-red-700 text-white size-14 py-3 px-4 uppercase font-semibold rounded-full relative">
 		        generate preview
+
+		        {isLoading && <ThreeCircles
+			        height="30"
+			        width="30"
+			        color="#4fa94d"
+			        wrapperStyle={{}}
+			        wrapperClass="three-circles-rotating"
+			        visible={true}
+			        ariaLabel="circles-border"
+			        outerCircleColor="#000"
+			        innerCircleColor="#fff"
+			        middleCircleColor="#000"
+		        />}
 	        </button>
         </div>
 

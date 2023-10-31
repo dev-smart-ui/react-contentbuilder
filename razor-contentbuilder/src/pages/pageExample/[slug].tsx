@@ -46,7 +46,6 @@ const counter ={ }
 						}
 						let componentProps={}
 						const correctedCounter = counter[key]-1
-						console.log('builderProps', builderProps[key+""+correctedCounter])
 						if(builderProps[key+""+correctedCounter]){
 							componentProps=builderProps[key+""+correctedCounter]
 						}

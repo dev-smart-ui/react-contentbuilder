@@ -50,7 +50,6 @@ const PageExample = ({dataFromCms, builderProps}: any) => {
 					}
 					let componentProps = {}
 					const correctedCounter = counter[key] - 1
-					console.log('builderProps', builderProps[key + "" + correctedCounter])
 					if (builderProps[key + "" + correctedCounter]) {
 						componentProps = builderProps[key + "" + correctedCounter]
 					}
@@ -63,7 +62,6 @@ const PageExample = ({dataFromCms, builderProps}: any) => {
 					const imgStyles = attribs.style ? formatStyles(attribs.style) : ''
 					const width = imgStyles ? +parseInt(imgStyles.width) : 480
 					const height = imgStyles ? +parseInt(imgStyles.height) : 600
-					const path = attribs.src.split('/')[0]
 
 					return <BuilderImage
 						width={width} height={height}

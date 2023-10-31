@@ -4,6 +4,8 @@ import {useHistory} from 'react-router-dom';
 import axios from "axios";
 import {CONFIG} from "../config";
 import {isLocalhost} from "../helpers";
+import {toast} from "react-toastify";
+import {ThreeCircles} from "react-loader-spinner";
 
 
 const Edit = ({queryPageParam, rangeValue}) => {
@@ -13,18 +15,10 @@ const Edit = ({queryPageParam, rangeValue}) => {
 
 	const [finishRender, setFinishRender] = useState(false)
 
-	const onSave = (html) => {
-
-	};
-
-	const onSaveAndFinish = (html) => {
-		history.push('/list-pages');
-	};
-
 	const closeBuilder = () => {
 		const answer = window.confirm('Do you really want to leave?');
 		if (!answer) return;
-		history.push('/list-pages');
+		history.push('/');
 	};
 
 
@@ -50,23 +44,43 @@ const Edit = ({queryPageParam, rangeValue}) => {
 		fetchData().then()
 	}, []);
 
+	const onHandlerSave = (ref) => {
+		try {
+			ref.current();
+			toast.success('Page saved')
+		} catch (e) {
+			console.log(e)
+		}
+	}
+
+	const onHandlerSaveAndFinished = (ref) => {
+		try {
+			ref.current();
+			toast.success('Page saved')
+			setTimeout(() => {
+				history.push('/');
+			}, 2000)
+		} catch (e) {
+			console.log(e)
+		}
+	}
+
 
 	return (
 		<>
-			{finishRender &&queryPageParam&&
+			{finishRender && queryPageParam &&
 				<BuilderControl
 					rangeValue={rangeValue}
 					queryPageParam={queryPageParam}
-					onSave={onSave}
-					onSaveAndFinish={onSaveAndFinish}
 					doSave={(f) => (callSaveRef.current = f)}
 					doSaveAndFinish={(f) => (callSaveAndFinishRef.current = f)}
 				/>}
+
 			<div className="is-ui" style={{position: 'fixed', right: '30px', bottom: '30px', display: 'flex'}}>
-				<button disabled={!queryPageParam} type="button" onClick={() => callSaveRef.current()} style={{width: '85px'}}>
+				<button disabled={!queryPageParam} type="button" onClick={() => onHandlerSave(callSaveRef)} style={{width: '85px'}}>
 					Save
 				</button>
-				<button disabled={!queryPageParam} type="button" onClick={() => callSaveAndFinishRef.current()}
+				<button disabled={!queryPageParam} type="button" onClick={() => onHandlerSaveAndFinished(callSaveAndFinishRef)}
 				        style={{width: '120px'}}>
 					Save & Finish
 				</button>

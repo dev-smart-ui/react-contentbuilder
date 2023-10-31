@@ -5,7 +5,7 @@ import {instanceAxios} from "../../axiosConfig";
 import {isLocalhost} from "../../helpers";
 import {CONFIG} from "../../config";
 
-const BuilderControl = ({rangeValue, queryPageParam, onSave, onSaveAndFinish, doSave, doSaveAndFinish}) => {
+const BuilderControl = ({rangeValue, queryPageParam, doSave, doSaveAndFinish}) => {
 	const [obj, setObj] = useState(null);
 
 	useEffect(() => {
@@ -234,15 +234,11 @@ const BuilderControl = ({rangeValue, queryPageParam, onSave, onSaveAndFinish, do
 	};
 
 	const saveContent = (contentBuilder) => {
-		save(contentBuilder, (html, serverHtml) => {
-			onSave(html, serverHtml);
-		});
+		save(contentBuilder);
 	};
 
 	const saveContentAndFinish = (contentBuilder) => {
-		save(contentBuilder, (html, serverHtml) => {
-			onSaveAndFinish(html, serverHtml);
-		});
+		save(contentBuilder);
 	};
 
 
