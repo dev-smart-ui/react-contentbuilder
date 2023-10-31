@@ -25,7 +25,7 @@ export const imageAdopter = (src?: string | StaticRequire | StaticImageData)=>{
         }
 
 
-    return `${CONFIG_RAZOR.baseRazorUrlProd}${srcString}`;
+    return `${CONFIG_RAZOR.baseBuilderUrlProd}${srcString}`;
 }
 
 
