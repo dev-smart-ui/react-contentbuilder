@@ -3,6 +3,7 @@ import BuilderControl from '../components/contentbuilder/buildercontrol';
 import {useHistory} from 'react-router-dom';
 import axios from "axios";
 import {CONFIG} from "../config";
+import {isLocalhost} from "../helpers";
 
 
 const Edit = ({queryPageParam, rangeValue}) => {
@@ -27,10 +28,10 @@ const Edit = ({queryPageParam, rangeValue}) => {
 	};
 
 
-	const fetchData = async () => {
+	const fetchData = async (hostName) => {
 
 		try {
-			const {data} = await axios.get(`${CONFIG.baseRazorUrlProd}api/custom-builder`)
+			const {data} = await axios(`${isLocalhost(hostName) ? CONFIG.baseRazorUrl : CONFIG.baseRazorUrlProd}api/custom-builder`)
 
 			window.data_custom = {
 				'snippets': data
@@ -44,7 +45,8 @@ const Edit = ({queryPageParam, rangeValue}) => {
 	}
 
 	useEffect(() => {
-		console.log('asd')
+		const hostName = window.location.hostname
+		console.log('fetchData ', hostName)
 		fetchData().then()
 	}, []);
 

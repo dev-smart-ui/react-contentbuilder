@@ -10,7 +10,8 @@ const nextConfig = {
   images: {
     domains: [
       'react-contentbuilder.vercel.app',
-      'builder.smart-ui.pro',"localhost"
+      'builder.smart-ui.pro',"localhost",
+      'razor-contentbuilder.vercel.app'
     ],
     formats: ['image/avif', 'image/webp'],
   },
