@@ -50,8 +50,7 @@ const Carousel: React.FunctionComponent<CarouselPropsType> = ({children,
   autoplay,
   ...props
 }) => {
-  const { locale } = useRouter();
-  const dir = getDirection(locale);
+
   const prevRef = useRef<HTMLDivElement>(null);
   const nextRef = useRef<HTMLDivElement>(null);
   let nextButtonClasses = cn(
@@ -74,7 +73,6 @@ const Carousel: React.FunctionComponent<CarouselPropsType> = ({children,
         modules={[Navigation, Autoplay, Pagination, Grid]}
         autoplay={autoplay}
         breakpoints={breakpoints}
-        dir={dir}
         pagination={pagination}
         grid={grid}
         navigation={
@@ -99,21 +97,21 @@ const Carousel: React.FunctionComponent<CarouselPropsType> = ({children,
         >
           {prevActivateId.length > 0 ? (
             <div className={prevButtonClasses} id={prevActivateId}>
-              {dir === 'rtl' ? <IoIosArrowForward /> : <IoIosArrowBack />}
+       <IoIosArrowBack />
             </div>
           ) : (
             <div ref={prevRef} className={prevButtonClasses}>
-              {dir === 'rtl' ? <IoIosArrowForward /> : <IoIosArrowBack />}
+        <IoIosArrowBack />
             </div>
           )}
 
           {nextActivateId.length > 0 ? (
             <div className={nextButtonClasses} id={nextActivateId}>
-              {dir === 'rtl' ? <IoIosArrowBack /> : <IoIosArrowForward />}
+             <IoIosArrowForward />
             </div>
           ) : (
             <div ref={nextRef} className={nextButtonClasses}>
-              {dir === 'rtl' ? <IoIosArrowBack /> : <IoIosArrowForward />}
+           <IoIosArrowForward />
             </div>
           )}
         </div>
