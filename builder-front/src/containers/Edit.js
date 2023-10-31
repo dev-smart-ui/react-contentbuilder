@@ -2,7 +2,6 @@ import React, {useEffect, useRef, useState} from 'react';
 import BuilderControl from '../components/contentbuilder/buildercontrol';
 import {useHistory} from 'react-router-dom';
 import axios from "axios";
-import {isLocalhost} from "../helpers";
 import {CONFIG} from "../config";
 
 
@@ -31,7 +30,7 @@ const Edit = ({queryPageParam, rangeValue}) => {
 	const fetchData = async () => {
 
 		try {
-			const {data} = await axios(`${CONFIG.baseRazorUrlProd}api/custom-builder`)
+			const {data} = await axios.get(`${CONFIG.baseRazorUrlProd}api/custom-builder`)
 
 			window.data_custom = {
 				'snippets': data
@@ -45,6 +44,7 @@ const Edit = ({queryPageParam, rangeValue}) => {
 	}
 
 	useEffect(() => {
+		console.log('asd')
 		fetchData().then()
 	}, []);
 

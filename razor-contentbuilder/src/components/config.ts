@@ -7,7 +7,6 @@ const baseRazorUrlProd = "https://razor-contentbuilder.vercel.app/" // prod
 const serverUrlProd = 'https://builder.smart-ui.pro/'
 
 export const CONFIG_RAZOR= {
-    imgPlaceholder :baseRazorUrl+ "placeholder.png",
     baseBuilderUrl,
     baseRazorUrl,
     serverUrl,

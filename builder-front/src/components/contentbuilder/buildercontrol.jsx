@@ -4,7 +4,6 @@ import "./contentbuilder.css";
 import {instanceAxios} from "../../axiosConfig";
 import {isLocalhost} from "../../helpers";
 import {CONFIG} from "../../config";
-import axios from "axios";
 
 const BuilderControl = ({rangeValue, queryPageParam, onSave, onSaveAndFinish, doSave, doSaveAndFinish}) => {
 	const [obj, setObj] = useState(null);

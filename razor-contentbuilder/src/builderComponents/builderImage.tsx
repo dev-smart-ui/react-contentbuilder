@@ -9,7 +9,7 @@ import {StaticRequire} from "next/dist/shared/lib/get-img-props";
 export const imageAdopter = (src?: string | StaticRequire | StaticImageData)=>{
 
     if(!src){
-        return CONFIG_RAZOR.imgPlaceholder
+        return `${CONFIG_RAZOR.baseRazorUrlProd}placeholder.png`
     }
     let srcString = ""
     if (typeof src === 'string') {
