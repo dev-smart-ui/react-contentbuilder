@@ -67,7 +67,7 @@ const PageExample = ({dataFromCms, builderProps}: any) => {
 
 					return <BuilderImage
 						width={width} height={height}
-						src={`${isLocalhost(hostName) ? CONFIG_RAZOR.serverUrl : CONFIG_RAZOR.serverUrlProd}${attribs.src}`}
+						src={`${isLocalhost(hostName) ? CONFIG_RAZOR.baseRazorUrl : CONFIG_RAZOR.baseRazorUrlProd}${attribs.src}`}
 						alt=''/>
 				}
 			}

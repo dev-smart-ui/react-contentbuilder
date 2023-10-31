@@ -30,6 +30,7 @@ export const imageAdopter = (src?: string | StaticRequire | StaticImageData)=>{
 
 
 export const BuilderImage:FC<ImageProps> = ({src ,  ...rest}) => {
+    console.log(src)
         if(process.env.IN_API_CONTEXT){
             return <img  src={imageAdopter(src)} alt="" {...rest}/>
         }
