@@ -1,6 +1,6 @@
 import HeroBannerCard from '@components/hero/hero-banner-card';
 import Carousel from '@components/ui/carousel/carousel';
-import { SwiperSlide } from '@components/ui/carousel/slider';
+import {SwiperSlide} from '@components/ui/carousel/slider';
 import {onlyForBuilder, IsEditable} from "@components/config";
 
 interface Props {
@@ -10,7 +10,7 @@ interface Props {
 	heroContent?: boolean;
 }
 
-const defaultSlider  = [
+const defaultSlider = [
 	{
 		id: 1,
 		title: 'Free delivery from your store',
@@ -48,28 +48,29 @@ const defaultSlider  = [
 ];
 
 const Slider: React.FC<Props> = ({
-																							 heroBanner=defaultSlider,
-																							 className = 'mb-7',
-																							 contentClassName = 'py-24',
-																							 heroContent = true,
-																	 image,
-																	 someText,someLink
-																						 }) => {
+	                                 heroBanner = defaultSlider,
+	                                 className = 'mb-7',
+	                                 contentClassName = 'py-24',
+	                                 heroContent = true,
+	                                 image,
+	                                 someText, someLink, ...props
+                                 }) => {
 
+	console.log(props)
 
-	if(onlyForBuilder()){
-		return <div  data-component={"Slider"}>
+	if (onlyForBuilder()) {
+		return <div data-component={"Slider"}>
 
-			<div data-element style={{height:400 , border:"solid red 1px" , margin:30}}>
+			<div data-element style={{height: 400, border: "solid red 1px", margin: 30}}>
 				<img  {...IsEditable({image: "src"})} src="https://lavar.com.ua/image/cache/catalog/vafelni-kartynku/vk-1172-750x750-product_thumb.jpg" alt=""/>
-				<a {...IsEditable({ someText:"textContent",  someLink: "href"})} href="/"> text from </a>
+				<a {...IsEditable({someText: "textContent", someLink: "href"})} href="/"> text from </a>
 			</div>
-			<div data-element style={{height:400 , border:"solid red 1px" , margin:30}}>
+			<div data-element style={{height: 400, border: "solid red 1px", margin: 30}}>
 				<img  {...IsEditable({image: "src"})} src="https://lavar.com.ua/image/cache/catalog/vafelni-kartynku/vk-1172-750x750-product_thumb.jpg" alt=""/>
-				<a {...IsEditable({ someText:"textContent",  someLink: "href"})} href="/"> text from </a>
+				<a {...IsEditable({someText: "textContent", someLink: "href"})} href="/"> text from </a>
 			</div>
-			<button> add </button>
-			<script >
+			<button> add</button>
+			<script>
 
 
 			</script>
