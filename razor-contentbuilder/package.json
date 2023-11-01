@@ -54,6 +54,7 @@
     "sass": "^1.53.0",
     "sharp": "^0.32.6",
     "swiper": "^9.2.0",
+    "swr": "^2.2.4",
     "yet-another-react-lightbox": "^2.2.0"
   },
   "devDependencies": {
