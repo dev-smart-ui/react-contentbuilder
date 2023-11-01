@@ -60,11 +60,11 @@ const Slider: React.FC<Props> = ({
 	if(onlyForBuilder()){
 		return <div  data-component={"Slider"}>
 
-			<div style={{height:400 , border:"solid red 1px" , margin:30}}>
+			<div data-element style={{height:400 , border:"solid red 1px" , margin:30}}>
 				<img  {...IsEditable({image: "src"})} src="https://lavar.com.ua/image/cache/catalog/vafelni-kartynku/vk-1172-750x750-product_thumb.jpg" alt=""/>
 				<a {...IsEditable({ someText:"textContent",  someLink: "href"})} href="/"> text from </a>
 			</div>
-			<div style={{height:400 , border:"solid red 1px" , margin:30}}>
+			<div data-element style={{height:400 , border:"solid red 1px" , margin:30}}>
 				<img  {...IsEditable({image: "src"})} src="https://lavar.com.ua/image/cache/catalog/vafelni-kartynku/vk-1172-750x750-product_thumb.jpg" alt=""/>
 				<a {...IsEditable({ someText:"textContent",  someLink: "href"})} href="/"> text from </a>
 			</div>
