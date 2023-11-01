@@ -1,6 +1,7 @@
 import HeroBannerCard from '@components/hero/hero-banner-card';
 import Carousel from '@components/ui/carousel/carousel';
 import { SwiperSlide } from '@components/ui/carousel/slider';
+import {onlyForBuilder, IsEditable} from "@components/config";
 
 interface Props {
 	heroBanner?: any;
@@ -46,14 +47,41 @@ const defaultSlider  = [
 	}
 ];
 
-const HeroTwoSliderBlock: React.FC<Props> = ({
+const Slider: React.FC<Props> = ({
 																							 heroBanner=defaultSlider,
 																							 className = 'mb-7',
 																							 contentClassName = 'py-24',
 																							 heroContent = true,
+																	 image,
+																	 someText,someLink
 																						 }) => {
+
+
+	if(onlyForBuilder()){
+		return <div  data-component={"Slider"}>
+
+			<div style={{height:400 , border:"solid red 1px" , margin:30}}>
+				<img  {...IsEditable({image: "src"})} src="https://lavar.com.ua/image/cache/catalog/vafelni-kartynku/vk-1172-750x750-product_thumb.jpg" alt=""/>
+				<a {...IsEditable({ someText:"textContent",  someLink: "href"})} href="/"> text from </a>
+			</div>
+			<div style={{height:400 , border:"solid red 1px" , margin:30}}>
+				<img  {...IsEditable({image: "src"})} src="https://lavar.com.ua/image/cache/catalog/vafelni-kartynku/vk-1172-750x750-product_thumb.jpg" alt=""/>
+				<a {...IsEditable({ someText:"textContent",  someLink: "href"})} href="/"> text from </a>
+			</div>
+			<button> add </button>
+			<script >
+
+
+			</script>
+
+		</div>
+	}
+	console.log({
+		someLink,
+		someText
+	})
 	return (
-		<div className={`${className}`}>
+		<div data-component={"Slider"} className={`${className}`}>
 			{// @ts-ignore
 				<Carousel
 					pagination={{
@@ -67,12 +95,14 @@ const HeroTwoSliderBlock: React.FC<Props> = ({
 				>
 					{heroBanner?.map((banner: any) => (
 						<SwiperSlide key={`banner--key${banner.id}`}>
-							<HeroBannerCard
-								banner={banner}
-								variant="slider"
-								heroContentCard={heroContent}
-								className={contentClassName}
-							/>
+							{/*<HeroBannerCard*/}
+							{/*	banner={banner}*/}
+							{/*	variant="slider"*/}
+							{/*	heroContentCard={heroContent}*/}
+							{/*	className={contentClassName}*/}
+							{/*/>*/}
+							{someText}
+							<img src={image} alt=""/>
 						</SwiperSlide>
 					))}
 				</Carousel>}
@@ -80,4 +110,4 @@ const HeroTwoSliderBlock: React.FC<Props> = ({
 	);
 };
 
-export default HeroTwoSliderBlock;
+export default Slider;

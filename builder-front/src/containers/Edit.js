@@ -23,7 +23,7 @@ const Edit = ({queryPageParam, rangeValue}) => {
 
 
 	const fetchData = async (hostName) => {
-
+		console.log(  isLocalhost(hostName) )
 		try {
 			const {data} = await axios(`${isLocalhost(hostName) ? CONFIG.baseRazorUrl : CONFIG.baseRazorUrlProd}api/custom-builder`)
 
@@ -41,7 +41,7 @@ const Edit = ({queryPageParam, rangeValue}) => {
 	useEffect(() => {
 		const hostName = window.location.hostname
 		console.log('fetchData ', hostName)
-		fetchData().then()
+		fetchData(hostName).then()
 	}, []);
 
 	const onHandlerSave = (ref) => {
