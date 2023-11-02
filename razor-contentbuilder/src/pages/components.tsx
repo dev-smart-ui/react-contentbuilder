@@ -8,8 +8,8 @@ export default function Page (){
 		return <div>loading</div>
 	}
 	return <div>
-		{data.map((item)=>{
-		return	<div dangerouslySetInnerHTML={{__html:item.html}}/>
+		{data.map((item: any, i: number)=>{
+		return	<div key={i} dangerouslySetInnerHTML={{__html:item.html}}/>
 		})}
 	</div>
 }

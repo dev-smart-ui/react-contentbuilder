@@ -8,6 +8,8 @@ interface Props {
 	className?: string;
 	contentClassName?: string;
 	heroContent?: boolean;
+	builderProps?: any
+	Slides?: any
 }
 
 const defaultSlider = [
@@ -47,66 +49,63 @@ const defaultSlider = [
 	}
 ];
 
+
+
+
 const Slider: React.FC<Props> = ({
 	                                 heroBanner = defaultSlider,
 	                                 className = 'mb-7',
 	                                 contentClassName = 'py-24',
 	                                 heroContent = true,
-	                                 image,
-	                                 someText, someLink, ...props
+	                                 Slides, ...props
                                  }) => {
 
-	console.log(props)
+	console.log('SliderProps ', Slides)
 
 	if (onlyForBuilder()) {
-		return <div data-component={"Slider"}>
+		return (
+				<div data-component="Slider">
+					<div data-repeater="Slides" style={{ height: 400, border: "solid red 1px", margin: "0 0 30px 0" }}>
+						<button data-repeaterbtn="removeElem" style={{ cursor: "pointer" }}>remove elem</button>
+						<img {...IsEditable({ image: "src" })} src="https://lavar.com.ua/image/cache/catalog/vafelni-kartynku/vk-1172-750x750-product_thumb.jpg" alt="" />
+						<a {...IsEditable({ someText: "textContent", someLink: "href" })} href="#"> text from </a>
+					</div>
 
-			<div data-element style={{height: 400, border: "solid red 1px", margin: 30}}>
-				<img  {...IsEditable({image: "src"})} src="https://lavar.com.ua/image/cache/catalog/vafelni-kartynku/vk-1172-750x750-product_thumb.jpg" alt=""/>
-				<a {...IsEditable({someText: "textContent", someLink: "href"})} href="/"> text from </a>
-			</div>
-			<div data-element style={{height: 400, border: "solid red 1px", margin: 30}}>
-				<img  {...IsEditable({image: "src"})} src="https://lavar.com.ua/image/cache/catalog/vafelni-kartynku/vk-1172-750x750-product_thumb.jpg" alt=""/>
-				<a {...IsEditable({someText: "textContent", someLink: "href"})} href="/"> text from </a>
-			</div>
-			<button> add</button>
-			<script>
+					<button data-repeaterbtn="addElem" style={{ cursor: "pointer" }}>add elem</button>
+				</div>
 
-
-			</script>
-
-		</div>
+		)
 	}
-	console.log({
-		someLink,
-		someText
-	})
+
 	return (
 		<div data-component={"Slider"} className={`${className}`}>
-			{// @ts-ignore
-				<Carousel
-					pagination={{
-						clickable: true,
-					}}
-					navigation={true}
-					autoplay={true}
-					prevActivateId={`prevActivateId`}
-					nextActivateId={`nextActivateId`}
-					className={'overflow-hidden'}
-				>
-					{heroBanner?.map((banner: any) => (
-						<SwiperSlide key={`banner--key${banner.id}`}>
-							{/*<HeroBannerCard*/}
-							{/*	banner={banner}*/}
-							{/*	variant="slider"*/}
-							{/*	heroContentCard={heroContent}*/}
-							{/*	className={contentClassName}*/}
-							{/*/>*/}
-							{someText}
-							<img src={image} alt=""/>
-						</SwiperSlide>
-					))}
-				</Carousel>}
+			{
+						// @ts-ignore
+						<Carousel
+							pagination={{
+								clickable: true,
+							}}
+							navigation={true}
+							autoplay={true}
+							prevActivateId={`prevActivateId`}
+							nextActivateId={`nextActivateId`}
+							className={'overflow-hidden'}
+						>
+
+							{Slides?.map((banner: any, i: number) => (
+								<SwiperSlide key={`banner--key${i}`}>
+									{/*<HeroBannerCard*/}
+									{/*	banner={banner}*/}
+									{/*	variant="slider"*/}
+									{/*	heroContentCard={heroContent}*/}
+									{/*	className={contentClassName}*/}
+									{/*/>*/}
+									{banner.someText}
+									<img src={banner.image} alt=""/>
+								</SwiperSlide>
+							))}
+						</Carousel>
+				}
 		</div>
 	);
 };

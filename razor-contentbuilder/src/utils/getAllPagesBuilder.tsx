@@ -1,8 +1,10 @@
 import {CONFIG_RAZOR} from "@components/config";
+import {isLocalhost} from "../../services/helpers";
 
 export async function getAllPagesBuilder(hostName: string) {
 	try {
-		const response = await fetch(`${CONFIG_RAZOR.serverUrlProd}all`, {
+		const baseUrl = isLocalhost(hostName) ? `${CONFIG_RAZOR.serverUrl}` : `${CONFIG_RAZOR.serverUrlProd}`
+		const response = await fetch(`${baseUrl}all`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',

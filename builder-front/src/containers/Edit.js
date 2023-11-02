@@ -23,7 +23,6 @@ const Edit = ({queryPageParam, rangeValue}) => {
 
 
 	const fetchData = async (hostName) => {
-		console.log(  isLocalhost(hostName) )
 		try {
 			const {data} = await axios(`${isLocalhost(hostName) ? CONFIG.baseRazorUrl : CONFIG.baseRazorUrlProd}api/custom-builder`)
 

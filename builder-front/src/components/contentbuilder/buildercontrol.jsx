@@ -2,13 +2,26 @@ import React, {useEffect, useState} from "react";
 import ContentBuilder from '@innovastudio/contentbuilder';
 import "./contentbuilder.css";
 import {instanceAxios} from "../../axiosConfig";
-import {isLocalhost} from "../../helpers";
+import {addBuilderElem, addSlide, delSlide, isLocalhost, removeBuilderElem} from "../../helpers";
 import {CONFIG} from "../../config";
+import axios from "axios";
 
 const BuilderControl = ({rangeValue, queryPageParam, doSave, doSaveAndFinish}) => {
 	const [obj, setObj] = useState(null);
 
 	useEffect(() => {
+		const hostName = window.location.hostname
+
+		document.addEventListener('click', function (event) {
+			if (event.target && event.target.getAttribute('data-repeaterbtn') === 'addElem') {
+				addBuilderElem(event.target);
+			}
+
+			if (event.target  && event.target.getAttribute('data-repeaterbtn') === 'removeElem') {
+				removeBuilderElem(event.target)
+			}
+		})
+
 		const containerElement = document.querySelector('.container');
 		if (containerElement) {
 			document.querySelector('.container').style.opacity = 0; // optional: hide editable area until content loaded
@@ -127,7 +140,11 @@ const BuilderControl = ({rangeValue, queryPageParam, doSave, doSaveAndFinish}) =
 
 			contentBuilder.loadSnippets('assets/minimalist-blocks/content.js'); // Load snippet file
 
-			instanceAxios.get(queryPageParam !== '' ? `/load?page=${queryPageParam}` : '/load').then((response) => {
+			const currentHost = `${isLocalhost(hostName) ? CONFIG.serverUrl : CONFIG.serverUrlProd}`
+
+			axios.get(
+				`${currentHost}${queryPageParam !== '' ? `load?page=${queryPageParam}` : 'load'}`,
+			).then((response) => {
 				let html;
 
 				if (response.data.html) {
@@ -181,9 +198,13 @@ const BuilderControl = ({rangeValue, queryPageParam, doSave, doSaveAndFinish}) =
 			let base64 = e.target.result;
 			base64 = base64.replace(/^data:(.*?);base64,/, "");
 			base64 = base64.replace(/ /g, '+');
+			const hostName = window.location.hostname
 
 			// Upload process
-			instanceAxios.post('/upload', {image: base64, filename: filename}).then((response) => {
+			axios.post(
+				`${isLocalhost(hostName) ? CONFIG.serverUrl : CONFIG.serverUrlProd}upload`,
+				{image: base64, filename: filename}
+			).then((response) => {
 
 				callback(response);
 
@@ -197,6 +218,7 @@ const BuilderControl = ({rangeValue, queryPageParam, doSave, doSaveAndFinish}) =
 	const save = (contentBuilder, callback) => {
 		// Save all embedded base64 images first
 		contentBuilder.saveImages('', () => {
+			const hostName = window.location.hostname
 
 			// Then save the content
 			let html = contentBuilder.html();
@@ -205,7 +227,10 @@ const BuilderControl = ({rangeValue, queryPageParam, doSave, doSaveAndFinish}) =
 				page: queryPageParam
 			};
 
-			instanceAxios.post('/save', data).then((response) => {
+			axios.post(
+				`${isLocalhost(hostName) ? CONFIG.serverUrl : CONFIG.serverUrlProd}save`,
+				data
+			).then((response) => {
 				// Saved Successfully
 				if (callback) callback(html);
 
@@ -220,7 +245,10 @@ const BuilderControl = ({rangeValue, queryPageParam, doSave, doSaveAndFinish}) =
 			console.log('url ', `${isLocalhost(hostName) ? CONFIG.serverUrl : CONFIG.serverUrlProd}upload`)
 
 			// Upload image process
-			instanceAxios.post('upload/', {image: base64, filename: filename}).then((response) => {
+			axios.post(
+				`${isLocalhost(hostName) ? CONFIG.serverUrl : CONFIG.serverUrlProd}upload`,
+				{image: base64, filename: filename}
+			).then((response) => {
 
 				const uploadedImageUrl = response.data.url; // get saved image url
 

@@ -27,37 +27,30 @@ const formatStyles = (styles: string | undefined): { [key: string]: string } => 
 
 const PageExample = ({dataFromCms, builderProps}: any) => {
 	const [hostName, setHostName] = useState(CONFIG_RAZOR.serverUrl)
+	console.log('PageBuilderProps ', builderProps)
 
-	console.log('builderProps ', builderProps)
 	useEffect(() => {
 		const hostName = window.location.host
 		setHostName(hostName)
-
 	}, [])
 
-	const counter = {}
+	let counter = 0
 	const options = {
-		replace: ({attribs, name}: any) => {
-			if (!attribs) return
+		replace: ({ attribs, name }: any) => {
+			if (!attribs) return;
 
-			for (const key in List_Of_Components) {
-				const Component = List_Of_Components[key]
+			const componentName = attribs['data-component'];
 
-				if (attribs['data-component'] === key) {
-					if (counter[key]) {
-						counter[key] = counter[key] + 1
-					} else {
-						counter[key] = 1
-					}
-					let componentProps = {}
-					const correctedCounter = counter[key] - 1
-					if (builderProps[key + "" + correctedCounter]) {
-						componentProps = builderProps[key + "" + correctedCounter]
-					}
+			if (componentName) {
+				const uniqueComponentName = `${componentName}${counter}`;
+				counter += 1;
 
-					return <Component   {...componentProps}/>
-				}
+				const componentProps = builderProps[uniqueComponentName] || {};
+				const Component = List_Of_Components[componentName];
+
+				return <Component {...componentProps} />;
 			}
+
 			switch (name) {
 				case 'img': {
 					const imgStyles = attribs.style ? formatStyles(attribs.style) : ''
@@ -84,11 +77,13 @@ const PageExample = ({dataFromCms, builderProps}: any) => {
 PageExample.Layout = Layout
 
 
-export async function getServerSideProps({query, locale}) {
+export async function getServerSideProps({query, locale, req}) {
 	const {slug} = query;
+	const hostname = new URL(`http://${req.headers.host}`).hostname;
+	const baseUrl = isLocalhost(hostname) ? `${CONFIG_RAZOR.serverUrl}` : `${CONFIG_RAZOR.serverUrlProd}`
 
 	try {
-		const response = await fetch(`${CONFIG_RAZOR.serverUrlProd}load?page=${slug}`)
+		const response = await fetch(`${baseUrl}load?page=${slug}`)
 		const data = await response.json()
 		const html = data.html
 		let builderProps = {}
