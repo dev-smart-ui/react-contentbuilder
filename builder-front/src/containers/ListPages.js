@@ -5,16 +5,20 @@ import {CONFIG} from "../config";
 import {isLocalhost} from "../helpers";
 import {toast} from "react-toastify";
 
-export default function ListPages({queryPageParam}) {
+export default function ListPages() {
 	const [listPages, setListPages] = useState([]);
 	const [isLoaded, setIsLoaded] = useState(false);
 	const [hostName, setHostName] = useState('localhost')
 
 	useEffect(() => {
-		const hostName = window.location.hostname
-		setHostName(hostName)
-		onLoad();
-	}, []);
+		const hostname = window.location.hostname
+		setHostName(hostname)
+
+		setTimeout(() => {
+			onLoad().then();
+		}, 100)
+
+	}, [hostName]);
 
 	async function onLoad() {
 		setIsLoaded(false);
