@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from "react";
 import ContentBuilder from '@innovastudio/contentbuilder';
 import "./contentbuilder.css";
-import {instanceAxios} from "../../axiosConfig";
-import {addBuilderElem, addSlide, delSlide, isLocalhost, removeBuilderElem} from "../../helpers";
+import {addBuilderElem, isLocalhost, removeBuilderElem} from "../../helpers";
 import {CONFIG} from "../../config";
 import axios from "axios";
 

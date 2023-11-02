@@ -1,28 +1,26 @@
+import axios from 'axios';
 import {CONFIG_RAZOR} from "@components/config";
 import {isLocalhost} from "../../services/helpers";
 
 export async function getAllPagesBuilder(hostName: string) {
-
 	try {
-		const baseUrl = isLocalhost(hostName) ? `${CONFIG_RAZOR.serverUrl}` : `${CONFIG_RAZOR.serverUrlProd}`
-		console.log('getAllPagesBuilder ', hostName)
-		const response = await fetch(`${baseUrl}all`, {
-			method: 'GET',
+		const baseUrl = isLocalhost(hostName) ? CONFIG_RAZOR.serverUrl : CONFIG_RAZOR.serverUrlProd;
+
+		const response = await axios.get(`${baseUrl}all`, {
 			headers: {
 				'Content-Type': 'application/json',
 			},
 		});
 
-		if (response.ok) {
-			const data = await response.json();
+		if (response.status === 200) {
+			const data = response.data;
 			if (data) {
-				return data?.pages.map((item: any, index: number) => ({
+				return data.pages.map((item: any, index: number) => ({
 					id: `builder-${index + 1}`,
 					path: `/${item.page}`,
 					label: item.page,
 					content: item.content,
 				}));
-
 			} else {
 				console.error('No data received.');
 			}
