@@ -26,11 +26,11 @@ const formatStyles = (styles: string | undefined): { [key: string]: string } => 
 
 
 const PageExample = ({dataFromCms, builderProps}: any) => {
-	const [hostName, setHostName] = useState(CONFIG_RAZOR.serverUrl)
+	const [hostName, setHostName] = useState('localhost')
 	console.log('PageBuilderProps ', builderProps)
 
 	useEffect(() => {
-		const hostName = window.location.host
+		const hostName = window.location.hostname
 		setHostName(hostName)
 	}, [])
 
