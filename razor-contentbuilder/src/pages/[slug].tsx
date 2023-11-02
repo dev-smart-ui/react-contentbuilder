@@ -80,6 +80,7 @@ PageExample.Layout = Layout
 export async function getServerSideProps({query, locale, req}) {
 	const {slug} = query;
 	const hostname = new URL(`http://${req.headers.host}`).hostname;
+	console.log('slagPage', hostname)
 	const baseUrl = isLocalhost(hostname) ? `${CONFIG_RAZOR.serverUrl}` : `${CONFIG_RAZOR.serverUrlProd}`
 
 	try {
