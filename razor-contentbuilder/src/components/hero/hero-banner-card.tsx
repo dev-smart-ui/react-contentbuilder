@@ -36,7 +36,7 @@ const HeroBannerCard: FC<BannerProps> = ({
 					className
 				)}
 				style={{
-					backgroundImage: `url('${image.imageSrc}')`,
+					backgroundImage: `url('${image?.imageSrc}')`,
 				}}
 			>
 				<div
