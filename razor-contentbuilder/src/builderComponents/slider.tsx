@@ -64,14 +64,24 @@ const Slider: React.FC<Props> = ({
 
 	if (onlyForBuilder()) {
 		return (
-				<div data-component="Slider">
-					<div data-repeater="Slides" style={{ height: 400, border: "solid red 1px", margin: "0 0 30px 0" }}>
-						<button data-repeaterbtn="removeElem" style={{ cursor: "pointer" }}>remove elem</button>
-						<img {...IsEditable({ image: "src" })} src="https://lavar.com.ua/image/cache/catalog/vafelni-kartynku/vk-1172-750x750-product_thumb.jpg" alt="" />
-						<a {...IsEditable({ someText: "textContent", someLink: "href" })} href="#"> text from </a>
+				<div data-component="Slider" style={{ margin: "0 0 15px 0" }}>
+					<div data-repeater="Slides" style={{ borderBottom: "solid red 1px", margin: "0 0 15px 0" }}>
+						<div style={{display: "flex", justifyContent: "flex-end"}}>
+							<div data-repeaterbtn="removeElem" style={{ cursor: "pointer", margin: "0 0 10px auto", padding: "2px 15px", borderRadius: "9999px", background: "#EF4444", fontSize: "16px", color: "#fff" }}>
+								Remove Slide
+							</div>
+						</div>
+
+						<h2 {...IsEditable({ title: "textContent" })}>Title</h2>
+						<img {...IsEditable({ imageSrc: "src", imageAlt: "textContent" })} src="https://lavar.com.ua/image/cache/catalog/vafelni-kartynku/vk-1172-750x750-product_thumb.jpg" alt="" />
+						<p {...IsEditable({ description: "textContent" })}>paragraph text</p>
+						<a {...IsEditable({ btnText: "textContent", btnUrl: "href" })} href="#"> link text </a>
+
 					</div>
 
-					<button data-repeaterbtn="addElem" style={{ cursor: "pointer" }}>add elem</button>
+					<div data-repeaterbtn="addElem" style={{ cursor: "pointer", display: "inline-block", padding: "2px 15px", borderRadius: "9999px", background: "#2C752F", fontSize: "16px", color: "#fff" }}>
+						Add Slide
+					</div>
 				</div>
 
 		)
@@ -94,14 +104,12 @@ const Slider: React.FC<Props> = ({
 
 							{Slides?.map((banner: any, i: number) => (
 								<SwiperSlide key={`banner--key${i}`}>
-									{/*<HeroBannerCard*/}
-									{/*	banner={banner}*/}
-									{/*	variant="slider"*/}
-									{/*	heroContentCard={heroContent}*/}
-									{/*	className={contentClassName}*/}
-									{/*/>*/}
-									{banner.someText}
-									<img src={banner.image} alt=""/>
+									<HeroBannerCard
+										banner={banner}
+										variant="slider"
+										heroContentCard={heroContent}
+										className={contentClassName}
+									/>
 								</SwiperSlide>
 							))}
 						</Carousel>

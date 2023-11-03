@@ -197,11 +197,10 @@ const BuilderControl = ({rangeValue, queryPageParam, doSave, doSaveAndFinish}) =
 			let base64 = e.target.result;
 			base64 = base64.replace(/^data:(.*?);base64,/, "");
 			base64 = base64.replace(/ /g, '+');
-			const hostName = window.location.hostname
 
-			// Upload process
+			// Upload process (need only prod)
 			axios.post(
-				`${isLocalhost(hostName) ? CONFIG.serverUrl : CONFIG.serverUrlProd}upload`,
+				`${CONFIG.serverUrlProd}upload`,
 				{image: base64, filename: filename}
 			).then((response) => {
 
@@ -238,14 +237,9 @@ const BuilderControl = ({rangeValue, queryPageParam, doSave, doSaveAndFinish}) =
 			});
 
 		}, (img, base64, filename) => {
-			const hostName = window.location.hostname
-
-			console.log('img, base64, filename ', hostName)
-			console.log('url ', `${isLocalhost(hostName) ? CONFIG.serverUrl : CONFIG.serverUrlProd}upload`)
-
-			// Upload image process
+			// Upload image process (need only prod)
 			axios.post(
-				`${isLocalhost(hostName) ? CONFIG.serverUrl : CONFIG.serverUrlProd}upload`,
+				`${CONFIG.serverUrlProd}upload`,
 				{image: base64, filename: filename}
 			).then((response) => {
 
