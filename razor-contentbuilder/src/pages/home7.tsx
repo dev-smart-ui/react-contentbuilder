@@ -54,7 +54,7 @@ export default function Home() {
                         girdClassName={"gap-px 2xl:gap-px border border-black/5 bg-black/5"}
                     />
                 </div>
-                <FeatureCarousel className={"home4-featuredCarousel"} classNameCarousel={"bg-white"}/>
+                {/*<FeatureCarousel className={"home4-featuredCarousel"} classNameCarousel={"bg-white"}/>*/}
 
                 <ListingTabsPhonesFeed showBanner={'left'} />
                 <ListingTabsComputerFeed showBanner={'right'} />

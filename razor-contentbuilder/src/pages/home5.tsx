@@ -40,7 +40,7 @@ export default function Home() {
                     className={`lg:mb-7 mt-6 2xl:ms-80`}
                     contentClassName="p-7 sm:pb-24 xl:pb-32 sm:pt-16 xl:pt-24 md:min-h-[320px] xl:min-h-[390px] 2xl:min-h-[438px]"
                 />
-                <FeatureCarousel className={"home4-featuredCarousel"} classNameCarousel={"bg-white"}/>
+                {/*<FeatureCarousel className={"home4-featuredCarousel"} classNameCarousel={"bg-white"}/>*/}
                 <BannerGrid
                     data={bannerGrid}
                     grid={3}

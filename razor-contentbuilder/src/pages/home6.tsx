@@ -40,7 +40,7 @@ export default function Home() {
             />
 
             <Container className={"sm:max-w-[1730px]"}>
-                <FeatureCarousel className={"home4-featuredCarousel"} classNameCarousel={"bg-white"}/>
+                {/*<FeatureCarousel className={"home4-featuredCarousel"} classNameCarousel={"bg-white"}/>*/}
                 <BannerGrid
                     data={bannerGrid}
                     grid={3}

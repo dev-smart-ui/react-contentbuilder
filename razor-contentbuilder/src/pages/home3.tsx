@@ -49,7 +49,7 @@ export default function Home() {
                         girdClassName={"xl:gap-6"}
                     />
                 </div>
-                <FeatureCarousel/>
+                {/*<FeatureCarousel/>*/}
                 <BestSellerProductFeed/>
                 <BannerGridTwo
                     data={bannerTwo}

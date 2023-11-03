@@ -57,7 +57,7 @@ export default function Home() {
                         girdClassName={"xl:gap-6"}
                     />
                 </div>
-                <FeatureCarousel/>
+                {/*<FeatureCarousel/>*/}
             </Container>
             <Container>
                 <div className="grid grid-cols-12 gap-4 grid-cols-1 xl:gap-8">

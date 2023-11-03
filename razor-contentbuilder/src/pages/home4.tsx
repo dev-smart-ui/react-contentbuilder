@@ -48,7 +48,7 @@ export default function Home() {
                         girdClassName={"xl:gap-5"}
                     />
                 </div>
-                <FeatureCarousel className={"home4-featuredCarousel"} classNameCarousel={"bg-white"}/>
+                {/*<FeatureCarousel className={"home4-featuredCarousel"} classNameCarousel={"bg-white"}/>*/}
                 <BannerGrid
                     data={bannerGrid}
                     grid={3}
