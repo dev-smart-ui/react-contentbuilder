@@ -241,7 +241,6 @@ app.get('/all', async (req, res) => {
 
 app.get('/generate-preview', async (req, res) => {
 	try {
-		const hostName = req.hostname
 		const response = await fetch(
 			`${CONFIG.baseRazorUrlProd}api/custom-builder`
 		)
@@ -263,7 +262,7 @@ app.get('/generate-preview', async (req, res) => {
         </svg>
       `
 
-			fs.writeFile(`${CONFIG.serverUrlProd}${$path}/preview/${componentName}.svg`, svgData)
+			fs.writeFile(`${$path}/preview/${componentName}.svg`, svgData)
 		})
 
 		res.status(200).json({success: true, message: 'Preview generated successfully'})
