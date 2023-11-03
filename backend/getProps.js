@@ -19,7 +19,7 @@ const getProps = (html) => {
 			repeaterElements.forEach((repeaterElement, j) => {
 				const repeaterProps = {};
 				const repeaterNodes = repeaterElement.querySelectorAll('[data-propsname]');
-				let imageProps = {};
+				// let imageProps = {};
 				repeaterNodes.forEach((node) => {
 					const propsName = node.getAttribute('data-propsname') || "propsname-error";
 					try {
@@ -28,17 +28,19 @@ const getProps = (html) => {
 							const propsName = field[0];
 							const propSource = field[1];
 
-							if (node.tagName === 'IMG') {
-								if (!imageProps.image) {
-									imageProps.image = {};
-								}
-								imageProps.image[propsName] = node[propSource];
-							} else {
-								repeaterProps[propsName] = node[propSource];
-							}
+							repeaterProps[propsName] = node[propSource];
+
+							// if (node.tagName === 'IMG') {
+							// 	if (!imageProps.image) {
+							// 		imageProps.image = {};
+							// 	}
+							// 	imageProps.image[propsName] = node[propSource];
+							// } else {
+							// 	repeaterProps[propsName] = node[propSource];
+							// }
 						});
 
-						repeaterProps.image = imageProps.image;
+						// repeaterProps.image = imageProps.image;
 					} catch (e) {
 						console.log(e);
 					}
