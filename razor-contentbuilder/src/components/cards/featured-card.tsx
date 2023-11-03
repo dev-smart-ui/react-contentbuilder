@@ -7,11 +7,12 @@ import { IoCaretForward } from 'react-icons/io5';
 import Text from "@components/ui/text";
 import {useRouter} from "next/router";
 import {getDirection} from "@utils/get-direction";
+import Image from "next/image";
 
 interface ItemProps {
-  icon: JSX.Element;
+  image: {imageSrc: string, imageAlt: string};
   title: string;
-  href: LinkProps['href'];
+  btnUrl: LinkProps['href'];
   description: string;
 }
 
@@ -24,19 +25,19 @@ interface Props {
 
 const FeaturedCard: React.FC<Props> = ({ item, className,layout }) => {
   const { t } = useTranslation('common');
-  const { icon, title, href, description } = item;
+  const { btnUrl, title, image, description } = item;
 
   const {locale} = useRouter();
   const dir = getDirection(locale);
   const borderRTL = (dir=='rtl') ? 'border-l':'border-r';
 
   return (
-    <Link href={href} className="w-full ">
+    <Link href={btnUrl} className="w-full ">
       <div
         className={cn('group px-5 xl:px-5 2xl:px-8  flex items-center justify-center  border-black/10',borderRTL, className)}
       >
         <div className="flex flex-shrink-0 items-center justify-center">
-          {icon}
+          <Image src={image.imageSrc} width={50} height={50} alt={image.imageAlt}/>
         </div>
 
         {layout == "home4" ? (

@@ -90,29 +90,29 @@ const Slider: React.FC<Props> = ({
 	return (
 		<div data-component={"Slider"} className={`${className}`}>
 			{
-						// @ts-ignore
-						<Carousel
-							pagination={{
-								clickable: true,
-							}}
-							navigation={true}
-							autoplay={true}
-							prevActivateId={`prevActivateId`}
-							nextActivateId={`nextActivateId`}
-							className={'overflow-hidden'}
-						>
+				// @ts-ignore
+				<Carousel
+					pagination={{
+						clickable: true,
+					}}
+					navigation={true}
+					autoplay={true}
+					prevActivateId={`prevActivateId`}
+					nextActivateId={`nextActivateId`}
+					className={'overflow-hidden'}
+				>
 
-							{Slides?.map((banner: any, i: number) => (
-								<SwiperSlide key={`banner--key${i}`}>
-									<HeroBannerCard
-										banner={banner}
-										variant="slider"
-										heroContentCard={heroContent}
-										className={contentClassName}
-									/>
-								</SwiperSlide>
-							))}
-						</Carousel>
+					{Slides?.map((banner: any, i: number) => (
+						<SwiperSlide key={`banner--key${i}`}>
+							<HeroBannerCard
+								banner={banner}
+								variant="slider"
+								heroContentCard={heroContent}
+								className={contentClassName}
+							/>
+						</SwiperSlide>
+					))}
+				</Carousel>
 				}
 		</div>
 	);
