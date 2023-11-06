@@ -64,7 +64,10 @@ export const addToggleBtnToRow = (html, componentName) => {
 		row.classList.add('customRow')
 
 		const toggleBtn = row.querySelector('[data-toggle="collapseRow"]')
-		if (toggleBtn) return
+		if (toggleBtn) {
+			toggleBtn.setAttribute('data-click', 'false')
+			return
+		}
 
 		const btnName = customComponent.getAttribute('data-component');
 
