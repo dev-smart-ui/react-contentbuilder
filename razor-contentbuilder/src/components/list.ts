@@ -8,6 +8,5 @@ export const List_Of_Components = {
     Test,
     BannerCard,
     Slider,
-    FeatureCarousel,
-    BannerGridTwo
+    FeatureCarousel
 }
