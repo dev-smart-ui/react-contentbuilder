@@ -1,7 +1,14 @@
 import React, {useEffect, useState} from "react";
 import ContentBuilder from '@innovastudio/contentbuilder';
 import "./contentbuilder.css";
-import {addBuilderElem, isLocalhost, removeBuilderElem} from "../../helpers";
+import {
+	addBuilderElem,
+	addToggleBtnToRow,
+	collapseRow,
+	isLocalhost,
+	removeBuilderElem,
+	removeWithEmptyRow
+} from "../../helpers";
 import {CONFIG} from "../../config";
 import axios from "axios";
 
@@ -13,11 +20,25 @@ const BuilderControl = ({rangeValue, queryPageParam, doSave, doSaveAndFinish}) =
 
 		document.addEventListener('click', function (event) {
 			if (event.target && event.target.getAttribute('data-repeaterbtn') === 'addElem') {
+				event.preventDefault()
 				addBuilderElem(event.target);
 			}
 
 			if (event.target  && event.target.getAttribute('data-repeaterbtn') === 'removeElem') {
+				event.preventDefault()
 				removeBuilderElem(event.target)
+			}
+
+			//delete element with parent .row
+			if (event.target && event.target.getAttribute('data-title') === 'Delete') {
+				event.preventDefault()
+				removeWithEmptyRow(event.target)
+			}
+
+
+			if (event.target && event.target.getAttribute('data-toggle') === 'collapseRow') {
+				event.preventDefault()
+				collapseRow(event.target)
 			}
 		})
 
@@ -139,6 +160,25 @@ const BuilderControl = ({rangeValue, queryPageParam, doSave, doSaveAndFinish}) =
 
 			contentBuilder.loadSnippets('assets/minimalist-blocks/content.js'); // Load snippet file
 
+			document.addEventListener('dragstart', function(event) {
+				const imgSrc = event.target.querySelector('img').getAttribute('src').split('/')
+				const componentNameParts = imgSrc[imgSrc.length - 1].split('.')[0];
+				event.dataTransfer.setData('text/plain', componentNameParts);
+			})
+
+
+			document.addEventListener('drop', function(event) {
+				const componentName = event.dataTransfer.getData('text/plain');
+
+				setTimeout(() => {
+					const html = contentBuilder.html()
+					if (html) {
+						const tempHtml = addToggleBtnToRow(html, componentName)
+						contentBuilder.loadHtml(tempHtml)
+					}
+				}, 0)
+			})
+
 			const currentHost = `${isLocalhost(hostName) ? CONFIG.serverUrl : CONFIG.serverUrlProd}`
 
 			axios.get(
@@ -147,7 +187,7 @@ const BuilderControl = ({rangeValue, queryPageParam, doSave, doSaveAndFinish}) =
 				let html;
 
 				if (response.data.html) {
-					html = response.data.html;
+					html = addToggleBtnToRow(response.data.html);
 				}
 
 				document.querySelector('.container').style.opacity = 1;

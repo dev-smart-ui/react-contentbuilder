@@ -52,7 +52,6 @@ const FeatureCarousel: React.FC<Props> = ({className = 'mb-7 md:mb-10 ', classNa
 					<h3 {...IsEditable({title: "textContent"})}>Title</h3>
 					<p {...IsEditable({description: "textContent"})}>paragraph text</p>
 					<a {...IsEditable({btnText: "textContent", btnUrl: "href"})} href="#"> link text </a>
-
 				</div>
 
 				<div data-repeaterbtn="addElem"

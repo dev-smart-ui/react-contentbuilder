@@ -3,6 +3,7 @@ import parse from 'html-react-parser'
 
 import {serverSideTranslations} from "next-i18next/serverSideTranslations"
 import Layout from "@components/layout/layout";
+import Container from '@components/ui/container';
 import {BuilderImage} from "src/builderComponents/builderImage"
 import {List_Of_Components} from "@components/list"
 import {CONFIG_RAZOR} from "@components/config"
@@ -70,7 +71,9 @@ const PageExample = ({dataFromCms, builderProps}: any) => {
 
 
 	return (
-		<>{jsx}</>
+		<Container>
+			{jsx}
+		</Container>
 	)
 }
 

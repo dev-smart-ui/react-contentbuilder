@@ -72,10 +72,12 @@ const Slider: React.FC<Props> = ({
 							</div>
 						</div>
 
+					<div>
 						<h2 {...IsEditable({ title: "textContent" })}>Title</h2>
 						<img {...IsEditable({ imageSrc: "src", imageAlt: "textContent" })} src="https://lavar.com.ua/image/cache/catalog/vafelni-kartynku/vk-1172-750x750-product_thumb.jpg" alt="" />
 						<p {...IsEditable({ description: "textContent" })}>paragraph text</p>
 						<a {...IsEditable({ btnText: "textContent", btnUrl: "href" })} href="#"> link text </a>
+					</div>
 
 					</div>
 
@@ -88,7 +90,7 @@ const Slider: React.FC<Props> = ({
 	}
 
 	return (
-		<div data-component={"Slider"} className={`${className}`}>
+		<div data-component={"Slider"} className={`${className} mb-7 mt-6`} >
 			{
 				// @ts-ignore
 				<Carousel

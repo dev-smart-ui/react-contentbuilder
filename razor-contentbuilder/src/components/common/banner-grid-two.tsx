@@ -14,6 +14,8 @@ const BannerGridTwo: React.FC<BannerProps> = ({
   className = 'mb-3 md:mb-4 lg:mb-5 xl:mb-6',
   girdClassName = '2xl:gap-5',
 }) => {
+
+
   const { width } = useWindowSize();
   return (
     <div className={className}>

@@ -54,7 +54,19 @@ button:focus-visible {
   margin-left: 0;
   margin-right: 0;
   width: auto;
+  flex-direction: column;
 }
+
+.is-builder > .row.customRow:not(.showComponent) {
+  max-height: 42px;
+  overflow: hidden;
+}
+
+.is-builder > .row.showComponent {
+  max-height: initial;
+  overflow: initial;
+}
+
 .is-builder[gridoutline] > div > div {
   outline: 1px solid rgba(132, 132, 132, 0.27);
   outline-offset: 1px;
@@ -115,7 +127,7 @@ button:focus-visible {
 
 @media (min-width: 971px) {
   .is-builder > div {
-    display: flex;
+    /*display: flex;*/
   }
 }
 .sortable-drag {
