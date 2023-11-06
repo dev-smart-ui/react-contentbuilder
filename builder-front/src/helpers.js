@@ -27,30 +27,13 @@ export const removeWithEmptyRow = (btn) => {
 }
 
 const buttonClasses = [
-	'transition-all',
-	'inline-block',
-	'whitespace-nowrap',
-	'cursor-pointer',
-	'no-underline',
-	'border-2',
-	'border-solid',
-	'ml-1',
-	'mr-1',
-	'mb-3',
-	'rounded',
-	'tracking-75',
-	'uppercase',
-	'px-6',
-	'py-2',
-	'size-12',
-	'hover:border-transparent',
-	'font-semibold',
-	'bg-gray-200',
-	'border-transparent',
-	'hover:bg-gray-300',
-	'text-gray-800',
-	'leading-relaxed',
-	'text-center'
+	'transition-all', 'inline-block', 'whitespace-nowrap', 'cursor-pointer', 'no-underline', 'border-2', 'border-solid',
+	'ml-1', 'mr-1', 'mb-3', 'rounded', 'tracking-75', 'uppercase', 'px-6', 'py-2', 'size-12', 'hover:border-transparent',
+	'font-semibold', 'bg-gray-200', 'border-transparent', 'hover:bg-gray-300', 'text-gray-800', 'leading-relaxed', 'text-center'
+]
+
+const rowClasses = [
+	'showComponent', 'row-active', 'row-outline'
 ]
 
 export const addToggleBtnToRow = (html, componentName) => {
@@ -72,7 +55,6 @@ export const addToggleBtnToRow = (html, componentName) => {
 		const btnName = customComponent.getAttribute('data-component');
 
 		if (btnName === componentName) {
-			console.log(componentName)
 			row.classList.add(...rowClasses)
 		}
 
@@ -86,12 +68,6 @@ export const addToggleBtnToRow = (html, componentName) => {
 
 	return parsedHtml.documentElement.innerHTML
 }
-
-const rowClasses = [
-	'showComponent',
-	'row-active',
-	'row-outline'
-]
 
 export const collapseRow = (btn) => {
 

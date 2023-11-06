@@ -55,6 +55,7 @@ button:focus-visible {
   margin-right: 0;
   width: auto;
   flex-direction: column;
+  min-height: 40px;
 }
 
 .is-builder > .row.customRow:not(.showComponent) {
@@ -80,6 +81,9 @@ button:focus-visible {
 }
 .is-builder .row-active:not([data-protected]).row-outline {
   outline: 1px solid rgba(132, 132, 132, 0.2);
+  position: relative;
+  z-index: 99;
+  margin-bottom: 20px;
 }
 .is-builder .row-active:not([data-protected]):not(.row-outline) > div.cell-active {
   outline: none;
