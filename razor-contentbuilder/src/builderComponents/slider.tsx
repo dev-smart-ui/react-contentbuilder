@@ -66,13 +66,17 @@ const Slider: React.FC<Props> = ({
 		return (
 				<div data-component="Slider" style={{ margin: "0 0 15px 0" }}>
 					<div data-repeater="Slides" style={{ borderBottom: "solid red 1px", margin: "0 0 15px 0" }}>
-						<div style={{display: "flex", justifyContent: "flex-end"}}>
-							<div data-repeaterbtn="removeElem" style={{ cursor: "pointer", margin: "0 0 10px auto", padding: "2px 15px", borderRadius: "9999px", background: "#EF4444", fontSize: "16px", color: "#fff" }}>
+						<div style={{display: "flex", justifyContent: "space-between"}}>
+							<div data-repeaterbtn="collapseElem" style={{ cursor: "pointer", margin: "0 0 10px 0", padding: "2px 15px", borderRadius: "9999px", background: "#E5E7EB", fontSize: "16px", color: "#000"}}>
+								Collapsed
+							</div>
+
+							<div data-repeaterbtn="removeElem" style={{ cursor: "pointer", margin: "0 0 10px 0", padding: "2px 15px", borderRadius: "9999px", background: "#EF4444", fontSize: "16px", color: "#fff" }}>
 								Remove Slide
 							</div>
 						</div>
 
-					<div>
+					<div data-repeaterbody="Slides" className={'active'}>
 						<h2 {...IsEditable({ title: "textContent" })}>Title</h2>
 						<img {...IsEditable({ imageSrc: "src", imageAlt: "textContent" })} src="https://lavar.com.ua/image/cache/catalog/vafelni-kartynku/vk-1172-750x750-product_thumb.jpg" alt="" />
 						<p {...IsEditable({ description: "textContent" })}>paragraph text</p>

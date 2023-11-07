@@ -3,7 +3,7 @@ import ContentBuilder from '@innovastudio/contentbuilder';
 import "./contentbuilder.css";
 import {
 	addBuilderElem,
-	addToggleBtnToRow,
+	addToggleBtnToRow, collapseBuilderElem,
 	collapseRow,
 	isLocalhost,
 	removeBuilderElem,
@@ -27,6 +27,11 @@ const BuilderControl = ({rangeValue, queryPageParam, doSave, doSaveAndFinish}) =
 			if (event.target  && event.target.getAttribute('data-repeaterbtn') === 'removeElem') {
 				event.preventDefault()
 				removeBuilderElem(event.target)
+			}
+
+			if (event.target && event.target.getAttribute('data-repeaterbtn') === 'collapseElem') {
+				event.preventDefault()
+				collapseBuilderElem(event.target)
 			}
 
 			//delete element with parent .row

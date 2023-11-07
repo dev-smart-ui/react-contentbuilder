@@ -63,6 +63,19 @@ button:focus-visible {
   overflow: hidden;
 }
 
+.is-builder > .row.customRow [data-repeaterbody]:not(.active) {
+  height: 0;
+  overflow: hidden;
+}
+
+.is-builder > .row.customRow:nth-child(odd) {
+  background: rgba(0,0,0,.2);
+}
+
+.is-builder > .row.customRow:nth-child(even) {
+  background: rgba(255,255,255,.1);
+}
+
 .is-builder > .row.showComponent {
   max-height: initial;
   overflow: initial;

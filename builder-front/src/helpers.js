@@ -4,7 +4,8 @@ export const isLocalhost = (hostname) => {
 }
 
 export const addBuilderElem = (btn) => {
-
+	document.querySelector('#divButtonTool').style.display = "none"
+	document.querySelector('.is-element-tool').style.display = "none"
 	const previousElement = btn.previousElementSibling;
 	if (previousElement) {
 		const clonedElement = previousElement.cloneNode(true);
@@ -20,6 +21,16 @@ export const removeBuilderElem = (btn) => {
 	}
 }
 
+export const collapseBuilderElem = (btn) => {
+	const parent = btn.closest('[data-repeater]')
+	const collapseElem = parent.querySelector('[data-repeaterbody]')
+	const isActive = collapseElem.classList.contains('active')
+
+	btn.textContent = isActive ? 'Expanded' : 'Collapsed';
+
+	collapseElem.classList[isActive ? 'remove' : 'add']('active')
+}
+
 export const removeWithEmptyRow = (btn) => {
 	const parentRow = btn.closest('.row')
 	const hasContentEditableElements = parentRow.querySelector('[contenteditable]');
@@ -28,9 +39,8 @@ export const removeWithEmptyRow = (btn) => {
 
 const buttonClasses = [
 	'transition-all', 'inline-block', 'whitespace-nowrap', 'cursor-pointer', 'no-underline', 'border-2', 'border-solid',
-	'ml-1', 'mr-1', 'mb-3', 'rounded', 'tracking-75', 'uppercase', 'px-6', 'py-2', 'size-12', 'hover:border-transparent',
-	'font-semibold', 'bg-gray-200', 'border-transparent', 'hover:bg-gray-300', 'text-gray-800', 'leading-relaxed',
-	'text-center', 'w-full'
+	'mb-3', 'rounded', 'tracking-75', 'uppercase', 'px-6', 'py-2', 'size-12', 'hover:border-transparent', 'font-semibold',
+	'bg-gray-200', 'border-transparent', 'hover:bg-gray-300', 'text-gray-800', 'leading-relaxed', 'text-center', 'w-full'
 ]
 
 const rowClasses = [
