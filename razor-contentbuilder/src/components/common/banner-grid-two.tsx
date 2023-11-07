@@ -1,5 +1,6 @@
 import BannerCard from '@components/cards/banner-card';
 import {IsEditable, onlyForBuilder} from "@components/config";
+import {useEffect} from "react";
 
 interface BannerProps {
 	className?: string;

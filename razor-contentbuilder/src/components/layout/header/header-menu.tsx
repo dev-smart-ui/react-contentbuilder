@@ -87,7 +87,6 @@ const HeaderMenu: React.FC<MenuProps> = ({data, className, bgPrimary}) => {
 													const menuName: string = `sidebar-menu-${dept}-${index}`;
 													return (
 														<ListMenu
-															builder={true}
 															dept={dept}
 															data={menu}
 															hasSubMenu={menu.subMenu}
@@ -97,9 +96,6 @@ const HeaderMenu: React.FC<MenuProps> = ({data, className, bgPrimary}) => {
 														/>
 													);
 												})}
-
-
-
 											</ul>
 										</div>
 									) : (
