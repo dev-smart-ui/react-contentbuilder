@@ -84,6 +84,10 @@
 
 }
 
+button[data-toggle="collapseRow"] {
+  display: none;
+}
+
 @layer components {
 
   /* Header Menu */
