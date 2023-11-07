@@ -29,7 +29,8 @@ export const removeWithEmptyRow = (btn) => {
 const buttonClasses = [
 	'transition-all', 'inline-block', 'whitespace-nowrap', 'cursor-pointer', 'no-underline', 'border-2', 'border-solid',
 	'ml-1', 'mr-1', 'mb-3', 'rounded', 'tracking-75', 'uppercase', 'px-6', 'py-2', 'size-12', 'hover:border-transparent',
-	'font-semibold', 'bg-gray-200', 'border-transparent', 'hover:bg-gray-300', 'text-gray-800', 'leading-relaxed', 'text-center'
+	'font-semibold', 'bg-gray-200', 'border-transparent', 'hover:bg-gray-300', 'text-gray-800', 'leading-relaxed',
+	'text-center', 'w-full'
 ]
 
 const rowClasses = [
@@ -58,12 +59,16 @@ export const addToggleBtnToRow = (html, componentName) => {
 			row.classList.add(...rowClasses)
 		}
 
-		const button = document.createElement('button');
-		button.setAttribute('data-toggle', 'collapseRow');
-		button.setAttribute('data-click', 'false')
-		button.classList.add(...buttonClasses);
-		button.textContent = btnName;
-		row.insertBefore(button, row.firstChild);
+		const columnElement = row.querySelector('.column');
+		if (columnElement) {
+			const button = document.createElement('button');
+			button.setAttribute('data-toggle', 'collapseRow');
+			button.setAttribute('data-click', 'false');
+			button.classList.add(...buttonClasses);
+			button.textContent = btnName;
+
+			columnElement.insertBefore(button, customComponent);
+		}
 	})
 
 	return parsedHtml.documentElement.innerHTML
@@ -74,6 +79,8 @@ export const collapseRow = (btn) => {
 	const customComponent = btn.closest('.row').querySelector('[data-component]')
 	if(!customComponent) return
 
+	document.querySelector('#divButtonTool').style.display = "none"
+	document.querySelector('.is-element-tool').style.display = "none"
 	const isActive = btn.closest('.row').classList.contains('showComponent')
 
 	btn.closest('.row').classList[isActive ? 'remove' : 'add'](...rowClasses)
