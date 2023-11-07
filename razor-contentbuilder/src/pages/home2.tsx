@@ -42,59 +42,59 @@ export default function Home() {
                 description="Fastest E-commerce template built with React, NextJS, TypeScript, React-Query and Tailwind CSS."
                 path="home2"
             />
-            <Container>
-                <div className={` grid gap-4 grid-cols-1 xl:gap-6 lg:grid-cols-[minmax(72%,_1fr)_1fr] xl:grid-cols-[minmax(72%,_1fr)_1fr] ${dir == 'rtl' ? '2xl:mr-[18.4rem]': '2xl:ml-[18.4rem]'}`}>
-                    <HeroSliderBlock
-                        heroBanner={heroBanner}
-                        heroContent={false}
-                        className={`lg:mb-7 mt-6`}
-                        contentClassName="p-5 sm:pb-24 xl:pb-32 sm:pt-16 xl:pt-24 md:min-h-[380px]  xl:min-h-[490px] 2xl:min-h-[550px]"
-                    />
-                    <BannerGrid
-                        data={bannerHeroCarousel}
-                        grid={1}
-                        className="mb-7 mt-3 lg:mt-6 staticBanner--slider"
-                        girdClassName={"xl:gap-6"}
-                    />
-                </div>
-                {/*<FeatureCarousel/>*/}
-            </Container>
-            <Container>
-                <div className="grid grid-cols-12 gap-4 grid-cols-1 xl:gap-8">
-                    <div className="maincontent-left col-span-12 lg:col-span-3 2xl:col-span-2">
-                        <BannerGrid
-                            data={heroSidebar}
-                            grid={1}
-                            className="relative mb-8"
-                        />
-                        <BestSellerSidebarProductFeed />
-                        <Latestblog className="mb-8"/>
-                        <NewSidebarProductFeed />
-                        <Testimonial className="mb-8"/>
+            {/*<Container>*/}
+            {/*    <div className={` grid gap-4 grid-cols-1 xl:gap-6 lg:grid-cols-[minmax(72%,_1fr)_1fr] xl:grid-cols-[minmax(72%,_1fr)_1fr] ${dir == 'rtl' ? '2xl:mr-[18.4rem]': '2xl:ml-[18.4rem]'}`}>*/}
+            {/*        <HeroSliderBlock*/}
+            {/*            heroBanner={heroBanner}*/}
+            {/*            heroContent={false}*/}
+            {/*            className={`lg:mb-7 mt-6`}*/}
+            {/*            contentClassName="p-5 sm:pb-24 xl:pb-32 sm:pt-16 xl:pt-24 md:min-h-[380px]  xl:min-h-[490px] 2xl:min-h-[550px]"*/}
+            {/*        />*/}
+            {/*        <BannerGrid*/}
+            {/*            data={bannerHeroCarousel}*/}
+            {/*            grid={1}*/}
+            {/*            className="mb-7 mt-3 lg:mt-6 staticBanner--slider"*/}
+            {/*            girdClassName={"xl:gap-6"}*/}
+            {/*        />*/}
+            {/*    </div>*/}
+            {/*    /!*<FeatureCarousel/>*!/*/}
+            {/*</Container>*/}
+            {/*<Container>*/}
+            {/*    <div className="grid grid-cols-12 gap-4 grid-cols-1 xl:gap-8">*/}
+            {/*        <div className="maincontent-left col-span-12 lg:col-span-3 2xl:col-span-2">*/}
+            {/*            <BannerGrid*/}
+            {/*                data={heroSidebar}*/}
+            {/*                grid={1}*/}
+            {/*                className="relative mb-8"*/}
+            {/*            />*/}
+            {/*            <BestSellerSidebarProductFeed />*/}
+            {/*            <Latestblog className="mb-8"/>*/}
+            {/*            <NewSidebarProductFeed />*/}
+            {/*            <Testimonial className="mb-8"/>*/}
 
-                    </div>
-                    <div className="maincontent-right col-span-12  lg:col-span-9 2xl:col-span-10">
-                        <ProductWithBestDeals />
-                        <ListingTabsElectronicFeed />
-                        <BannerGridTwo
-                            data={bannerGridHero}
-                            className="mb-8 lg:mb-12"
-                            girdClassName="xl:gap-6 "
-                        />
-                       <ListingTabsClothFeed />
-                        <BannerGridTwo
-                            data={bannerGridHero2}
-                            className="mb-8 lg:mb-12"
-                            girdClassName="xl:gap-6 xl:grid-cols-[minmax(654px,_1fr)_1fr] 2xl:grid-cols-[minmax(954px,_1fr)_1fr] "
-                        />
-                        <CategoryGridListBlock  className="mb-6 lg:mb-8" />
-                        <BannerAllCarousel
-                            data={bannerDiscount}
-                            className="mb-8 lg:mb-12"
-                        />
-                    </div>
-                </div>
-            </Container>
+            {/*        </div>*/}
+            {/*        <div className="maincontent-right col-span-12  lg:col-span-9 2xl:col-span-10">*/}
+            {/*            <ProductWithBestDeals />*/}
+            {/*            <ListingTabsElectronicFeed />*/}
+            {/*            <BannerGridTwo*/}
+            {/*                data={bannerGridHero}*/}
+            {/*                className="mb-8 lg:mb-12"*/}
+            {/*                girdClassName="xl:gap-6 "*/}
+            {/*            />*/}
+            {/*           <ListingTabsClothFeed />*/}
+            {/*            <BannerGridTwo*/}
+            {/*                data={bannerGridHero2}*/}
+            {/*                className="mb-8 lg:mb-12"*/}
+            {/*                girdClassName="xl:gap-6 xl:grid-cols-[minmax(654px,_1fr)_1fr] 2xl:grid-cols-[minmax(954px,_1fr)_1fr] "*/}
+            {/*            />*/}
+            {/*            <CategoryGridListBlock  className="mb-6 lg:mb-8" />*/}
+            {/*            <BannerAllCarousel*/}
+            {/*                data={bannerDiscount}*/}
+            {/*                className="mb-8 lg:mb-12"*/}
+            {/*            />*/}
+            {/*        </div>*/}
+            {/*    </div>*/}
+            {/*</Container>*/}
 
         </>
     );

@@ -32,35 +32,35 @@ export default function Home() {
                 path="home6"
             />
 
-            <HeroSliderBlock
-                heroBanner={heroSlider}
-                heroContent={false}
-                className={`lg:mb-8 `}
-                contentClassName="p-7 sm:pb-24 xl:pb-32 sm:pt-16 xl:pt-24 md:min-h-[320px] xl:min-h-[360px] 2xl:min-h-[450px]"
-            />
+            {/*<HeroSliderBlock*/}
+            {/*    heroBanner={heroSlider}*/}
+            {/*    heroContent={false}*/}
+            {/*    className={`lg:mb-8 `}*/}
+            {/*    contentClassName="p-7 sm:pb-24 xl:pb-32 sm:pt-16 xl:pt-24 md:min-h-[320px] xl:min-h-[360px] 2xl:min-h-[450px]"*/}
+            {/*/>*/}
 
-            <Container className={"sm:max-w-[1730px]"}>
-                {/*<FeatureCarousel className={"home4-featuredCarousel"} classNameCarousel={"bg-white"}/>*/}
-                <BannerGrid
-                    data={bannerGrid}
-                    grid={3}
-                    className="mb-8 lg:mb-12"
-                />
-                <BestSellerProductFeed  />
+            {/*<Container className={"sm:max-w-[1730px]"}>*/}
+            {/*    /!*<FeatureCarousel className={"home4-featuredCarousel"} classNameCarousel={"bg-white"}/>*!/*/}
+            {/*    <BannerGrid*/}
+            {/*        data={bannerGrid}*/}
+            {/*        grid={3}*/}
+            {/*        className="mb-8 lg:mb-12"*/}
+            {/*    />*/}
+            {/*    <BestSellerProductFeed  />*/}
 
-                <ListingTabsElectronicFeed />
+            {/*    <ListingTabsElectronicFeed />*/}
 
-                <BannerGrid
-                    data={bannerGrid2}
-                    grid={3}
-                    className="mb-8 lg:mb-12"
-                />
+            {/*    <BannerGrid*/}
+            {/*        data={bannerGrid2}*/}
+            {/*        grid={3}*/}
+            {/*        className="mb-8 lg:mb-12"*/}
+            {/*    />*/}
 
-                <ListingTabsClothFeed colSiderbar={false}/>
+            {/*    <ListingTabsClothFeed colSiderbar={false}/>*/}
 
-                <LatestblogCarousel className="mb-8 lg:mb-12"/>
+            {/*    <LatestblogCarousel className="mb-8 lg:mb-12"/>*/}
 
-            </Container>
+            {/*</Container>*/}
         </>
     );
 }

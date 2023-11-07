@@ -1,35 +1,60 @@
 import BannerCard from '@components/cards/banner-card';
-import useWindowSize from '@utils/use-window-size';
-import Carousel from '@components/ui/carousel/carousel';
-import { SwiperSlide } from '@components/ui/carousel/slider';
+import {IsEditable, onlyForBuilder} from "@components/config";
 
 interface BannerProps {
-  data: any;
-  className?: string;
-  girdClassName?: string;
+	className?: string;
+	girdClassName?: string;
+	BannerGrid: any;
 }
 
-const BannerGridTwo: React.FC<BannerProps> = ({
-  data,
-  className = 'mb-3 md:mb-4 lg:mb-5 xl:mb-6',
-  girdClassName = '2xl:gap-5',
-}) => {
+const BannerGrid: React.FC<BannerProps> = ({BannerGrid, className = 'mb-3 md:mb-4 lg:mb-5 xl:mb-6', girdClassName = '2xl:gap-5'}) => {
+
+	console.log('BannerGridProps ', BannerGrid)
+
+	if (onlyForBuilder()) {
+		return (
+			<div data-component="BannerGrid" style={{margin: "0 0 15px 0"}}>
+				<div data-repeater="BannerGrid" style={{borderBottom: "solid red 1px", margin: "0 0 15px 0"}}>
+					<div style={{display: "flex", justifyContent: "space-between"}}>
+						<div data-repeaterbtn="collapseElem" style={{cursor: "pointer", margin: "0 0 10px 0", padding: "2px 15px", borderRadius: "9999px", background: "#E5E7EB", fontSize: "16px", color: "#000"}}>
+							Collapsed
+						</div>
+
+						<div data-repeaterbtn="removeElem" style={{cursor: "pointer", margin: "0 0 10px 0", padding: "2px 15px", borderRadius: "9999px", background: "#EF4444", fontSize: "16px", color: "#fff"}}>
+							Remove Banner
+						</div>
+					</div>
+
+					<div data-repeaterbody="BannerGrid" className={'active'}>
+						<img {...IsEditable({imageSrc: "src", imageAlt: "textContent"})}
+						     src="https://lavar.com.ua/image/cache/catalog/vafelni-kartynku/vk-1172-750x750-product_thumb.jpg"
+						     alt=""/>
+						<a {...IsEditable({linkText: "textContent", link: "href"})} href="#"> link text </a>
+						<div{...IsEditable({variant: "textContent"})}>rounded</div>
+					</div>
+
+				</div>
+
+				<div data-repeaterbtn="addElem" style={{cursor: "pointer", display: "inline-block", padding: "2px 15px", borderRadius: "9999px", background: "#2C752F", fontSize: "16px", color: "#fff"}}>
+					Add Banner
+				</div>
+			</div>
+
+		)
+	}
 
 
-  const { width } = useWindowSize();
-  return (
-    <div className={className}>
-        <div
-          className={`${girdClassName} grid gap-4 grid-cols-1 lg:grid-cols-2 `}
-        >
-          {data?.map((banner: any) => (
-            // @ts-ignore
-            <BannerCard key={`banner--key${banner.id}`} banner={banner} effectActive={true}
-            />
-          ))}
-        </div>
-    </div>
-  );
-};
+	return (
+		<div className={className} data-component={"BannerGrid"}>
+			<div className={`grid gap-4  grid-cols-1 lg:grid-cols-${BannerGrid.length} sm:grid-cols-${BannerGrid.length === 1 ? `${BannerGrid.length}` : 2} ${girdClassName}`}>
+				{BannerGrid?.map((banner: any, i: number) => {
+					return (
+						<BannerCard key={`banner--key${i}`} banner={...banner} effectActive={true} className={`w-full`}/>
+					)
+				})}
+			</div>
+		</div>
+	)
+}
 
-export default BannerGridTwo;
+export default BannerGrid;

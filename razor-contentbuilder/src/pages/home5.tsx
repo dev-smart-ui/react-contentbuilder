@@ -33,37 +33,37 @@ export default function Home() {
                 path="home5"
             />
 
-            <Container className={"sm:max-w-[1730px]"}>
-                <HeroSliderBlock
-                    heroBanner={heroSlider}
-                    heroContent={false}
-                    className={`lg:mb-7 mt-6 2xl:ms-80`}
-                    contentClassName="p-7 sm:pb-24 xl:pb-32 sm:pt-16 xl:pt-24 md:min-h-[320px] xl:min-h-[390px] 2xl:min-h-[438px]"
-                />
-                {/*<FeatureCarousel className={"home4-featuredCarousel"} classNameCarousel={"bg-white"}/>*/}
-                <BannerGrid
-                    data={bannerGrid}
-                    grid={3}
-                    className="mb-8 lg:mb-12"
-                />
+            {/*<Container className={"sm:max-w-[1730px]"}>*/}
+            {/*    <HeroSliderBlock*/}
+            {/*        heroBanner={heroSlider}*/}
+            {/*        heroContent={false}*/}
+            {/*        className={`lg:mb-7 mt-6 2xl:ms-80`}*/}
+            {/*        contentClassName="p-7 sm:pb-24 xl:pb-32 sm:pt-16 xl:pt-24 md:min-h-[320px] xl:min-h-[390px] 2xl:min-h-[438px]"*/}
+            {/*    />*/}
+            {/*    /!*<FeatureCarousel className={"home4-featuredCarousel"} classNameCarousel={"bg-white"}/>*!/*/}
+            {/*    <BannerGrid*/}
+            {/*        data={bannerGrid}*/}
+            {/*        grid={3}*/}
+            {/*        className="mb-8 lg:mb-12"*/}
+            {/*    />*/}
 
-                <SuppercategoryPopular className="mb-8 lg:mb-12" rowCarousel={2} showBanner={true}/>
-                <BannerGrid
-                    data={bannerGrid2}
-                    grid={3}
-                    className="mb-8 lg:mb-12"
-                />
+            {/*    <SuppercategoryPopular className="mb-8 lg:mb-12" rowCarousel={2} showBanner={true}/>*/}
+            {/*    <BannerGrid*/}
+            {/*        data={bannerGrid2}*/}
+            {/*        grid={3}*/}
+            {/*        className="mb-8 lg:mb-12"*/}
+            {/*    />*/}
 
-                <ListingTabsElectronicFeed />
-                <ListingTabsClothFeed />
+            {/*    <ListingTabsElectronicFeed />*/}
+            {/*    <ListingTabsClothFeed />*/}
 
-                <LatestblogCarousel className="mb-8 lg:mb-12"/>
-                <BannerAllCarousel
-                    data={brandCarousel}
-                    className="mb-8 lg:mb-12"
-                    layout={"home4"}
-                />
-            </Container>
+            {/*    <LatestblogCarousel className="mb-8 lg:mb-12"/>*/}
+            {/*    <BannerAllCarousel*/}
+            {/*        data={brandCarousel}*/}
+            {/*        className="mb-8 lg:mb-12"*/}
+            {/*        layout={"home4"}*/}
+            {/*    />*/}
+            {/*</Container>*/}
         </>
     );
 }

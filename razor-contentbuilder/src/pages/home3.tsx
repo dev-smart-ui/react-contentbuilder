@@ -34,44 +34,44 @@ export default function Home() {
                 description="Fastest E-commerce template built with React, NextJS, TypeScript, React-Query and Tailwind CSS."
                 path="home2"
             />
-            <Container>
-                <div className="grid gap-4 grid-cols-1 xl:gap-5 lg:grid-cols-[minmax(65%,_1fr)_1fr] 2xl:grid-cols-[minmax(68%,_1fr)_1fr]">
-                    <HeroSliderBlock
-                        heroBanner={heroSlider}
-                        heroContent={false}
-                        className={`lg:mb-7 mt-6`}
-                        contentClassName="p-7 sm:pb-24 xl:pb-32 sm:pt-16 xl:pt-24 md:min-h-[320px] xl:min-h-[360px] 2xl:min-h-[448px]"
-                    />
-                    <BannerGrid
-                        data={bannerHeroCarousel}
-                        grid={1}
-                        className="mb-7 mt-3 lg:mt-6 staticBanner--slider"
-                        girdClassName={"xl:gap-6"}
-                    />
-                </div>
-                {/*<FeatureCarousel/>*/}
-                <BestSellerProductFeed/>
-                <BannerGridTwo
-                    data={bannerTwo}
-                    className="mb-8 lg:mb-12"
-                    girdClassName="xl:gap-5 "
-                />
-                {
-                    // @ts-ignore
-                    <ListingTabsElectronicFeed colSiderbar={false} borderCarousel={true}/>
-                }
-                <BannerGridTwo
-                    data={bannerTwo2}
-                    className="mb-8 lg:mb-12"
-                    girdClassName="xl:gap-5 2xl:grid-cols-[minmax(1130px,_1fr)_1fr] "
-                />
-                <ListingTabsClothFeed colSiderbar={false}/>
-                <CategoryGridListBlock  className="mb-6 lg:mb-8" />
-                <BannerAllCarousel
-                    data={bannerDiscount}
-                    className="mb-8 lg:mb-12"
-                />
-            </Container>
+            {/*<Container>*/}
+            {/*    <div className="grid gap-4 grid-cols-1 xl:gap-5 lg:grid-cols-[minmax(65%,_1fr)_1fr] 2xl:grid-cols-[minmax(68%,_1fr)_1fr]">*/}
+            {/*        <HeroSliderBlock*/}
+            {/*            heroBanner={heroSlider}*/}
+            {/*            heroContent={false}*/}
+            {/*            className={`lg:mb-7 mt-6`}*/}
+            {/*            contentClassName="p-7 sm:pb-24 xl:pb-32 sm:pt-16 xl:pt-24 md:min-h-[320px] xl:min-h-[360px] 2xl:min-h-[448px]"*/}
+            {/*        />*/}
+            {/*        <BannerGrid*/}
+            {/*            data={bannerHeroCarousel}*/}
+            {/*            grid={1}*/}
+            {/*            className="mb-7 mt-3 lg:mt-6 staticBanner--slider"*/}
+            {/*            girdClassName={"xl:gap-6"}*/}
+            {/*        />*/}
+            {/*    </div>*/}
+            {/*    /!*<FeatureCarousel/>*!/*/}
+            {/*    <BestSellerProductFeed/>*/}
+            {/*    <BannerGridTwo*/}
+            {/*        data={bannerTwo}*/}
+            {/*        className="mb-8 lg:mb-12"*/}
+            {/*        girdClassName="xl:gap-5 "*/}
+            {/*    />*/}
+            {/*    {*/}
+            {/*        // @ts-ignore*/}
+            {/*        <ListingTabsElectronicFeed colSiderbar={false} borderCarousel={true}/>*/}
+            {/*    }*/}
+            {/*    <BannerGridTwo*/}
+            {/*        data={bannerTwo2}*/}
+            {/*        className="mb-8 lg:mb-12"*/}
+            {/*        girdClassName="xl:gap-5 2xl:grid-cols-[minmax(1130px,_1fr)_1fr] "*/}
+            {/*    />*/}
+            {/*    <ListingTabsClothFeed colSiderbar={false}/>*/}
+            {/*    <CategoryGridListBlock  className="mb-6 lg:mb-8" />*/}
+            {/*    <BannerAllCarousel*/}
+            {/*        data={bannerDiscount}*/}
+            {/*        className="mb-8 lg:mb-12"*/}
+            {/*    />*/}
+            {/*</Container>*/}
 
 
         </>

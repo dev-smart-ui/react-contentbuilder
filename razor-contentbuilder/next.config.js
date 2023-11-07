@@ -11,7 +11,8 @@ const nextConfig = {
     domains: [
       'react-contentbuilder.vercel.app',
       'builder.smart-ui.pro',"localhost",
-      'razor-contentbuilder.vercel.app'
+      'razor-contentbuilder.vercel.app',
+      'lavar.com.ua',
     ],
     formats: ['image/avif', 'image/webp'],
   },

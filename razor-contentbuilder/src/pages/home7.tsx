@@ -39,42 +39,42 @@ export default function Home() {
                 path="home7"
             />
 
-            <Container className={"sm:max-w-[1730px]"}>
-                <div className="grid grid-cols-1 lg:grid-cols-2">
-                    <HeroSliderBlock
-                        heroBanner={heroSlider}
-                        heroContent={false}
-                        className={`lg:mb-7 mt-6 border border-black/10 border-r-0 rounded-l overflow-hidden`}
-                        contentClassName="p-7 sm:pb-24 xl:pb-32 sm:pt-16 xl:pt-24 min-h-[260px] md:min-h-[260px] xl:min-h-[342px] 2xl:min-h-[421px]"
-                    />
-                    <BannerGrid
-                        data={bannerHeroCarousel}
-                        grid={2}
-                        className="mb-7 mt-6 md:mt-6 staticBanner--slider"
-                        girdClassName={"gap-px 2xl:gap-px border border-black/5 bg-black/5"}
-                    />
-                </div>
-                {/*<FeatureCarousel className={"home4-featuredCarousel"} classNameCarousel={"bg-white"}/>*/}
+            {/*<Container className={"sm:max-w-[1730px]"}>*/}
+            {/*    <div className="grid grid-cols-1 lg:grid-cols-2">*/}
+            {/*        <HeroSliderBlock*/}
+            {/*            heroBanner={heroSlider}*/}
+            {/*            heroContent={false}*/}
+            {/*            className={`lg:mb-7 mt-6 border border-black/10 border-r-0 rounded-l overflow-hidden`}*/}
+            {/*            contentClassName="p-7 sm:pb-24 xl:pb-32 sm:pt-16 xl:pt-24 min-h-[260px] md:min-h-[260px] xl:min-h-[342px] 2xl:min-h-[421px]"*/}
+            {/*        />*/}
+            {/*        <BannerGrid*/}
+            {/*            data={bannerHeroCarousel}*/}
+            {/*            grid={2}*/}
+            {/*            className="mb-7 mt-6 md:mt-6 staticBanner--slider"*/}
+            {/*            girdClassName={"gap-px 2xl:gap-px border border-black/5 bg-black/5"}*/}
+            {/*        />*/}
+            {/*    </div>*/}
+            {/*    /!*<FeatureCarousel className={"home4-featuredCarousel"} classNameCarousel={"bg-white"}/>*!/*/}
 
-                <ListingTabsPhonesFeed showBanner={'left'} />
-                <ListingTabsComputerFeed showBanner={'right'} />
+            {/*    <ListingTabsPhonesFeed showBanner={'left'} />*/}
+            {/*    <ListingTabsComputerFeed showBanner={'right'} />*/}
 
-                <BannerGrid
-                    data={bannerGrid2}
-                    grid={3}
-                    className="mb-8 lg:mb-12"
-                />
+            {/*    <BannerGrid*/}
+            {/*        data={bannerGrid2}*/}
+            {/*        grid={3}*/}
+            {/*        className="mb-8 lg:mb-12"*/}
+            {/*    />*/}
 
-                <ListingTabsElectronicFeed showBanner={'left'}/>
-                <ListingTabsClothFeed showBanner={'right'}/>
+            {/*    <ListingTabsElectronicFeed showBanner={'left'}/>*/}
+            {/*    <ListingTabsClothFeed showBanner={'right'}/>*/}
 
-                <LatestblogCarousel className="mb-8 lg:mb-12"/>
-                <BannerAllCarousel
-                    data={brandCarousel}
-                    className="mb-8 lg:mb-12"
-                    layout={"home4"}
-                />
-            </Container>
+            {/*    <LatestblogCarousel className="mb-8 lg:mb-12"/>*/}
+            {/*    <BannerAllCarousel*/}
+            {/*        data={brandCarousel}*/}
+            {/*        className="mb-8 lg:mb-12"*/}
+            {/*        layout={"home4"}*/}
+            {/*    />*/}
+            {/*</Container>*/}
         </>
     );
 }

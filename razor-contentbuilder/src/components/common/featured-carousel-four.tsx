@@ -112,7 +112,10 @@ const FeatureCarousel: React.FC<Props> = ({ className = 'mb-7 md:mb-10 ',classNa
                 >
                     {data?.map((item) => (
                       <SwiperSlide key={`featured-key-${item.id}`}>
-                          <FeaturedCard item={item} layout={"home4"}/>
+                          {
+                              // @ts-ignore
+                              <FeaturedCard item={item} layout={"home4"}/>
+                          }
                       </SwiperSlide>
                     ))}
 

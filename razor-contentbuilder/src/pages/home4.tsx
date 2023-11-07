@@ -33,44 +33,44 @@ export default function Home() {
                 description="Fastest E-commerce template built with React, NextJS, TypeScript, React-Query and Tailwind CSS."
                 path="home4"
             />
-            <Container className={"sm:max-w-[1730px]"}>
-                <div className="grid gap-4 grid-cols-1 xl:gap-5 lg:grid-cols-[minmax(70%,_1fr)_1fr] 2xl:grid-cols-[minmax(73%,_1fr)_1fr]">
-                    <HeroSliderBlock
-                        heroBanner={heroSlider}
-                        heroContent={false}
-                        className={`lg:mb-7 mt-6`}
-                        contentClassName="p-7 sm:pb-24 xl:pb-32 sm:pt-16 xl:pt-24 md:min-h-[360px] xl:min-h-[410px] 2xl:min-h-[450px]"
-                    />
-                    <BannerGrid
-                        data={bannerHeroCarousel}
-                        grid={1}
-                        className="mb-7 mt-0 lg:mt-6 staticBanner--slider"
-                        girdClassName={"xl:gap-5"}
-                    />
-                </div>
-                {/*<FeatureCarousel className={"home4-featuredCarousel"} classNameCarousel={"bg-white"}/>*/}
-                <BannerGrid
-                    data={bannerGrid}
-                    grid={3}
-                    className="mb-8 lg:mb-12"
-                />
-                <CategoryGridBlock  className="mb-8 lg:mb-12" />
-                <SuppercategoryPopular className="mb-8 lg:mb-12"/>
-                <BestSellerProductFeed  />
-                <BannerGrid
-                    data={bannerGrid2}
-                    grid={3}
-                    className="mb-8 lg:mb-12"
-                />
+            {/*<Container className={"sm:max-w-[1730px]"}>*/}
+            {/*    <div className="grid gap-4 grid-cols-1 xl:gap-5 lg:grid-cols-[minmax(70%,_1fr)_1fr] 2xl:grid-cols-[minmax(73%,_1fr)_1fr]">*/}
+            {/*        <HeroSliderBlock*/}
+            {/*            heroBanner={heroSlider}*/}
+            {/*            heroContent={false}*/}
+            {/*            className={`lg:mb-7 mt-6`}*/}
+            {/*            contentClassName="p-7 sm:pb-24 xl:pb-32 sm:pt-16 xl:pt-24 md:min-h-[360px] xl:min-h-[410px] 2xl:min-h-[450px]"*/}
+            {/*        />*/}
+            {/*        <BannerGrid*/}
+            {/*            data={bannerHeroCarousel}*/}
+            {/*            grid={1}*/}
+            {/*            className="mb-7 mt-0 lg:mt-6 staticBanner--slider"*/}
+            {/*            girdClassName={"xl:gap-5"}*/}
+            {/*        />*/}
+            {/*    </div>*/}
+            {/*    /!*<FeatureCarousel className={"home4-featuredCarousel"} classNameCarousel={"bg-white"}/>*!/*/}
+            {/*    <BannerGrid*/}
+            {/*        data={bannerGrid}*/}
+            {/*        grid={3}*/}
+            {/*        className="mb-8 lg:mb-12"*/}
+            {/*    />*/}
+            {/*    <CategoryGridBlock  className="mb-8 lg:mb-12" />*/}
+            {/*    <SuppercategoryPopular className="mb-8 lg:mb-12"/>*/}
+            {/*    <BestSellerProductFeed  />*/}
+            {/*    <BannerGrid*/}
+            {/*        data={bannerGrid2}*/}
+            {/*        grid={3}*/}
+            {/*        className="mb-8 lg:mb-12"*/}
+            {/*    />*/}
 
-                <NewProductFeed className="mb-8 lg:mb-12"/>
-                <LatestblogCarousel className="mb-8 lg:mb-12"/>
-                <BannerAllCarousel
-                    data={brandCarousel}
-                    className="mb-8 lg:mb-12"
-                    layout={"home4"}
-                />
-            </Container>
+            {/*    <NewProductFeed className="mb-8 lg:mb-12"/>*/}
+            {/*    <LatestblogCarousel className="mb-8 lg:mb-12"/>*/}
+            {/*    <BannerAllCarousel*/}
+            {/*        data={brandCarousel}*/}
+            {/*        className="mb-8 lg:mb-12"*/}
+            {/*        layout={"home4"}*/}
+            {/*    />*/}
+            {/*</Container>*/}
         </>
     );
 }

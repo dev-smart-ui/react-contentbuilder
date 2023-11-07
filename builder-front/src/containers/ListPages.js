@@ -94,7 +94,7 @@ const DeletePage = () => {
 		console.log(ref.current.value)
 	}
 	return (
-		<div className="bg-white p-8 rounded-lg shadow-md">
+		<div className="bg-white p-8 rounded-lg shadow-md w-1/3 m-auto">
 			<h2 className="text-2xl font-semibold text-black mb-4">Delete Pages</h2>
 			<form onSubmit={handleDelete} className="flex flex-col space-y-4">
 				<div className="flex flex-col">
