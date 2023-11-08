@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react'
 import parse from 'html-react-parser'
-import { useRouter } from 'next/router';
 
 import {serverSideTranslations} from "next-i18next/serverSideTranslations"
 import Layout from "@components/layout/layout";
@@ -9,8 +8,6 @@ import {BuilderImage} from "src/builderComponents/builderImage"
 import {List_Of_Components} from "@components/list"
 import {CONFIG_RAZOR} from "@components/config"
 import {isLocalhost} from "../../services/helpers"
-import {getAllPagesBuilder} from "@utils/getAllPagesBuilder";
-import axios from "axios";
 
 
 const formatStyles = (styles: string | undefined): { [key: string]: string } => {
@@ -82,34 +79,13 @@ const PageExample = ({dataFromCms, builderProps}: any) => {
 
 PageExample.Layout = Layout
 
-// export const getStaticPaths = async () => {
-// 	const _data = await axios.get(`${CONFIG_RAZOR.serverUrl}all`, {
-// 		headers: {
-// 			'Content-Type': 'application/json',
-// 		},
-// 	});
-//
-// 	const slugs = _data?.data?.pages?.map((item: any) => {
-// 		return {
-// 			params: {
-// 				slug: item.page,
-// 			},
-// 		};
-// 	});
-//
-// 	return {
-// 		paths: [...slugs],
-// 		// time
-// 		fallback: "blocking",
-// 	};
-// };
-
 
 export async function getServerSideProps({query, locale, req}) {
 	const {slug} = query;
 	const hostname = new URL(`http://${req.headers.host}`).hostname;
 	const baseUrl = isLocalhost(hostname) ? `${CONFIG_RAZOR.serverUrl}` : `${CONFIG_RAZOR.serverUrlProd}`
-	console.log(slug)
+
+
 	try {
 		const response = await fetch(`${baseUrl}load?page=${slug}`)
 		const data = await response.json()

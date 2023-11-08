@@ -166,6 +166,7 @@ const BuilderControl = ({rangeValue, queryPageParam, doSave, doSaveAndFinish}) =
 			contentBuilder.loadSnippets('assets/minimalist-blocks/content.js'); // Load snippet file
 
 			document.addEventListener('dragstart', function(event) {
+				if (!event.target.querySelector('img')) return
 				const imgSrc = event.target.querySelector('img').getAttribute('src').split('/')
 				const componentNameParts = imgSrc[imgSrc.length - 1].split('.')[0];
 				event.dataTransfer.setData('text/plain', componentNameParts);
@@ -175,6 +176,7 @@ const BuilderControl = ({rangeValue, queryPageParam, doSave, doSaveAndFinish}) =
 			document.addEventListener('drop', function(event) {
 				const componentName = event.dataTransfer.getData('text/plain');
 
+				if (!componentName) return
 				setTimeout(() => {
 					const html = contentBuilder.html()
 					if (html) {

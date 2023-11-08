@@ -10,6 +10,27 @@ const getProps = (html) => {
 		const componentType = element.getAttribute('data-component') || "type-error";
 		customProps[componentType + "" + i] = {};
 
+		const dataProps = element.querySelector('[data-props]')
+		if (dataProps) {
+			const repeaterNodes = dataProps.querySelectorAll('[data-propsname]');
+			repeaterNodes.forEach(props => {
+				const propsName = props.getAttribute('data-propsname') || "propsname-error";
+
+				try {
+					const fields = JSON.parse(propsName);
+
+					Object.entries(fields).forEach(field => {
+						const propsName = field[0];
+						const propSource = field[1];
+
+						customProps[componentType + "" + i][propsName] = props[propSource];
+					})
+				} catch (e) {
+					console.log(e);
+				}
+			})
+		}
+
 		const repeaterElements = element.querySelectorAll('[data-repeater]');
 
 		if (repeaterElements.length > 0) {
@@ -23,20 +44,6 @@ const getProps = (html) => {
 
 				repeaterNodes.forEach((node) => {
 					const propsName = node.getAttribute('data-propsname') || "propsname-error";
-
-					// try {
-					// 	const fields = JSON.parse(propsName);
-					// 	Object.entries(fields).forEach(field => {
-					// 		const propsName = field[0];
-					// 		const propSource = field[1];
-					//
-					// 		repeaterProps[propsName] = node[propSource];
-					// 	});
-					// } catch (e) {
-					// 	console.log(e);
-					// }
-
-					// for make obj with obj image
 					try {
 						const fields = JSON.parse(propsName);
 						Object.entries(fields).forEach(field => {
@@ -113,42 +120,3 @@ const getProps = (html) => {
 }
 
 module.exports = getProps;
-
-
-// default
-// const { JSDOM } = require('jsdom');
-//
-//
-// const getProps =    (html)=>{
-//     const dom = new JSDOM(html);
-//     const document = dom.window.document;
-//     const elements = document.querySelectorAll('[data-component]');
-//     const customProps={}
-//
-//     elements.forEach((element , i ) => {
-//         const componentType = element.getAttribute('data-component')||"type-error";
-//         customProps[componentType+""+i]={}
-//         const  editableNodes=  element.querySelectorAll('[data-propsname]');
-//         editableNodes.forEach((node  )=>{
-//             const propsName = node.getAttribute('data-propsname')||"propsname-error"
-//             try{
-//                 const fields = JSON.parse(propsName)
-//                 Object.entries(fields).forEach(field=>{
-//                     const propsName=field[0]
-//                     const propSource = field[1]
-//                     customProps[componentType+""+i][propsName]=node[propSource]
-//                 })
-//             } catch(e){
-//                 console.log(e)
-//             }
-//             // Object.entries()
-//             // if(componentType&&propsName&&source){
-//             //     customProps[componentType+""+i][propsName] = node[source]
-//             // }
-//         })
-//     });
-//
-//     return JSON.stringify(customProps)
-// }
-//
-// module.exports = getProps;

@@ -7,8 +7,9 @@ interface Props {
     data: any;
     isLoading: any;
     error?: any;
+    limit?: number
 }
-const SupperCategoryContainer: React.FC<Props> = ({data, isLoading, error}) => {
+const SupperCategoryContainer: React.FC<Props> = ({data, isLoading, error, limit}) => {
 
     const breakpoints = {
 
@@ -38,7 +39,7 @@ const SupperCategoryContainer: React.FC<Props> = ({data, isLoading, error}) => {
             products={data}
             loading={isLoading}
             error={error?.message}
-            limit={LIMITS.FASHION_PRODUCTS_LIMITS}
+            limit={limit}
             uniqueKey="fresh-vegetable"
             carouselBreakpoint={breakpoints}
         />

@@ -1,6 +1,5 @@
 import SectionHeader from '@components/common/section-header';
 import CategoryListCardLoader from '@components/ui/loaders/category-list-card-loader';
-import { useCategoriesQuery } from '@framework/category/get-all-categories';
 import Alert from '@components/ui/alert';
 import CategoryListCard from '@components/cards/category-list-card';
 import Carousel from '@components/ui/carousel/carousel';
@@ -8,9 +7,15 @@ import { SwiperSlide } from 'swiper/react';
 import useWindowSize from '@utils/use-window-size';
 import cn from 'classnames';
 import { ROUTES } from '@utils/routes';
+import useSWR from "swr";
+import {API_ENDPOINTS} from "@framework/utils/api-endpoints";
+import {fetcher, fetcherCategory} from "../../services/helpers";
+import {IsEditable, onlyForBuilder} from "@components/config";
+import {useCategoriesQuery} from "@framework/category/get-all-categories";
 
 interface CategoriesProps {
   className?: string;
+  limit?: number
 }
 
 const breakpoints = {
@@ -36,14 +41,30 @@ const breakpoints = {
 
 const CategoryGridListBlock: React.FC<CategoriesProps> = ({
   className = 'mb-8',
+  limit
 }) => {
   const { width } = useWindowSize();
-  const { data, isLoading, error } = useCategoriesQuery({
-    limit: 6,
-  });
-  const CATEGORIES_LIMITS = 6;
+
+
+  const {data, isLoading, error} = useSWR(
+    `/api${API_ENDPOINTS.CATEGORIES}?limit=${limit}`, fetcherCategory
+  )
+
+  console.log('CategoryGridListBlockProps ', {className, limit})
+
+  if (onlyForBuilder()) {
+    return (
+      <div data-component="CategoryGridListBlock">
+        <div style={{pointerEvents: "none"}}>limit: </div>
+        <p {...IsEditable({limit: "textContent"})}>6</p>
+        <div style={{pointerEvents: "none"}}>className:</div>
+        <p {...IsEditable({className: "textContent"})}>mb-8</p>
+      </div>
+    )
+  }
+
   return (
-    <div className={cn(className)}>
+    <div  data-component="CategoryGridListBlock" className={cn(className)}>
         <SectionHeader sectionHeading="text-choose-categories" className="mb-6 block-title" />
 
         <div className="mt-0">
@@ -70,7 +91,7 @@ const CategoryGridListBlock: React.FC<CategoriesProps> = ({
                         </SwiperSlide>
                       );
                     })
-                    : data?.categories?.data?.slice(0, CATEGORIES_LIMITS).map((category) => (
+                    : data?.categories?.data?.slice(0, 6).map((category) => (
                       <SwiperSlide
                         key={`category--key-${category.id}`}
                         className=""

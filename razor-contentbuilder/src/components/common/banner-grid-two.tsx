@@ -1,6 +1,6 @@
 import BannerCard from '@components/cards/banner-card';
 import {IsEditable, onlyForBuilder} from "@components/config";
-import {useEffect} from "react";
+
 
 interface BannerProps {
 	className?: string;
@@ -8,13 +8,22 @@ interface BannerProps {
 	BannerGrid: any;
 }
 
-const BannerGrid: React.FC<BannerProps> = ({BannerGrid, className = 'mb-3 md:mb-4 lg:mb-5 xl:mb-6', girdClassName = '2xl:gap-5'}) => {
+const BannerGrid: React.FC<BannerProps> = ({BannerGrid, girdClassName = '2xl:gap-5', className}) => {
 
-	console.log('BannerGridProps ', BannerGrid)
+	console.log('BannerGridProps ', {BannerGrid, girdClassName})
 
 	if (onlyForBuilder()) {
 		return (
 			<div data-component="BannerGrid" style={{margin: "0 0 15px 0"}}>
+				<div data-props="BannerGrid">
+					className:
+					<p {...IsEditable({className: "textContent"})}>mb-8 lg:mb-12</p>
+					<br/>
+
+					girdClassName:
+					<p {...IsEditable({girdClassName: "textContent"})}>xl:gap-5 </p>
+				</div>
+				<br/>
 				<div data-repeater="BannerGrid" style={{borderBottom: "solid red 1px", margin: "0 0 15px 0"}}>
 					<div style={{display: "flex", justifyContent: "space-between"}}>
 						<div data-repeaterbtn="collapseElem" style={{cursor: "pointer", margin: "0 0 10px 0", padding: "2px 15px", borderRadius: "9999px", background: "#E5E7EB", fontSize: "16px", color: "#000"}}>
@@ -33,14 +42,12 @@ const BannerGrid: React.FC<BannerProps> = ({BannerGrid, className = 'mb-3 md:mb-
 						<a {...IsEditable({linkText: "textContent", link: "href"})} href="#"> link text </a>
 						<div{...IsEditable({variant: "textContent"})}>rounded</div>
 					</div>
-
 				</div>
 
 				<div data-repeaterbtn="addElem" style={{cursor: "pointer", display: "inline-block", padding: "2px 15px", borderRadius: "9999px", background: "#2C752F", fontSize: "16px", color: "#fff"}}>
 					Add Banner
 				</div>
 			</div>
-
 		)
 	}
 

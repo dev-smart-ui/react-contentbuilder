@@ -1,34 +1,46 @@
-import { LIMITS } from '@framework/utils/limits';
 import SupperCategoryList from "@components/suppercategory/suppercategory-list";
 import SupperCategoryContainer from "@components/suppercategory/suppercategory-container";
-import {useClothCategoryQuery} from "@framework/product/get-cloth-category";
-import {UsefashionProductsQuery} from "@framework/product/get-all-fashion-products";
-import {useRouter} from "next/router";
-import {getDirection} from "@utils/get-direction";
+import useSWR from "swr";
+import {API_ENDPOINTS} from "@framework/utils/api-endpoints";
+import {fetcher} from "../../../services/helpers";
+import {IsEditable, onlyForBuilder} from "@components/config";
 
-export default function SupperCategoryElectronicFeed() {
-  const { data: category } = useClothCategoryQuery({
-    limit: LIMITS.FASHION_PRODUCTS_LIMITS,
-  });
-  const { data: products, isLoading, error } = UsefashionProductsQuery({
-    limit: LIMITS.FASHION_PRODUCTS_LIMITS,
-  });
-  const { locale } = useRouter();
-  const dir = getDirection(locale);
-  const backgroundThumbnail = dir === 'ltr' ? '/assets/images/collection/cate_2.jpg' : '/assets/images/collection/cate_2_rtl.jpg';
+const SupperCategoryClothFeed = ({limit}) => {
+
+  console.log('SupperCategoryClothFeed ', limit)
+
+  const {data: category, isLoading: isLoadingCategory} = useSWR(
+    `/api${API_ENDPOINTS.CLOTH_CATEGORY}?limit=${limit}`, fetcher
+  )
+  const {data: products, isLoading: isLoadingProducts, error: errorProducts} = useSWR(
+    `/api${API_ENDPOINTS.FASHION_PRODUCTS}?limit=${limit}`, fetcher
+  )
+
+
+  if (onlyForBuilder()) {
+    return (
+      <div data-component="SupperCategoryClothFeed">
+        <div style={{pointerEvents: "none"}}>limit: </div>
+        <p {...IsEditable({limit: "textContent"})}>10</p>
+      </div>
+    )
+  }
+
 
   return (
-      <div className="mb-8 lg:mb-12">
+      <div  data-component="SupperCategoryClothFeed" className="mb-8 lg:mb-12">
         <div className="xl:flex border border-black/10" >
-          <div className={`xl:w-[420px] p-7 bg-no-repeat  ${dir == 'rtl' ? 'bg-left': 'bg-right'}`}
-               style={{backgroundImage: `url(${backgroundThumbnail})`}}
+          <div className={`xl:w-[420px] p-7 bg-no-repeat bg-left`}
+               style={{backgroundImage: `url(/assets/images/collection/cate_2.jpg)`}}
           >
             <SupperCategoryList className={`supper-category--list`} data={category}/>
           </div>
           <div className="trendy-main-content w-full p-2.5">
-            <SupperCategoryContainer data = {products} isLoading={isLoading} error={error}/>
+            <SupperCategoryContainer data = {products} isLoading={isLoadingProducts} error={errorProducts} limit={limit}/>
           </div>
         </div>
       </div>
   );
 }
+
+export default SupperCategoryClothFeed

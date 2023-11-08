@@ -1,45 +1,19 @@
 import ProductsCarousel from '@components/product/products-carousel';
-import {useBestSellerProductsQuery} from '@framework/product/get-all-best-seller-products';
-import {LIMITS} from '@framework/utils/limits';
 import {ROUTES} from '@utils/routes';
-import {useEffect, useState} from "react";
 import {API_ENDPOINTS} from "@framework/utils/api-endpoints";
 import {IsEditable, onlyForBuilder} from "@components/config";
+import useSWR from "swr";
+import {fetcher} from "../../../services/helpers";
 
 const BestSellerProductFeed = ({limit, idFilter}) => {
 
 	console.log('BestSellerProductFeedProps ', {limit, idFilter})
 
 
-	useEffect(() => {
-		console.log('render')
-	}, []);
+	const {data, isLoading, error} = useSWR(
+		`/api${API_ENDPOINTS.BEST_SELLER_PRODUCTS}?limit=${limit}&id=${idFilter}`, fetcher
+	)
 
-
-	const [data, setData] = useState([]);
-	const [isLoading, setIsLoading] = useState(true);
-	const [error, setError] = useState(null);
-
-	const fetchData = async () => {
-		try {
-			const response = await fetch(`/api${API_ENDPOINTS.BEST_SELLER_PRODUCTS}?limit=${limit}&id=${idFilter}`);
-
-			if (!response.ok) {
-				throw new Error('Failed to fetch best seller products');
-			}
-
-			const data = await response.json();
-			setData(data);
-			setIsLoading(false);
-		} catch (error) {
-			setError(error);
-			setIsLoading(false);
-		}
-	};
-
-	useEffect(() => {
-		fetchData().then();
-	}, []);
 
 	if (error) {
 		return <div>Error: {error.message}</div>;
@@ -56,12 +30,6 @@ const BestSellerProductFeed = ({limit, idFilter}) => {
 		)
 	}
 
-	// const { data, isLoading, error } = useBestSellerProductsQuery({
-	//   limit: LIMITS.BEST_SELLER_PRODUCTS_LIMITS,
-	//   id: 'pbs1',
-	// });
-
-	console.log(data)
 
 	return (
 		<div data-component={"BestSellerProductFeed"}>
@@ -71,12 +39,12 @@ const BestSellerProductFeed = ({limit, idFilter}) => {
 			  products={data}
 			  loading={isLoading}
 			  error={error?.message}
-			  limit={LIMITS.BEST_SELLER_PRODUCTS_LIMITS}
+			  limit={limit}
 			  uniqueKey="best-sellers"
 			  className = "mb-8"
 			/>
 		</div>
-	);
+	)
 }
 
-export default BestSellerProductFeed;
+export default BestSellerProductFeed
