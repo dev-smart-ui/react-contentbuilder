@@ -47,37 +47,37 @@ export const siteSettings = {
         subMenu: [
           {
             id: 1,
-            path: 'https://razor-next.vercel.app/',
+            path: 'https://razor-contentbuilder.vercel.app/',
             label: 'menu-home1',
           },
           {
             id: 2,
-            path: 'https://razor-next.vercel.app/home2',
+            path: 'https://razor-contentbuilder.vercel.app/home2',
             label: 'menu-home2',
           },
           {
             id: 3,
-            path: 'https://razor-next.vercel.app/home3',
+            path: 'https://razor-contentbuilder.vercel.app/home3',
             label: 'menu-home3',
           },
           {
             id: 4,
-            path: 'https://razor-next.vercel.app/home4',
+            path: 'https://razor-contentbuilder.vercel.app/home4',
             label: 'menu-home4',
           },
           {
             id: 5,
-            path: 'https://razor-next.vercel.app/home5',
+            path: 'https://razor-contentbuilder.vercel.app/home5',
             label: 'menu-home5',
           },
           {
             id: 6,
-            path: 'https://razor-next.vercel.app/home6',
+            path: 'https://razor-contentbuilder.vercel.app/home6',
             label: 'menu-home6',
           },
           {
             id: 7,
-            path: 'https://razor-next.vercel.app/home7',
+            path: 'https://razor-contentbuilder.vercel.app/home7',
             label: 'menu-home7',
           },
           {
@@ -92,7 +92,7 @@ export const siteSettings = {
           },
           {
             id: 10,
-            path: 'https://razor-next.vercel.app/ar',
+            path: 'https://razor-contentbuilder.vercel.app/ar',
             label: 'menu-rtl',
           },
         ],
