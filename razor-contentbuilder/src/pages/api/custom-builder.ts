@@ -36,7 +36,7 @@ export default async function handler(req, res) {
         const response = renderedComponents.map( item =>{
             return {
                 'thumbnail': `preview/${item.fileName}.svg`,
-                'category': '120',
+                'category': '121',
                 'html':item.html
              }
             }

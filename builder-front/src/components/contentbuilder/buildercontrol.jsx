@@ -60,6 +60,10 @@ const BuilderControl = ({rangeValue, queryPageParam, doSave, doSaveAndFinish}) =
 				container: '.container',
 				snippetPath: `${CONFIG.serverUrlProd}files/`,  // Location of snippets' assets
 
+
+				snippetCategories: [[121, "Custom"], [120, "Basic"], [118, "Article"], [101, "Headline"], [119, "Buttons"], [102, "Photos"], [103, "Profile"], [116, "Contact"], [104, "Products, Services"], [105, "Features"], [108, "Skills"], [109, "Achievements"], [106, "Process"], [107, "Pricing"], [110, "Quotes"], [111, "Partners"], [112, "As Featured On"], [113, "Page Not Found"], [114, "Coming Soon"], [115, "Help, FAQ"]],
+				defaultSnippetCategory: 121,
+
 				// OPTIONAL:
 				// If you need to change some paths:
 				// snippetUrl: 'assets/minimalist-blocks/content.js', // Snippet file
