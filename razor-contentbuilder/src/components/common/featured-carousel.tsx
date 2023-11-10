@@ -118,7 +118,7 @@ const FeatureCarousel: React.FC<Props> = ({className = 'mb-7 md:mb-10 ', classNa
 	}
 
 	return (
-		<div className={`mb-7 md:mb-10 ${className}`}>
+		<div data-component="FeatureCarousel" className={`mb-7 md:mb-10 ${className}`}>
 			{// @ts-ignore
 				<Carousel
 					autoplay={false}

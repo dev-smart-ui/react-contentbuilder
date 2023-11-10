@@ -64,7 +64,7 @@ const CategoryGridListBlock: React.FC<CategoriesProps> = ({
   }
 
   return (
-    <div  data-component="CategoryGridListBlock" className={cn(className)}>
+    <div data-component="CategoryGridListBlock" className={cn(className)}>
         <SectionHeader sectionHeading="text-choose-categories" className="mb-6 block-title" />
 
         <div className="mt-0">

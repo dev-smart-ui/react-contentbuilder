@@ -74,7 +74,7 @@ const BannerGrid: React.FC<BannerProps> = ({BannerGrid = defaultData, girdClassN
 
 
 	return (
-		<div className={className} data-component={"BannerGrid"}>
+		<div data-component={"BannerGrid"} className={className}>
 			<div className={`grid gap-4  grid-cols-1 lg:grid-cols-${BannerGrid.length} sm:grid-cols-${BannerGrid.length === 1 ? `${BannerGrid.length}` : 2} ${girdClassName}`}>
 				{BannerGrid?.map((banner: any, i: number) => {
 					return (

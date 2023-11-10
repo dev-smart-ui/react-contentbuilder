@@ -11,7 +11,7 @@ async function handler(req, res) {
 		for (const componentName in List_Of_Components) {
 			if (Object.prototype.hasOwnProperty.call(List_Of_Components, componentName)) {
 				const componentUrl = `${CONFIG_RAZOR.baseRazorUrlProd}/preview/${componentName}`;
-				const browser = await puppeteer.launch({ headless: true });
+				const browser = await puppeteer.launch({ headless: "new" });
 				const page = await browser.newPage();
 
 
@@ -40,19 +40,20 @@ async function handler(req, res) {
 
 
 					try {
-						const response = await axios.post(`${CONFIG_RAZOR.serverUrlProd}upload-preview`, {
+						await new Promise(resolve => setTimeout(resolve, 1000))
+						const uploadResponse = await axios.post(`${CONFIG_RAZOR.serverUrlProd}upload-preview`, {
 							image: screenshot.toString('base64'),
 							filename: componentName,
 						})
 
-						if (response.status === 200) {
-							res.status(200).json({ success: true, message: 'Preview generated successfully'});
+						if (uploadResponse.status === 200) {
+							res.status(200).json({ success: true, message: 'Preview generated successfully' })
 						} else {
-							res.status(500).json({ success: false, message: 'Error uploading preview to the server' });
+							res.status(500).json({ success: false, message: 'Error uploading preview to the server' })
 						}
 					} catch (error) {
 						console.error('Ошибка при загрузке скриншота на сервер:', error);
-						res.status(500).json({ success: false, message: 'Internal Server Error' });
+						res.status(500).json({ success: false, message: 'Internal Server Error' })
 					}
 
 				} catch (error) {

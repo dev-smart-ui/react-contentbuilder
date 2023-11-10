@@ -108,6 +108,7 @@ app.post('/upload-preview', async (req, res) => {
 		return res.status(500).json({
 			success: false,
 			message: `Failed to save file: ${err.message}`,
+			filename: filename
 		});
 	}
 });

@@ -28,7 +28,7 @@ const SupperCategoryClothFeed = ({limit = 7}) => {
 
 
   return (
-      <div  data-component="SupperCategoryClothFeed" className="mb-8 lg:mb-12">
+      <div data-component="SupperCategoryClothFeed" className="mb-8 lg:mb-12">
         <div className="xl:flex border border-black/10" >
           <div className={`xl:w-[420px] p-7 bg-no-repeat bg-left`}
                style={{backgroundImage: `url(/assets/images/collection/cate_2.jpg)`}}

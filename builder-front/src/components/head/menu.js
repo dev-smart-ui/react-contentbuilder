@@ -57,12 +57,11 @@ export const Menu = () => {
 		try {
 			setIsLoading(true)
 			// const response = await axios.get(`${CONFIG.serverUrlProd}generate-preview`)
-			const response = await axios.get(`${CONFIG.baseRazorUrl}api/screenshot`)
-
-			console.log('response ', response.data)
-
-			const data = response.data
-			toast.success(data.message)
+			await axios.get(`${CONFIG.baseRazorUrl}api/screenshot`)
+				.then(data => {
+					console.log('response ', data.data)
+					toast.success(data.data.message)
+			})
 		} catch (error) {
 			toast.error(error.message || 'error')
 			console.error("error:", error)
