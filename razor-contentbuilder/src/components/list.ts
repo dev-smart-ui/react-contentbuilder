@@ -7,6 +7,7 @@ import SupperCategoryElectronicFeed from "@components/product/feeds/suppercatego
 import SupperCategoryClothFeed from "@components/product/feeds/suppercategory-cloth-feed";
 import CategoryGridListBlock from "@components/common/category-grid-list-block";
 import BannerAllCarousel from "@components/common/banner-all-carousel";
+import DownloadApps from "@components/common/download-apps";
 
 export const List_Of_Components = {
     Test,
@@ -17,5 +18,6 @@ export const List_Of_Components = {
     SupperCategoryElectronicFeed,
     SupperCategoryClothFeed,
     CategoryGridListBlock,
-    BannerAllCarousel
+    BannerAllCarousel,
+    DownloadApps
 }
