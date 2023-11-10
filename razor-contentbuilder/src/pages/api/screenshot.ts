@@ -48,7 +48,7 @@ async function handler(req, res) {
 		// console.log(screenshot)
 
 		// Отправка изображения на сервер
-		await axios.post(`${CONFIG_RAZOR.serverUrl}upload-preview`, {
+		await axios.post(`${CONFIG_RAZOR.serverUrlProd}upload-preview`, {
 			image: screenshot.toString('base64'),
 			filename: component,
 		}).then(response => {

@@ -95,7 +95,7 @@ app.post('/upload-preview', async (req, res) => {
 	const filename = req.body.filename;
 
 	try {
-		await fs.writeFile(`${$path}/preview/${filename}`, imageBuffer, 'base64')
+		await fs.writeFile(`${$path}/preview/${filename}.png`, imageBuffer, 'base64')
 
 		res.status(200).json({
 			success: true,
