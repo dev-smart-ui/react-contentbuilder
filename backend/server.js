@@ -103,7 +103,7 @@ app.post('/upload-preview', async (req, res) => {
 		})
 
 	} catch (err) {
-		console.error('Ошибка при сохранении файла:', err);
+		console.error('Error saving file:', err);
 
 		return res.status(500).json({
 			success: false,

@@ -3,6 +3,7 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {CONFIG} from "../../config";
 import {toast} from "react-toastify";
+import {createPortal} from "react-dom";
 
 export const Menu = () => {
 
@@ -56,7 +57,6 @@ export const Menu = () => {
 	const onHandlerCreatePreviews = async () => {
 		try {
 			setIsLoading(true)
-			// const response = await axios.get(`${CONFIG.serverUrlProd}generate-preview`)
 			await axios.get(`${CONFIG.baseRazorUrl}api/screenshot`)
 				.then(data => {
 					console.log('response ', data.data)
@@ -71,34 +71,53 @@ export const Menu = () => {
 	}
 
 	return (
-		<div className="head-btn-box justify-center items-center flex-wrap gap-2 flex w-1/2 ">
-			<a href="/" className="text-center transition-all inline-block cursor-pointer no-underline border-2 border-solid border-transparent mb-2 hover:border-transparent bg-gray-200 hover:bg-gray-300 size-14 tracking-75 uppercase py-2 px-5  font-semibold text-gray-600 rounded-full">
-				Home
-			</a>
-			<a href="/edit" className="text-center transition-all inline-block cursor-pointer no-underline border-2 border-solid mb-2  size-14 tracking-75 uppercase py-2 px-5  border-current text-indigo-500 hover:bg-indigo-500 hover:text-white hover:border-transparent font-semibold rounded-full">
-				+ Add new page
-			</a>
+		<>
+			{
+				isLoading && createPortal(
+					<div className="fixed top-0 w-full h-full bg-[rgba(0,0,0,.5)] z-[99999] flex items-center justify-center">
+						<ThreeCircles
+							height="80"
+							width="80"
+							color="#4fa94d"
+							wrapperStyle={{}}
+							wrapperClass=""
+							visible={true}
+							ariaLabel="circles-border"
+							outerCircleColor="#000"
+							innerCircleColor="#fff"
+							middleCircleColor="#000"
+						/>
+					</div>,
+					document.body)
+			}
+			<div className="head-btn-box justify-center items-center flex-wrap gap-2 flex w-1/2 ">
+				<a href="/" className="text-center transition-all inline-block cursor-pointer no-underline border-2 border-solid border-transparent mb-2 hover:border-transparent bg-gray-200 hover:bg-gray-300 size-14 tracking-75 uppercase py-2 px-5  font-semibold text-gray-600 rounded-full">
+					Home
+				</a>
+				<a href="/edit" className="text-center transition-all inline-block cursor-pointer no-underline border-2 border-solid mb-2  size-14 tracking-75 uppercase py-2 px-5  border-current text-indigo-500 hover:bg-indigo-500 hover:text-white hover:border-transparent font-semibold rounded-full">
+					+ Add new page
+				</a>
 
-			<div className="relative group dropdown">
-				<button onClick={toggleDropdown} className="text-center transition-all inline-block cursor-pointer no-underline border-2 border-solid border-gray-200 mb-2 hover:border-gray-300 hover:bg-gray-300 size-14 tracking-75 uppercase py-2 px-5  font-semibold text-gray-200 hover:text-gray-600 rounded-full focus:outline-none">
-					Options
-				</button>
-				{isOpen && (
-					<ul className="absolute z-10 w-40 rounded-md overflow-hidden bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-						<li>
-							<button disabled={lock} onClick={onHandlerRebuild} className="block px-4 py-2 text-sm bg-red-500 hover:bg-red-700 text-white text-left w-full">
-								Rebuild
-							</button>
-						</li>
-						<li>
-							<button disabled={isLoading} onClick={onHandlerCreatePreviews} className="block px-4 py-2 text-sm bg-red-500 hover:bg-red-700 text-white text-left w-full">
-								Generate Preview
-							</button>
-						</li>
-					</ul>
-				)}
+				<div className="relative group dropdown">
+					<button onClick={toggleDropdown} className="text-center transition-all inline-block cursor-pointer no-underline border-2 border-solid border-gray-200 mb-2 hover:border-gray-300 hover:bg-gray-300 size-14 tracking-75 uppercase py-2 px-5  font-semibold text-gray-200 hover:text-gray-600 rounded-full focus:outline-none">
+						Options
+					</button>
+					{isOpen && (
+						<ul className="absolute z-10 w-40 rounded-md overflow-hidden bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+							<li>
+								<button disabled={lock} onClick={onHandlerRebuild} className="block px-4 py-2 text-sm bg-red-500 hover:bg-red-700 text-white text-left w-full">
+									Rebuild
+								</button>
+							</li>
+							<li>
+								<button disabled={isLoading} onClick={onHandlerCreatePreviews} className="block px-4 py-2 text-sm bg-red-500 hover:bg-red-700 text-white text-left w-full">
+									Generate Preview
+								</button>
+							</li>
+						</ul>
+					)}
+				</div>
 			</div>
-		</div>
-
+		</>
 	)
 }

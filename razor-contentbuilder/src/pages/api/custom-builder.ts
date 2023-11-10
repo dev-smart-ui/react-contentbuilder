@@ -19,7 +19,7 @@ export default async function handler(req, res) {
 		delete process.env.IN_API_CONTEXT;
 		const response = renderedComponents.map(item => {
 				return {
-					'thumbnail': `preview/${item.fileName}.svg`,
+					'thumbnail': `preview/customComponents/${item.fileName}.png`,
 					'category': '121',
 					'html': item.html
 				}
