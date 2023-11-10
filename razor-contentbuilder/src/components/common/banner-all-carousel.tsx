@@ -29,6 +29,81 @@ const breakpoints = {
   },
 };
 
+const defaultData = [
+  {
+    "image": {
+      "imageSrc": "https://builder.smart-ui.pro/files/bannerBrand-1.jpg",
+      "imageAlt": ""
+    },
+    "linkText": "/search",
+    "link": "/search",
+    "variant": "rounded"
+  },
+  {
+    "image": {
+      "imageSrc": "https://builder.smart-ui.pro/files/bannerBrand--2.jpg",
+      "imageAlt": ""
+    },
+    "linkText": "/search",
+    "link": "/search",
+    "variant": "rounded"
+  },
+  {
+    "image": {
+      "imageSrc": "https://builder.smart-ui.pro/files/bannerBrand--3.jpg",
+      "imageAlt": ""
+    },
+    "linkText": "/search",
+    "link": "/search",
+    "variant": "rounded"
+  },
+  {
+    "image": {
+      "imageSrc": "https://builder.smart-ui.pro/files/bannerBrand--4.jpg",
+      "imageAlt": ""
+    },
+    "linkText": "/search",
+    "link": "/search",
+    "variant": "rounded"
+  },
+  {
+    "image": {
+      "imageSrc": "https://builder.smart-ui.pro/files/bannerBrand--5.jpg",
+      "imageAlt": ""
+    },
+    "linkText": "/search",
+    "link": "/search",
+    "variant": "rounded"
+  },
+  {
+    "image": {
+      "imageSrc": "https://builder.smart-ui.pro/files/banner-6.jpg",
+      "imageAlt": ""
+    },
+    "linkText": "/search",
+    "link": "/search",
+    "variant": "rounded"
+  },
+  {
+    "image": {
+      "imageSrc": "https://builder.smart-ui.pro/files/bannerBrand-1.jpg",
+      "imageAlt": ""
+    },
+    "linkText": "/search",
+    "link": "/search",
+    "variant": "rounded"
+  },
+  {
+    "image": {
+      "imageSrc": "https://builder.smart-ui.pro/files/bannerBrand--2.jpg",
+      "imageAlt": ""
+    },
+    "linkText": "/search",
+    "link": "/search",
+    "variant": "rounded"
+  }
+]
+
 interface BannerProps {
   BannerAllCarousel: any;
   className?: string;
@@ -37,7 +112,7 @@ interface BannerProps {
 }
 
 const BannerAllCarousel: React.FC<BannerProps> = ({
-                                                    BannerAllCarousel,
+  BannerAllCarousel = defaultData,
   className = 'mb-6',
   layout,
   buttonSize = 'default',

@@ -57,7 +57,7 @@ export const Menu = () => {
 		try {
 			setIsLoading(true)
 			// const response = await axios.get(`${CONFIG.serverUrlProd}generate-preview`)
-			const response = await axios.get(`${CONFIG.baseRazorUrl}api/screenshot?component=slider`)
+			const response = await axios.get(`${CONFIG.baseRazorUrl}api/screenshot`)
 
 			console.log('response ', response.data)
 

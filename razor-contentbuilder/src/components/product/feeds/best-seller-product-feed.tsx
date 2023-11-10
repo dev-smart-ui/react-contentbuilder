@@ -5,7 +5,7 @@ import {IsEditable, onlyForBuilder} from "@components/config";
 import useSWR from "swr";
 import {fetcher} from "../../../services/helpers";
 
-const BestSellerProductFeed = ({limit, idFilter}) => {
+const BestSellerProductFeed = ({limit = 5, idFilter = 'pbs1'}) => {
 
 	console.log('BestSellerProductFeedProps ', {limit, idFilter})
 

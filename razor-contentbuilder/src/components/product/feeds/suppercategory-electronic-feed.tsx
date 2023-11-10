@@ -4,7 +4,7 @@ import useSWR from "swr";
 import SupperCategoryList from "@components/suppercategory/suppercategory-list";
 import SupperCategoryContainer from "@components/suppercategory/suppercategory-container";
 import {fetcher} from "../../../services/helpers";
-const SupperCategoryElectronicFeed = ({limit}) => {
+const SupperCategoryElectronicFeed = ({limit = 7}) => {
 
   console.log('SupperCategoryElectronicFeedProps ', limit)
 

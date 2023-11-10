@@ -5,7 +5,7 @@ import {API_ENDPOINTS} from "@framework/utils/api-endpoints";
 import {fetcher} from "../../../services/helpers";
 import {IsEditable, onlyForBuilder} from "@components/config";
 
-const SupperCategoryClothFeed = ({limit}) => {
+const SupperCategoryClothFeed = ({limit = 7}) => {
 
   console.log('SupperCategoryClothFeed ', limit)
 

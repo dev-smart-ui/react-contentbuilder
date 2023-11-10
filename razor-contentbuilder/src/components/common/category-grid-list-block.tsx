@@ -41,7 +41,7 @@ const breakpoints = {
 
 const CategoryGridListBlock: React.FC<CategoriesProps> = ({
   className = 'mb-8',
-  limit
+  limit = 6
 }) => {
   const { width } = useWindowSize();
 

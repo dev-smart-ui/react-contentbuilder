@@ -6,25 +6,29 @@ import {IsEditable, onlyForBuilder} from "@components/config";
 const data = {
   title: 'app-heading',
   description: 'app-description',
-  appImage: '/assets/images/app-thumbnail.png',
+  appImage: "https://builder.smart-ui.pro/files/banner-4.jpg",
   appButtons: [
     {
-      id: 1,
-      slug: '/#',
-      altText: 'button-app-store',
-      appButton: '/assets/images/app-store.png',
-      buttonWidth: 170,
-      buttonHeight: 56,
+      "slug": "/#",
+      "image": {
+        "appButton": "https://builder.smart-ui.pro/files/app-store.png",
+        "imageAlt": ""
+      },
+      "altText": "button-app-store",
+      "buttonWidth": "170",
+      "buttonHeight": "56"
     },
     {
-      id: 2,
-      slug: '/#',
-      altText: 'button-play-store',
-      appButton: '/assets/images/play-store.png',
-      buttonWidth: 170,
-      buttonHeight: 56,
-    },
-  ],
+      "slug": "/#",
+      "image": {
+        "appButton": "https://builder.smart-ui.pro/files/play-store.png",
+        "imageAlt": ""
+      },
+      "altText": "button-play-store",
+      "buttonWidth": "170",
+      "buttonHeight": "56"
+    }
+  ]
 };
 
 interface Props {
@@ -35,7 +39,11 @@ interface Props {
   appImage?: string
 }
 
-const DownloadApps: React.FC<Props> = ({ DownloadApps, title, description, appImage, className = 'pt-1.5 md:pt-0' }) => {
+const DownloadApps: React.FC<Props> = ({ DownloadApps = data.appButtons,
+                                         title = data.title,
+                                         description = data.description,
+                                         appImage = data.appImage,
+                                         className = 'pt-1.5 md:pt-0' }) => {
   const { t } = useTranslation('common');
 
   console.log('DownloadAppsProps ', {DownloadApps, title, description, appImage, className})

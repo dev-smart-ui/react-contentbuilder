@@ -8,7 +8,28 @@ interface BannerProps {
 	BannerGrid: any;
 }
 
-const BannerGrid: React.FC<BannerProps> = ({BannerGrid, girdClassName = '2xl:gap-5', className}) => {
+const defaultData = [
+	{
+		"image": {
+			"imageSrc": "https://builder.smart-ui.pro/files/banner-1.jpg",
+			"imageAlt": ""
+		},
+		"linkText": "/search",
+		"link": "/search",
+		"variant": "rounded"
+	},
+	{
+		"image": {
+			"imageSrc": "https://builder.smart-ui.pro/files/banner-2.jpg",
+			"imageAlt": ""
+		},
+		"linkText": "/search",
+		"link": "/search",
+		"variant": "rounded"
+	}
+]
+
+const BannerGrid: React.FC<BannerProps> = ({BannerGrid = defaultData, girdClassName = '2xl:gap-5', className}) => {
 
 	console.log('BannerGridProps ', {BannerGrid, girdClassName})
 

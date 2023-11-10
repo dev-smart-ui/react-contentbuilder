@@ -31,7 +31,60 @@ const breakpoints = {
 	},
 };
 
-const FeatureCarousel: React.FC<Props> = ({className = 'mb-7 md:mb-10 ', classNameCarousel, Slides}) => {
+const defaultData = [
+	{
+		"image": {
+			"imageSrc": "https://builder.smart-ui.pro/files/rocket.png",
+			"imageAlt": ""
+		},
+		"title": "Free Shipping",
+		"description": "Free Shipping On All Order",
+		"btnText": "/search",
+		"btnUrl": "/search"
+	},
+	{
+		"image": {
+			"imageSrc": "https://builder.smart-ui.pro/files/syncIcon.png",
+			"imageAlt": ""
+		},
+		"title": "Money Guarantee",
+		"description": "30 Day Money Back Guarantee",
+		"btnText": "/search",
+		"btnUrl": "/search"
+	},
+	{
+		"image": {
+			"imageSrc": "https://builder.smart-ui.pro/files/feedbackIcon.png",
+			"imageAlt": ""
+		},
+		"title": "Online Support 24/7",
+		"description": "Technical Support 24/7",
+		"btnText": "/search",
+		"btnUrl": "/search"
+	},
+	{
+		"image": {
+			"imageSrc": "https://builder.smart-ui.pro/files/thumbsIcon.png",
+			"imageAlt": ""
+		},
+		"title": "Member Discount",
+		"description": "Upto 40% Discount All Products",
+		"btnText": "/search",
+		"btnUrl": "/search"
+	},
+	{
+		"image": {
+			"imageSrc": "https://builder.smart-ui.pro/files/licenseIcon.png",
+			"imageAlt": ""
+		},
+		"title": "Secure Payment",
+		"description": "All Cards Accepted",
+		"btnText": "/search",
+		"btnUrl": "/search"
+	}
+]
+
+const FeatureCarousel: React.FC<Props> = ({className = 'mb-7 md:mb-10 ', classNameCarousel, Slides = defaultData}) => {
 
 	console.log('asdFeatureCarousel', Slides)
 
