@@ -4,7 +4,6 @@ import {SwiperSlide} from '@components/ui/carousel/slider';
 import {onlyForBuilder, IsEditable} from "@components/config";
 
 interface Props {
-	heroBanner?: any;
 	className?: string;
 	contentClassName?: string;
 	heroContent?: boolean;
@@ -14,50 +13,34 @@ interface Props {
 
 const defaultSlider = [
 	{
-		id: 1,
-		title: 'Free delivery from your store',
-		slug: '/search',
-		image: {
-			mobile: {
-				url: '/assets/images/banner/home3/bannerHeroSlider_1.png',
-				width: 540,
-				height: 220,
-			},
-			desktop: {
-				url: '/assets/images/banner/home3/bannerHeroSlider_1.png',
-				width: 540,
-				height: 220,
-			},
+		"title": "Smart Electric New Cooker 2021",
+		"image": {
+			"imageSrc": "https://builder.smart-ui.pro/files/slider_1.jpg",
+			"imageAlt": ""
 		},
+		"description": "This all-in-one cooking solution uses an induction system that reacts.",
+		"btnText": "Get it Now",
+		"btnUrl": "/search"
 	},
 	{
-		id: 2,
-		title: 'Fresh Healthy Breakfast food',
-		slug: '/search',
-		image: {
-			mobile: {
-				url: '/assets/images/banner/home3/bannerHeroSlider_2.png',
-				width: 540,
-				height: 220,
-			},
-			desktop: {
-				url: '/assets/images/banner/home3/bannerHeroSlider_2.png',
-				width: 540,
-				height: 220,
-			},
+		"title": "Smart Electric New Cooker 2021",
+		"image": {
+			"imageSrc": "https://builder.smart-ui.pro/files/slider_2.jpg",
+			"imageAlt": ""
 		},
+		"description": "This all-in-one cooking solution uses an induction system that reacts.",
+		"btnText": "Get it Now",
+		"btnUrl": "/search"
 	}
-];
-
+]
 
 
 
 const Slider: React.FC<Props> = ({
-	                                 heroBanner = defaultSlider,
 	                                 className = 'mb-7',
 	                                 contentClassName = 'py-24',
 	                                 heroContent = true,
-	                                 Slides, ...props
+	                                 Slides = defaultSlider, ...props
                                  }) => {
 
 	console.log('SliderProps ', Slides)

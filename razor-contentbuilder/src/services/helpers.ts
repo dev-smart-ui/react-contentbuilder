@@ -1,3 +1,5 @@
+import Cors from 'cors';
+
 export const fetcher = url => fetch(url).then(r => r.json())
 
 export const fetcherCategory = async (url) => {
@@ -13,3 +15,23 @@ export const fetcherCategory = async (url) => {
 		return { categories: { data: [] } }; // Возвращайте пустой массив или другое значение по умолчанию при ошибке
 	}
 };
+
+
+export const capitalizeFirstLetter = (string) => string.charAt(0).toUpperCase() + string.slice(1);
+
+
+const cors = Cors({
+	methods: ['GET', 'POST'],
+	origin: '*'
+});
+
+
+export function runMiddleware(req, res) {
+	return new Promise((resolve, reject) => {
+		cors(req, res, (result) => {
+			if (result instanceof Error) return reject(result);
+
+			return resolve(result);
+		});
+	});
+}

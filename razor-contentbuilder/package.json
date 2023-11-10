@@ -33,6 +33,7 @@
     "next-seo": "^4.28.1",
     "overlayscrollbars": "^1.13.1",
     "overlayscrollbars-react": "^0.2.3",
+    "puppeteer": "^21.5.1",
     "rc-drawer": "^4.4.2",
     "rc-pagination": "^3.1.9",
     "rc-table": "^7.19.0",
