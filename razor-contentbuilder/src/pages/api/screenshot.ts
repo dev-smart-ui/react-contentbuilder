@@ -44,7 +44,7 @@ async function handler(req, res) {
 			},
 		});
 
-		axios.post(`${CONFIG_RAZOR.serverUrlProd}/upload-preview`, {image: screenshot, filename: component}).then((response) => {
+		axios.post(`${CONFIG_RAZOR.serverUrlProd}upload-preview`, {image: screenshot, filename: component}).then((response) => {
 
 			console.log('response page/api ', response)
 

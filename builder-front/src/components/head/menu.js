@@ -56,7 +56,10 @@ export const Menu = () => {
 	const onHandlerCreatePreviews = async () => {
 		try {
 			setIsLoading(true)
-			const response = await axios.get(`${CONFIG.serverUrlProd}generate-preview`)
+			// const response = await axios.get(`${CONFIG.serverUrlProd}generate-preview`)
+			const response = await axios.get(`${CONFIG.baseRazorUrlProd}api/screenshot?component=slider`)
+
+			console.log('response ', response)
 
 			const data = response.data
 			toast.success(data.message)

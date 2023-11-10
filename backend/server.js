@@ -89,6 +89,29 @@ app.post('/upload', async (req, res) => {
 	});
 });
 
+app.post('/upload-preview', async (req, res) => {
+
+	const imageBuffer = Buffer.from(req.body.image, 'base64');
+	const filename = req.body.filename;
+
+	try {
+		await fs.writeFile(`${$path}/preview${filename}`, imageBuffer)
+
+		res.status(200).json({
+			success: true,
+			url: `${CONFIG.serverUrlProd}uploads/preview/${filename}`,
+		})
+
+	} catch (err) {
+		console.error('Ошибка при сохранении файла:', err);
+
+		return res.status(500).json({
+			success: false,
+			message: `Failed to save file: ${err.message}`,
+		});
+	}
+});
+
 app.post('/save', async (req, res) => {
 	try {
 		const newPageValue = req.body.page;
