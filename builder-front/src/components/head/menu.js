@@ -57,9 +57,9 @@ export const Menu = () => {
 		try {
 			setIsLoading(true)
 			// const response = await axios.get(`${CONFIG.serverUrlProd}generate-preview`)
-			const response = await axios.get(`${CONFIG.baseRazorUrlProd}api/screenshot?component=slider`)
+			const response = await axios.get(`${CONFIG.baseRazorUrl}api/screenshot?component=slider`)
 
-			console.log('response ', response)
+			console.log('response ', response.data)
 
 			const data = response.data
 			toast.success(data.message)

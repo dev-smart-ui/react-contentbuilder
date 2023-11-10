@@ -17,9 +17,9 @@ async function handler(req, res) {
 	}
 
 	const component = capitalizeFirstLetter(firstParameter);
-	const componentUrl = `http://localhost:3004/preview/${component}`;
+	const componentUrl = `https://razor-contentbuilder.vercel.app/preview/${component}`;
 
-	const browser = await puppeteer.launch();
+	const browser = await puppeteer.launch({ headless: "new" });
 	const page = await browser.newPage();
 
 	try {
@@ -44,16 +44,20 @@ async function handler(req, res) {
 			},
 		});
 
-		axios.post(`${CONFIG_RAZOR.serverUrlProd}upload-preview`, {image: screenshot, filename: component}).then((response) => {
 
-			console.log('response page/api ', response)
+		// console.log(screenshot)
 
-		}).catch((err) => {
-			console.log(err);
+		// Отправка изображения на сервер
+		await axios.post(`${CONFIG_RAZOR.serverUrl}upload-preview`, {
+			image: screenshot.toString('base64'),
+			filename: component,
+		}).then(response => {
+			console.log('component NAME', component)
+			console.log(response.data)
 		})
 
-		// await fs.writeFile(`uploads/preview/${component}.png`, screenshot)
-		// res.status(200).json({success: true, message: 'Preview generated successfully'})
+		res.status(200).json({success: true, message: 'Preview generated successfully'})
+
 		// res.setHeader('Content-Type', 'image/png')
 		// res.send(screenshot)
 

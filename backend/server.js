@@ -91,15 +91,15 @@ app.post('/upload', async (req, res) => {
 
 app.post('/upload-preview', async (req, res) => {
 
-	const imageBuffer = Buffer.from(req.body.image, 'base64');
+	const imageBuffer = req.body.image
 	const filename = req.body.filename;
 
 	try {
-		await fs.writeFile(`${$path}/preview${filename}`, imageBuffer)
+		await fs.writeFile(`${$path}/preview/${filename}`, imageBuffer, 'base64')
 
 		res.status(200).json({
 			success: true,
-			url: `${CONFIG.serverUrlProd}uploads/preview/${filename}`,
+			message: 'Preview generated successfully',
 		})
 
 	} catch (err) {
