@@ -57,7 +57,7 @@ export const Menu = () => {
 	const onHandlerCreatePreviews = async () => {
 		try {
 			setIsLoading(true)
-			await axios.get(`${CONFIG.baseRazorUrl}api/screenshot`)
+			await axios.get(`${CONFIG.baseRazorUrlProd}api/screenshot`)
 				.then(data => {
 					console.log('response ', data.data)
 					toast.success(data.data.message)
