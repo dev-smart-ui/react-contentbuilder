@@ -102,7 +102,8 @@ app.get('/upload-preview', async (req, res) => {
 			const browser = await launch({
 				headless: true,
 				// executablePath: 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe' // for test local
-				executablePath: '/usr/bin/chromium-browser' // for server
+				executablePath: '/usr/bin/chromium-browser', // for server
+				args: ['--no-sandbox'],
 			});
 			const page = await browser.newPage();
 
