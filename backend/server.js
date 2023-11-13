@@ -19,7 +19,6 @@ const isLocalhost = (hostname) => {
 }
 
 const mongoose = require('mongoose');
-const {launch} = require("puppeteer");
 
 mongoose.connect('mongodb://127.0.0.1:27017/nextBuilder',
 	{useNewUrlParser: true, useUnifiedTopology: true})
