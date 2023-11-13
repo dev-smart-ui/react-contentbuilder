@@ -4,8 +4,7 @@ import {useHistory} from 'react-router-dom';
 import axios from "axios";
 import {CONFIG} from "../config";
 import {isLocalhost} from "../helpers";
-import {toast} from "react-toastify";
-import {ThreeCircles} from "react-loader-spinner";
+import {FullScreenLoader} from "../components/fullScreenLoader";
 
 
 const Edit = ({queryPageParam, rangeValue}) => {
@@ -14,6 +13,7 @@ const Edit = ({queryPageParam, rangeValue}) => {
 	const callSaveAndFinishRef = useRef();
 
 	const [finishRender, setFinishRender] = useState(false)
+	const [isLoading, setIsLoading] = useState(false)
 
 	const closeBuilder = () => {
 		const answer = window.confirm('Do you really want to leave?');
@@ -46,7 +46,6 @@ const Edit = ({queryPageParam, rangeValue}) => {
 	const onHandlerSave = (ref) => {
 		try {
 			ref.current();
-			toast.success('Page saved')
 		} catch (e) {
 			console.log(e)
 		}
@@ -55,10 +54,6 @@ const Edit = ({queryPageParam, rangeValue}) => {
 	const onHandlerSaveAndFinished = (ref) => {
 		try {
 			ref.current();
-			toast.success('Page saved')
-			setTimeout(() => {
-				history.push('/');
-			}, 2000)
 		} catch (e) {
 			console.log(e)
 		}
@@ -67,12 +62,15 @@ const Edit = ({queryPageParam, rangeValue}) => {
 
 	return (
 		<>
+			{isLoading && <FullScreenLoader isLoading={isLoading}/>}
+
 			{finishRender && queryPageParam &&
 				<BuilderControl
 					rangeValue={rangeValue}
 					queryPageParam={queryPageParam}
 					doSave={(f) => (callSaveRef.current = f)}
 					doSaveAndFinish={(f) => (callSaveAndFinishRef.current = f)}
+					setIsLoading={setIsLoading}
 				/>}
 
 			<div className="is-ui" style={{position: 'fixed', right: '30px', bottom: '30px', display: 'flex'}}>

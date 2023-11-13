@@ -11,9 +11,12 @@ import {
 } from "../../helpers";
 import {CONFIG} from "../../config";
 import axios from "axios";
+import {toast} from "react-toastify";
+import {useHistory} from "react-router-dom";
 
-const BuilderControl = ({rangeValue, queryPageParam, doSave, doSaveAndFinish}) => {
+const BuilderControl = ({rangeValue, queryPageParam, doSave, doSaveAndFinish, setIsLoading}) => {
 	const [obj, setObj] = useState(null);
+	const history = useHistory();
 
 	useEffect(() => {
 		const hostName = window.location.hostname
@@ -24,7 +27,7 @@ const BuilderControl = ({rangeValue, queryPageParam, doSave, doSaveAndFinish}) =
 				addBuilderElem(event.target);
 			}
 
-			if (event.target  && event.target.getAttribute('data-repeaterbtn') === 'removeElem') {
+			if (event.target && event.target.getAttribute('data-repeaterbtn') === 'removeElem') {
 				event.preventDefault()
 				removeBuilderElem(event.target)
 			}
@@ -169,7 +172,7 @@ const BuilderControl = ({rangeValue, queryPageParam, doSave, doSaveAndFinish}) =
 
 			contentBuilder.loadSnippets('assets/minimalist-blocks/content.js'); // Load snippet file
 
-			document.addEventListener('dragstart', function(event) {
+			document.addEventListener('dragstart', function (event) {
 				if (!event.target.querySelector('img')) return
 				const imgSrc = event.target.querySelector('img').getAttribute('src').split('/')
 				const componentNameParts = imgSrc[imgSrc.length - 1].split('.')[0];
@@ -177,7 +180,7 @@ const BuilderControl = ({rangeValue, queryPageParam, doSave, doSaveAndFinish}) =
 			})
 
 
-			document.addEventListener('drop', function(event) {
+			document.addEventListener('drop', function (event) {
 				const componentName = event.dataTransfer.getData('text/plain');
 
 				if (!componentName) return
@@ -209,8 +212,8 @@ const BuilderControl = ({rangeValue, queryPageParam, doSave, doSaveAndFinish}) =
 			});
 
 			// https://stackoverflow.com/questions/37949981/call-child-method-from-parent
-			if (doSave) doSave(() => saveContent(contentBuilder));  // Make it available to be called using doSave
-			if (doSaveAndFinish) doSaveAndFinish(() => saveContentAndFinish(contentBuilder));
+			if (doSave) doSave(() => saveContent(contentBuilder, 'doSave'))
+			if (doSaveAndFinish) doSaveAndFinish(() => saveContentAndFinish(contentBuilder, 'doSaveAndFinish'))
 		})
 
 		return () => {
@@ -266,6 +269,7 @@ const BuilderControl = ({rangeValue, queryPageParam, doSave, doSaveAndFinish}) =
 
 	const save = (contentBuilder, callback) => {
 		// Save all embedded base64 images first
+		setIsLoading(true)
 		contentBuilder.saveImages('', () => {
 			const hostName = window.location.hostname
 
@@ -281,10 +285,18 @@ const BuilderControl = ({rangeValue, queryPageParam, doSave, doSaveAndFinish}) =
 				data
 			).then((response) => {
 				// Saved Successfully
-				if (callback) callback(html);
+				if (callback === 'doSaveAndFinish') {
+					toast.success('Page saved')
+					history.push('/');
+				} else toast.success('Page saved')
+
+				// if (callback) callback(html);
 
 			}).catch((err) => {
 				console.log(err);
+				setIsLoading(false)
+			}).finally(() => {
+				setIsLoading(false)
 			});
 
 		}, (img, base64, filename) => {
@@ -299,18 +311,18 @@ const BuilderControl = ({rangeValue, queryPageParam, doSave, doSaveAndFinish}) =
 				img.setAttribute('src', uploadedImageUrl); // set image src
 
 			}).catch((err) => {
-				console.log(err);
+				console.error('Image upload error:', err); // Log the image upload error
 			});
 
 		});
 	};
 
-	const saveContent = (contentBuilder) => {
-		save(contentBuilder);
+	const saveContent = (contentBuilder, callback) => {
+		save(contentBuilder, callback);
 	};
 
-	const saveContentAndFinish = (contentBuilder) => {
-		save(contentBuilder);
+	const saveContentAndFinish = (contentBuilder, callback) => {
+		save(contentBuilder, callback);
 	};
 
 

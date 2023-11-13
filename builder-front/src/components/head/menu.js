@@ -4,6 +4,7 @@ import axios from "axios";
 import {CONFIG} from "../../config";
 import {toast} from "react-toastify";
 import {createPortal} from "react-dom";
+import {FullScreenLoader} from "../fullScreenLoader";
 
 export const Menu = () => {
 
@@ -59,37 +60,21 @@ export const Menu = () => {
 			setIsLoading(true)
 			await axios.get(`${CONFIG.baseRazorUrlProd}api/screenshot`)
 				.then(data => {
+					setIsLoading(false)
 					console.log('response ', data.data)
 					toast.success(data.data.message)
 			})
 		} catch (error) {
+			setIsLoading(false)
 			toast.error(error.message || 'error')
 			console.error("error:", error)
-		} finally {
-			setIsLoading(false)
 		}
 	}
 
 	return (
 		<>
-			{
-				isLoading && createPortal(
-					<div className="fixed top-0 w-full h-full bg-[rgba(0,0,0,.5)] z-[99999] flex items-center justify-center">
-						<ThreeCircles
-							height="80"
-							width="80"
-							color="#4fa94d"
-							wrapperStyle={{}}
-							wrapperClass=""
-							visible={true}
-							ariaLabel="circles-border"
-							outerCircleColor="#000"
-							innerCircleColor="#fff"
-							middleCircleColor="#000"
-						/>
-					</div>,
-					document.body)
-			}
+			{isLoading && <FullScreenLoader isLoading={isLoading}/>}
+
 			<div className="head-btn-box justify-center items-center flex-wrap gap-2 flex w-1/2 ">
 				<a href="/" className="text-center transition-all inline-block cursor-pointer no-underline border-2 border-solid border-transparent mb-2 hover:border-transparent bg-gray-200 hover:bg-gray-300 size-14 tracking-75 uppercase py-2 px-5  font-semibold text-gray-600 rounded-full">
 					Home

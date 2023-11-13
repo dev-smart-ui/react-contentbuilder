@@ -19,6 +19,8 @@ const isLocalhost = (hostname) => {
 }
 
 const mongoose = require('mongoose');
+const {launch} = require("puppeteer");
+
 mongoose.connect('mongodb://127.0.0.1:27017/nextBuilder',
 	{useNewUrlParser: true, useUnifiedTopology: true})
 	.then(() => console.log('MongoDB Connected'))
@@ -225,6 +227,7 @@ app.get('/delete', async (req, res) => {
 
 		res.status(200).json({
 			success: true,
+			message: "page deleted"
 		});
 	} catch (error) {
 		res.status(500).json({
