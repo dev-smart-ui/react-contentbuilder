@@ -19,6 +19,7 @@ const isLocalhost = (hostname) => {
 }
 
 const mongoose = require('mongoose');
+const {launch} = require("puppeteer");
 
 mongoose.connect('mongodb://127.0.0.1:27017/nextBuilder',
 	{useNewUrlParser: true, useUnifiedTopology: true})
@@ -90,29 +91,84 @@ app.post('/upload', async (req, res) => {
 	});
 });
 
-app.post('/upload-preview', async (req, res) => {
 
-	const imageBuffer = req.body.image
-	const filename = req.body.filename;
+app.get('/upload-preview', async (req, res) => {
+	const response = await fetch(`${CONFIG.baseRazorUrl}api/components`);
+	const data = await response.json();
 
 	try {
-		await fs.writeFile(`${$path}/preview/customComponents/${filename}.png`, imageBuffer, 'base64')
+		const results = await Promise.all(data.map(async (componentName) => {
+			const componentUrl = `${CONFIG.baseRazorUrlProd}/preview/${componentName}`;
+			const browser = await launch({ headless: true });
+			const page = await browser.newPage();
 
-		res.status(200).json({
-			success: true,
-			message: 'Preview generated successfully',
-		})
+			try {
+				await page.setViewport({ width: 1920, height: 1080 });
+				await page.goto(componentUrl, { waitUntil: 'networkidle0' });
 
-	} catch (err) {
-		console.error('Error saving file:', err);
+				const componentBoundingBox = await page.$eval(`[data-component="${componentName}"]`, (component) => {
+					const boundingBox = component.getBoundingClientRect();
+					return {
+						x: boundingBox.x,
+						y: boundingBox.y,
+						width: boundingBox.width,
+						height: boundingBox.height,
+					};
+				});
 
-		return res.status(500).json({
-			success: false,
-			message: `Failed to save file: ${err.message}`,
-			filename: filename
-		});
+				const screenshot = await page.screenshot({
+					clip: {
+						x: componentBoundingBox.x,
+						y: componentBoundingBox.y,
+						width: componentBoundingBox.width,
+						height: componentBoundingBox.height,
+					},
+				});
+
+				await fs.writeFile(`${$path}/preview/customComponents/${componentName}.png`, screenshot.toString('base64'), 'base64');
+
+				return {
+					componentName,
+					success: true,
+				};
+			} catch (err) {
+				console.error('Error when creating a screenshot for a component', componentName, err);
+				return {
+					componentName,
+					success: false,
+				};
+			} finally {
+				await browser.close();
+			}
+		}));
+
+		res.status(200).json({ success: true, message: 'Previews generated successfully', results });
+	} catch (error) {
+		console.error('Error when generating screenshots:', error);
+		res.status(500).json({ success: false, message: 'Internal Server Error' });
 	}
-});
+})
+
+// const imageBuffer = req.body.image
+// const filename = req.body.filename;
+//
+// try {
+// 	await fs.writeFile(`${$path}/preview/customComponents/${filename}.png`, imageBuffer, 'base64')
+//
+// 	res.status(200).json({
+// 		success: true,
+// 		message: 'Preview generated successfully',
+// 	})
+//
+// } catch (err) {
+// 	console.error('Error saving file:', err);
+//
+// 	return res.status(500).json({
+// 		success: false,
+// 		message: `Failed to save file: ${err.message}`,
+// 		filename: filename
+// 	});
+// }
 
 app.post('/save', async (req, res) => {
 	try {
