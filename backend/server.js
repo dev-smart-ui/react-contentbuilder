@@ -100,17 +100,19 @@ app.get('/upload-preview', async (req, res) => {
 		const browser = await launch({
 			headless: 'new',
 			args: ['--no-sandbox', '--disable-setuid-sandbox'],
+			defaultViewport: {width: 1920, height: 800}
 		})
 
 		const page = await browser.newPage()
-		await page.setViewport({ width: 1920, height: 1080 })
+		const results = []
 
-		const results = await Promise.all(data.map(async (componentName) => {
-			const componentUrl = `${CONFIG.baseRazorUrlProd}/preview/${componentName}`
+		for (const componentName of data) {
+			const componentUrl = `${CONFIG.baseRazorUrlProd}preview/${componentName}`
+
+			console.log(`${CONFIG.baseRazorUrlProd}preview/${componentName}`)
 
 			try {
 				await page.goto(componentUrl, { waitUntil: 'networkidle0' })
-				await new Promise(resolve => setTimeout(resolve, 500))
 
 				const componentBoundingBox = await page.$eval(`[data-component="${componentName}"]`, (component) => {
 					const boundingBox = component.getBoundingClientRect()
@@ -133,18 +135,21 @@ app.get('/upload-preview', async (req, res) => {
 
 				await fs.writeFile(`${$path}/preview/customComponents/${componentName}.png`, screenshot.toString('base64'), 'base64')
 
-				return {
+				results.push({
 					componentName,
-					success: true,
-				};
+					success: true
+				})
 			} catch (err) {
 				console.error('Error when creating a screenshot for a component', componentName, err)
-				return {
+				results.push({
 					componentName,
 					success: false,
-				};
+					error: err.message
+				})
 			}
-		}));
+
+			await new Promise(resolve => setTimeout(resolve, 1000))
+		}
 
 		await browser.close()
 
