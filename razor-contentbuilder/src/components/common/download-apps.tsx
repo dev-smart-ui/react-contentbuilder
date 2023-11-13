@@ -112,9 +112,9 @@ const DownloadApps: React.FC<Props> = ({ DownloadApps = data.appButtons,
               {t(description)}
             </p>
             <div className="flex justify-center md:justify-start space-s-2 md:space-s-2.5 pt-0.5 px-7 sm:px-0">
-              {DownloadApps?.map((item) => (
+              {DownloadApps?.map((item, i) => (
                 <Link
-                  key={item.id}
+                  key={i}
                   href={item.slug}
                   className="inline-flex transition duration-200 ease-in hover:box-shadow hover:opacity-80"
                 >

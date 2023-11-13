@@ -93,7 +93,7 @@ app.post('/upload', async (req, res) => {
 
 
 app.get('/upload-preview', async (req, res) => {
-	const response = await fetch(`${CONFIG.baseRazorUrl}api/components`);
+	const response = await fetch(`${CONFIG.baseRazorUrlProd}api/components`);
 	const data = await response.json();
 
 	try {
