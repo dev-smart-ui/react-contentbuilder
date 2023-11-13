@@ -19,7 +19,7 @@ const isLocalhost = (hostname) => {
 }
 
 const mongoose = require('mongoose');
-const {launch} = require("puppeteer");
+const {launch} = require("puppeteer-core");
 
 mongoose.connect('mongodb://127.0.0.1:27017/nextBuilder',
 	{useNewUrlParser: true, useUnifiedTopology: true})
@@ -99,7 +99,11 @@ app.get('/upload-preview', async (req, res) => {
 	try {
 		const results = await Promise.all(data.map(async (componentName) => {
 			const componentUrl = `${CONFIG.baseRazorUrlProd}/preview/${componentName}`;
-			const browser = await launch({ headless: true });
+			const browser = await launch({
+				headless: true,
+				// executablePath: 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe' // for test local
+				executablePath: '/usr/bin/chromium-browser' // for server
+			});
 			const page = await browser.newPage();
 
 			try {
