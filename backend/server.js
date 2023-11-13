@@ -93,34 +93,34 @@ app.post('/upload', async (req, res) => {
 
 
 app.get('/upload-preview', async (req, res) => {
-	const response = await fetch(`${CONFIG.baseRazorUrlProd}api/components`);
-	const data = await response.json();
+	const response = await fetch(`${CONFIG.baseRazorUrlProd}api/components`)
+	const data = await response.json()
 
 	try {
+		const browser = await launch({
+			headless: 'new',
+			args: ['--no-sandbox', '--disable-setuid-sandbox'],
+		})
+
+		const page = await browser.newPage()
+		await page.setViewport({ width: 1920, height: 1080 })
+
 		const results = await Promise.all(data.map(async (componentName) => {
-			const componentUrl = `${CONFIG.baseRazorUrlProd}/preview/${componentName}`;
-			process.setMaxListeners(15)
-			const browser = await launch({
-				headless: 'new',
-				// executablePath: 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe' // for test local puppeteer-core
-				// executablePath: '/usr/bin/chromium-browser', // for server puppeteer-core
-				args: ['--no-sandbox', '--disable-setuid-sandbox'],
-			});
-			const page = await browser.newPage();
+			const componentUrl = `${CONFIG.baseRazorUrlProd}/preview/${componentName}`
 
 			try {
-				await page.setViewport({ width: 1920, height: 1080 });
-				await page.goto(componentUrl, { waitUntil: 'networkidle0' });
+				await page.goto(componentUrl, { waitUntil: 'networkidle0' })
+				await new Promise(resolve => setTimeout(resolve, 500))
 
 				const componentBoundingBox = await page.$eval(`[data-component="${componentName}"]`, (component) => {
-					const boundingBox = component.getBoundingClientRect();
+					const boundingBox = component.getBoundingClientRect()
 					return {
 						x: boundingBox.x,
 						y: boundingBox.y,
 						width: boundingBox.width,
 						height: boundingBox.height,
-					};
-				});
+					}
+				})
 
 				const screenshot = await page.screenshot({
 					clip: {
@@ -129,29 +129,29 @@ app.get('/upload-preview', async (req, res) => {
 						width: componentBoundingBox.width,
 						height: componentBoundingBox.height,
 					},
-				});
+				})
 
-				await fs.writeFile(`${$path}/preview/customComponents/${componentName}.png`, screenshot.toString('base64'), 'base64');
+				await fs.writeFile(`${$path}/preview/customComponents/${componentName}.png`, screenshot.toString('base64'), 'base64')
 
 				return {
 					componentName,
 					success: true,
 				};
 			} catch (err) {
-				console.error('Error when creating a screenshot for a component', componentName, err);
+				console.error('Error when creating a screenshot for a component', componentName, err)
 				return {
 					componentName,
 					success: false,
 				};
-			} finally {
-				await browser.close();
 			}
 		}));
 
-		res.status(200).json({ success: true, message: 'Previews generated successfully', results });
+		await browser.close()
+
+		res.status(200).json({ success: true, message: 'Previews generated successfully', results })
 	} catch (error) {
-		console.error('Error when generating screenshots:', error);
-		res.status(500).json({ success: false, message: 'Internal Server Error' });
+		console.error('Error when generating screenshots:', error)
+		res.status(500).json({ success: false, message: 'Internal Server Error' })
 	}
 })
 
