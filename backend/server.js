@@ -19,7 +19,7 @@ const isLocalhost = (hostname) => {
 }
 
 const mongoose = require('mongoose');
-const {launch} = require("puppeteer-core");
+const {launch} = require("puppeteer");
 
 mongoose.connect('mongodb://127.0.0.1:27017/nextBuilder',
 	{useNewUrlParser: true, useUnifiedTopology: true})
@@ -101,9 +101,9 @@ app.get('/upload-preview', async (req, res) => {
 			const componentUrl = `${CONFIG.baseRazorUrlProd}/preview/${componentName}`;
 			process.setMaxListeners(15)
 			const browser = await launch({
-				headless: true,
-				// executablePath: 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe' // for test local
-				executablePath: '/usr/bin/chromium-browser', // for server
+				headless: 'new',
+				// executablePath: 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe' // for test local puppeteer-core
+				// executablePath: '/usr/bin/chromium-browser', // for server puppeteer-core
 				args: ['--no-sandbox', '--disable-setuid-sandbox'],
 			});
 			const page = await browser.newPage();
