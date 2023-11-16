@@ -43,7 +43,7 @@ const Slider: React.FC<Props> = ({
 	                                 Slides = defaultSlider, ...props
                                  }) => {
 
-	console.log('SliderProps ', Slides)
+
 
 	if (onlyForBuilder()) {
 		return (
