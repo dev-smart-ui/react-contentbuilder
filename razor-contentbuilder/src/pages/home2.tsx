@@ -31,6 +31,7 @@ import ListingTabsClothFeed from "@components/product/feeds/listingtabs-cloth-fe
 import ProductWithBestDeals from "@components/product/product-with-best-deals";
 import {useRouter} from "next/router";
 import {getDirection} from "@utils/get-direction";
+import {ExampleButton} from "@components/exampleButton";
 
 export default function Home() {
     const { locale } = useRouter();
@@ -42,6 +43,7 @@ export default function Home() {
                 description="Fastest E-commerce template built with React, NextJS, TypeScript, React-Query and Tailwind CSS."
                 path="home2"
             />
+            <ExampleButton/>
             {/*<Container>*/}
             {/*    <div className={` grid gap-4 grid-cols-1 xl:gap-6 lg:grid-cols-[minmax(72%,_1fr)_1fr] xl:grid-cols-[minmax(72%,_1fr)_1fr] ${dir == 'rtl' ? '2xl:mr-[18.4rem]': '2xl:ml-[18.4rem]'}`}>*/}
             {/*        <HeroSliderBlock*/}
