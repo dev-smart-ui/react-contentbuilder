@@ -4,7 +4,7 @@ import {IsEditable} from "@components/config";
 
 export const ExampleButton = ({text="placeholder"}) => {
 
-    return <button {...IsEditable({ text: "textContent"})} >
+    return <button  data-component={"button-example"} {...IsEditable({ text: "textContent"})} >
 			{text}
     </button>
 };
