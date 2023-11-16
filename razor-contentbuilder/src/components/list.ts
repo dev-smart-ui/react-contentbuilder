@@ -8,9 +8,11 @@ import SupperCategoryClothFeed from "@components/product/feeds/suppercategory-cl
 import CategoryGridListBlock from "@components/common/category-grid-list-block";
 import BannerAllCarousel from "@components/common/banner-all-carousel";
 import DownloadApps from "@components/common/download-apps";
+import {ExampleButton} from "@components/exampleButton";
 
 export const List_Of_Components = {
-    Test,
+    // Test,
+    ExampleButton,
     Slider,
     FeatureCarousel,
     BannerGrid,
