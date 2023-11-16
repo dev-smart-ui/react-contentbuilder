@@ -100,7 +100,7 @@ app.get('/upload-preview', async (req, res) => {
 		const browser = await launch({
 			headless: 'new',
 			args: ['--no-sandbox', '--disable-setuid-sandbox'],
-			defaultViewport: {width: 1920, height: 800}
+			defaultViewport: {width: 480, height: 300}
 		})
 
 		const page = await browser.newPage()
